@@ -1,0 +1,211 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Classiera Locations\n"
+"POT-Creation-Date: 2018-06-09 12:30+0500\n"
+"PO-Revision-Date: 2018-06-09 12:30+0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: classiera-locations.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classiera-locations.php:81
+msgid "Select State"
+msgstr ""
+
+#: classiera-locations.php:116
+msgid "Select City"
+msgstr ""
+
+#: includes/city.php:7 includes/city.php:8
+msgid "Cities"
+msgstr ""
+
+#: includes/city.php:9 includes/country.php:11 includes/state.php:9
+msgid "Add New"
+msgstr ""
+
+#: includes/city.php:10
+msgid "Add New City"
+msgstr ""
+
+#: includes/city.php:11
+msgid "Edit City"
+msgstr ""
+
+#: includes/city.php:12
+msgid "New City"
+msgstr ""
+
+#: includes/city.php:13
+msgid "View City"
+msgstr ""
+
+#: includes/city.php:14
+msgid "Search Cities"
+msgstr ""
+
+#: includes/city.php:15
+msgid "No City found"
+msgstr ""
+
+#: includes/city.php:16
+msgid "No City found in Trash"
+msgstr ""
+
+#: includes/city.php:32
+msgid "cities"
+msgstr ""
+
+#: includes/city.php:43
+msgid "Add Cities by selecting country and states"
+msgstr ""
+
+#: includes/city.php:58 includes/state.php:57
+msgid "Select Country"
+msgstr ""
+
+#: includes/city.php:71 includes/city.php:128 includes/state.php:68
+#: includes/state.php:122
+msgid "Country"
+msgstr ""
+
+#: includes/city.php:79 includes/city.php:127
+msgid "State"
+msgstr ""
+
+#: includes/city.php:85
+msgid ""
+"Please paste your all city with comma. (Example : london,purley,redhill) "
+"Please dont put empty space or line break."
+msgstr ""
+
+#: includes/city.php:126
+msgid "City Title"
+msgstr ""
+
+#: includes/city.php:129 includes/country.php:49 includes/state.php:123
+msgid "Publish Time"
+msgstr ""
+
+#: includes/country.php:7 includes/country.php:8 includes/country.php:10
+msgid "Countries"
+msgstr ""
+
+#: includes/country.php:9
+msgid "Locations JW"
+msgstr ""
+
+#: includes/country.php:12
+msgid "Add New Country"
+msgstr ""
+
+#: includes/country.php:13
+msgid "Edit Country"
+msgstr ""
+
+#: includes/country.php:14
+msgid "New Country"
+msgstr ""
+
+#: includes/country.php:15
+msgid "View Country"
+msgstr ""
+
+#: includes/country.php:16
+msgid "Search Countries"
+msgstr ""
+
+#: includes/country.php:17
+msgid "No Country found"
+msgstr ""
+
+#: includes/country.php:18
+msgid "No Country found in Trash"
+msgstr ""
+
+#: includes/country.php:32
+msgid "countries"
+msgstr ""
+
+#: includes/country.php:48
+msgid "Country Title"
+msgstr ""
+
+#: includes/state.php:7 includes/state.php:8
+msgid "States"
+msgstr ""
+
+#: includes/state.php:10
+msgid "Add New State"
+msgstr ""
+
+#: includes/state.php:11
+msgid "Edit State"
+msgstr ""
+
+#: includes/state.php:12
+msgid "New State"
+msgstr ""
+
+#: includes/state.php:13
+msgid "View State"
+msgstr ""
+
+#: includes/state.php:14
+msgid "Search States"
+msgstr ""
+
+#: includes/state.php:15
+msgid "No State found"
+msgstr ""
+
+#: includes/state.php:16
+msgid "No State found in Trash"
+msgstr ""
+
+#: includes/state.php:32
+msgid "states"
+msgstr ""
+
+#: includes/state.php:44
+msgid "Add states by selecting country"
+msgstr ""
+
+#: includes/state.php:75
+msgid ""
+"Please paste your all state with comma. (Example : london,purley,redhill) "
+"Please dont put empty space or line break."
+msgstr ""
+
+#: includes/state.php:121
+msgid "State Title"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Classiera Locations"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://joinwebs.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add Countries States And City Only for Classiera."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "JoinWebs"
+msgstr ""

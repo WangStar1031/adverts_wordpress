@@ -1,0 +1,224 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Classiera Helper\n"
+"POT-Creation-Date: 2017-11-08 14:12+0500\n"
+"PO-Revision-Date: 2017-11-08 14:12+0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: index.php:22
+msgctxt "post type general name"
+msgid "Pricing Plans"
+msgstr ""
+
+#: index.php:23
+msgctxt "post type singular name"
+msgid "Price Plans"
+msgstr ""
+
+#: index.php:24
+msgctxt "book"
+msgid "Add New Price Plan"
+msgstr ""
+
+#: index.php:25
+msgid "Add New Price Plan"
+msgstr ""
+
+#: index.php:26
+msgid "Edit Price Plan"
+msgstr ""
+
+#: index.php:27
+msgid "New Price Plan"
+msgstr ""
+
+#: index.php:28
+msgid "View Price Plan"
+msgstr ""
+
+#: index.php:29
+msgid "Search Price Plans"
+msgstr ""
+
+#: index.php:30
+msgid "No Price Plan found"
+msgstr ""
+
+#: index.php:31
+msgid "No Price Plans found in Trash"
+msgstr ""
+
+#: index.php:58
+msgid "Is this Free Plans"
+msgstr ""
+
+#: index.php:76
+msgid "IF you checked this option then dont put price"
+msgstr ""
+
+#: index.php:122
+msgid "Featured Ads : How many featured ads you want to allow with this plan? "
+msgstr ""
+
+#: index.php:154
+msgid "Regular Ads : How many regular ads you want to allow with this plan?"
+msgstr ""
+
+#: index.php:180
+msgid ""
+"Put Your WooCommerece Product ID : Your WooCommerece product price and this "
+"plan price must need to be same."
+msgstr ""
+
+#: index.php:191
+msgid "Product ID"
+msgstr ""
+
+#: index.php:213
+msgid "Days : How many days ads will be shown at premium place."
+msgstr ""
+
+#: index.php:243 index.php:275 index.php:319
+msgid "Replace your text line with default one"
+msgstr ""
+
+#: index.php:364
+msgid "Price :Dont put Cuccreny tag"
+msgstr ""
+
+#: index.php:399
+msgid ""
+"Put here USERNAME to cancel this plan for particular user (Leave empty for "
+"nothing)"
+msgstr ""
+
+#: index.php:447
+msgid ""
+"Put here USERNAME to assign this plan for particular user (Leave empty for "
+"nothing)"
+msgstr ""
+
+#: index.php:502
+msgid "Most popular plan"
+msgstr ""
+
+#: index.php:531
+msgctxt "taxonomy general name"
+msgid "Blogs Categories"
+msgstr ""
+
+#: index.php:532
+msgctxt "classiera-helper"
+msgid "Blogs Category"
+msgstr ""
+
+#: index.php:533
+msgid "Search Blogs Categories"
+msgstr ""
+
+#: index.php:534
+msgid "All Blogs Categories"
+msgstr ""
+
+#: index.php:535
+msgid "Parent Blogs Category"
+msgstr ""
+
+#: index.php:536
+msgid "Parent Blogs Category:"
+msgstr ""
+
+#: index.php:537
+msgid "Edit Blogs Category"
+msgstr ""
+
+#: index.php:538
+msgid "Update Blogs Category"
+msgstr ""
+
+#: index.php:539
+msgid "Add New Blogs Category"
+msgstr ""
+
+#: index.php:540
+msgid "New Blogs Category"
+msgstr ""
+
+#: index.php:541
+msgid "Blogs Categories"
+msgstr ""
+
+#: index.php:552
+msgctxt "post type general name"
+msgid "Blogs"
+msgstr ""
+
+#: index.php:553
+msgctxt "post type singular name"
+msgid "Blogs"
+msgstr ""
+
+#: index.php:554
+msgctxt "book"
+msgid "Add New Blog Post"
+msgstr ""
+
+#: index.php:555
+msgid "Add New Blog Post"
+msgstr ""
+
+#: index.php:556
+msgid "Edit Blog Post"
+msgstr ""
+
+#: index.php:557
+msgid "New Blog Post"
+msgstr ""
+
+#: index.php:558
+msgid "View Blog Post"
+msgstr ""
+
+#: index.php:559
+msgid "Search Blog Post"
+msgstr ""
+
+#: index.php:560
+msgid "No Blog Post found"
+msgstr ""
+
+#: index.php:561
+msgid "No Blog Post found in Trash"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Classiera Helper"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://joinwebs.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Classiera Custom Post Type for Pricing Plans And Blog Post."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "JoinWebs"
+msgstr ""

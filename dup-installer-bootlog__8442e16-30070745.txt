@@ -1,0 +1,102 @@
+Jan 30 07:42:02 ==DUPLICATOR INSTALLER BOOTSTRAP v1.3.4==
+Jan 30 07:42:02 ----------------------------------------------------
+Jan 30 07:42:02 Installer bootstrap start
+Jan 30 07:42:02 Using archive D:/xampp/htdocs/ahv/v1/20190130_advertshost_8442e16b6c45ce1a5327_20190130070745_archive.zip
+Jan 30 07:42:02 Going to overwrite installer directory since either in overwrite mode or installer directory doesn't exist
+Jan 30 07:42:02 Ready to extract the installer
+Jan 30 07:42:02 Checking permission of destination folder
+Jan 30 07:42:02 ZipArchive exists so using that
+Jan 30 07:42:02 Successfully opened D:/xampp/htdocs/ahv/v1/20190130_advertshost_8442e16b6c45ce1a5327_20190130070745_archive.zip
+Jan 30 07:42:02 Extracting all files from archive within dup-installer
+Jan 30 07:42:02 Success: dup-installer/dup-database__8442e16-30070745.sql >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/dup-scan__8442e16-30070745.json >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/main.installer.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/config/class.constants.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/config/class.archive.config.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/config/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/config/class.conf.srv.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/config/class.wp.config.tranformer.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.csrf.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/utilities/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/utilities/class.u.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.server.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.logging.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.password.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.engine.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.crypt.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.http.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.db.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/classes/class.installer.state.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s3.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s2.dbtest.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s4.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s1.base.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.help.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s2.cpnl.lite.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:02 Success: dup-installer/views/view.s2.basic.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/views/view.init1.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/views/view.s2.base.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/views/view.s1.terms.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/views/view.exception.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/inc.js.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/inc.libs.css.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-icons_888888_256x240.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_glass_75_e6e6e6_1x400.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_glass_95_fef1ec_1x400.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_glass_75_dadada_1x400.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_glass_65_ffffff_1x400.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_highlight-soft_75_cccccc_1x100.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-icons_454545_256x240.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-icons_cd0a0a_256x240.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-icons_2e83ff_256x240.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-icons_222222_256x240.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/images/ui-bg_glass_55_fbf9ee_1x400.png >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/fontawesome-webfont.eot >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/fontawesome-webfont.woff >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/fontawesome-webfont.woff2 >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/FontAwesome.otf >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/fonts/fontawesome-webfont.ttf >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/css/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/font-awesome/css/font-awesome.min.css >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/inc.libs.js.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/assets/inc.css.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.base.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.s1.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.s3.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.s2.dbtest.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.s2.base.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/ctrls/ctrl.s2.dbinstall.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/dup-archive__8442e16-30070745.txt >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.os.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/index.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.string.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.url.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.net.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/snaplib.all.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.ui.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.io.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.stream.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.u.util.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Success: dup-installer/lib/snaplib/class.snaplib.logger.php >>> D:\xampp\htdocs\ahv\v1
+Jan 30 07:42:03 Successfully closed archive file
+Jan 30 07:42:03 Successfully extracted with ZipArchive
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/assets to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/classes to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/ctrls to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/lib to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/views to 755<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/dup-archive__8442e16-30070745.txt to 666<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/dup-database__8442e16-30070745.sql to 666<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/dup-scan__8442e16-30070745.json to 666<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/index.php to 666<br/>
+Jan 30 07:42:03 Set permissions of D:/xampp/htdocs/ahv/v1/dup-installer/main.installer.php to 666<br/>
+Jan 30 07:42:03 No detected errors so redirecting to the main installer. Main Installer URI = http://localhost/ahv/v1/dup-installer/main.installer.php

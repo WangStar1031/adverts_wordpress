@@ -1,0 +1,212 @@
+@charset "utf-8";
+/* CSS Document */
+
+/******************** Global ********************/
+.wda-container{
+	width:100%;
+	font-size:15px;
+	box-sizing:border-box;
+	
+}
+label{display:inline-block;}
+.action-block label.btn{  padding-right:5px;text-align:left; }
+.action-block > *{ margin:2px 0px;}
+.wda-container *{ box-sizing:border-box;font-family:sans-serif;}
+.wda-container .row:after,.wda-container .row:before{ clear:both;}
+.wda-container .row{
+	margin:0px -15px;
+	clear:both;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12{
+	position:relative;
+	min-height:1px;
+	padding:0px 15px;
+	float:left;
+}
+
+.col-1{ width:8.33333333%; }
+.col-2{ width:16.66666667%; }
+.col-3{ width:25%; }
+.col-4{ width:33.33333333%; }
+.col-5{ width:41.66666667%; }
+.col-6{ width:50%; }
+.col-7{ width:58.33333333%; }
+.col-8{ width:66.66666667%; }
+.col-9{ width:75%; }
+.col-10{ width:83.33333333%; }
+.col-11{ width:91.66666667%; }
+.col-12{ width:100%; }
+.text-left{ text-align:left;}
+.text-center{ text-align:center;}
+.text-right{ text-align:right;}
+.pull-left{ float:left;}
+.pull-right{float:right;}
+.clear{clear:both;
+}
+.btn{
+	font-weight:700;
+	border-radius:3px;
+	border:1px solid #333;
+	padding:6px 12px;
+	cursor:pointer;
+	text-align:center;
+}
+.btn-block{
+	width:100%;	
+}
+.display-none{
+	display:none;
+}
+#wda_btnSubmit{
+	background:#d9534f;
+	border:1px solid #d43f3a;
+	color:#fff;
+	text-transform:uppercase;
+}
+#wda_btnSubmit:hover{
+	background:#c9302c;
+	border:1px solid #ac2925;	
+}
+/******************** Style sheet ********************/
+.notice{
+	background:#cfcfcf;
+	padding:8px 16px;
+	margin:10px 0 0 0;
+	border-left:5px solid #F90;
+	border-radius: 0 5px 5px 1px;
+    	box-shadow: 3px 3px 3px 0;
+    	font-weight: 600;
+}
+.wda-close{
+	text-decoration:none;
+	color: #FFF;
+	font-weight:700;
+	font-size:20px;
+	opacity: 0.7;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	transition:all 300ms ease;
+}
+.wda-close:hover{opacity:1;text-decoration:none;}
+.query-box{
+	width:100%;
+	min-height:128px;
+	resize:vertical;
+	border:2px;
+	border-color:transparent;
+	transition:all 300ms ease-out;
+}
+.query-box-default{
+	border-color:#0074a2;
+	border-style:dashed;
+}
+.query-box-hover:before{
+	width:100%;
+	height:100%;
+	position:absolute;
+	content:' ';
+	background:#0074A2;
+	opacity:.5;
+	z-index:1;
+}
+.query-box-hover{
+	border-color:#0074a2;
+	border-style:solid;
+	z-index:5;
+}
+
+
+.table-container{
+	clear:both;
+	padding-top:20px;
+	max-width:100%;
+	/*overflow-x:auto;
+	*/
+}
+.table-list{
+	width:100%;
+}
+.table-list th{
+	text-align:left;
+}
+.table-list th,
+.table-list td{
+	padding:5px  5px;	
+}
+.table-list a {
+    padding: 0 5px;
+}
+
+.ex-label{
+	width:16px;
+	height:16px;
+	border-radius:3px;	
+	display:inline-block;
+}
+
+#table-column-container>div{ transition:all 300ms ease 300ms; }
+
+.lbl-table-col{
+	background:#FFEBCD;
+	border: 1px solid #FFEB7D;
+    	border-radius: 3px;
+    	margin: 6px 0;
+    	max-width: 200px;
+    	padding: 6px 12px;
+    	width: 100%;
+	font-weight:900;
+	transition:all 300ms ease 0s;
+	position:relative;
+	z-index:5;
+}
+.lbl-table-col>label{ z-index:10;}
+.lbl-table-col:hover{
+	transform:translate(0px,-3px)
+}
+
+label.no-null,
+.lbl-table-col[data-null="NO"]{
+	background:#f0ad4e;
+	border:1px solid #eea236;
+	color:#fff;
+}
+.lbl-table-col[data-null="NO"]:hover{
+	background:#ec971f;
+	border-color:#d58512;
+}
+label.primary,
+.lbl-table-col[data-key="PRI"]{
+	background:#428bca;
+	border:1px solid #357ebd;
+	color:#fff;
+}
+.lbl-table-col[data-key="PRI"]:hover{
+	background:#3071a9;
+	border-color:#285e8e;
+}
+
+label.auto-increment{
+	background-color:#5cb85c;
+	border:1px solid #fff;
+}
+/** Popup **/
+#popup{
+	transition:all 300ms ease;
+	position:fixed;
+	top:40px;
+	padding:15px 0px;
+	width:86%;
+	height:90%;
+	min-height:512px;
+	background:#1b1b1b;
+	z-index:10000 !important;
+	border:1px solid #fff;
+	border-radius:5px;
+	box-shadow:0 0 2px 2px #1b1b1b;
+	overflow:auto;
+}
+#popup .table-list {
+	color: #efefef;
+	letter-spacing: 0.5px;
+}
