@@ -897,10 +897,32 @@ get_header(); ?>
 														<input type="number" name="second_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Second Mobile Number', 'classiera') ?>"> 
 														<select name="nationality" required>
 															<option value="" selected disabled><?php esc_html_e('Select Your Nationality', 'classiera'); ?></option>
-															<option value="Romanian"><?php esc_html_e('Romanian', 'classiera'); ?></option>
 															<option value="Russian"><?php esc_html_e('Russian', 'classiera'); ?></option>
-															<option value="British"><?php esc_html_e('British', 'classiera'); ?></option>
 															<option value="Brazilian"><?php esc_html_e('Brazilian', 'classiera'); ?></option>
+															<option value="Bulgarian"><?php esc_html_e('Bulgarian', 'classiera'); ?></option>
+															<option value="Croatian"><?php esc_html_e('Croatian', 'classiera'); ?></option>
+															<option value="Czech"><?php esc_html_e('Czech', 'classiera'); ?></option>
+															<option value="Danish"><?php esc_html_e('Danish', 'classiera'); ?></option>
+															<option value="Dutch"><?php esc_html_e('Dutch', 'classiera'); ?></option>
+															<option value="English"><?php esc_html_e('English', 'classiera'); ?></option>
+															<option value="Estonian"><?php esc_html_e('Estonian', 'classiera'); ?></option>
+															<option value="Finnish"><?php esc_html_e('Finnish', 'classiera'); ?></option>
+															<option value="French"><?php esc_html_e('French', 'classiera'); ?></option>
+															<option value="German"><?php esc_html_e('German', 'classiera'); ?></option>
+															<option value="Greek"><?php esc_html_e('Greek', 'classiera'); ?></option>
+															<option value="Hungarian"><?php esc_html_e('Hungarian', 'classiera'); ?></option>
+															<option value="Irish"><?php esc_html_e('Irish', 'classiera'); ?></option>
+															<option value="Italian"><?php esc_html_e('Italian', 'classiera'); ?></option>
+															<option value="Latvian"><?php esc_html_e('Latvian', 'classiera'); ?></option>
+															<option value="Lithuanian"><?php esc_html_e('Lithuanian', 'classiera'); ?></option>
+															<option value="Maltese"><?php esc_html_e('Maltese', 'classiera'); ?></option>
+															<option value="Polish"><?php esc_html_e('Polish', 'classiera'); ?></option>
+															<option value="Portuguese"><?php esc_html_e('Portuguese', 'classiera'); ?></option>
+															<option value="Romanian"><?php esc_html_e('Romanian', 'classiera'); ?></option>
+															<option value="Slovakian"><?php esc_html_e('Slovakian', 'classiera'); ?></option>
+															<option value="Slevenian"><?php esc_html_e('Slevenian', 'classiera'); ?></option>
+															<option value="Spanish"><?php esc_html_e('Spanish', 'classiera'); ?></option>
+															<option value="Swedish"><?php esc_html_e('Swedish', 'classiera'); ?></option>
 														</select> 
 													</div>
 													<!-- / ContactPhone 1-->													

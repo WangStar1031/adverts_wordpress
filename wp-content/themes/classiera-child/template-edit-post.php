@@ -1426,11 +1426,10 @@ get_header(); ?>
 										</div>
 										<!-- End Step-8 -->
 										<!-- Begin Step-9 -->
-										<div id="step-9">
+										<div id="step-9" class="clearfix">
 											<div class="row">
-												<hr>
 
-											   	<div class="col-sm-12 col-lg-6 tcs-container">
+											   	<div class="col-sm-12 col-lg-12 style="margin-top: 50px;">
 											   		<button onclick="submitForm()" type="button" class="btn btn-primary extra-padding post-advert-btn" id="beforeupdatecheck_1"><?php esc_html_e('Update Advert', 'classiera') ?></button>
 											   	</div>
 

@@ -1,5 +1,3 @@
-
-	checkWelcomeCookie();
 jQuery('.post_adverts').click(function(){//Choose Your Advert Type
 	console.log(jQuery(this));
 	jQuery('#smartwizard').show();//Show Wizard
@@ -395,29 +393,8 @@ jQuery(document).on('click', ".remove-img", function () {
 	}
 	function makeWelcomePage(_logoUrl){
 		$(".classiera-advertisement").addClass("blur-me");
-		var strHtml = '';
-
-		strHtml += '<div class="welcomeModal modal fade-in" role="dialog" id="welcomeModal" style="z-index: 10000;display: block;background-color: #0e0e0e80;">';
-			strHtml += '<div class="modal-dialog">';
-				strHtml += '<div class="modal-content" style="top:50px;">';
-					// strHtml += '<div class="modal-header">';
-						// strHtml += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-					// strHtml += '</div>';
-					strHtml += '<div class="modal-body" style="background-color: #0e0e0e;text-align: center;">';
-						strHtml += '<img src="' + _logoUrl + '">';
-						strHtml += '<p>"HOT-ESCORTS-IRELAND.COM" CONTAINS NUDITY AND ADULT ';
-						strHtml += 'CONTENT. BY ENTERING THIS SITE YOU CONSENT THAT YOU HAVE ';
-						strHtml += 'REACHED FULL 18 YEARS OF AGE AT THIS POINT.</p>';
-						strHtml += '<p>';
-							strHtml += '<button class="btn" onclick="Enter()">ENTER</button>';
-							strHtml += '<button class="btn" onclick="Leave()">LEAVE</button>';
-						strHtml += '</p>';
-						strHtml += '<p>YOU CAN ACESS OUR PRIVACY POLICY HERE</p>'
-					strHtml += '</div>';
-				strHtml += '</div>';
-			strHtml += '</div>';
-		strHtml += '</div>';
-		$("body").append(strHtml);
+		$("#adult-consent").addClass("fade-in").removeClass("fade");
+		$("#adult-consent").show();
 		console.log(_logoUrl);
 	}
 	function Enter(){
@@ -425,16 +402,11 @@ jQuery(document).on('click', ".remove-img", function () {
 			'action': 'classiera_age_over_enter'
 		};
 		$.post(ajaxurl, data, function(response){
-			$("#welcomeModal").remove();
+			$("#adult-consent").remove();
 			$(".classiera-advertisement").removeClass("blur-me");
 			setCookie("hot_escort_welcom", response, 30);
 		});
 		// setCookie("hot_escort_welcom", )
-	}
-	function Leave(){
-		if (confirm("Are you sure leave this site?")) {
-			window.location.href = "//www.google.com";
-		}
 	}
 	function checkWelcomeCookie(){
 		var aaa = getCookie("hot_escort_welcom");
@@ -452,3 +424,4 @@ jQuery(document).on('click', ".remove-img", function () {
 			}
 		}
 	}
+	checkWelcomeCookie();
