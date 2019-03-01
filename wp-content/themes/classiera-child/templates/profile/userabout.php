@@ -224,13 +224,13 @@
 					<?php endif; ?>
 				<?php } ?>
 
-				<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+				<!-- <?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
 				<li>
 					<a class="<?php if(is_page_template( 'template-follow.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraFollowerPage ); ?>">
 						<span class="item-heading"><?php esc_html_e("Follow", 'classiera') ?></span>
 					</a>
-				</li><!--Get Credits-->
-				<?php endif;?>
+				</li>
+				<?php endif;?> -->
 
 				<?php if(!in_array( 'buyer', (array) $current_user->roles ) && $is_Exist): ?>
 				<li>
@@ -293,10 +293,9 @@
 	    	</li><!--My Ads-->
 	    	<?php endif;?>
 
-	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-favorite.php' )){echo "active";}?>">
+	    	<!-- <li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-favorite.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraUserFavourite ); ?>">
 	    			<span>
-	    				<!-- <i class="fa fa-heart"></i> -->
 	    				<?php esc_html_e("Watch later Ads", 'classiera') ?>
 	    			</span>
 	    			<span class="in-count pull-right flip badge">
@@ -323,7 +322,7 @@
 	    				?>
 	    			</span>
 	    		</a>
-	    	</li><!--Watch later Ads-->
+	    	</li> -->
 
 	    	<?php if($classiera_bid_system == true){ ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-message.php' )){echo "active";}?>">
@@ -349,16 +348,16 @@
 	    	</li><!--Packages-->
 	    		<?php endif; ?>
 	    	<?php } ?>
-	    	<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+
+	    	<!-- <?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-follow.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraFollowerPage ); ?>">
 	    			<span>
-	    				<!-- <i class="fa fa-users"></i> -->
 	    				<?php esc_html_e("Follower", 'classiera') ?>
 	    			</span>
 	    		</a>
-	    	</li><!--Get Credits-->
-	    	<?php endif;?>
+	    	</li>
+	    	<?php endif;?> -->
 
 	    	<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-get-credits.php' )){echo "active";}?>">

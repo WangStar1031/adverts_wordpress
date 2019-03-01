@@ -114,8 +114,8 @@ $margin_right = 10;
 $margin_bottom = 10;
 $sx = imagesx($_imgLogo);
 $sy = imagesy($_imgLogo);
-$left = $margin_right; //imagesx($_imgDst) - $sx - $margin_right;
-$top = $margin_bottom; //imagesy($_imgDst) - $sy - $margin_bottom;
+$left = imagesx($_imgDst) - $sx - $margin_right;
+$top = imagesy($_imgDst) - $sy - $margin_bottom;
 imagecopy($_imgDst, $_imgLogo, $left, $top, 0, 0, $sx, $sy);
 
 switch($type){

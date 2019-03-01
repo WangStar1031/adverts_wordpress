@@ -156,30 +156,6 @@
 				</div><!--premium-img-inner-->
 
 			</div><!--premium-img-->
-			<div class="detail text-center">
-				<?php if(!empty($post_price)){?>
-				<!-- Display Price -->
-				<span class="amount">
-					<?php 
-					if(is_numeric($post_price)){
-						echo classiera_post_price_display($post_currency_tag, $post_price);
-					}else{ 
-						echo esc_attr($post_price); 
-					}
-					?>
-				</span>
-				<!-- / Display Price -->
-				<?php } ?>
-				<div class="box-icon">
-					<a href="mailto:<?php echo sanitize_email($classieraAuthorEmail); ?>?subject">
-						<i class="fa fa-envelope"></i>
-					</a>
-					<?php if(!empty($post_phone)){?>
-					<a href="tel:<?php echo esc_html($post_phone); ?>"><i class="fa fa-phone"></i></a>
-					<?php } ?>
-				</div>
-				<a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('View Ad', 'classiera'); ?></a>
-			</div><!--detail text-center-->
 		</figure>
 	</div><!--row-->
 </div>		<?php } ?><!--item item-grid item-masonry-->

@@ -2367,6 +2367,15 @@
                 'default' => ''
             ),
             array(
+                'id'=>'classiera_privacy_policy',
+                'type' => 'text',
+                'title' => __('Privacy Policy', 'classiera'),
+                'subtitle' => __('This must be an URL.', 'classiera'),
+                'desc' => __('Create page by selecting Privacy Policy template and insert url here.', 'classiera'),
+                'validate' => 'url',
+                'default' => ''
+            ),
+            array(
                 'id'=>'reset',
                 'type' => 'text',
                 'title' => __('Reset Password Page URL', 'classiera'),

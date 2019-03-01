@@ -1185,9 +1185,8 @@ jQuery(document).ready(function(jQuery){
 			'action': 'classiera_get_comment_list',
 			'offer_post_id': offer_post_id,
 		};
-		jQuery.post(ajaxurl, data, function(response){
-            console.log(response);
-			jQuery(".classiera_replace_comment .tab-pane").html(response);
+		jQuery.post(ajaxurl, data, function(response){					
+			jQuery(".classiera_replace_comment").html(response);
 			jQuery('.classiera--loader').hide();
 		});
 	});
@@ -1207,9 +1206,8 @@ jQuery(document).ready(function(jQuery){
 			'action': 'classiera_get_comment_list',
 			'commentID': commentID,
 		};
-		jQuery.post(ajaxurl, data, function(response){
-            console.log( response);
-			jQuery(".classiera_sent_comment .tab-pane").html(response);
+		jQuery.post(ajaxurl, data, function(response){					
+			jQuery(".classiera_sent_comment").html(response);
 			jQuery('.classiera--loader').hide();
 		});
 	});

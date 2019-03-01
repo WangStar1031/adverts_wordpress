@@ -14,10 +14,6 @@
 
 /* write custom css */
 
-body * {
-  -webkit-font-smoothing: antialiased !important;
-}
-
 h4.edit-profile-heading {
   margin: 10px 0px 20px 0px !important;
 }
@@ -217,6 +213,7 @@ textarea.offer_comment {
 }
 .grid-item--width2 { width: 33.33%; float: left; }
 .grid .premium-img, .grid .premium-img img {
+    /*height: 300px;*/
     height: 260px;
 }
 .template_page .grid-item
@@ -1826,129 +1823,3 @@ keyframes
 }
 
 /* / New Message Layout*/
-
-/*Adult Consent Modal Styling*/
-.consent-modal {
-  top: 20% !important;
-}
-
-.consent-modal .img-responsive {
-  max-width: 25% !important;
-  display: block;
-  margin: 0 auto;
-}
-
-.consent-modal .modal-body p,
-.consent-modal .modal-footer p,
-.consent-modal .modal-footer a,
-.filter-modal .modal-body p,
-.filter-modal .modal-footer p,
-.filter-modal .modal-footer a {
-  color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-}
-
-.filter-modal .modal-content,
-.consent-modal .modal-content {
-  background: #232323!important;
-}
-
-.filter-modal .modal-header,
-.consent-modal .modal-header {
-  border-bottom: 0 !important;
-}
-
-.filter-modal .modal-footer,
-.consent-modal .modal-footer {
-  border-top: 0 !important;
-  /*margin-top: 15px;*/
-}
-
-.filter-modal .filter-button,
-.consent-modal .consent-button {
-  background-color: #0e0e0e !important;
-}
-
-.filter-modal .panel-body {
-  background: #434343;
-}
-
-.filter-modal h4,
-.filter-modal button {
-  color: #fff !important;
-}
-
-.filter-modal .panel-group a {
-  padding: 10px 15px !important;
-  display: block !important;
-}
-
-.filter-modal .panel-heading {
-  background: #393939 !important;
-  padding: 0 !important;
-}
-
-.filter-modal .panel,
-.filter-modal .panel-default {
-  border: 0 !important;
-}
-
-.consent-modal .modal-body button,
-.consent-modal .modal-body a {
-  -webkit-font-smoothing: antialiased;
-}
-
-.filter-modal .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: none !important;
-}
-
-.filter-modal .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
-  border-top: none !important;
-}
-
-.blur-me {
-  -webkit-filter: blur(15px);
-  -webkit-animation: filter-animation 1s infinite;
-  animation: filter-animation 1s infinite;
-  filter: blur(15px);
-}
-.welcomeModal img{
-  width: 150px;
-  margin: auto;
-}
-.welcomeModal p{
-  text-align: center;
-  width: 80%;
-  color: #b5b5b5;
-  margin: auto;
-  line-height: 2em;
-  padding-top: 2em;
-  font-size: 1.1em;
-}
-
-.welcomeModal p button{
-  margin: 15px;
-  padding: 7px 15px;
-  font-size: 1.3em;
-  background: black;
-  color: #b5b5b5;
-}
-
-.classiera-box-div-v4 {
-  overflow: hidden !important;
-}
-
-.classiera-box-div-v4 figure .premium-img .premium-img-inner {
-  height: 260px !important;
-}
-
-.classiera-box-div-v4 figure .premium-img img {
-  height: 260px !important;
-}
-
-.classiera-advertisement .classiera-box-div {
-  margin-bottom: 3px !important;
-  margin-right: 4px !important;
-  height: 260px !important;
-
-}

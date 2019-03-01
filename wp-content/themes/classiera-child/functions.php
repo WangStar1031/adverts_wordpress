@@ -10,10 +10,11 @@ function theme_enqueue_styles() {
         get_stylesheet_directory_uri() . '/style.css',
         array( $parent_style )
     );
+    wp_enqueue_script('jquery.min', get_template_directory_uri() . '/js/jquery.min.js', 'jquery', '', true);
+    wp_enqueue_script('bootstrap.min', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', '', true);
     wp_enqueue_script('classiera-child', get_stylesheet_directory_uri() . '/classiera-child.js', 'jquery', '', true);
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-
 function experied_ads_checksum()
 {
     global $wpdb;
@@ -35,21 +36,16 @@ function experied_ads_checksum()
 	}
 }
 add_action('wp_head','experied_ads_checksum');
-
 add_filter('add_to_cart_redirect', 'cw_redirect_add_to_cart');
 function cw_redirect_add_to_cart() {
     global $woocommerce;
     $cw_redirect_url_checkout = $woocommerce->cart->get_checkout_url();
     return $cw_redirect_url_checkout;
 }
-
 if( function_exists( 'add_image_size' ) ) {
-
     add_image_size( 'medium', 300, 200, false );
     add_image_size( 'large', 1024, 1024, false );
 }
-
-
 
 remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
 add_action( 'woocommerce_proceed_to_checkout', 'custom_widget_shopping_cart_proceed_to_checkout', 20 );
@@ -59,14 +55,11 @@ function custom_widget_shopping_cart_proceed_to_checkout() {
     // $custom_link = esc_url( $classieraGetCredits ); // HERE replacing checkout link
     echo '<a href="javascript:void(0)" class="checkout-button button alt wc-forward">' . esc_html__( 'Checkout', 'woocommerce' ) . '</a>';
 }
-
 add_action( 'wp_ajax_add_to_cart_ajax','add_to_cart_ajax' );
 add_action( 'wp_ajax_nopriv_add_to_cart_ajax','add_to_cart_ajax' );
 function add_to_cart_ajax(){
-
     if(!isset($_POST['checkout_active'])){
     global $woocommerce;
-
     $woocommerce->cart->maybe_set_cart_cookies(true);
     $woocommerce->cart->add_to_cart( $_POST['productid'] );
     $woocommerce->cart->get_cart_contents_count();
@@ -84,10 +77,8 @@ function add_to_cart_ajax(){
                 jQuery(".gc_woocommercr_checkout").html(responce);
                 jQuery(".gc_woocommercr_cart").hide();
                 jQuery(".getCreditRow").hide();
-
             },
             error: function (errorThrown) {
-
             }
         });   
     });</script>';
@@ -99,7 +90,6 @@ function add_to_cart_ajax(){
     exit(0);
     //wp_die();
 }
-
 add_action( 'wp_ajax_re_activate_ads','re_activate_ads' );
 add_action( 'wp_ajax_nopriv_re_activate_ads','re_activate_ads' );
 function re_activate_ads()
@@ -107,7 +97,6 @@ function re_activate_ads()
     $post_id=$_POST['post_id'];
     update_post_meta($post_id, 'classiera_ads_status','1');
 }
-
 function count_user_posts_child($user_id)
 {
     global $wpdb;
@@ -117,7 +106,6 @@ function count_user_posts_child($user_id)
     //print_r($getfirstsent);
     return $getfirstsent[0]->count;
 }
-
 function count_user_message($user_id)
 {
     global $wpdb;
@@ -169,7 +157,6 @@ if (!function_exists('child_classiera_unread_message_comment')) {
         return $readMessageQuery;
     }
 }
-
 /*==========================
  Count Total BID on a Post Function
  ===========================*/
@@ -191,355 +178,184 @@ if (!function_exists('child_classiera_delete_comment')) {
     }
 }
 
-
 /*==========================
-
  Get BID Comment AJAX Function
-
  ===========================*/
-
 add_action( 'wp_ajax_child_classiera_get_comment_ajax', 'child_classiera_get_comment_ajax' );
-
 add_action( 'wp_ajax_nopriv_child_classiera_get_comment_ajax', 'child_classiera_get_comment_ajax' );
-
 function child_classiera_get_comment_ajax(){
-
     global $wpdb;
-
     global $post;
-
     $currentUserID = get_current_user_id();
-
     $dateFormat = get_option( 'date_format' );
     //print_r($_POST);
-
     if(isset($_POST['commentID'])){     
-
         $commentID = $_POST['commentID'];
         $getfirstComment = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}ads_inbox WHERE id = $commentID ORDER BY id DESC" );
-
         if($getfirstComment){
-
             $html = '';
-
             $userHTML = '';
-
             $mainHTML = '';
-
             $authorHTML = '';
-
             $innerComment = '';
-
             foreach ( $getfirstComment as $offerinfo ) :
-
                 $offer_post_id = $offerinfo->post_id;
-
                 $post_author_id = $offerinfo->author_id;
-
                 $offer_author_id = $offerinfo->enquery_author_id;
-
                 // $offer_price = $offerinfo->offer_price;
-
                 $offer_comment = $offerinfo->message;
-
                 $thiscommentID = $offerinfo->id;
-
                // $date = $offerinfo->date;               
-
                 //$OfferDate = date($dateFormat, $date);
-
                 // $OfferDate = date_i18n($dateFormat,  strtotime($date));
-
                 $postTitle = get_the_title($offer_post_id);
-
                 $offerAuthor = $offerinfo->name;
                 $offerAuthorIMG='';
-
                 if(empty($offerAuthorIMG)){                                     
-
                     $offerAuthorIMG = classiera_get_avatar_url ($post_author_id, $size = '150' );
-
                 }
-
                 //Main Comment//
-
                 $mainHTML = '<div class="classiera_user_message"><a href="#"><img class="img-circle classiera_user_message_img" src="'.$offerAuthorIMG.'" alt="'.$offerAuthor.'"></a><div class="classiera_user_message__box"><p>'.$offer_comment.'</p></div></div>';
-
                 //Main Comment//
-
                 //Get Sub Comments//
-
                 $subComments = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}classiera_inbox_meta WHERE main_comment_id = $thiscommentID ORDER BY id ASC" );
-
                 if($subComments){
-
                     foreach($subComments as $info){
-
                         $reply_check = $info->reply_check;
-
                         $post_author_id = $info->post_author_id;
-
                         $offer_author_id = $info->offer_author_id;
-
                         $comment_reply = $info->comment_reply;
-
                         $innerDate = $info->date;
-
                         //$innerDate = date($dateFormat, $innerDate);
-
                         $innerDate = date_i18n($dateFormat,  strtotime($innerDate));
-
                         if($reply_check == 'user'){
-
                             $user = get_the_author_meta('display_name', $offer_author_id );
-
                             if(empty($user)){
-
                                 $user = get_the_author_meta('user_nicename', $offer_author_id );
-
                             }
-
                             if(empty($user)){
-
                                 $user = get_the_author_meta('user_login', $offer_author_id );
-
                             }
-
                             $userIMG = get_user_meta($offer_author_id, "classify_author_avatar_url", true);
-
                             $userIMG = classiera_get_profile_img($userIMG);
-
                             if(empty($userIMG)){                                        
-
                                 $userIMG = classiera_get_avatar_url ($offer_author_id, $size = '150' );
-
                             }
-
                             $userHTML = '<div class="classiera_user_message"><a href="#"><img class="img-circle classiera_user_message_img" src="'.$userIMG.'" alt="'.$user.'"></a><div class="classiera_user_message__box"><p>'.$comment_reply.'</p><p class="classiera_user_message__time">'.$innerDate.'</p></div></div>';
-
                         }elseif($reply_check == 'author'){
-
                             $author = get_the_author_meta('display_name', $post_author_id );
-
                             if(empty($author)){
-
                                 $author = get_the_author_meta('user_nicename', $post_author_id );
-
                             }
-
                             if(empty($author)){
-
                                 $author = get_the_author_meta('user_login', $post_author_id );
-
                             }
-
                             $userIMG = get_user_meta($post_author_id, "classify_author_avatar_url", true);
-
                             $userIMG = classiera_get_profile_img($userIMG);
-
                             if(empty($userIMG)){                                        
-
                                 $userIMG = classiera_get_avatar_url ($post_author_id, $size = '150' );
-
                             }                           
-
                             $userHTML = '<div class="classiera_user_message classiera_user_message__reply"><a href="#"><img class="img-circle classiera_user_message_img" src="'.$userIMG.'" alt="'.$author.'"><p>'.$author.'</p></a><div class="classiera_user_message__box"><p>'.$comment_reply.'</p><p class="classiera_user_message__time">'.$innerDate.'</p></div></div>';
-
                         }
-
                         //$innerComment .= $userHTML.$authorHTML;
-
                         $innerComment .= $userHTML;
-
                     }
-
                 }
-
                 //Get Sub Comments//
-
                 echo '<div class="modal-header" id="'.$commentID.'"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title text-uppercase" id="myModalLabel">'.esc_html__( "Ad Title", "classiera" ).' : <span>'.$postTitle.'</span></h4></div><div class="modal-body classiera_show_reply">'.$mainHTML.$innerComment.'</div><form method="post" class="classiera_user_message__form" id="resetReply"><textarea class="form-control classiera_comment_reply" placeholder="'.esc_html__( "Type your message..", "classiera" ).'" required></textarea><input type="hidden" value="'.$thiscommentID.'" class="main_comment_ID"><input type="hidden" value="'.$currentUserID.'" class="current_user_id"><button type="submit" class="classiera_user_message__form_btn">'.esc_html__( "SEND", "classiera" ).'</button></form>';
-
             endforeach;         
-
             $deleteRead = ("DELETE from {$wpdb->prefix}classiera_inbox_read WHERE message_id = $commentID");
-
             $wpdb->query($deleteRead);
-
             //echo wp_kses_post($html);
-
         }
-
     }
-
     if(isset($_POST['main_comment_ID'])){
-
         $main_comment_ID = $_POST['main_comment_ID'];
-
         $commentData = $_POST['commentData'];
-
         if(empty($commentData) || $commentData == ''){
-
             $html = '<p class="alert alert-warning">'.esc_html__( "You must need to type some comment..!", "classiera" ).'</p>';
-
         }else{
-
             $post_author_id = '';
-
             $offer_author_id = '';
-
             $currentUserID = get_current_user_id();
-
             $getMainComment = $wpdb->get_results( "SELECT id, author_id, post_id,enquery_author_id FROM {$wpdb->prefix}ads_inbox WHERE id = $main_comment_ID" );
-
             if($getMainComment){
-
                 foreach ( $getMainComment as $offerinfo ) :
-
                     $thiscommentID = $offerinfo->id;
-
                     $post_author_id = $offerinfo->author_id;
-
                     $offer_author_id = $offerinfo->enquery_author_id;
-
                 endforeach;
-
             }
-
             if($currentUserID == $post_author_id){
-
                 $reply_check = 'author';
-
                 //Insert data for user to read message//
-
                 /*$readMessage = array(
-
                     'id' =>'', 
-
                     'message_id' => $main_comment_ID, 
-
                     'recipient_id' => $offer_author_id,
-
                     'message_status' => 'unread',
-
                 );
-
                 $statusformat = array('%d', '%d', '%s', '%s');
-
                 $statusTable = $wpdb->prefix . 'classiera_inbox_read'; 
-
                 $wpdb->insert($statusTable, $readMessage, $statusformat);*/
-
                 //Insert data for user to read message//
-
             }elseif($currentUserID == $offer_author_id){
-
                 $reply_check = 'user';
-
                 //Insert data into readUnRead table//
-
                 $readMessage = array(
-
                     'id' =>'', 
-
                     'message_id' => $main_comment_ID, 
-
                     'recipient_id' => $post_author_id,
-
                     'message_status' => 'unread',
-
                 );
-
                 $statusformat = array('%d', '%d', '%s', '%s');
-
                 $statusTable = $wpdb->prefix . 'classiera_inbox_read'; 
-
                 $wpdb->insert($statusTable, $readMessage, $statusformat);
-
                 //Insert data into readUnRead table//
-
             }
-
             $replyMessage = array(
-
                 'id' =>'', 
-
                 'main_comment_id' => $main_comment_ID, 
-
                 'post_author_id' => $post_author_id,
-
                 'offer_author_id' => $offer_author_id ,
-
                 'comment_reply' => $commentData,
-
                 'reply_check' => $reply_check,
-
                 'date' => time() 
-
             );
-
             $insert_format = array('%d', '%s', '%s', '%s', '%s', '%s', '%s');
-
             $tablename = $wpdb->prefix . 'classiera_inbox_meta'; 
             if($post_author_id!=0):
                 $wpdb->insert($tablename, $replyMessage, $insert_format);
             endif;        
-
             //Comment reply data//
-
             $author = get_the_author_meta('display_name', $currentUserID );
-
             if(empty($author)){
-
                 $author = get_the_author_meta('user_nicename', $currentUserID );
-
             }
-
             if(empty($author)){
-
                 $author = get_the_author_meta('user_login', $currentUserID );
-
             }
-
             $offerAuthorIMG = get_user_meta($currentUserID, "classify_author_avatar_url", true);
-
             $offerAuthorIMG = classiera_get_profile_img($offerAuthorIMG);
-
             if(empty($offerAuthorIMG)){                                     
-
                 $offerAuthorIMG = classiera_get_avatar_url ($currentUserID, $size = '150' );
-
             }
-
             $date = time();
-
             //$replydate = date($dateFormat, $date);
-
             $replydate = date_i18n($dateFormat,  strtotime($date));
-
             if($currentUserID == $offer_author_id){
-
                 $html = '<div class="classiera_user_message"><a href="#"><img class="img-circle classiera_user_message_img" src="'.$offerAuthorIMG.'" alt="'.$author.'"></a><div class="classiera_user_message__box"><p>'.$commentData.'</p><p class="classiera_user_message__time">'.$replydate.'</p></div></div>';
-
             }elseif($currentUserID == $post_author_id){
-
                 $html = '<div class="classiera_user_message classiera_user_message__reply"><a href="#"><img class="img-circle classiera_user_message_img" src="'.$offerAuthorIMG.'" alt="'.$author.'"><p>'.$author.'</p></a><div class="classiera_user_message__box"><p>'.$commentData.'</p><p class="classiera_user_message__time">'.$replydate.'</p></div></div>';
-
             }           
-
             
-
         }
-
         echo wp_kses_post($html);
-
     }
-
     die();
-
 }
 add_role( 'buyer', 'Buyer', array( 'read' => true, 'edit_posts' => true ) );
 add_role( 'seller', 'Seller', array( 'read' => true, 'edit_posts' => true ) );
-
 function getTplPageURL($TEMPLATE_NAME){ 
     $pages = query_posts(array( 'post_type' =>'page', 'meta_key' =>'_wp_page_template', 'meta_value'=> $TEMPLATE_NAME )); 
     $url = null; 
@@ -549,7 +365,6 @@ function getTplPageURL($TEMPLATE_NAME){
     return $url; 
 }
 add_image_size( 'advert_double', 400, 300, true );
-
 add_action('wp_ajax_nopriv_bump_ads_post', 'bump_ads_post');
 add_action('wp_ajax_bump_ads_post', 'bump_ads_post');
 function bump_ads_post()
@@ -587,17 +402,13 @@ function discount_ads_post()
 {
     global $wpdb;
     $post_id=$_POST['post_id'];
-
     $discount_code=$_POST['discount_code'];
     update_post_meta($post_id,'discount_percentage',$discount_code);
     exit(0);
 }
-
 function submit_ads_scripts() {
-
     global $template;
     $template_array = explode('/',$template);
-
     if ( end($template_array) == 'template-submit-ads.php' ) {
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
         wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );
@@ -608,12 +419,9 @@ function submit_ads_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'submit_ads_scripts' );
-
 function edit_ads_scripts() {
-
     global $template;
     $template_array = explode('/',$template);
-
     if ( end($template_array) == 'template-edit-post.php' ) {
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
         wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );
@@ -631,20 +439,15 @@ function edit_ads_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'edit_ads_scripts' );
-
 function edit_profile_scripts() {
-
     global $template;
     $template_array = explode('/',$template);
-
     if ( end($template_array) == 'template-edit-profile.php' ) {
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'edit_profile_scripts' );
-
 function lightGallery_script() {
-
     if (is_single() ) {
         wp_enqueue_style('light-gallery-css', get_stylesheet_directory_uri() . '/css/lightgallery.css' );
         wp_enqueue_script('light-gallery-js', get_stylesheet_directory_uri() . '/js/lightgallery-all.min.js', 'jQuery', '20170816', true );
@@ -652,14 +455,10 @@ function lightGallery_script() {
 }
 add_action( 'wp_enqueue_scripts', 'lightGallery_script' );
 
-
-
 // add_filter( 'wp_handle_upload', 'wpse_256351_upload', 10, 2 );
-
 function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){ 
     // creating a cut resource 
     $cut = imagecreatetruecolor($src_w, $src_h); 
-
     // copying relevant section from background to the cut resource 
     imagecopy($cut, $dst_im, 0, 0, $dst_x, $dst_y, $src_w, $src_h); 
     
@@ -672,7 +471,6 @@ function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, 
 function overlayLogo($_fName){
     $path_parts = pathinfo($_fName);
     $type = $path_parts['extension'];
-
     switch($type){
         case 'bmp': $_imgSrc = imagecreatefromwbmp($_fName); break;
         case 'gif': $_imgSrc = imagecreatefromgif($_fName); break;
@@ -680,7 +478,6 @@ function overlayLogo($_fName){
         case 'png': $_imgSrc = imagecreatefrompng($_fName); break;
         default : $_imgSrc = false; break;
     }
-
     $_imgLogo = imagecreatefrompng(__DIR__ . "/img/logo.png");
     // 70 x 70 & 10 x 10 
     // $margin_right = 10;
@@ -695,26 +492,20 @@ function overlayLogo($_fName){
     
     $sx = imagesx($_imgLogo);
     $sy = imagesy($_imgLogo);
-
     $short = imagesx($_imgSrc) > imagesy($_imgSrc) ? imagesy($_imgSrc) : imagesx($_imgSrc);
     
     $dst_w = $short / 5;
-
     $re_sized = imagecreatetruecolor($dst_w, $dst_w);
-
     imagealphablending($re_sized, false);
     imagesavealpha($re_sized,true);
     $transparent = imagecolorallocatealpha($re_sized, 255, 255, 255, 127);
     imagefilledrectangle($re_sized, 0, 0, $dst_w, $dst_w, $transparent);
-
     imagecopyresized($re_sized, $_imgLogo, 0, 0, 0, 0, $dst_w, $dst_w, $sx, $sy);
-
     $left = imagesx($_imgSrc) / 2 - $dst_w / 2;
     $top = imagesy($_imgSrc) / 2 - $dst_w / 2;
     $opacity = 50;
     // imagecopymerge($_imgSrc, $_imgLogo, $left, $top, 0, 0, $sx, $sy, $opacity);
     imagecopymerge_alpha($_imgSrc, $re_sized, $left, $top, 0, 0, $dst_w, $dst_w, $opacity);
-
     switch($type){
         case 'bmp': $retVal = imagewbmp( $_imgSrc, $_fName); break;
         case 'gif': $retVal = imagegif( $_imgSrc, $_fName); break;
@@ -724,44 +515,32 @@ function overlayLogo($_fName){
     }
     return $retVal;
 }
-
 function filter_wp_handle_upload( $array, $var ) { 
     $_upFileName = $array['file'];
     overlayLogo($_upFileName);
     return $array; 
 }; 
-
 add_filter( 'wp_handle_upload', 'filter_wp_handle_upload', 10, 2 ); 
-
 add_filter( 'wp_mail_content_type', 'set_html_content_type' );
-
 function set_html_content_type() {
     return 'text/html';
 }
-
 // Update post slug on change
 add_action( 'save_post', 'update_post_slug_on_change' );
-
 function update_post_slug_on_change( $post_id ) {
-
     // verify post is not a revision
     if ( ! wp_is_post_revision( $post_id ) ) {
-
         // unhook this function to prevent infinite looping
         remove_action( 'save_post', 'update_post_slug_on_change' );
-
         // update the post slug
         wp_update_post( array(
             'ID' => $post_id,
             'post_name' => '' // do your thing here
         ));
-
         // re-hook this function
         add_action( 'save_post', 'update_post_slug_on_change' );
-
     }
 }
-
 add_filter( 'manage_post_posts_columns', 'classiera_filter_posts_columns' );
 function classiera_filter_posts_columns( $columns ) {
   // $columns['image'] = __( 'Image' );
@@ -780,10 +559,8 @@ function classiera_filter_posts_columns( $columns ) {
   return $columns;
 }
 
-
 add_action( 'manage_post_posts_custom_column', 'classiera_adverts_column', 10, 2);
 function classiera_adverts_column( $column, $post_id ) {
-
 	if ('ID' === $column) {
 		$id = get_the_ID();
 		echo $id;
@@ -791,7 +568,6 @@ function classiera_adverts_column( $column, $post_id ) {
   // Monthly price column
 	if ( 'images_verified' === $column ) {
 	  $images_verified = get_post_meta( $post_id, 'images_verified', true );
-
 	  if ( $images_verified === '0' ) {
 	    // _e( 'No' );
 	    echo "<button class='btn btn-primary' style='padding: 5px 10px; background: red; color: white; border-radius: 4px; min-width: 98px'>Not Verified</button>";  
@@ -802,13 +578,10 @@ function classiera_adverts_column( $column, $post_id ) {
 	}
 	if ( 'age_verified' === $column ) {
 	  $age_verified = get_post_meta( $post_id, 'age_verified', true );
-
 	  if ( $age_verified === '0' ) {
 	    echo "<button class='btn btn-primary' style='padding: 5px 10px; background: red; color: white; border-radius: 4px; min-width: 98px'>Not Verified</button>";  
 	  } else {
 	    echo "<button class='btn btn-primary' style='padding: 5px 10px; background: green; color: white; border-radius: 4px; min-width: 98px'>Verified</button>";
 	  }
 	}
-
  }
-

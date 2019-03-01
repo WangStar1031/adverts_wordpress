@@ -694,8 +694,8 @@ function classiera_age_over_enter(){
 		$userIp = $_SERVER['REMOTE_ADDR'];
 	}
 	// $userIp = $_SERVER['HTTP_CLIENT_IP'];
-	$data = $userIp . " - " . date("Y-m-d H:i:s") . "\n";
-	file_put_contents(__DIR__ . "/ip_log.txt", $data);
+	$data = $userIp . " - " . date("Y-m-d H:i:s");
+	file_put_contents(__DIR__ . "/ip_log.txt", $data . "\n", FILE_APPEND);
 	echo $data;
 }
 ?>

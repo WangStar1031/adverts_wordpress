@@ -1,3 +1,4 @@
+category.php
 <?php
 /**
  * The template for displaying Category pages.
@@ -149,10 +150,11 @@ function classiera_single_catid(){
 				?>
 				<!-- advertisement -->
 			</div><!--col-md-8-->
+
 			<div class="col-md-4 col-lg-3">
 				<aside class="sidebar">
 					<div class="row">
-						<!--subcategory-->
+						
 						<?php 
 						$cat_term_ID = $this_category->term_id;
 						$cat_child = get_term_children( $cat_term_ID, 'category' );
@@ -221,7 +223,7 @@ function classiera_single_catid(){
 							</div>
 						</div>
 						<?php } ?>
-						<!--subcategory-->
+						
 						<?php if($classieraAdvSearchCats == 1){?>
 							<div class="col-lg-12 col-md-12 col-sm-6 match-height">
 								<div class="widget-box">
@@ -230,9 +232,10 @@ function classiera_single_catid(){
 							</div>
 						<?php } ?>
 						<?php get_sidebar('pages'); ?>
-					</div><!--row-->
+					</div>
 				</aside>
-			</div><!--row-->
+			</div>
+
 		</div><!--row-->
 	</div><!--container-->
 </section>	

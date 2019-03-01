@@ -393,8 +393,7 @@ jQuery(document).on('click', ".remove-img", function () {
 	}
 	function makeWelcomePage(_logoUrl){
 		$(".classiera-advertisement").addClass("blur-me");
-		$("#adult-consent").addClass("fade-in").removeClass("fade");
-		$("#adult-consent").show();
+		$("#adult-consent").modal({backdrop: 'static', keyboard: false});
 		console.log(_logoUrl);
 	}
 	function Enter(){
@@ -402,11 +401,10 @@ jQuery(document).on('click', ".remove-img", function () {
 			'action': 'classiera_age_over_enter'
 		};
 		$.post(ajaxurl, data, function(response){
-			$("#adult-consent").remove();
+			$("#adult-consent").modal('hide');
 			$(".classiera-advertisement").removeClass("blur-me");
 			setCookie("hot_escort_welcom", response, 30);
 		});
-		// setCookie("hot_escort_welcom", )
 	}
 	function checkWelcomeCookie(){
 		var aaa = getCookie("hot_escort_welcom");
