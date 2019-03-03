@@ -239,7 +239,7 @@
 								</a>
 							</h4>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div id="collapseOne" class="panel-collapse collapse in clearfix" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body col-lg-12 col-md-12 col-xs-12">
 								<!-- Age -->
 								<div class="row">
