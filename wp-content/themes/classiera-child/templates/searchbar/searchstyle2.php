@@ -11,6 +11,132 @@
 	}elseif($locShownBy == 'post_city'){
 		$classieraLocationName = 'post_city';
 	}
+	global $wpdb;
+	$post = $wpdb->prefix . 'posts';
+	$sql = 'select ID from ' . $post . ' where post_status="publish" and post_type="post"';
+	$queryRes = $wpdb->get_results($sql);
+	$arrIds = [];
+	foreach ($queryRes as $value) {
+		$arrIds[] = $value->ID;
+	}
+	$strInIDs = "";
+	if( count($arrIds) != 0){
+		$strInIDs = " and post_id in (" . implode(",", $arrIds) . ")";
+	}
+
+	$postmeta=$wpdb->prefix.'postmeta';
+	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="user_age"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$ageMin = 18;
+	$ageMax = 99;
+	$ageAvg1 = 30;
+	$ageAvg1 = 60;
+	if( $queryRes != false){
+		// $ageMin = $ageMin > $queryRes[0]->min ? $ageMin : $queryRes[0]->min;
+		$ageMax = $queryRes[0]->max;
+		$ageAvg1 = intval(($ageMin * 2 + $ageMax) / 3);
+		$ageAvg2 = intval(($ageMin + $ageMax * 2) / 3);
+	}
+
+	// $sql='select MIN(meta_value) as min, MAX(meta_value) as max, AVG(meta_value) as avg from ' . $postmeta . ' where meta_key="user_age"' . $strInIDs;
+	// $queryRes=$wpdb->get_results($sql);
+	// $ageMin = 18;
+	// $ageMax = 99;
+	// $ageAvg = 50;
+	// if( $queryRes != false){
+	// 	$ageMin = $queryRes[0]->min;
+	// 	$ageMax = $queryRes[0]->max;
+	// 	$ageAvg = intval($queryRes[0]->avg);
+	// }
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="native_language"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$arrLangs = [];
+	foreach ($queryRes as $value) {
+		$arrLangs[] = $value->val;
+	}
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="hair_color"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$arrHairCols = [];
+	foreach ($queryRes as $value) {
+		$arrHairCols[] = $value->val;
+	}
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="eyes_color"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$arrEyeCols = [];
+	foreach ($queryRes as $value) {
+		$arrEyeCols[] = $value->val;
+	}
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="ethnicity"' . $strInIDs . ' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrEthnicity = [];
+	foreach ($queryRes as $value) {
+		$arrEthnicity[] = $value->val;
+	}
+
+	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="weight"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$weightMin = 40;
+	$weightMax = 99;
+	$weightAvg1 = 60;
+	$weightAvg2 = 60;
+	if( $queryRes != false){
+		$weightMin = $queryRes[0]->min;
+		$weightMax = $queryRes[0]->max;
+		$weightAvg1 = intval(($weightMin * 2 + $weightMax) / 3);
+		$weightAvg2 = intval(($weightMin + $weightMax * 2) / 3);
+	}
+	
+	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="waist_size"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$waistMin = 40;
+	$waistMax = 99;
+	$waistAvg1 = 60;
+	$waistAvg2 = 60;
+	if( $queryRes != false){
+		$waistMin = $queryRes[0]->min;
+		$waistMax = $queryRes[0]->max;
+		$waistAvg1 = intval(($waistMin * 2 + $waistMax) / 3);
+		$waistAvg2 = intval(($waistMin + $waistMax * 2) / 3);
+	}
+
+	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="hips_size"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$hipsMin = 40;
+	$hipsMax = 99;
+	$hipsAvg1 = 60;
+	$hipsAvg2 = 60;
+	if( $queryRes != false){
+		$hipsMin = $queryRes[0]->min;
+		$hipsMax = $queryRes[0]->max;
+		$hipsAvg1 = intval(($hipsMin * 2 + $hipsMax) / 3);
+		$hipsAvg2 = intval(($hipsMin + $hipsMax * 2) / 3);
+	}
+	
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="dress_size"' . $strInIDs .' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrDressSize = [];
+	foreach ($queryRes as $value) {
+		$arrDressSize[] = $value->val;
+	}
+	
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="shoe_size"' . $strInIDs . ' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrShoeSize = [];
+	foreach ($queryRes as $value) {
+		$arrShoeSize[] = $value->val;
+	}
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="pubic_area"' . $strInIDs . ' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrPubicArea = [];
+	foreach ($queryRes as $value) {
+		$arrPubicArea[] = $value->val;
+	}
+
 ?>
 <section class="search-section search-section-v2">
 	<div class="container">
@@ -97,83 +223,382 @@
 
 <!-- Modal -->
 <div class="modal fade" id="filter-modal" tabindex="-1" role="dialog" aria-labelledby="FilterModal">
-  <div class="modal-dialog filter-modal" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- <button type="button" class="close" style="outline: none;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-        <h4 class="modal-title text-uppercase" id="FilterModal"><?php esc_html_e('Advanced Filter', 'classiera'); ?></h4>
-      </div>
-      <div class="modal-body">
-        
-		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-		  <div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingOne">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		          Collapsible Group Item #1 
-		        </a>
-		      </h4>
-		    </div>
-		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-		      <div class="panel-body">
+	<div class="modal-dialog filter-modal" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!-- <button type="button" class="close" style="outline: none;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+				<h4 class="modal-title text-uppercase" id="FilterModal"><?php esc_html_e('Advanced Filter', 'classiera'); ?></h4>
+			</div>
+			<div class="modal-body">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									Collapsible Group Item #1 
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body col-lg-12 col-md-12 col-xs-12">
+								<!-- Age -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Age Range', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$ageMin?></td>
+												<td class="rangeTd">
+													<input id="age-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$ageMin?>" data-slider-max="<?=$ageMax?>" data-slider-step="1" data-slider-value="[<?=$ageAvg1?>,<?=$ageAvg2?>]"/>
+												</td>
+												<td><?=$ageMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<!-- Category -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Category', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="filter-category">
+											<option value="" selected disabled><?php esc_html_e('Choose Category', 'classiera'); ?></option>
+											<?php
+											foreach ($categories as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<!-- ??? Price ??? -->
+								<!-- <div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Price Range', 'classiera'); ?> : <?=$prcAvg?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$prcMin?></td>
+												<td><input type="range" name="" min="<?=$prcMin?>" max="<?=$prcMax?>" value="<?=$prcAvg?>" class="slider" id="age-range"></td>
+												<td><?=$prcMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div> -->
+								<!-- Native Language -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Native Language', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="nat_lang">
+											<option value="" selected disabled><?php esc_html_e('Choose Native Language', 'classiera'); ?></option>
+											<?php
+											foreach ($arrLangs as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<!-- Hair color -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Hair color', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="hair_color">
+											<option value="" selected disabled><?php esc_html_e('Hair color', 'classiera'); ?></option>
+											<?php
+											foreach ($arrHairCols as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<!-- Eyes color -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Eyes color', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="eyes_color">
+											<option value="" selected disabled><?php esc_html_e('Eyes color', 'classiera'); ?></option>
+											<?php
+											foreach ($arrEyeCols as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<!-- Ethnicity -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Ethnicity', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="ethnicity">
+											<option value="" selected disabled><?php esc_html_e('Ethnicity', 'classiera'); ?></option>
+											<?php
+											foreach ($arrEthnicity as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+								<!-- Weight -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Weight Range', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$weightMin?></td>
+												<td class="rangeTd">
+													<input id="waist-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$weightMin?>" data-slider-max="<?=$weightMax?>" data-slider-step="1" data-slider-value="[<?=$weightAvg1?>,<?=$weightAvg2?>]"/>
+												</td>
+												<td><?=$weightMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
 
-				<div class="input-group">
-					<span><?php esc_html_e('Select Category', 'classiera'); ?></span>
-					<select class="form-control" name="filter-category" id="filter-category">
-						<option value="" selected disabled><?php esc_html_e('Choose Category', 'classiera'); ?></option>
-						<option value="Escort"><?php esc_html_e('Escort', 'classiera'); ?></option>
-					</select>
+								<!-- Waist Size -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Waist Size Range', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$waistMin?></td>
+												<td class="rangeTd">
+													<input id="weight-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$waistMin?>" data-slider-max="<?=$waistMax?>" data-slider-step="1" data-slider-value="[<?=$waistAvg1?>,<?=$waistAvg2?>]"/>
+												</td>
+												<td><?=$waistMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+
+								<!-- Hips Size -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Hips Size Range', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$hipsMin?></td>
+												<td class="rangeTd">
+													<input id="hips-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$hipsMin?>" data-slider-max="<?=$hipsMax?>" data-slider-step="1" data-slider-value="[<?=$hipsAvg1?>,<?=$hipsAvg2?>]"/>
+												</td>
+												<td><?=$hipsMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+
+								<!-- Dress Size -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Dress Size', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="hair_color">
+											<option value="" selected disabled><?php esc_html_e('Dress Size', 'classiera'); ?></option>
+											<?php
+											foreach ($arrDressSize as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+
+								<!-- Shoe Size -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Shoe Size', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="shoe_size">
+											<option value="" selected disabled><?php esc_html_e('Shoe Size', 'classiera'); ?></option>
+											<?php
+											foreach ($arrShoeSize as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+
+								<!-- Pubic Area -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Pubic Area', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="pubic_area">
+											<option value="" selected disabled><?php esc_html_e('Pubic Area', 'classiera'); ?></option>
+											<?php
+											foreach ($arrPubicArea as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+
+								<!-- Smoker -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Smoker', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="smoker">
+											<option value="" selected disabled><?php esc_html_e('Are you Smoker?', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Disabled Friendly -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Disabled Friendly', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="disabled-friendly">
+											<option value="" selected disabled><?php esc_html_e('Disabled Friendly', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Drinks Supplied -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Drinks Supplied', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="drink-supplied">
+											<option value="" selected disabled><?php esc_html_e('Drinks Supplied', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Showers Aavailable -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Showers Aavailable', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="showers-available">
+											<option value="" selected disabled><?php esc_html_e('Showers Aavailable', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Available to Travel -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Available to Travel', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="availabl-travel">
+											<option value="" selected disabled><?php esc_html_e('Available to Travel', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
+											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+										</select>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Collapsible Group Item #2
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+							<div class="panel-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Collapsible Group Item #3
+								</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+							<div class="panel-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
+						</div>
+					</div>
 				</div>
 
-				<div class="input-group">
-					<span><?php esc_html_e('Select Age Range', 'classiera'); ?></span>
-					Filter by price interval: <b>€ 10</b> <input id="age-range" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
-				</div>
-
-		      </div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingTwo">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-		          Collapsible Group Item #2
-		        </a>
-		      </h4>
-		    </div>
-		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-		      <div class="panel-body">
-		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		      </div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading" role="tab" id="headingThree">
-		      <h4 class="panel-title">
-		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-		          Collapsible Group Item #3
-		        </a>
-		      </h4>
-		    </div>
-		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-		      <div class="panel-body">
-		        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-		      </div>
-		    </div>
-		  </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary filter-button"><?php esc_html_e('Filter', 'classiera'); ?></button>
+				<button type="button" class="btn btn-primary filter-button" data-dismiss="modal"><?php esc_html_e('Cancel', 'classiera'); ?></button>
+			</div>
 		</div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary filter-button"><?php esc_html_e('Filter', 'classiera'); ?></button>
-        <button type="button" class="btn btn-primary filter-button" data-dismiss="modal"><?php esc_html_e('Cancel', 'classiera'); ?></button>
-      </div>
-    </div>
-  </div>
+	</div>
 </div>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.min.css">
+<style type="text/css">
+	.rangeTd{
+		text-align: center;
+	}
+</style>
 <script>
 	$(document).ready(function(){
-		var mySlider = $("#age-range").slider();
+		var sldAge = new Slider('#age-range', {});
+		var sldWeight = new Slider('#weight-range', {});
+		var sldWeight = new Slider('#waist-range', {});
+		var sldWeight = new Slider('#hips-range', {});
 	});
 </script>

@@ -416,6 +416,7 @@ function submit_ads_scripts() {
         wp_enqueue_style('selectize-css', get_stylesheet_directory_uri() . '/css/selectize.css' );
         wp_enqueue_style('croppic-css', get_stylesheet_directory_uri() . '/css/croppic.css' );
         wp_enqueue_script('croppic-js', get_stylesheet_directory_uri() . '/js/croppic.js', array( 'jquery' ), '', true );
+        wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/submit-ads.js', 'jQuery', '', true );
     }
 }
 add_action( 'wp_enqueue_scripts', 'submit_ads_scripts' );
@@ -429,6 +430,7 @@ function edit_ads_scripts() {
         wp_enqueue_style('selectize-css', get_stylesheet_directory_uri() . '/css/selectize.css' );
         wp_enqueue_style('croppic-css', get_stylesheet_directory_uri() . '/css/croppic.css' );
         wp_enqueue_script('croppic-js', get_stylesheet_directory_uri() . '/js/croppic.js', array( 'jquery' ), '', true );
+        wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/submit-ads.js', 'jQuery', '', true );
     } else if( end($template_array) == 'template-re-activate.php' ){
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
         wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );

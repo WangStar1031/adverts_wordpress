@@ -1,0 +1,20 @@
+2019-03-03T08:47:06+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\searchbar\searchstyle2.php:21
+Stack trace:
+#0 D:\xampp\htdocs\ahv\v1\wp-includes\template.php(690): require()
+#1 D:\xampp\htdocs\ahv\v1\wp-includes\template.php(647): load_template('D:\\xampp\\htdocs...', false)
+#2 D:\xampp\htdocs\ahv\v1\wp-includes\general-template.php(155): locate_template(Array, true, false)
+#3 D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\template-landing.php(47): get_template_part('templates/searc...')
+#4 D:\xampp\htdocs\ahv\v1\wp-includes\template-loader.php(74): include('D:\\xampp\\htdocs...')
+#5 D:\xampp\htdocs\ahv\v1\wp-blog-header.php(19): require_once('D:\\xampp\\htdocs...')
+#6 D:\xampp\htdocs\ahv\v1\index.php(17): require('D:\\xampp\\htdocs...')
+#7 {main}
+  thrown in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\searchbar\searchstyle2.php on line 21
+
+2019-03-03T08:48:05+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW) in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\searchbar\searchstyle2.php on line 22
+
+2019-03-03T14:53:26+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\ahv\v1\wp-includes\wp-db.php on line 1924
+
+2019-03-03T14:53:27+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\ahv\v1\wp-includes\Requests\Transport\cURL.php on line 162
+
+2019-03-03T14:53:28+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\ahv\v1\wp-includes\wp-db.php on line 1924
+

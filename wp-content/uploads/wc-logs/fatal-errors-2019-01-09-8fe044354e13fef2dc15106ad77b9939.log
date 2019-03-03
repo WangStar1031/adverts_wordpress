@@ -1,4 +1,0 @@
-2019-01-09T01:56:52+00:00 CRITICAL Cannot use [] for reading in /home/advertsh/public_html/ahv/v1/wp-content/plugins/classiera-locations/includes/city.php on line 75
-
-2019-01-09T02:04:22+00:00 CRITICAL Call to undefined function __checked_selected_helper() in /home/advertsh/public_html/ahv/v1/wp-includes/general-template.php on line 4184
-

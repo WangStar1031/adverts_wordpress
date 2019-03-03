@@ -1,4 +1,0 @@
-2019-01-30T22:00:06+00:00 CRITICAL Call to undefined function wp_get_current_user_id() in /home/advertsh/public_html/ahv/v1/wp-content/themes/classiera-child/template-confirm-images.php on line 55
-
-2019-01-30T22:20:40+00:00 CRITICAL syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/advertsh/public_html/ahv/v1/wp-content/themes/classiera-child/template-confirm-images.php on line 56
-

@@ -1482,6 +1482,8 @@ get_header(); ?>
 <div class="loader_submit_form">
 	<img src="<?php echo get_template_directory_uri().'/images/loader180.gif' ?>">
 </div>
+
+<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/smartWizard.js"></script>
 <script>
 	jQuery(document).ready(function($) {
         $('#smartwizard').smartWizard({
