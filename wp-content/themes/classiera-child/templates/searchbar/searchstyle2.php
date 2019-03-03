@@ -29,14 +29,14 @@
 	$queryRes=$wpdb->get_results($sql);
 	$ageMin = 18;
 	$ageMax = 99;
-	$ageAvg1 = 30;
-	$ageAvg1 = 60;
 	if( $queryRes != false){
 		// $ageMin = $ageMin > $queryRes[0]->min ? $ageMin : $queryRes[0]->min;
 		$ageMax = $queryRes[0]->max;
-		$ageAvg1 = intval(($ageMin * 2 + $ageMax) / 3);
-		$ageAvg2 = intval(($ageMin + $ageMax * 2) / 3);
+		// $ageAvg1 = intval(($ageMin * 2 + $ageMax) / 3);
+		// $ageAvg2 = intval(($ageMin + $ageMax * 2) / 3);
 	}
+	$ageAvg1 = $ageMin;
+	$ageAvg2 = $ageMax;
 
 	// $sql='select MIN(meta_value) as min, MAX(meta_value) as max, AVG(meta_value) as avg from ' . $postmeta . ' where meta_key="user_age"' . $strInIDs;
 	// $queryRes=$wpdb->get_results($sql);
@@ -81,40 +81,40 @@
 	$queryRes=$wpdb->get_results($sql);
 	$weightMin = 40;
 	$weightMax = 99;
-	$weightAvg1 = 60;
-	$weightAvg2 = 60;
 	if( $queryRes != false){
 		$weightMin = $queryRes[0]->min;
 		$weightMax = $queryRes[0]->max;
-		$weightAvg1 = intval(($weightMin * 2 + $weightMax) / 3);
-		$weightAvg2 = intval(($weightMin + $weightMax * 2) / 3);
+		// $weightAvg1 = intval(($weightMin * 2 + $weightMax) / 3);
+		// $weightAvg2 = intval(($weightMin + $weightMax * 2) / 3);
 	}
+	$weightAvg1 = $weightMin;
+	$weightAvg2 = $weightMax;
 	
 	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="waist_size"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
 	$waistMin = 40;
 	$waistMax = 99;
-	$waistAvg1 = 60;
-	$waistAvg2 = 60;
 	if( $queryRes != false){
 		$waistMin = $queryRes[0]->min;
 		$waistMax = $queryRes[0]->max;
-		$waistAvg1 = intval(($waistMin * 2 + $waistMax) / 3);
-		$waistAvg2 = intval(($waistMin + $waistMax * 2) / 3);
+		// $waistAvg1 = intval(($waistMin * 2 + $waistMax) / 3);
+		// $waistAvg2 = intval(($waistMin + $waistMax * 2) / 3);
 	}
+	$waistAvg1 = $waistMin;
+	$waistAvg2 = $waistMax;
 
 	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="hips_size"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
 	$hipsMin = 40;
 	$hipsMax = 99;
-	$hipsAvg1 = 60;
-	$hipsAvg2 = 60;
 	if( $queryRes != false){
 		$hipsMin = $queryRes[0]->min;
 		$hipsMax = $queryRes[0]->max;
-		$hipsAvg1 = intval(($hipsMin * 2 + $hipsMax) / 3);
-		$hipsAvg2 = intval(($hipsMin + $hipsMax * 2) / 3);
+		// $hipsAvg1 = intval(($hipsMin * 2 + $hipsMax) / 3);
+		// $hipsAvg2 = intval(($hipsMin + $hipsMax * 2) / 3);
 	}
+	$hipsAvg1 = $hipsMin;
+	$hipsAvg2 = $hipsMax;
 	
 	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="dress_size"' . $strInIDs .' order by meta_value';
 	$queryRes=$wpdb->get_results($sql);
@@ -373,7 +373,7 @@
 											<tr>
 												<td><?=$weightMin?></td>
 												<td class="rangeTd">
-													<input id="waist-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$weightMin?>" data-slider-max="<?=$weightMax?>" data-slider-step="1" data-slider-value="[<?=$weightAvg1?>,<?=$weightAvg2?>]"/>
+													<input id="weight-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$weightMin?>" data-slider-max="<?=$weightMax?>" data-slider-step="1" data-slider-value="[<?=$weightAvg1?>,<?=$weightAvg2?>]"/>
 												</td>
 												<td><?=$weightMax?></td>
 											</tr>
@@ -391,7 +391,7 @@
 											<tr>
 												<td><?=$waistMin?></td>
 												<td class="rangeTd">
-													<input id="weight-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$waistMin?>" data-slider-max="<?=$waistMax?>" data-slider-step="1" data-slider-value="[<?=$waistAvg1?>,<?=$waistAvg2?>]"/>
+													<input id="waist-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$waistMin?>" data-slider-max="<?=$waistMax?>" data-slider-step="1" data-slider-value="[<?=$waistAvg1?>,<?=$waistAvg2?>]"/>
 												</td>
 												<td><?=$waistMax?></td>
 											</tr>
@@ -423,7 +423,7 @@
 										<?php esc_html_e('Dress Size', 'classiera'); ?>
 									</div>
 									<div class="col-md-8 col-lg-8">
-										<select class="form-control" name="filter-category" id="hair_color">
+										<select class="form-control" name="filter-category" id="dress_size">
 											<option value="" selected disabled><?php esc_html_e('Dress Size', 'classiera'); ?></option>
 											<?php
 											foreach ($arrDressSize as $value) {
@@ -483,7 +483,7 @@
 										<select class="form-control" name="filter-category" id="smoker">
 											<option value="" selected disabled><?php esc_html_e('Are you Smoker?', 'classiera'); ?></option>
 											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
-											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+											<option value="No"><?php esc_html_e('No', 'classiera'); ?></option>
 										</select>
 									</div>
 								</div>
@@ -497,7 +497,7 @@
 										<select class="form-control" name="filter-category" id="disabled-friendly">
 											<option value="" selected disabled><?php esc_html_e('Disabled Friendly', 'classiera'); ?></option>
 											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
-											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+											<option value="No"><?php esc_html_e('No', 'classiera'); ?></option>
 										</select>
 									</div>
 								</div>
@@ -511,7 +511,7 @@
 										<select class="form-control" name="filter-category" id="drink-supplied">
 											<option value="" selected disabled><?php esc_html_e('Drinks Supplied', 'classiera'); ?></option>
 											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
-											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+											<option value="No"><?php esc_html_e('No', 'classiera'); ?></option>
 										</select>
 									</div>
 								</div>
@@ -525,7 +525,7 @@
 										<select class="form-control" name="filter-category" id="showers-available">
 											<option value="" selected disabled><?php esc_html_e('Showers Aavailable', 'classiera'); ?></option>
 											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
-											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+											<option value="No"><?php esc_html_e('No', 'classiera'); ?></option>
 										</select>
 									</div>
 								</div>
@@ -539,7 +539,7 @@
 										<select class="form-control" name="filter-category" id="availabl-travel">
 											<option value="" selected disabled><?php esc_html_e('Available to Travel', 'classiera'); ?></option>
 											<option value="Yes"><?php esc_html_e('Yes', 'classiera'); ?></option>
-											<option value="Yes"><?php esc_html_e('No', 'classiera'); ?></option>
+											<option value="No"><?php esc_html_e('No', 'classiera'); ?></option>
 										</select>
 									</div>
 								</div>
@@ -579,12 +579,31 @@
 
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary filter-button"><?php esc_html_e('Filter', 'classiera'); ?></button>
+				<button type="button" class="btn btn-primary filter-button" onclick="submitFilter()"><?php esc_html_e('Filter', 'classiera'); ?></button>
 				<button type="button" class="btn btn-primary filter-button" data-dismiss="modal"><?php esc_html_e('Cancel', 'classiera'); ?></button>
 			</div>
 		</div>
 	</div>
 </div>
+<form method="get" id="filterForm" action="<?php echo home_url(); ?>">
+	<input type="hidden" name="age">
+	<input type="hidden" name="category">
+	<input type="hidden" name="nat_lang">
+	<input type="hidden" name="hair">
+	<input type="hidden" name="eyes">
+	<input type="hidden" name="ethnicity">
+	<input type="hidden" name="weight">
+	<input type="hidden" name="waist">
+	<input type="hidden" name="hips">
+	<input type="hidden" name="dress">
+	<input type="hidden" name="shoe">
+	<input type="hidden" name="pubic">
+	<input type="hidden" name="smoker">
+	<input type="hidden" name="friendly">
+	<input type="hidden" name="drink">
+	<input type="hidden" name="showers">
+	<input type="hidden" name="travel">
+</form>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/css/bootstrap-slider.css">
@@ -601,4 +620,25 @@
 		var sldWeight = new Slider('#waist-range', {});
 		var sldWeight = new Slider('#hips-range', {});
 	});
+	function submitFilter(){
+		$("#filterForm input[name=age]").val($("#age-range").val());
+		$("#filterForm input[name=category]").val($("#filter-category").val());
+		$("#filterForm input[name=nat_lang]").val($("#nat_lang").val());
+		$("#filterForm input[name=hair]").val($("#hair_color").val());
+		$("#filterForm input[name=eyes]").val($("#eyes_color").val());
+		$("#filterForm input[name=ethnicity]").val($("#ethnicity").val());
+		$("#filterForm input[name=weight]").val($("#weight-range").val());
+		$("#filterForm input[name=waist]").val($("#waist-range").val());
+		$("#filterForm input[name=hips]").val($("#hips-range").val());
+		$("#filterForm input[name=dress]").val($("#dress_size").val());
+		$("#filterForm input[name=shoe]").val($("#shoe_size").val());
+		$("#filterForm input[name=pubic]").val($("#pubic_area").val());
+		$("#filterForm input[name=smoker]").val($("#smoker").val());
+		$("#filterForm input[name=friendly]").val($("#disabled-friendly").val());
+		$("#filterForm input[name=drink]").val($("#drink-supplied").val());
+		$("#filterForm input[name=showers]").val($("#showers-available").val());
+		$("#filterForm input[name=travel]").val($("#availabl-travel").val());
+
+		$("#filterForm").submit();
+	}
 </script>

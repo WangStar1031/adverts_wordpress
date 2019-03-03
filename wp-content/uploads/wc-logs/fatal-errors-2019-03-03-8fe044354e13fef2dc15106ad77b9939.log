@@ -18,3 +18,13 @@ Stack trace:
 
 2019-03-03T14:53:28+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\ahv\v1\wp-includes\wp-db.php on line 1924
 
+2019-03-03T19:12:52+00:00 CRITICAL syntax error, unexpected '$cri_Age' (T_VARIABLE) in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\adv\advstyle4.php on line 40
+
+2019-03-03T19:14:08+00:00 CRITICAL syntax error, unexpected '$cri_Age' (T_VARIABLE) in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\adv\advstyle4.php on line 40
+
+2019-03-03T19:14:29+00:00 CRITICAL syntax error, unexpected '$cri_Age' (T_VARIABLE) in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\adv\advstyle4.php on line 40
+
+2019-03-03T19:42:05+00:00 CRITICAL syntax error, unexpected '}' in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\adv\advstyle4.php on line 24
+
+2019-03-03T19:51:12+00:00 CRITICAL syntax error, unexpected ';', expecting ')' in D:\xampp\htdocs\ahv\v1\wp-content\themes\classiera-child\templates\adv\advstyle4.php on line 60
+
