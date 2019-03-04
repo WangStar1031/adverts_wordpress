@@ -30,24 +30,11 @@
 	$ageMin = 18;
 	$ageMax = 99;
 	if( $queryRes != false){
-		// $ageMin = $ageMin > $queryRes[0]->min ? $ageMin : $queryRes[0]->min;
+		$ageMin = $ageMin > $queryRes[0]->min ? $ageMin : $queryRes[0]->min;
 		$ageMax = $queryRes[0]->max;
-		// $ageAvg1 = intval(($ageMin * 2 + $ageMax) / 3);
-		// $ageAvg2 = intval(($ageMin + $ageMax * 2) / 3);
 	}
 	$ageAvg1 = $ageMin;
 	$ageAvg2 = $ageMax;
-
-	// $sql='select MIN(meta_value) as min, MAX(meta_value) as max, AVG(meta_value) as avg from ' . $postmeta . ' where meta_key="user_age"' . $strInIDs;
-	// $queryRes=$wpdb->get_results($sql);
-	// $ageMin = 18;
-	// $ageMax = 99;
-	// $ageAvg = 50;
-	// if( $queryRes != false){
-	// 	$ageMin = $queryRes[0]->min;
-	// 	$ageMax = $queryRes[0]->max;
-	// 	$ageAvg = intval($queryRes[0]->avg);
-	// }
 
 	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="native_language"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
@@ -226,7 +213,6 @@
 	<div class="modal-dialog filter-modal" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<!-- <button type="button" class="close" style="outline: none;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
 				<h4 class="modal-title text-uppercase" id="FilterModal"><?php esc_html_e('Advanced Filter', 'classiera'); ?></h4>
 			</div>
 			<div class="modal-body">
@@ -266,31 +252,37 @@
 									<div class="col-md-8 col-lg-8">
 										<select class="form-control" name="filter-category" id="filter-category">
 											<option value="" selected disabled><?php esc_html_e('Choose Category', 'classiera'); ?></option>
-											<?php
-											foreach ($categories as $value) {
-											?>
-											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-											<?php
+											<?php 
+											$args = array(
+												'hierarchical' => '0',
+												'hide_empty' => '0'
+											);
+											$categories = get_categories($args);
+											foreach ($categories as $cat) {
+												if($cat->category_parent == 0){
+													$catID = $cat->cat_ID;
+													?>
+												<option value="<?php echo esc_attr($catID); ?>">
+													<?php echo esc_html($cat->cat_name); ?>
+												</option>	
+													<?php
+													$args2 = array(
+														'hide_empty' => '0',
+														'parent' => $catID
+													);
+													$categories = get_categories($args2);
+													foreach($categories as $cat){
+														?>
+													<option value="<?php echo esc_attr($cat->cat_ID); ?>">- <?php echo esc_html($cat->cat_name); ?></option>	
+														<?php
+													}
+												}
 											}
 											?>
 										</select>
 									</div>
 								</div>
-								<!-- ??? Price ??? -->
-								<!-- <div class="row">
-									<div class="col-md-4 col-lg-4">
-										<?php esc_html_e('Select Price Range', 'classiera'); ?> : <?=$prcAvg?>
-									</div>
-									<div class="col-md-8 col-lg-8">
-										<table class="col-md-12 col-lg-12">
-											<tr>
-												<td><?=$prcMin?></td>
-												<td><input type="range" name="" min="<?=$prcMin?>" max="<?=$prcMax?>" value="<?=$prcAvg?>" class="slider" id="age-range"></td>
-												<td><?=$prcMax?></td>
-											</tr>
-										</table>
-									</div>
-								</div> -->
+
 								<!-- Native Language -->
 								<div class="row">
 									<div class="col-lg-4 col-md-4">

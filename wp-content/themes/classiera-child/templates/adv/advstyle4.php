@@ -54,6 +54,11 @@ if( $_age != ""){
 		$_metaQuery[] = $cri_Age;
 	}
 	if( $_category != ""){
+		$cri_category = array(
+			'key'		=> 'categorySelect',
+			'value'		=> $_category,
+			'compare'	=> '='
+		);
 		$_metaQuery[] = $cri_category;
 	}
 	if( $_nat_lang != ""){
@@ -73,6 +78,11 @@ if( $_age != ""){
 		$_metaQuery[] = $cri_hair;
 	}
 	if( $_eyes != ""){
+		$cri_eyes = array(
+			'key'		=> 'eyes_color',
+			'value'		=> $_eyes,
+			'compare'	=> '='
+		);
 		$_metaQuery[] = $cri_eyes;
 	}
 	if( $_ethnicity != ""){
@@ -94,7 +104,7 @@ if( $_age != ""){
 			array(
 				'key'		=> 'weight',
 				'value'		=> $arrWeight[1],
-				'compare'	=> '=<'
+				'compare'	=> '<='
 			)
 		);
 		$_metaQuery[] = $cri_weight;
@@ -109,8 +119,8 @@ if( $_age != ""){
 			),
 			array(
 				'key'		=> 'waist_size',
-				'value'		=> $arrWaist[0],
-				'compare'	=> '=<'
+				'value'		=> $arrWaist[1],
+				'compare'	=> '<='
 			)
 		);
 		$_metaQuery[] = $cri_waist;
@@ -126,7 +136,7 @@ if( $_age != ""){
 			array(
 				'key'		=> 'hips_size',
 				'value'		=> $arrHips[1],
-				'compare'	=> '=<'
+				'compare'	=> '<='
 			)
 		);
 		$_metaQuery[] = $cri_hips;
@@ -215,7 +225,7 @@ if( $_age != ""){
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active">
 				<div class="container">
-					<div class="row double_size">
+					<div class="row standard_type_size">
 						<div class="col-lg-12">
 							<div class="grid">
 <?php
