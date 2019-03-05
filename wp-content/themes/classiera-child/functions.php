@@ -13,6 +13,7 @@ function theme_enqueue_styles() {
     wp_enqueue_script('jquery.min', get_template_directory_uri() . '/js/jquery.min.js', 'jquery', '', true);
     wp_enqueue_script('bootstrap.min', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', '', true);
     wp_enqueue_script('classiera-child', get_stylesheet_directory_uri() . '/classiera-child.js', 'jquery', '', true);
+    wp_enqueue_script('classiera', get_stylesheet_directory_uri() . '/js/classiera.js', 'jquery', '', true);
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function experied_ads_checksum()
