@@ -250,20 +250,26 @@
 										<?php esc_html_e('Tags', 'classiera'); ?>
 									</div>
 									<div class="col-md-8 col-lg-8">
-										<?php
-										$arrTags = explode(",", $redux_demo["tags-collection"]);
-										$arrRealTags = [];
-										foreach ($arrTags as $value) {
-											$curVal = trim($value);
-											if( $curVal != "")
-												$arrRealTags[] = $curVal;
-										}
-										foreach ($arrRealTags as$value) {
-										?>
-										<div class="tagBtn btn btn-primary" onclick="filter_TagClicked(this)"><?=$value?></div>
-										<?php
-										}
-										?>
+										<select class="form-control" name="filter-tags" id="filter-tags">
+											<option value="" selected disabled><?php esc_html_e('Choose Tags', 'classiera'); ?></option>
+											<?php
+											$arrTags = explode(",", $redux_demo["tags-collection"]);
+											$arrRealTags = [];
+											foreach ($arrTags as $value) {
+												$curVal = trim($value);
+												if( $curVal != "")
+													$arrRealTags[] = $curVal;
+											}
+											foreach ($arrRealTags as$value) {
+											?>
+											<option value="<?php echo $value; ?>">
+												<?php echo $value; ?>
+											</option>
+											<!-- <div class="tagBtn btn btn-primary" onclick="filter_TagClicked(this)"><?=$value?></div> -->
+											<?php
+											}
+											?>
+										</select>
 									</div>
 								</div>
 								<!-- Category -->
@@ -654,17 +660,17 @@
 		$("#filterForm input[name=showers]").val($("#showers-available").val());
 		$("#filterForm input[name=travel]").val($("#availabl-travel").val());
 
-		var activedTags = jQuery(".tagBtn.active");
-		var arrTags = [];
-		for( var i = 0; i < activedTags.length; i++){
-			var curBtn = activedTags.eq(i);
-			var strTag = curBtn.text();
-			arrTags.push(strTag);
-		}
-		var strTags = arrTags.join(",");
-		jQuery("input[name=tags]").val(strTags);
+		// var activedTags = jQuery(".tagBtn.active");
+		// var arrTags = [];
+		// for( var i = 0; i < activedTags.length; i++){
+		// 	var curBtn = activedTags.eq(i);
+		// 	var strTag = curBtn.text();
+		// 	arrTags.push(strTag);
+		// }
+		// var strTags = arrTags.join(",");
+		// jQuery("input[name=tags]").val(strTags);
 
-		$("#filterForm input[name=tags]").val(strTags);
+		$("#filterForm input[name=tags]").val($("#filter-tags").val());
 		
 		$("#filterForm").submit();
 	}

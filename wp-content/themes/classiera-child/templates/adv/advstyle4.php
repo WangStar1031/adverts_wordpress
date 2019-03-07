@@ -60,11 +60,16 @@ if( $_age != ""){
 	}
 	// print_r($_tags);
 	if( $_tags != ""){
-		$arrTags = explode(",", $_tags);
-		$cri_Tags = array('relation' => 'OR');
-		foreach ($arrTags as $value) {
-			$cri_Tags[] = array('key' => 'tags', 'value' => $value, 'compare' => 'like');
-		}
+		// $arrTags = explode(",", $_tags);
+		// $cri_Tags = array('relation' => 'OR');
+		// foreach ($arrTags as $value) {
+		// 	$cri_Tags[] = array('key' => 'tags', 'value' => $value, 'compare' => 'like');
+		// }
+		$cri_Tags = array(
+			'key'		=> 'tags',
+			'value'		=> $_tags,
+			'compare'	=> 'like'
+		);
 		$_metaQuery[] = $cri_Tags;
 		// print_r($cri_Tags);
 	}
