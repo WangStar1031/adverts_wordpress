@@ -26,6 +26,21 @@ $classieraCatIconCode ="";
 $category_icon="";
 $category_icon_color="";
 global $redux_demo;
+
+//   Wang
+$arrTags = explode(",", $redux_demo["tags-collection"]);
+$arrRealTags = [];
+foreach ($arrTags as $value) {
+	$curVal = trim($value);
+	if( $curVal != "")
+		$arrRealTags[] = $curVal;
+}
+// print_r($arrRealTags);
+// echo "<br>";
+// print_r($redux_demo["tags-collection"]);
+
+//   Xing
+
 $featuredADS = 0;
 $primaryColor = $redux_demo['color-primary'];
 $googleFieldsOn = $redux_demo['google-lat-long'];
@@ -295,6 +310,11 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['user_age'])){
 					update_post_meta($post_id, 'user_age', $_POST['user_age'], $allowed);
 				}
+				// Tags
+				if( isset($_POST['tags'])){
+					update_post_meta($post_id, 'tags', $_POST['tags'], $allowed);
+				}
+
 				//Hair Color
 				if(isset($_POST['hair_color'])){
 					update_post_meta($post_id, 'hair_color', $_POST['hair_color'], $allowed);
@@ -929,7 +949,6 @@ get_header(); ?>
 													<!-- <div class="classieraExtraFields" style="display:none;"></div> -->
 												</div>
 
-
 												<div class="col-sm-12">
 													<div class="form-group">
 														<textarea name="postContent" id="description" class="form-control" data-error="<?php esc_html_e('Write description', 'classiera') ?>" required placeholder="<?php esc_html_e('About myself...', 'classiera'); ?>"></textarea>
@@ -937,6 +956,21 @@ get_header(); ?>
 														<input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>">
 														<!-- / Keywords Field -->
 													</div><!--Ad description-->
+												</div>
+
+												<div class="col-sm-12">
+													<div class="form-group">
+														<input type="hidden" name="tags">
+														<div style="margin-bottom: 20px;">
+															<?php
+															foreach ($arrRealTags as $value) {
+															?>
+															<div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
+															<?php
+															}
+															?>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -1745,7 +1779,19 @@ get_header(); ?>
 	$("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
 		var elmForm = $("#step-" + (stepNumber*1+1));
 		// only on forward navigation, that makes easy navigation on backwards still do the validation when going next
-		if( stepNumber == 5){ // step 6
+		if( stepNumber == 0){
+			var activedTags = jQuery(".tagBtn.active");
+			var arrTags = [];
+			for( var i = 0; i < activedTags.length; i++){
+				var curBtn = activedTags.eq(i);
+				var strTag = curBtn.text();
+				arrTags.push(strTag);
+			}
+			console.log( arrTags);
+			var strTags = arrTags.join(",");
+			console.log(strTags);
+			jQuery("input[name=tags]").val(strTags);
+		} else if( stepNumber == 5){ // step 6
 			var arrCroppedImgs = elmForm.find("#croppic .croppedImg");
 			if( arrCroppedImgs.length == 0){
 				$("#croppic").addClass("emptyRequire");
@@ -1789,6 +1835,10 @@ get_header(); ?>
 			return true;
 		}
 	});
+
+	function TagClicked(_this){
+		jQuery(_this).toggleClass("active");
+	}
 
 
 </script>
