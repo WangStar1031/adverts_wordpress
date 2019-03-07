@@ -244,6 +244,29 @@
 										</table>
 									</div>
 								</div>
+								<!-- Tags -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Tags', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<input type="hidden" name="tags">
+										<?php
+										$arrTags = explode(",", $redux_demo["tags-collection"]);
+										$arrRealTags = [];
+										foreach ($arrTags as $value) {
+											$curVal = trim($value);
+											if( $curVal != "")
+												$arrRealTags[] = $curVal;
+										}
+										foreach ($arrRealTags as$value) {
+										?>
+										<div class="tagBtn btn btn-primary" onclick="filter_TagClicked(this)"><?=$value?></div>
+										<?php
+										}
+										?>
+									</div>
+								</div>
 								<!-- Category -->
 								<div class="row">
 									<div class="col-md-4 col-lg-4">
@@ -631,6 +654,22 @@
 		$("#filterForm input[name=showers]").val($("#showers-available").val());
 		$("#filterForm input[name=travel]").val($("#availabl-travel").val());
 
+		var activedTags = jQuery(".tagBtn.active");
+		var arrTags = [];
+		for( var i = 0; i < activedTags.length; i++){
+			var curBtn = activedTags.eq(i);
+			var strTag = curBtn.text();
+			arrTags.push(strTag);
+		}
+		var strTags = arrTags.join(",");
+		jQuery("input[name=tags]").val(strTags);
+
+		$("#filterForm input[name=tags]").val(strTags);
+		
 		$("#filterForm").submit();
+	}
+	function filter_TagClicked(_this){
+		console.log($(_this).text());
+		$(_this).toggleClass("active");
 	}
 </script>

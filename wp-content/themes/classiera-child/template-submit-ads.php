@@ -310,7 +310,7 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['user_age'])){
 					update_post_meta($post_id, 'user_age', $_POST['user_age'], $allowed);
 				}
-				
+
 				// Tags
 				if( isset($_POST['tags'])){
 					update_post_meta($post_id, 'tags', $_POST['tags'], $allowed);
@@ -1788,9 +1788,7 @@ get_header(); ?>
 				var strTag = curBtn.text();
 				arrTags.push(strTag);
 			}
-			console.log( arrTags);
 			var strTags = arrTags.join(",");
-			console.log(strTags);
 			jQuery("input[name=tags]").val(strTags);
 		} else if( stepNumber == 5){ // step 6
 			var arrCroppedImgs = elmForm.find("#croppic .croppedImg");
