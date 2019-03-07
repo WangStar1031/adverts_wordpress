@@ -52,6 +52,21 @@ if( $_age != ""){
 			)
 		);
 		$_metaQuery[] = $cri_Age;
+		// print_r($cri_Age);
+	}
+	$_tags = "";
+	if( isset($_GET['tags'])){
+		$_tags = $_GET['tags'];
+	}
+	// print_r($_tags);
+	if( $_tags != ""){
+		$arrTags = explode(",", $_tags);
+		$cri_Tags = array('relation' => 'OR');
+		foreach ($arrTags as $value) {
+			$cri_Tags[] = array('key' => 'tags', 'value' => $value, 'compare' => 'like');
+		}
+		$_metaQuery[] = $cri_Tags;
+		// print_r($cri_Tags);
 	}
 	if( $_category != ""){
 		$cri_category = array(

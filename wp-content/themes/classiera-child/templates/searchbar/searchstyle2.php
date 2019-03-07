@@ -250,7 +250,6 @@
 										<?php esc_html_e('Tags', 'classiera'); ?>
 									</div>
 									<div class="col-md-8 col-lg-8">
-										<input type="hidden" name="tags">
 										<?php
 										$arrTags = explode(",", $redux_demo["tags-collection"]);
 										$arrRealTags = [];
@@ -602,6 +601,7 @@
 </div>
 <form method="get" id="filterForm" action="<?php echo home_url(); ?>">
 	<input type="hidden" name="age">
+	<input type="hidden" name="tags">
 	<input type="hidden" name="category">
 	<input type="hidden" name="nat_lang">
 	<input type="hidden" name="hair">
