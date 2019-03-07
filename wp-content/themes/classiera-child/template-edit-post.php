@@ -26,6 +26,16 @@ $classieraCatIconCode ="";
 $category_icon="";
 $category_icon_color="";
 global $redux_demo;
+
+$arrTags = explode(",", $redux_demo["tags-collection"]);
+$arrRealTags = [];
+foreach ($arrTags as $value) {
+	$curVal = trim($value);
+	if( $curVal != "")
+		$arrRealTags[] = $curVal;
+}
+
+
 $featuredADS = 0;
 $primaryColor = $redux_demo['color-primary'];
 $googleFieldsOn = $redux_demo['google-lat-long'];
@@ -152,6 +162,12 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['user_age'])){
 					update_post_meta($post_id, 'user_age', $_POST['user_age'], $allowed);
 				}
+				
+				// Tags
+				if( isset($_POST['tags'])){
+					update_post_meta($post_id, 'tags', $_POST['tags'], $allowed);
+				}
+
 				//Hair Color
 				if(isset($_POST['hair_color'])){
 					update_post_meta($post_id, 'hair_color', $_POST['hair_color'], $allowed);
@@ -674,6 +690,21 @@ get_header(); ?>
 														<input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>" value="<?=$tags_input?>">
 														<!-- / Keywords Field -->
 													</div><!--Ad description-->
+												</div>
+
+												<div class="col-sm-12">
+													<div class="form-group">
+														<input type="hidden" name="tags">
+														<div style="margin-bottom: 20px;">
+															<?php
+															foreach ($arrRealTags as $value) {
+															?>
+															<div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
+															<?php
+															}
+															?>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -1593,7 +1624,18 @@ get_header(); ?>
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
         var elmForm = $("#step-" + (stepNumber*1+1));
         // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
-        if( stepNumber == 5){ // step 6
+        
+		if( stepNumber == 0){
+			var activedTags = jQuery(".tagBtn.active");
+			var arrTags = [];
+			for( var i = 0; i < activedTags.length; i++){
+				var curBtn = activedTags.eq(i);
+				var strTag = curBtn.text();
+				arrTags.push(strTag);
+			}
+			var strTags = arrTags.join(",");
+			jQuery("input[name=tags]").val(strTags);
+		} else if( stepNumber == 5){ // step 6
             if( $("#croppic_image").is(":hidden")){
                 var arrCroppedImgs = elmForm.find("#croppic .croppedImg");
                 if( arrCroppedImgs.length == 0){
@@ -1692,6 +1734,10 @@ get_header(); ?>
 	}
 	function submitForm(){
 		document.getElementById("primaryPostForm_edit").submit();
+	}
+	
+	function TagClicked(_this){
+		jQuery(_this).toggleClass("active");
 	}
 
 </script>
