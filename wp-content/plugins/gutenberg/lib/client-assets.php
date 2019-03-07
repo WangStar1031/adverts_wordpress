@@ -548,7 +548,7 @@ function gutenberg_register_vendor_scripts() {
 	);
 	gutenberg_register_vendor_script(
 		'lodash',
-		'https://unpkg.com/lodash@4.17.5/lodash' . $suffix . '.js'
+		'https://unpkg.com/lodash@4.17.11/lodash' . $suffix . '.js'
 	);
 	wp_add_inline_script( 'lodash', 'window.lodash = _.noConflict();' );
 	gutenberg_register_vendor_script(
@@ -841,6 +841,67 @@ function gutenberg_get_available_image_sizes() {
 }
 
 /**
+ * Extends block editor settings to include Gutenberg's `editor-styles.css` as
+ * taking precedent those styles shipped with core.
+ *
+ * @param array $settings Default editor settings.
+ *
+ * @return array Filtered editor settings.
+ */
+function gutenberg_extend_block_editor_styles( $settings ) {
+	$editor_styles_file = gutenberg_dir_path() . 'build/editor/editor-styles.css';
+
+	/*
+	 * If, for whatever reason, the built editor styles do not exist, avoid
+	 * override and fall back to the default.
+	 */
+	if ( ! file_exists( $editor_styles_file ) ) {
+		return $settings;
+	}
+
+	if ( empty( $settings['styles'] ) ) {
+		$settings['styles'] = array();
+	} else {
+		/*
+		 * The styles setting is an array of CSS strings, so there is no direct
+		 * way to find the default styles. To maximize stability, load (again)
+		 * the default styles from disk and find its place in the array.
+		 *
+		 * See: https://github.com/WordPress/wordpress-develop/blob/5.0.3/src/wp-admin/edit-form-blocks.php#L168-L175
+		 */
+
+		$default_styles = file_get_contents(
+			ABSPATH . WPINC . '/css/dist/editor/editor-styles.css'
+		);
+
+		/*
+		 * Iterate backwards from the end of the array since the preferred
+		 * insertion point in case not found is prepended as first entry.
+		 */
+		for ( $i = count( $settings['styles'] ) - 1; $i >= 0; $i-- ) {
+			if ( isset( $settings['styles'][ $i ]['css'] ) &&
+					$default_styles === $settings['styles'][ $i ]['css'] ) {
+				break;
+			}
+		}
+	}
+
+	$editor_styles = array(
+		'css' => file_get_contents( $editor_styles_file ),
+	);
+
+	// Substitute default styles if found. Otherwise, prepend to setting array.
+	if ( isset( $i ) && $i >= 0 ) {
+		$settings['styles'][ $i ] = $editor_styles;
+	} else {
+		array_unshift( $settings['styles'], $editor_styles );
+	}
+
+	return $settings;
+}
+add_filter( 'block_editor_settings', 'gutenberg_extend_block_editor_styles' );
+
+/**
  * Scripts & Styles.
  *
  * Enqueues the needed scripts and styles when visiting the top-level page of
@@ -851,47 +912,12 @@ function gutenberg_get_available_image_sizes() {
  * @param string $hook Screen name.
  */
 function gutenberg_editor_scripts_and_styles( $hook ) {
-	global $wp_scripts, $wp_meta_boxes;
-
-	// Add "wp-hooks" as dependency of "heartbeat".
-	$heartbeat_script = $wp_scripts->query( 'heartbeat', 'registered' );
-	if ( $heartbeat_script && ! in_array( 'wp-hooks', $heartbeat_script->deps ) ) {
-		$heartbeat_script->deps[] = 'wp-hooks';
-	}
+	global $wp_meta_boxes;
 
 	// Enqueue heartbeat separately as an "optional" dependency of the editor.
 	// Heartbeat is used for automatic nonce refreshing, but some hosts choose
 	// to disable it outright.
 	wp_enqueue_script( 'heartbeat' );
-
-	// Transforms heartbeat jQuery events into equivalent hook actions. This
-	// avoids a dependency on jQuery for listening to the event.
-	$heartbeat_hooks = <<<JS
-( function() {
-	jQuery( document ).on( [
-		'heartbeat-send',
-		'heartbeat-tick',
-		'heartbeat-error',
-		'heartbeat-connection-lost',
-		'heartbeat-connection-restored',
-		'heartbeat-nonces-expired',
-	].join( ' ' ), function( event ) {
-		var actionName = event.type.replace( /-/g, '.' ),
-			args;
-
-		// Omit the event argument in applying arguments to the hook callback.
-		// The remaining arguments are passed to the hook.
-		args = Array.prototype.slice.call( arguments, 1 );
-
-		wp.hooks.doAction.apply( null, [ actionName ].concat( args ) );
-	} );
-} )();
-JS;
-	wp_add_inline_script(
-		'heartbeat',
-		$heartbeat_hooks,
-		'after'
-	);
 
 	wp_enqueue_script( 'wp-edit-post' );
 	wp_enqueue_script( 'wp-format-library' );
@@ -1037,7 +1063,7 @@ JS;
 	$styles = array(
 		array(
 			'css' => file_get_contents(
-				gutenberg_dir_path() . 'build/editor/editor-styles.css'
+				ABSPATH . WPINC . '/css/dist/editor/editor-styles.css'
 			),
 		),
 	);
@@ -1145,7 +1171,7 @@ JS;
 	$post_autosave = gutenberg_get_autosave_newer_than_post_save( $post );
 	if ( $post_autosave ) {
 		$editor_settings['autosave'] = array(
-			'editLink' => add_query_arg( 'gutenberg', true, get_edit_post_link( $post_autosave->ID ) ),
+			'editLink' => get_edit_post_link( $post_autosave->ID ),
 		);
 	}
 
@@ -1153,7 +1179,7 @@ JS;
 		$editor_settings['colors'] = $color_palette;
 	}
 
-	if ( ! empty( $font_sizes ) ) {
+	if ( false !== $font_sizes ) {
 		$editor_settings['fontSizes'] = $font_sizes;
 	}
 

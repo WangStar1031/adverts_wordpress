@@ -6,7 +6,7 @@ Description: Protect WordPress website forms from spam entries with Google Captc
 Author: BestWebSoft
 Text Domain: google-captcha
 Domain Path: /languages
-Version: 1.40
+Version: 1.42
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -65,7 +65,7 @@ if ( ! function_exists( 'gglcptch_plugins_loaded' ) ) {
 
 if ( ! function_exists( 'gglcptch_init' ) ) {
 	function gglcptch_init() {
-		global $gglcptch_plugin_info, $gglcptch_options, $gglcptch_ip_in_whitelist;;
+		global $gglcptch_plugin_info, $gglcptch_options;
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
@@ -84,10 +84,6 @@ if ( ! function_exists( 'gglcptch_init' ) ) {
 		/* Call register settings function */
 		if ( ! $is_admin || ( isset( $_GET['page'] ) && 'google-captcha.php' == $_GET['page'] ) ) {
 			register_gglcptch_settings();
-		}
-
-		if ( ! isset( $gglcptch_ip_in_whitelist ) ) {
-			$gglcptch_ip_in_whitelist = gglcptch_whitelisted_ip();
 		}
 
 		/* Add hooks */
@@ -353,7 +349,7 @@ if ( ! function_exists( 'gglcptch_get_default_options' ) ) {
 			'whitelist_message'			=> __( 'You are in the whitelist', 'google-captcha' ),
 			'public_key'				=> '',
 			'private_key'				=> '',
-			'login_form'				=> 1,
+			'login_form'				=> 0,
 			'registration_form'			=> 0,
 			'reset_pwd_form'			=> 1,
 			'comments_form'				=> 0,
@@ -510,17 +506,13 @@ if ( ! function_exists( 'gglcptch_is_hidden_for_role' ) ) {
 /* Display google captcha via shortcode */
 if ( ! function_exists( 'gglcptch_display' ) ) {
 	function gglcptch_display( $content = false ) {
-		global $gglcptch_options, $gglcptch_count, $gglcptch_ip_in_whitelist, $gglcptch_plugin_info;
+		global $gglcptch_options, $gglcptch_count, $gglcptch_plugin_info;
 
 		if ( empty( $gglcptch_options ) ) {
 			register_gglcptch_settings();
 		}
 
-		if ( ! isset( $gglcptch_ip_in_whitelist ) ) {
-			$gglcptch_ip_in_whitelist = gglcptch_whitelisted_ip();
-		}
-
-		if ( ! $gglcptch_ip_in_whitelist ) {
+		if ( ! gglcptch_whitelisted_ip() || ( isset( $_GET['action'] ) && 'gglcptch-test-keys' == $_GET['action'] ) ) {
 
 			if ( ! $gglcptch_count ) {
 				$gglcptch_count = 1;
@@ -618,7 +610,7 @@ if ( ! function_exists( 'gglcptch_display' ) ) {
 				gglcptch_add_styles();
 			}
 		} elseif ( ! empty( $gglcptch_options['whitelist_message'] ) ) {
-			$content .= '<label class="gglcptch_whitelist_message">' . $gglcptch_options['whitelist_message'] . '</label>';
+			$content .= '<label class="gglcptch_whitelist_message" style="display: block;">' . $gglcptch_options['whitelist_message'] . '</label>';
 		}
 
 		return $content;
@@ -673,6 +665,14 @@ if ( ! function_exists( 'gglcptch_get_response' ) ) {
 if ( ! function_exists( 'gglcptch_check' ) ) {
 	function gglcptch_check( $form = 'general', $debug = false ) {
 		global $gglcptch_options;
+
+        if ( gglcptch_whitelisted_ip() && 'gglcptch_test' != $form ) {
+            $result = array(
+                    'response' => true,
+                    'reason' => ''
+                );
+            return $result;
+        }
 
 		if ( empty( $gglcptch_options ) ) {
 			register_gglcptch_settings();
@@ -1021,7 +1021,7 @@ if ( ! function_exists( 'gglcptch_is_woocommerce_page' ) ) {
 
 if ( ! function_exists( 'gglcptch_test_keys' ) ) {
 	function gglcptch_test_keys() {
-		global $gglcptch_ip_in_whitelist, $gglcptch_options;
+		global $gglcptch_options;
 		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'] , $_REQUEST['action'] ) ) {
 			header( 'Content-Type: text/html' );
 			register_gglcptch_settings(); ?>
@@ -1032,8 +1032,7 @@ if ( ! function_exists( 'gglcptch_test_keys' ) ) {
 					_e( 'Please complete the captcha and submit "Test verification"', 'google-captcha' );
 				} ?>
 			</p>
-			<?php $gglcptch_ip_in_whitelist = false;
-			echo gglcptch_display(); ?>
+			<?php echo gglcptch_display(); ?>
 			<p>
 				<input type="hidden" name="gglcptch_test_keys_verification-nonce" value="<?php echo wp_create_nonce( 'gglcptch_test_keys_verification' ); ?>" />
 				<button id="gglcptch_test_keys_verification" name="action" class="button-primary" value="gglcptch_test_keys_verification" disabled="disabled"><?php _e( 'Test verification', 'google-captcha' ); ?></button>
@@ -1046,7 +1045,7 @@ if ( ! function_exists( 'gglcptch_test_keys' ) ) {
 if ( ! function_exists( 'gglcptch_test_keys_verification' ) ) {
 	function gglcptch_test_keys_verification() {
 		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'] , $_REQUEST['action'] ) ) {
-			$result = gglcptch_check( 'general', true );
+			$result = gglcptch_check( 'gglcptch_test', true );
 
 			if ( ! $result['response'] ) {
 				if ( isset( $result['reason'] ) ) {

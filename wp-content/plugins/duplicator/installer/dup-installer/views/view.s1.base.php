@@ -457,7 +457,7 @@ VALIDATION
 			<b>Open BaseDir:</b> <i><?php echo $notice['50'] == 'Good' ? "<i class='dupx-pass'>Disabled</i>" : "<i class='dupx-fail'>Enabled</i>"; ?></i>
 			<br/><br/>
 
-			If <a href="http://www.php.net/manual/en/ini.core.php#ini.open-basedir" target="_blank">open_basedir</a> is enabled and your
+			If <a href="http://php.net/manual/en/ini.core.php#ini.open-basedir" target="_blank">open_basedir</a> is enabled and your
 			having issues getting your site to install properly; please work with your host and follow these steps to prevent issues:
 			<ol style="margin:7px; line-height:19px">
 				<li>Disable the open_basedir setting in the php.ini file</li>
@@ -909,7 +909,6 @@ DUPX.pingDAWS = function ()
 	}
 
 	console.log("pingDAWS:action=" + request.action);
-	console.log("daws url=" + DUPX.DAWS.Url);
 
 	$.ajax({
 		type: "POST",
@@ -1349,15 +1348,9 @@ DUPX.onSafeModeSwitch = function ()
 };
 
 //DOCUMENT LOAD
-$(document).ready(function ()
-{
-    DUPX.FILEOPS = new Object();
-
-    DUPX.FILEOPS.url = document.URL.substr(0, document.URL.lastIndexOf('/')) + '/lib/fileops/fileops.php';
-    DUPX.FILEOPS.standardTimeoutInSec = 25;
-
+$(document).ready(function() {
 	DUPX.DAWS = new Object();
-	DUPX.DAWS.Url = document.URL.substr(0,document.URL.lastIndexOf('/')) + '/lib/dup_archive/daws/daws.php';
+	DUPX.DAWS.Url = window.location.href + '?is_daws=1&daws_csrf_token=<?php echo DUPX_CSRF::generate('daws');?>';
 	DUPX.DAWS.StatusPeriodInMS = 5000;
 	DUPX.DAWS.PingWorkerTimeInSec = 9;
 	DUPX.DAWS.KickoffWorkerTimeInSec = 6; // Want the initial progress % to come back quicker
@@ -1373,8 +1366,15 @@ $(document).ready(function ()
 	$("*[data-type='toggle']").click(DUPX.toggleClick);
 	$("#tabs").tabs();
 	DUPX.acceptWarning();
-	$('#set_file_perms').trigger("click");
-	$('#set_dir_perms').trigger("click");
+	<?php
+    $isWindows = DUPX_U::isWindows();
+    if (!$isWindows) {
+    ?>
+		$('#set_file_perms').trigger("click");
+		$('#set_dir_perms').trigger("click");
+	<?php
+    }
+    ?>
 	DUPX.toggleSetupType();
 
 	<?php echo ($arcCheck == 'Fail') ? "$('#s1-area-archive-file-link').trigger('click');" : ""; ?>

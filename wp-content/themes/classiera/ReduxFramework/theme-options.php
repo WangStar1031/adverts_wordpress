@@ -3484,6 +3484,25 @@
        ) );
        // End Terms And Conditions
 
+       // -> Tags / Favourites
+       Redux::setSection( $opt_name, array(
+           'title' => __( 'Tags / Favourites', 'classiera' ),
+           'icon'  => 'el el-tags',
+           'id'    => 'tags_favourites',
+           'desc'  => __( 'Add favourites/tags here', 'classiera' ),        
+           'fields' => array(
+                           array(
+                            'id'=>'tags-collection',
+                            'type' => 'text',
+                            'title' => __('Tags / Favourites', 'classiera'),
+                            'subtitle' => __('Add your required advert tags here', 'classiera'),
+                            'desc' => __('Add tags/favourites seperated by comma', 'classiera'),
+                            'default' => 'tag-1, tag-2,'
+                    ),
+           )
+       ) );
+       // End Tags / Favourites
+
     if ( file_exists( dirname( __FILE__ ) . '/../README.md' ) ) {
         $section = array(
             'icon'   => 'el el-list-alt',

@@ -46,6 +46,7 @@
 		echo sprintf($classieraGoogleAnalytics);
 	}
 ?>
+<div id="flex-box" class="border-bottom"></div>
 <footer class="<?php if($classieraFooterWidgets == 1){ echo "section-pad"; }?> <?php echo esc_attr($footerStyleClass); ?>">
 	<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adult-consent" style="position: absolute;">
 	  Consent Modal
@@ -163,11 +164,9 @@ if(is_user_logged_in()){
 				<div class="col-lg-12" style="padding: 0 10%;">
 					<p class="text-center text-uppercase" style="margin-bottom: 30px;"><?php esc_html_e('"HOT-ESCORTS-IRELAND.COM" contains nudity and ADULT CONTENT. BY ENTERING THIS SITE YOU CONSENT THAT YOU HAVE REACHED Full 18 years of age at this point.', 'classiera'); ?></p>
 				</div>
-				<div class="col-lg-6">
-					<button type="button" class="consent-button btn btn-primary text-uppercase pull-right btn-lg" onclick="Enter()"><?php esc_html_e('Enter', 'classiera'); ?></button>
-				</div>
-				<div class="col-lg-6">
-					<a class="consent-button btn btn-primary btn-lg" href="https://www.google.ie"><?php esc_html_e('Leave', 'classiera'); ?></a>
+				<div class="col-lg-12 clearfix">
+					<button type="button" class="consent-button btn btn-primary text-uppercase pull-right btn-lg" onclick="Enter()" style="margin-right: 20%;"><?php esc_html_e('Enter', 'classiera'); ?></button>
+					<a class="consent-button btn btn-primary btn-lg" href="https://www.google.ie" style="margin-left: 20%"><?php esc_html_e('Leave', 'classiera'); ?></a>
 				</div>
 			</div>
 			<div class="modal-footer">

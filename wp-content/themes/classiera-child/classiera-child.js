@@ -401,7 +401,7 @@ jQuery(document).on('click', ".remove-img", function () {
 			'action': 'classiera_age_over_enter'
 		};
 		$.post(ajaxurl, data, function(response){
-			$("#adult-consent").modal('hide');
+			jQuery("#adult-consent").modal('hide');
 			$(".classiera-advertisement").removeClass("blur-me");
 			setCookie("hot_escort_welcom", response, 30);
 		});

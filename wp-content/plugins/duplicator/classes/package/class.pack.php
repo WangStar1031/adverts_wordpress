@@ -26,13 +26,25 @@ class DUP_Build_Progress
     public $build_failures = array();
     public $validation_failures = array();
 
+    /**
+     *
+     * @var DUP_Package
+     */
     private $package;
 
+    /**
+     *
+     * @param DUP_Package $package
+     */
     public function __construct($package)
     {
         $this->package = $package;
     }
 
+    /**
+     *
+     * @return bool
+     */
     public function has_completed()
     {
         return $this->failed || ($this->installer_built && $this->archive_built && $this->database_script_built);
@@ -272,8 +284,11 @@ class DUP_Package
         $report['RPT']['ScanTime'] = DUP_Util::elapsedTime(DUP_Util::getMicrotime(), $timerStart);
         $fp                        = fopen(DUPLICATOR_SSDIR_PATH_TMP."/{$this->ScanFile}", 'w');
 
-
-        fwrite($fp, json_encode($report));
+        if (function_exists('wp_json_encode')) {
+            fwrite($fp, wp_json_encode($report));
+        } else {
+            fwrite($fp, json_encode($report));
+        }
         fclose($fp);
 
         return $report;
@@ -610,6 +625,7 @@ class DUP_Package
 
             $error_text = "ERROR: SQL file not complete.  The file {$sql_temp_path} looks too small ($sql_temp_size bytes) or the end of file marker was not found.";
             $this->BuildProgress->set_failed($error_text);
+            $this->Status = DUP_PackageStatus::ERROR;
             $this->update();
             //$this->setStatus(DUP_PackageStatus::ERROR);
             DUP_Log::Error("$error_text", '', Dup_ErrorBehavior::LogOnly);
@@ -633,8 +649,8 @@ class DUP_Package
             $error_message = 'ERROR: Installer file not complete.  The end of file marker was not found.  Please try to re-create the package.';
 
             $this->BuildProgress->set_failed($error_message);
+            $this->Status = DUP_PackageStatus::ERROR;
             $this->update();
-            //$this->setStatus(DUP_PackageStatus::ERROR);
             DUP_Log::error($error_message, '', Dup_ErrorBehavior::LogOnly);
             return;
         }
@@ -651,6 +667,7 @@ class DUP_Package
                 $error_message = "ERROR: The archive file contains no size.";
 
                 $this->BuildProgress->set_failed($error_message);
+                $this->Status = DUP_PackageStatus::ERROR;
                 $this->update();
                 //$this->setStatus(DUP_PackageStatus::ERROR);
                 DUP_Log::error($error_message, "Archive Size: {$zip_easy_size}", Dup_ErrorBehavior::LogOnly);
@@ -667,8 +684,9 @@ class DUP_Package
                 $error_message = sprintf(__("Can't find Scanfile %s. Please ensure there no non-English characters in the package or schedule name.", 'duplicator'), $scan_filepath);
 
                 //$this->BuildProgress->failed = true;
-                $this->setStatus(DUP_PackageStatus::ERROR);
+                //$this->setStatus(DUP_PackageStatus::ERROR);
                 $this->BuildProgress->set_failed($error_message);
+                $this->Status =  DUP_PackageStatus::ERROR;
                 $this->update();
 
                 DUP_Log::Error($error_message, '', Dup_ErrorBehavior::LogOnly);
@@ -710,20 +728,63 @@ class DUP_Package
                 if (($straight_ratio < 0.90) || ($straight_ratio > 1.01)) {
                     // Has to exceed both the straight as well as the warning ratios
                     if (($warning_ratio < 0.90) || ($warning_ratio > 1.01)) {
-
-                        $error_message = sprintf('ERROR: File count in archive vs expected suggests a bad archive (%1$d vs %2$d).', $archive_file_count, $expected_filecount);
+                        $error_message = sprintf('ERROR: File count in archive vs expected suggests a bad archive (%1$d vs %2$d).', $this->Archive->file_count, $expected_filecount);
                         $this->BuildProgress->set_failed($error_message);
+                        $this->Status = DUP_PackageStatus::ERROR;
                         $this->update();
-                        $archive_file_count = $this->Archive->file_count;
-                        DUP_Log::error($error_message, '', Dup_ErrorBehavior::LogOnly);
+                        
+                        DUP_Log::error($error_message, '');
                         return;
                     }
                 }
             }
         }
+
+        /* ------ ZIP CONSISTENCY CHECK ------ */
+        if ($this->Archive->getBuildMode() == DUP_Archive_Build_Mode::ZipArchive) {
+            DUP_LOG::trace("Running ZipArchive consistency check");
+            $zipPath = DUP_Util::safePath("{$this->StorePath}/{$this->Archive->File}");
+                        
+            $zip = new ZipArchive();
+
+            // ZipArchive::CHECKCONS will enforce additional consistency checks
+            $res = $zip->open($zipPath, ZipArchive::CHECKCONS);
+
+            if ($res !== TRUE) {
+                $consistency_error = sprintf(__('ERROR: Cannot open created archive. Error code = %1$s', 'duplicator'), $res);
+
+                DUP_LOG::trace($consistency_error);
+                switch ($res) {
+                    case ZipArchive::ER_NOZIP :
+                        $consistency_error = __('ERROR: Archive is not valid zip archive.', 'duplicator');
+                        break;
+
+                    case ZipArchive::ER_INCONS :
+                        $consistency_error = __("ERROR: Archive doesn't pass consistency check.", 'duplicator');
+                        break;
+
+
+                    case ZipArchive::ER_CRC :
+                        $consistency_error = __("ERROR: Archive checksum is bad.", 'duplicator');
+                        break;
+                }
+
+                $this->BuildProgress->set_failed($consistency_error);
+                $this->Status = DUP_PackageStatus::ERROR;
+                $this->update();
+
+                DUP_LOG::trace($consistency_error);
+                DUP_Log::error($consistency_error, '');
+            } else {
+                DUP_Log::info(__('ARCHIVE CONSISTENCY TEST: Pass', 'duplicator'));
+                DUP_LOG::trace("Zip for package $this->ID passed consistency test");
+            }
+
+            $zip->close();
+        }
     }
 
-     public function getLocalPackageFile($file_type)
+    public function getLocalPackageFile($file_type)
     {
         $file_path = null;
 
@@ -995,13 +1056,15 @@ class DUP_Package
         $this->Installer->build($this);
 
         //INTEGRITY CHECKS
-        DUP_Log::Info("\n********************************************************************************");
+        /*DUP_Log::Info("\n********************************************************************************");
         DUP_Log::Info("INTEGRITY CHECKS:");
-        DUP_Log::Info("********************************************************************************");
+        DUP_Log::Info("********************************************************************************");*/
+        $this->runDupArchiveBuildIntegrityCheck();
         $dbSizeRead  = DUP_Util::byteSize($this->Database->Size);
         $zipSizeRead = DUP_Util::byteSize($this->Archive->Size);
         $exeSizeRead = DUP_Util::byteSize($this->Installer->Size);
 
+        /*
         DUP_Log::Info("SQL File: {$dbSizeRead}");
         DUP_Log::Info("Installer File: {$exeSizeRead}");
         DUP_Log::Info("Archive File: {$zipSizeRead} ");
@@ -1015,7 +1078,8 @@ class DUP_Package
         $sql_complete_txt = DUP_Util::tailFile($sql_tmp_path, 3);
         if (!strstr($sql_complete_txt, 'DUPLICATOR_MYSQLDUMP_EOF')) {
             DUP_Log::Error("ERROR: SQL file not complete.  The end of file marker was not found.  Please try to re-create the package.");
-        }
+        }*/
+        
 
         $timerEnd = DUP_Util::getMicrotime();
         $timerSum = DUP_Util::elapsedTime($timerEnd, $timerStart);
@@ -1023,6 +1087,7 @@ class DUP_Package
         $this->Runtime = $timerSum;
         $this->ExeSize = $exeSizeRead;
         $this->ZipSize = $zipSizeRead;
+
 
         $this->buildCleanup();
 
@@ -1033,6 +1098,7 @@ class DUP_Package
         $info .= "PEAK PHP MEMORY USED: ".DUP_Server::getPHPMemory(true)."\n";
         $info .= "DONE PROCESSING => {$this->Name} ".@date(get_option('date_format')." ".get_option('time_format'))."\n";
 
+        
         DUP_Log::Info($info);
         DUP_Log::Close();
 

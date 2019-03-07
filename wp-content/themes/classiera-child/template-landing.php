@@ -15,7 +15,7 @@
  */
 get_header(); ?>
 
-<?php
+<?php 
 	$page = get_page($post->ID);
 	$current_page_id = $page->ID;
 	$page_slider = get_post_meta($current_page_id, 'page_slider', true); 

@@ -3,15 +3,15 @@
  * Plugin Name: Gutenberg
  * Plugin URI: https://github.com/WordPress/gutenberg
  * Description: Printing since 1440. This is the development plugin for the new block editor in core.
- * Version: 5.0.0
+ * Version: 5.1.1
  * Author: Gutenberg Team
  *
  * @package gutenberg
  */
 
 ### BEGIN AUTO-GENERATED DEFINES
-define( 'GUTENBERG_VERSION', '5.0.0' );
-define( 'GUTENBERG_GIT_COMMIT', 'de6e3bd667c3d1c94ca930e042c1e4081b08a1b6' );
+define( 'GUTENBERG_VERSION', '5.1.1' );
+define( 'GUTENBERG_GIT_COMMIT', '73ee13f46221eb7f59e8a89377e7c8d00a86bd6c' );
 ### END AUTO-GENERATED DEFINES
 
 gutenberg_pre_init();
@@ -32,21 +32,11 @@ function the_gutenberg_project() {
 	<noscript>
 		<div class="error" style="position:absolute;top:32px;z-index:40"><p>
 		<?php
-		// Using Gutenberg as Plugin.
-		if ( is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-			$current_url = esc_url( add_query_arg( 'classic-editor', true, $_SERVER['REQUEST_URI'] ) );
-			printf(
-				// Translators: link is to current page specify classic editor.
-				__( 'The Block Editor requires JavaScript. You can use the <a href="%s">Classic Editor</a>.', 'gutenberg' ),
-				$current_url
-			);
-		} else { // Using Gutenberg in Core.
-			printf(
-				/* translators: %s: https://wordpress.org/plugins/classic-editor/ */
-				__( 'The Block Editor requires JavaScript. Please try the <a href="%s">Classic Editor plugin</a>.', 'gutenberg' ),
-				__( 'https://wordpress.org/plugins/classic-editor/', 'gutenberg' )
-			);
-		}
+		printf(
+			/* translators: %s: https://wordpress.org/plugins/classic-editor/ */
+			__( 'The Block Editor requires JavaScript. Please try the <a href="%s">Classic Editor plugin</a>.', 'gutenberg' ),
+			__( 'https://wordpress.org/plugins/classic-editor/', 'gutenberg' )
+		);
 		?>
 		</p></div>
 	</noscript>
@@ -129,11 +119,7 @@ function is_gutenberg_page() {
 		return false;
 	}
 
-	if ( isset( $_GET['classic-editor'] ) ) {
-		return false;
-	}
-
-	if ( ! gutenberg_can_edit_post( $post ) ) {
+	if ( ! use_block_editor_for_post( $post ) ) {
 		return false;
 	}
 

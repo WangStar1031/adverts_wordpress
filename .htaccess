@@ -10,4 +10,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /ahv/v1/index.php [L]
 </IfModule>
+
 # END WordPress

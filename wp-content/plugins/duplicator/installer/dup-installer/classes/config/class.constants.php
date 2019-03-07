@@ -48,7 +48,7 @@ class DUPX_Constants
 		//PHP INI SETUP: all time in seconds
 		if (!$GLOBALS['DUPX_ENFORCE_PHP_INI']) {
 			@ini_set('mysql.connect_timeout', '5000');
-			@ini_set('memory_limit', '5000M');
+			@ini_set('memory_limit', DUPLICATOR_PHP_MAX_MEMORY);
 			@ini_set("max_execution_time", '5000');
 			@ini_set("max_input_time", '5000');
 			@ini_set('default_socket_timeout', '5000');
@@ -85,6 +85,8 @@ class DUPX_Constants
 			: @fopen($GLOBALS['LOG_FILE_PATH'], "a+");
 
 		$GLOBALS['HOST_NAME'] = strlen($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : $_SERVER['HTTP_HOST'];
+
+        if (!defined('MAX_STRLEN_SERIALIZED_CHECK')) { define('MAX_STRLEN_SERIALIZED_CHECK', 2000000); }
 	}
 }
 

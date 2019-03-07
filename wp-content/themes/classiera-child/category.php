@@ -14,7 +14,7 @@ get_header();
 
 <?php get_template_part( 'templates/searchbar/searchstyle2' ); ?>
 <!-- page content -->
-<section class="inner-page-content border-bottom top-pad-50">
+<section class="inner-page-content top-pad-50">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: anti-spam security, antispam, recaptcha, captcha, captha, Invisible reCaptcha, Invisible captcha, Invisibl reCaptcha, comment, cpatcha, google catcha, Invisible re captcha, recaptcha version3
 Requires at least: 3.9
-Tested up to: 5.0.3
-Stable tag: 1.40
+Tested up to: 5.1
+Stable tag: 1.42
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -64,11 +64,15 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 > 	* Jetpack contact form
 > 	* Fast Secure Contact Form
 > 	* MailChimp for WordPress
+> 	* Ninja Forms [NEW]
 > * Compatible with WooCommerce:
 > 	* Login form
 > 	* Register form
 > 	* Lost password form
 > 	* Checkout billing form
+> * Compatible with Divi Builder:
+> 	* Contact form
+> 	* Login form
 > * Compatible with bbPress:
 > 	* New Topic form
 > 	* Reply form
@@ -81,6 +85,9 @@ http://www.youtube.com/watch?v=qwHsW3IJ7gQ
 > 	* Registration form
 > 	* New Topic form
 > 	* Reply form
+> * Compatible with Divi Builder:
+> 	* Login form
+> 	* Contact form
 > * Select Google Captcha (reCAPTCHA) language manually
 > * Change size: normal or compact (for version 2)
 > * Configure all subsites on the network
@@ -258,6 +265,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 8. Google Captcha (reCAPTCHA) Whitelist page.
 
 == Changelog ==
+
+= V1.42 - 26.02.2019 =
+* PRO : The compatibility with Divi Builder has been added.
+* Update : All functionality was updated for WordPress 5.1.
+
+= V1.41 - 13.02.2019 =
+* PRO : The compatibility with Ninja Forms has been added.
+* Update : The user interface has been updated.
+* Bugfix : The code refactoring was performed.
 
 = V1.40 - 18.01.2019 =
 * Update : All functionality was updated for WordPress 5.0.3.
@@ -437,6 +453,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW : Ability to add Google Captcha (reCAPTCHA) into standard forms was added.
 
 == Upgrade Notice ==
+
+= V1.42 =
+* Functionality expanded.
+* The compatibility with new WordPress version updated.
+
+= V1.41 =
+* Functionality expanded.
+* Usability improved.
+* Bugs fixed.
 
 = V1.40 =
 * The compatibility with new WordPress version updated.

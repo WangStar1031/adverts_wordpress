@@ -122,7 +122,7 @@ if(isset($_POST['submitted'])) {
 	<div class="container border author-box-bg">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="row no-gutter removeMargin border-bottom author-first-row">
+				<div class="row no-gutter removeMargin author-first-row">
 					<div class="col-lg-7 col-sm-7">
 						<div class="author-info">
 							<div class="media">
@@ -298,7 +298,7 @@ if(isset($_POST['submitted'])) {
 	</div><!--container border author-box-bg-->
 </section><!--author-box-->
 <?php if($classieraAuthorStyle == 'fullwidth'){?>
-<section class="inner-page-content border-bottom">
+<section class="inner-page-content">
 	<section class="classiera-advertisement advertisement-v1">
 		<div class="tab-divs section-light-bg">
 			<div class="view-head">
@@ -360,7 +360,7 @@ if(isset($_POST['submitted'])) {
 	</section><!--classiera-advertisement advertisement-v1-->
 </section><!--inner-page-content-->
 <?php }elseif($classieraAuthorStyle == 'sidebar'){?>
-<section class="inner-page-content border-bottom top-pad-50">
+<section class="inner-page-content top-pad-50">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-lg-9">

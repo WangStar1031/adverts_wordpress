@@ -2,9 +2,9 @@
 Contributors: mndpsingh287
 Tags: wp-file-manager, elfinder,file manager, ftp, wp-filemanager,file manager, wp-filemanager, Upload Files, WP File Manager, File Manage, Edit Files, Delete Files, FTP, filemanager, wpfilemanager, ftp, file transfer, update, create, delete, view, rename, editor, Cpanel, Control Panel, Admin, Shortcode, explorer, file explorer, filemanager
 Requires at least: 4.0
-Tested up to: 5.0.3
+Tested up to: 5.1
 Requires PHP: 5.2.4
-Stable tag: 4.1
+Stable tag: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ file manager provides you ability to edit, delete, upload, download, copy and pa
 
 #### File Manager allows you to edit, delete, upload, download, zip, copy and paste files and folders directly from the Wordpress backend. Don’t bother with FTP to manage and move your files from location to location. The most powerful, flexible, and easiest Wordpress file management solution ever built!
 
-Multi Langauges Added 
+Multi Languages Added 
        
 = Key Features in File Manager free Version Plugin =
 
@@ -41,15 +41,15 @@ Key Features in the Free File Manager plugin include:
 * **Automatic File Resize**: automatically resize files once uploaded.
 * **Responsive UI**: File Manager works on tablet and mobile devices
 * **Browsing History**: File and folders browsing history
-* **Trash funtion**: Move to Trash Folder Feature
+* **Trash function**: Move to Trash Folder Feature
 * **PDF Preview**: PDF Preview feature available
 * **FTP/SFTP Support**: Alternative to FTP or Cpanel
 * **File Preview**: preview for common MIMEs and file types
 * **Directory Size**: Calculate directory size
 * **Icon View***: List and Icons view available for files and files
 * **Keyboard shortcuts***: Keyboard shortcuts available e.g. copy,paste,drag & drop
-* **Drag and drop**: File Drag & Drop file upload funtion avialable
-* **Funtions Toolbar**: Rich context menu and file manager functions toolbar
+* **Drag and drop**: File Drag & Drop file upload function available
+* **Functions Toolbar**: Rich context menu and file manager functions toolbar
 * **Thumbnails**: Thumbnails for all types of image files
 
 = Key Features in File Manager Pro Editions =
@@ -66,7 +66,7 @@ Key Features in the Free File Manager plugin include:
 * **Hide Files/Folder:** Here admin is able to hide files and folders for user roles and for users.
 * **File Type:** Control what files can be uploaded and what file can be downloaded.
 * **User Role:** admin is able to control file operations and hide and lock Files and Folders for user roles .
-* **Users:** admin is able to control file operations and hide and lock Files and Folders for paticular user .
+* **Users:** admin is able to control file operations and hide and lock Files and Folders for particular user .
 * **High performance:** High performance server backend and light client UI.
 * **File system:** Local file system storage drivers.
 * **Edit file:** User can edit text files and images.
@@ -102,7 +102,7 @@ Key Features in the Free File Manager plugin include:
 == Frequently asked questions ==
 
 = Can we make zip of any folder or file and download it ? =
-Yes, You can archieve any files and folders as zip then simple download it. Please view screenshots.
+Yes, You can achieve any files and folders as zip then simple download it. Please view screenshots.
 
 == Support == 
 * If any problem occurs, please contact us at https://webdesi9.zendesk.com/hc/en-us
@@ -132,6 +132,18 @@ Yes, You can archieve any files and folders as zip then simple download it. Plea
 
 
 == Changelog ==
+
+= 4.4 (22nd FEB, 2019) =
+
+* Extract issue fixed
+
+= 4.3 (21st FEB, 2019) =
+
+* Syntax checker feature removed for now
+
+= 4.2 (21st FEB, 2019) =
+
+* elFinder Library Updated
 
 = 4.1 (21st JAN, 2019) =
 

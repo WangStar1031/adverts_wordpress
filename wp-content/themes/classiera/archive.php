@@ -57,7 +57,7 @@ if($classiera_ads_typeOn == 1){
 		get_template_part( 'templates/searchbar/searchstyle7' );
 	}
 ?>
-<section class="inner-page-content border-bottom top-pad-50">
+<section class="inner-page-content top-pad-50">
 	<div class="container">
 		<!-- breadcrumb -->
 		<?php classiera_breadcrumbs();?>

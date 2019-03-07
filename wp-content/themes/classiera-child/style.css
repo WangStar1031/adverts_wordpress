@@ -18,6 +18,16 @@ body * {
   -webkit-font-smoothing: antialiased !important;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#flex-box {
+  flex: 1;
+}
+
 h4.edit-profile-heading {
   margin: 10px 0px 20px 0px !important;
 }
@@ -1950,5 +1960,12 @@ keyframes
   margin-bottom: 3px !important;
   margin-right: 4px !important;
   height: 260px !important;
+}
 
+
+@media screen and (max-width: 735px) {
+  .classiera-advertisement .classiera-box-div,
+  .classiera-box-div-v4 figure .premium-img .premium-img-inner {
+    height: 173px !important;
+  }
 }

@@ -17,29 +17,7 @@
     var fmlang = "<?php echo isset($_GET['lang']) ? sanitize_text_field($_GET['lang']) : ($wp_fm_lang !== false) ? $wp_fm_lang : 'en'; ?>";
     var vle_nonce = "<?php echo $vle_nonce; ?>";
     jQuery(document).ready(function() {
-        var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-
-        function checkSyntaxFunction(editor,filename,mime){
-            // console.log(editor.getValue());
-            return new Promise(function(resolve, reject) {
-                var data = {
-                    'action': 'mk_check_filemanager_php_syntax',
-                    'code': editor.getValue(),
-                    'filename': filename,
-                    'filemime': mime,
-                };
-                //syntax checker
-                jQuery.post(ajaxurl, data, function(response) {
-                    if(response == '1') {															
-                        resolve(true);
-                    } else {
-                        reject(response);
-                    }
-                });
-            })
-            
-        }
-    
+        var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";    
                     jQuery('#wp_file_manager').elfinder({
                         url : ajaxurl,
                         customData : {action: 'mk_file_folder_manager', _wpnonce: security_key },
@@ -72,32 +50,7 @@
                                                         lineWrapping: true,
                                                         //gutters: ["CodeMirror-lint-markers"],
                                                         lint: true
-                                                    }); 
-                                                    <?php if(isset($syntax_checker['fm_syntax_checker']) && !empty($syntax_checker['fm_syntax_checker']) && $syntax_checker['fm_syntax_checker'] == 1) { ?>
-                                                    if(mimeType === "text/x-php"){
-                                                        jQuery(".ui-dialog-buttonset.elfinder-edit-extras").css("position",'relative').css('bottom','5px');
-                                                        jQuery('.elfinder-edit-extras').
-                                                                append(
-                                                                    jQuery('<button title="PHP Syntax Only">Check Syntax</button>')
-                                                                    .button()
-                                                                    .removeAttr('class')
-                                                                    .addClass("ui-button-text check-syntax-cta")
-                                                                    .on('click', function(){
-                                                                        jQuery('.fm_msg_popup').fadeIn();
-                                                                        jQuery('.fm_msg_btn_dv').hide();
-                                                                        jQuery('.fm_msg_text').html("<span class='check_syntax_loading'>Validating syntax please wait...</span>");
-                                                                        checkSyntaxFunction(editor,filename,mimeType)
-                                                                        .then(function(result){
-                                                                            jQuery('.fm_msg_text').html("<span class='no_syntax_error_found'>No syntax error found. Click save button to save file <strong>"+filename+"</strong></span>");
-                                                                            jQuery('.fm_msg_btn_dv').show();
-                                                                        }).catch(function(response){
-                                                                            jQuery('.fm_msg_text').html(response);
-                                                                            jQuery('.fm_msg_btn_dv').show();
-                                                                        });
-                                                                    })
-                                                                );
-                                                    }        
-                                                    <?php } ?>
+                                                    });
                                                     return editor;
                                                     
 

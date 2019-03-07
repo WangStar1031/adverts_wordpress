@@ -588,3 +588,5 @@ function classiera_adverts_column( $column, $post_id ) {
 	  }
 	}
  }
+
+ remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
