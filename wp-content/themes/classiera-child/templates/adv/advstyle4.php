@@ -36,6 +36,10 @@ if( $_age != ""){
 	if( isset( $_GET['showers'])) $_showers = $_GET['showers'];
 	$_travel = "";
 	if( isset( $_GET['travel'])) $_travel = $_GET['travel'];
+	$_tags = "";
+	if( isset($_GET['tags'])) $_tags = $_GET['tags'];
+	$_cost = "";
+	if( isset($_GET['cost'])) $_cost = $_GET['cost'];
 	$_metaQuery = array();
 	if( $_age != ""){
 		$arrAge = explode(",", $_age);
@@ -52,26 +56,30 @@ if( $_age != ""){
 			)
 		);
 		$_metaQuery[] = $cri_Age;
-		// print_r($cri_Age);
 	}
-	$_tags = "";
-	if( isset($_GET['tags'])){
-		$_tags = $_GET['tags'];
+	if( $_cost != ""){
+		$arrCosts = explode(",", $_cost);
+		$cri_cost = array('relation' => 'AND',
+			array(
+				'key'		=> 'ads_cost',
+				'value'		=> $arrCosts[0],
+				'compare'	=> '>='
+			),
+			array(
+				'key'		=> 'ads_cost',
+				'value'		=> $arrCosts[1],
+				'compare'	=> '<='
+			)
+		);
+		$_metaQuery[] = $cri_cost;
 	}
-	// print_r($_tags);
 	if( $_tags != ""){
-		// $arrTags = explode(",", $_tags);
-		// $cri_Tags = array('relation' => 'OR');
-		// foreach ($arrTags as $value) {
-		// 	$cri_Tags[] = array('key' => 'tags', 'value' => $value, 'compare' => 'like');
-		// }
 		$cri_Tags = array(
 			'key'		=> 'tags',
 			'value'		=> $_tags,
 			'compare'	=> 'like'
 		);
 		$_metaQuery[] = $cri_Tags;
-		// print_r($cri_Tags);
 	}
 	if( $_category != ""){
 		$cri_category = array(
@@ -229,12 +237,6 @@ if( $_age != ""){
 	$arags = array(
 		'post_type' => 'post',
 		'meta_query' => $_metaQuery,
-		// 'meta_key' => 'bump_ads',
-		// 'orderby' =>  array( 
-		// 	'meta_value' => 'DESC',
-		// 	'date' => 'DESC'
-		// ),
-		// 'order' => 'DESC',
 	);
 
 	$wsp_query = new WP_Query($arags);

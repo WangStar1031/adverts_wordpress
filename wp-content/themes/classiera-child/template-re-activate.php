@@ -480,6 +480,11 @@ if(isset($_POST['postTitle'])){
                 $current_user = wp_get_current_user();
                 $userID = $current_user->ID;
                 $ads_cost=$_POST['ads_cost'];
+
+                if( $ads_cost){
+                    update_post_meta($post_id, 'ads_cost', $ads_cost);
+                }
+                
                 $uw_balance=$_POST['uw_balance'];
                 $balance=$uw_balance-$ads_cost;
                 update_user_meta($userID,'_uw_balance',$balance);

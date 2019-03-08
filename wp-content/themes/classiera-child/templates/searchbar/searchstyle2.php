@@ -36,6 +36,17 @@
 	$ageAvg1 = $ageMin;
 	$ageAvg2 = $ageMax;
 
+	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="ads_cost"' . $strInIDs;
+	$queryRes=$wpdb->get_results($sql);
+	$costMin = 0;
+	$costMax = 200;
+	if( $queryRes != false){
+		// $costMin = $queryRes[0]->min;
+		$costMax = $queryRes[0]->max;
+	}
+	$costAvg1 = $costMin;
+	$costAvg2 = $costMax;
+
 	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="native_language"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
 	$arrLangs = [];
@@ -240,6 +251,23 @@
 													<input id="age-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$ageMin?>" data-slider-max="<?=$ageMax?>" data-slider-step="1" data-slider-value="[<?=$ageAvg1?>,<?=$ageAvg2?>]"/>
 												</td>
 												<td><?=$ageMax?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<!-- Cost -->
+								<div class="row">
+									<div class="col-md-4 col-lg-4">
+										<?php esc_html_e('Select Cost Range', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<table class="col-md-12 col-lg-12">
+											<tr>
+												<td><?=$costMin?></td>
+												<td class="rangeTd">
+													<input id="cost-range" type="text" class="span2 form-control" value="" data-slider-min="<?=$costMin?>" data-slider-max="<?=$costMax?>" data-slider-step="1" data-slider-value="[<?=$costAvg1?>,<?=$costAvg2?>]"/>
+												</td>
+												<td><?=$costMax?></td>
 											</tr>
 										</table>
 									</div>
@@ -607,6 +635,7 @@
 </div>
 <form method="get" id="filterForm" action="<?php echo home_url(); ?>">
 	<input type="hidden" name="age">
+	<input type="hidden" name="cost">
 	<input type="hidden" name="tags">
 	<input type="hidden" name="category">
 	<input type="hidden" name="nat_lang">
@@ -637,12 +666,14 @@
 <script>
 	$(document).ready(function(){
 		var sldAge = new Slider('#age-range', {});
+		var sldAge = new Slider('#cost-range', {});
 		var sldWeight = new Slider('#weight-range', {});
 		var sldWeight = new Slider('#waist-range', {});
 		var sldWeight = new Slider('#hips-range', {});
 	});
 	function submitFilter(){
 		$("#filterForm input[name=age]").val($("#age-range").val());
+		$("#filterForm input[name=cost]").val($("#cost-range").val());
 		$("#filterForm input[name=category]").val($("#filter-category").val());
 		$("#filterForm input[name=nat_lang]").val($("#nat_lang").val());
 		$("#filterForm input[name=hair]").val($("#hair_color").val());
@@ -659,17 +690,6 @@
 		$("#filterForm input[name=drink]").val($("#drink-supplied").val());
 		$("#filterForm input[name=showers]").val($("#showers-available").val());
 		$("#filterForm input[name=travel]").val($("#availabl-travel").val());
-
-		// var activedTags = jQuery(".tagBtn.active");
-		// var arrTags = [];
-		// for( var i = 0; i < activedTags.length; i++){
-		// 	var curBtn = activedTags.eq(i);
-		// 	var strTag = curBtn.text();
-		// 	arrTags.push(strTag);
-		// }
-		// var strTags = arrTags.join(",");
-		// jQuery("input[name=tags]").val(strTags);
-
 		$("#filterForm input[name=tags]").val($("#filter-tags").val());
 		
 		$("#filterForm").submit();
