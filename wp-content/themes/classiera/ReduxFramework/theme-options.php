@@ -209,7 +209,7 @@
     }
 
     // Add content after the form.
-    $args['footer_text'] = __( 'Thanks for using Classiera Options Panel.', 'classiera' );
+    // $args['footer_text'] = __( 'Hot Escorts Ireland Options Panel', 'classiera' );
 
     Redux::setArgs( $opt_name, $args );
 
@@ -404,6 +404,196 @@
             ),
         )
     ) );
+
+	// START Advert Fields
+
+	Redux::setSection ( $opt_name, array(
+		'title'				=> __('Advert Fields', 'classiera'),
+		'id'				=> 'advertfields',
+		'desc'				=> __( 'Manage Advert Fields', 'classiera' ),
+		'customizer_width'	=> '200px',
+		'icon'				=> 'el el-indent-left',
+		'fields'			=> array(
+			array(
+				'id' => 'fieldsnationality',
+				'type' => 'textarea',
+				'title' => __('Nationality', 'classiera'),
+				'subtitle' => 'Add more Nationalities here',
+				'desc' => __('Advertisers Nationality' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldshaircolor',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Hair color', 'classiera'),
+				'subtitle' => 'Add more Hair Color Options',
+				'desc' => __('Advertisers Hair Color' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldseyescolor',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Eyes color', 'classiera'),
+				'subtitle' => 'Add more Eyes Color Options',
+				'desc' => __('Advertisers Eyes Color' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsethnicity',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Ethnicity', 'classiera'),
+				'subtitle' => 'Add more Ethnicities',
+				'desc' => __('Advertisers Ethnicity' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsheightfeet',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Height in Feet', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Heigtht in Feet' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsheightinches',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Height in Inches', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Heigtht in Inches' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsweight',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Weight in KG', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Wigth in KG' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsbreastssize',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Breasts Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Breasts Size' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsbreastscup',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Breasts Cup Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Breasts Cup Size' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsbreaststype',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Breasts Type', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Breasts Type' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldswaist',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Waist Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Waist Size' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldships',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Hips Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Hips Size ' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsdresssize',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Dress Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Dress Size ' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsshoesize',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Shoe Size', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Shoe Size ' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldspubicarea',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Pubic Area', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertisers Pubic Area' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldssmoker',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Smoker', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Are you a smoker?' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsnativelanguage',
+				'type' => 'textarea',
+				'rows' => '4',
+				'title' => __('Native Language', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertiser Native Language' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsextralanguage1',
+				'type' => 'textarea',
+				'rows' => '4',
+				'title' => __('Additional Language (1)', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertiser Extra Language (1)' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsextralanguage1level',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Additional Language (1) Level', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertiser Extra Language (1) Level' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsextralanguage2',
+				'type' => 'textarea',
+				'rows' => '4',
+				'title' => __('Additional Language (2)', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertiser Extra Language (2)' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsextralanguage2level',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Additional Language (2) Level', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Advertiser Extra Language (2) Level' , 'classiera'),
+			),
+			array(
+				'id' => 'fieldsavailabletotravel',
+				'type' => 'textarea',
+				'rows' => '1',
+				'title' => __('Available to Travel', 'classiera'),
+				'subtitle' => 'Add more Options here',
+				'desc' => __('Is Advertiser Available to Travel' , 'classiera'),
+			),
+
+		)
+	) );
+
+	// -> START Advert Fields
     
     // -> START HomePage Settings 
     Redux::setSection( $opt_name, array(

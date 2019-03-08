@@ -788,7 +788,6 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
               </li>
             <?php } ?>
             <!-- / Are You a Smoker? -->
-
           </ul>
         </div><!-- /Panel -->
       </div>
@@ -829,7 +828,6 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <li class="list-group-item">Private Messages: <span class="pull-right">Yes</span></li> -->
           </ul>
         </div><!-- /Panel -->
-
         <div class="panel panel-default">
           <!-- Default panel contents -->
           <h3 class="panel-heading text-center"><?php esc_html_e('Facilities', 'classiera') ?></h3>
@@ -870,6 +868,18 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           </ul>
         </div><!-- /Panel -->
      </div>
+
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <!-- <div class="panel-heading">Panel heading</div> -->
+          <h3 class="panel-heading text-center"><?php esc_html_e( 'Comments', 'classiera' ); ?></h3>
+            <div class="panel-body">
+              <?php get_template_part('comments'); ?>
+            </div>
+          </div><!-- /Panel -->
+      </div>
+
     </div><!-- / Main Info Container -->
 
   </div><!-- / Main Wrapper -->

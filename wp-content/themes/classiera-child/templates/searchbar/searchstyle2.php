@@ -39,10 +39,10 @@
 	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="ads_cost"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
 	$costMin = 0;
-	$costMax = 200;
+	$costMax = 1000;
 	if( $queryRes != false){
-		// $costMin = $queryRes[0]->min;
-		$costMax = $queryRes[0]->max;
+		if( $queryRes[0]->min) $costMin = $queryRes[0]->min;
+		if( $queryRes[0]->max) $costMax = $queryRes[0]->max;
 	}
 	$costAvg1 = $costMin;
 	$costAvg2 = $costMax;
@@ -103,13 +103,12 @@
 
 	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="hips_size"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
-	$hipsMin = 40;
+	// print_r($queryRes);
+	$hipsMin = 0;
 	$hipsMax = 99;
 	if( $queryRes != false){
 		$hipsMin = $queryRes[0]->min;
 		$hipsMax = $queryRes[0]->max;
-		// $hipsAvg1 = intval(($hipsMin * 2 + $hipsMax) / 3);
-		// $hipsAvg2 = intval(($hipsMin + $hipsMax * 2) / 3);
 	}
 	$hipsAvg1 = $hipsMin;
 	$hipsAvg2 = $hipsMax;
@@ -668,8 +667,8 @@
 		var sldAge = new Slider('#age-range', {});
 		var sldAge = new Slider('#cost-range', {});
 		var sldWeight = new Slider('#weight-range', {});
-		var sldWeight = new Slider('#waist-range', {});
-		var sldWeight = new Slider('#hips-range', {});
+		var sldWaist = new Slider('#waist-range', {});
+		var sldHips = new Slider('#hips-range', {});
 	});
 	function submitFilter(){
 		$("#filterForm input[name=age]").val($("#age-range").val());
