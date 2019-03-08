@@ -697,9 +697,15 @@ get_header(); ?>
 														<input type="hidden" name="tags">
 														<div style="margin-bottom: 20px;">
 															<?php
+															$curTag = get_post_meta($cur_post_id, 'tags', true);
+															$arrCurTags = explode(",", $curTag);
 															foreach ($arrRealTags as $value) {
+																$act = "";
+																if( array_search($value, $arrCurTags) !== false){
+																	$act = " active";
+																}
 															?>
-															<div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
+															<div class="tagBtn btn btn-primary<?=$act?>" onclick="TagClicked(this)"><?=$value?></div>
 															<?php
 															}
 															?>

@@ -223,6 +223,7 @@ $post_longitude = get_post_meta($post->ID, 'post_longitude', true);
 $post_address = get_post_meta($post->ID, 'post_address', true);
 $classieraCustomFields = get_post_meta($post->ID, 'custom_field', true);
 
+$tags = get_post_meta($post->ID, 'tags', true);
 // My Additions
 $second_phone = get_post_meta($post->ID, 'second_phone', true);
 $nationality = get_post_meta($post->ID, 'nationality', true);
@@ -530,7 +531,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
                   <i class="fa fa-tags"></i>
                   <?php esc_html_e( 'Tags', 'classiera' ); ?> :
                 </span>
-                  <?php the_tags('','',''); ?>
+                  <?php echo $tags; ?>
               </div>
             </div>
           </div><!-- /Panel -->
