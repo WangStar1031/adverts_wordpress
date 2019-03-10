@@ -48,6 +48,7 @@ $arrEthnicity = convertString2Array($redux_demo["fieldsethnicity"]);
 $arrHeightfeet = convertString2Array($redux_demo["fieldsheightfeet"]);
 $arrHeightinches = convertString2Array($redux_demo["fieldsheightinches"]);
 $arrWeight = convertString2Array($redux_demo["fieldsweight"]);
+$arrGender = convertString2Array($redux_demo["fieldsgender"]);
 $arrBreastssize = convertString2Array($redux_demo["fieldsbreastssize"]);
 $arrBreastscup = convertString2Array($redux_demo["fieldsbreastscup"]);
 $arrBreaststype = convertString2Array($redux_demo["fieldsbreaststype"]);
@@ -344,6 +345,9 @@ if(isset($_POST['postTitle'])){
                 }
                 if(isset($_POST['business_date_pound'])){
                     update_post_meta($post_id, 'business_date_pound', $_POST['business_date_pound'], $allowed);
+                }
+                if(isset($_POST['gender'])){
+                    update_post_meta($post_id, 'gender', $_POST['gender'], $allowed);
                 }
                 //Images Verified
                 update_post_meta($post_id, 'images_verified', $_POST['images_verified'], $allowed);
@@ -720,6 +724,19 @@ get_header(); ?>
                                                 <hr>
                                                 <div class="col-sm-12 col-lg-6">
                                                     <div class="form-group">
+                                                        <!-- Begin Gender -->
+                                                        <select name="gender">
+                                                            <?php
+                                                            $gender = get_post_meta($cur_post_id, 'gender', true);
+                                                            foreach ($arrGender as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+
+                                                        </select>
+                                                        <!-- End Gender -->
                                                         <!--Category-->
                                                         <select id="categorySelect" name="categorySelect" required>
                                                             <option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>

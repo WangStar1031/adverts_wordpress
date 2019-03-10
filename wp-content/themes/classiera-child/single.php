@@ -223,7 +223,21 @@ $post_longitude = get_post_meta($post->ID, 'post_longitude', true);
 $post_address = get_post_meta($post->ID, 'post_address', true);
 $classieraCustomFields = get_post_meta($post->ID, 'custom_field', true);
 
+/// Wang
+function convertString2Array($_strValue){
+  $arrTemp = explode(",", $_strValue);
+  $arrRetVal = [];
+  foreach ($arrTemp as $value) {
+    $curVal = trim($value);
+    if( $curVal != ""){
+      $arrRetVal[] = $curVal;
+    }
+  }
+  return $arrRetVal;
+}
 $tags = get_post_meta($post->ID, 'tags', true);
+/// Xing
+
 // My Additions
 $second_phone = get_post_meta($post->ID, 'second_phone', true);
 $nationality = get_post_meta($post->ID, 'nationality', true);
@@ -528,10 +542,17 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
               <p class="text-justify"><?php echo the_content(); ?><!-- No P End Tag Here, error in template file. Template tag outputs only closing </p> tag -->
               <div class="tags">
                 <span>
-                  <i class="fa fa-tags"></i>
-                  <?php esc_html_e( 'Tags', 'classiera' ); ?> :
+                  <!-- <i class="fa fa-tags"></i> -->
+                  <?php esc_html_e( 'Services Provided', 'classiera' ); ?> :
                 </span>
-                  <?php echo $tags; ?>
+                <?php
+                $arrTags = convertString2Array($tags);
+                foreach ($arrTags as $value) {
+                ?>
+                  <div class="services"><?php echo $value; ?></div>
+                <?php
+                }
+                ?>
               </div>
             </div>
           </div><!-- /Panel -->
@@ -891,7 +912,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
   
   jQuery(document).ready(function($){
 
-    $('#lightgallery').lightGallery({
+    jQuery('#lightgallery').lightGallery({
       selector: '.gallery-image',
       speed: 800,
       cssEasing : 'cubic-bezier(0.25, 0, 0.25, 1)',

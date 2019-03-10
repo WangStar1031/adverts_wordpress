@@ -115,7 +115,7 @@ if ( comments_open()) :
 				</div>
 			</div><!--form-group-->
 			<div class="form-group">
-				<button type="submit" name="submit" class="btn btn-primary sharp btn-md btn-style-one" value="<?php esc_attr_e( 'Send', 'classiera' ); ?>"><?php esc_html_e( 'Post Comment','classiera' ); ?></button>
+				<button type="submit" name="submit" class="btn btn-primary" value="<?php esc_attr_e( 'Send', 'classiera' ); ?>"><?php esc_html_e( 'Post Comment','classiera' ); ?></button>
 			</div>
 			<?php comment_id_fields(); ?>
 			<?php do_action( 'comment_form', $post->ID ); ?>

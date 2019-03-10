@@ -41,6 +41,7 @@ function convertString2Array($_strValue){
 }
 $arrRealTags = convertString2Array($redux_demo["tags-collection"]);
 $arrNationality = convertString2Array($redux_demo["fieldsnationality"]);
+$arrGender = convertString2Array($redux_demo["fieldsgender"]);
 $arrHaircolor = convertString2Array($redux_demo["fieldshaircolor"]);
 $arrEyescolor = convertString2Array($redux_demo["fieldseyescolor"]);
 $arrEthnicity = convertString2Array($redux_demo["fieldsethnicity"]);
@@ -486,6 +487,9 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['business_date_pound'])){
 					update_post_meta($post_id, 'business_date_pound', $_POST['business_date_pound'], $allowed);
 				}
+				if(isset($_POST['gender'])){
+					update_post_meta($post_id, 'gender', $_POST['gender'], $allowed);
+				}
 				//Images Verified
 				update_post_meta($post_id, 'images_verified', $_POST['images_verified'], $allowed);
 				//Age Verified
@@ -893,6 +897,15 @@ get_header(); ?>
 
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
+														<!-- Start Gender -->
+														<select name="gender">
+															<option value="" selected="" disabled><?php esc_html_e('Select Your Gender', 'classiera'); ?></option>
+															<?php foreach ($arrGender as $value) { ?>
+																<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php } ?>
+														</select>
+														<!-- End Gender Field -->
+														
 														<!--Category-->
 														<select id="categorySelect" name="categorySelect" required>
 															<option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
@@ -948,7 +961,7 @@ get_header(); ?>
 														<select name="nationality" required>
 															<option value="" selected disabled><?php esc_html_e('Select Your Nationality', 'classiera'); ?></option>
 															<?php
-															foreach ($arrNationality as $value) {
+																foreach ($arrNationality as $value) {
 															?>
 															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
 															<?php
@@ -964,7 +977,7 @@ get_header(); ?>
 													<div class="form-group">
 														<textarea name="postContent" id="description" class="form-control" data-error="<?php esc_html_e('Write description', 'classiera') ?>" required placeholder="<?php esc_html_e('About myself...', 'classiera'); ?>"></textarea>
 														<!-- Keywords Field -->
-														<input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>">
+														<!-- <input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>"> -->
 														<!-- / Keywords Field -->
 													</div><!--Ad description-->
 												</div>
@@ -1092,6 +1105,18 @@ get_header(); ?>
 															}
 															?>
 														</select>
+														<!-- Begin Gender Field -->
+														<select name="breast_size" class="fifth-size pull-right add-margin" required>
+															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastssize as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														<!-- End Gender Field -->
 													</div>
 												</div>
 												<div class="col-sm-12 col-lg-6">

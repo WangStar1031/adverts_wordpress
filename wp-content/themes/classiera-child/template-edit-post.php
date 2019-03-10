@@ -44,6 +44,7 @@ $arrNationality = convertString2Array($redux_demo["fieldsnationality"]);
 $arrHaircolor = convertString2Array($redux_demo["fieldshaircolor"]);
 $arrEyescolor = convertString2Array($redux_demo["fieldseyescolor"]);
 $arrEthnicity = convertString2Array($redux_demo["fieldsethnicity"]);
+$arrGender = convertString2Array($redux_demo["fieldsgender"]);
 $arrHeightfeet = convertString2Array($redux_demo["fieldsheightfeet"]);
 $arrHeightinches = convertString2Array($redux_demo["fieldsheightinches"]);
 $arrWeight = convertString2Array($redux_demo["fieldsweight"]);
@@ -345,6 +346,9 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['business_date_pound'])){
 					update_post_meta($post_id, 'business_date_pound', $_POST['business_date_pound'], $allowed);
 				}
+				if(isset($_POST['gender'])){
+					update_post_meta($post_id, 'gender', $_POST['gender'], $allowed);
+				}
 				//Images Verified
 				update_post_meta($post_id, 'images_verified', $_POST['images_verified'], $allowed);
 				//Age Verified
@@ -636,6 +640,19 @@ get_header(); ?>
 											<div class="row">
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
+														<!-- Begin Gender -->
+														<select name="gender">
+															<?php
+															$gender = get_post_meta($cur_post_id, 'gender', true);
+															foreach ($arrGender as $value) {
+															?>
+															<option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+
+														</select>
+														<!-- End Gender -->
 														<!--Category-->
 														<select id="categorySelect" name="categorySelect" required>
 															<option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
@@ -721,7 +738,7 @@ get_header(); ?>
 														?>
 														<textarea name="postContent" id="description" class="form-control" data-error="<?php esc_html_e('Write description', 'classiera') ?>" required ><?= $postContent?></textarea>
 														<!-- Keywords Field -->
-														<input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>" value="<?=$tags_input?>">
+														<!-- <input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>"> -->
 														<!-- / Keywords Field -->
 													</div><!--Ad description-->
 												</div>
