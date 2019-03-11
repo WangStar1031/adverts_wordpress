@@ -354,6 +354,7 @@ span.discount_per:before {
 .discount_per_parent{
     position: absolute;
     right: 0;
+    z-index: 2;
 }
 
 /*End My New Single Styles*/
@@ -1976,4 +1977,9 @@ keyframes
     color: white;
     padding: 5px 10px;
     border-radius: 4px;
+}
+
+.hover-posts span {
+  color: white !important;
+  font-size: 16px;
 }

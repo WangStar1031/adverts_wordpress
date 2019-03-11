@@ -36,16 +36,16 @@
 	$ageAvg1 = $ageMin;
 	$ageAvg2 = $ageMax;
 
-	$sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="ads_cost"' . $strInIDs;
-	$queryRes=$wpdb->get_results($sql);
-	$costMin = 0;
-	$costMax = 1000;
-	if( $queryRes != false){
-		if( $queryRes[0]->min) $costMin = $queryRes[0]->min;
-		if( $queryRes[0]->max) $costMax = $queryRes[0]->max;
-	}
-	$costAvg1 = $costMin;
-	$costAvg2 = $costMax;
+	// $sql='select MIN(meta_value) as min, MAX(meta_value) as max from ' . $postmeta . ' where meta_key="ads_cost"' . $strInIDs;
+	// $queryRes=$wpdb->get_results($sql);
+	// $costMin = 0;
+	// $costMax = 1000;
+	// if( $queryRes != false){
+	// 	if( $queryRes[0]->min) $costMin = $queryRes[0]->min;
+	// 	if( $queryRes[0]->max) $costMax = $queryRes[0]->max;
+	// }
+	// $costAvg1 = $costMin;
+	// $costAvg2 = $costMax;
 
 	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="native_language"' . $strInIDs;
 	$queryRes=$wpdb->get_results($sql);
@@ -255,7 +255,7 @@
 									</div>
 								</div>
 								<!-- Cost -->
-								<div class="row">
+								<!-- <div class="row">
 									<div class="col-md-4 col-lg-4">
 										<?php esc_html_e('Select Cost Range', 'classiera'); ?>
 									</div>
@@ -270,7 +270,7 @@
 											</tr>
 										</table>
 									</div>
-								</div>
+								</div> -->
 								<!-- Tags -->
 								<div class="row">
 									<div class="col-md-4 col-lg-4">
@@ -665,14 +665,14 @@
 <script>
 	$(document).ready(function(){
 		var sldAge = new Slider('#age-range', {});
-		var sldAge = new Slider('#cost-range', {});
+		// var sldAge = new Slider('#cost-range', {});
 		var sldWeight = new Slider('#weight-range', {});
 		var sldWaist = new Slider('#waist-range', {});
 		var sldHips = new Slider('#hips-range', {});
 	});
 	function submitFilter(){
 		$("#filterForm input[name=age]").val($("#age-range").val());
-		$("#filterForm input[name=cost]").val($("#cost-range").val());
+		// $("#filterForm input[name=cost]").val($("#cost-range").val());
 		$("#filterForm input[name=category]").val($("#filter-category").val());
 		$("#filterForm input[name=nat_lang]").val($("#nat_lang").val());
 		$("#filterForm input[name=hair]").val($("#hair_color").val());
