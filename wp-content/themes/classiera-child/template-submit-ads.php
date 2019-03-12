@@ -302,7 +302,8 @@ if(isset($_POST['postTitle'])){
 				
 				/*If We are using CSC Plugin*/
 				if(isset($_POST['categorySelect'])){
-					update_post_meta($post_id, 'categorySelect', esc_attr( $_POST['categorySelect'] ) );
+					// update_post_meta($post_id, 'categorySelect', esc_attr( $_POST['categorySelect'] ) );
+					wp_set_post_categories($post_id, array($_POST['categorySelect']));
 				}	
 				if(isset($_POST['classiera_sub_fields'])){
 					$classiera_sub_fields = $_POST['classiera_sub_fields'];

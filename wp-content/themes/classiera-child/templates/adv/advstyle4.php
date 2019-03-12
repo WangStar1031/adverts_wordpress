@@ -81,14 +81,14 @@ if( $_age != ""){
 		);
 		$_metaQuery[] = $cri_Tags;
 	}
-	if( $_category != ""){
-		$cri_category = array(
-			'key'		=> 'categorySelect',
-			'value'		=> $_category,
-			'compare'	=> '='
-		);
-		$_metaQuery[] = $cri_category;
-	}
+	// if( $_category != ""){
+	// 	$cri_category = array(
+	// 		'key'		=> 'categorySelect',
+	// 		'value'		=> $_category,
+	// 		'compare'	=> '='
+	// 	);
+	// 	$_metaQuery[] = $cri_category;
+	// }
 	if( $_nat_lang != ""){
 		$cri_nat_lang = array(
 			'key'		=> 'native_language',
@@ -252,6 +252,12 @@ if( $_age != ""){
 							<div class="grid">
 <?php
 	while ($wsp_query->have_posts()) : $wsp_query->the_post();
+		if($_category != ""){
+            $curCatSel = get_the_category($post->ID);
+            $curCategory = $curCatSel[0]->term_id;
+            if($curCategory != $_category)
+            	continue;
+		}
 		$featuredPosts[] = $post->ID;
 		// print_r($post);
 		get_template_part( 'templates/classiera-loops/loop-canary');

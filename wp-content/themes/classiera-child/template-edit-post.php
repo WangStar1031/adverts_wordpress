@@ -154,7 +154,8 @@ if(isset($_POST['postTitle'])){
 				$postCity = $_POST['post_city'];
 				
 				if( isset($_POST['categorySelect'])){
-					update_post_meta($post_id, 'categorySelect', $_POST['categorySelect']);
+					// update_post_meta($post_id, 'categorySelect', $_POST['categorySelect']);
+					wp_set_post_categories($post_id, array($_POST['categorySelect']));
 				}
 				/*If We are using CSC Plugin*/
 				if(isset($_POST['post_category_type'])){
@@ -663,7 +664,11 @@ get_header(); ?>
 																'order'=> 'ASC'
 																) 
 															);
-															$curCategory = get_post_meta($cur_post_id, 'categorySelect', true);
+																$curCatSel = get_the_category($cur_post_id);
+																$curCategory = $curCatSel[0]->term_id;
+																// print_r($curCatSel);
+															// $curCategory = get_post_meta($cur_post_id, 'categorySelect', true);
+
 															// echo "<option>" . $curCategory . "</option>";
 															// echo($curCategory);
 															foreach ($categories as $category){
