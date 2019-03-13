@@ -4,7 +4,7 @@ Tags: social,  login, social login, facebook, twitter, google, social connect, s
 Donate link: http://accesspressthemes.com/donation/
 Requires at least: 3.8
 Tested up to: 5.0
-Stable tag: 3.4.0
+Stable tag: 3.4.1
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -138,6 +138,10 @@ Yes. You can use the AccessPress social login lite anywhere by using the shortco
 4. Backend Other settings Section.
 
 == Changelog ==
+
+
+= 3.4.1 =
+* Issue resolved for google+ login being shutdown and migrate to google OAuth.
 
 = 3.4.0 =
 * Issue resolved for Twitter Social Login.

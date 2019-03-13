@@ -896,7 +896,15 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           <!-- <div class="panel-heading">Panel heading</div> -->
           <h3 class="panel-heading text-center"><?php esc_html_e( 'Comments', 'classiera' ); ?></h3>
             <div class="panel-body">
-              <?php get_template_part('comments'); ?>
+              <!--comments-->
+              <?php if($classieraComments == 1){?>
+                <?php 
+                $file ='';
+                $separate_comments ='';
+                comments_template( $file, $separate_comments );
+                ?>
+              <?php } ?>
+              <!--comments-->
             </div>
           </div><!-- /Panel -->
       </div>

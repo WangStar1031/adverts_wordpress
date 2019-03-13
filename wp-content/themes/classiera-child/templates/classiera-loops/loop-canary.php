@@ -57,6 +57,12 @@
 	}
 	$post_price = get_post_meta($post->ID, 'post_price', true);
 	$post_phone = get_post_meta($post->ID, 'post_phone', true);
+	$fifteen_min_euro = get_post_meta($post->ID, 'fifteen_min_euro', true);
+	$thirty_min_euro = get_post_meta($post->ID, 'thirty_min_euro', true);
+	$fourty_five_min_euro = get_post_meta($post->ID, 'fourty_five_min_euro', true);
+	$one_hour_euro = get_post_meta($post->ID, 'one_hour_euro', true);
+	$full_day_euro = get_post_meta($post->ID, 'full_day_euro', true);
+	$business_date_euro = get_post_meta($post->ID, 'business_date_euro', true);
 	$theTitle = get_the_title();
 	$postCatgory = get_the_category( $post->ID );
 	$categoryLink = get_category_link($catID);
@@ -68,94 +74,148 @@
 	$current_time = date("Y-m-d H:i:s");		
 	if($current_time >= $classiera_ads_statustime){ ?>
 
-<div class="<?php echo $largeAds;?>">
-	<div class="classiera-box-div classiera-box-div-v4">
-		<figure class="clearfix">
-			<div class="premium-img">
-			<?php 
-				$classieraFeaturedPost = get_post_meta($post->ID, 'featured_post', true);
-				if($classieraFeaturedPost == 1){
-					?>
-					<!-- <div class="featured-tag">
-						<span class="left-corner"></span>
-						<span class="right-corner"></span>
-						<div class="featured">
-							<p><?php esc_html_e( 'Featured', 'classiera' ); ?></p>
-						</div>
-					</div> -->
-					<?php
-				}
-				?>
-
-				<div class="premium-img-inner">
-					<?php
-						$discount_per = get_post_meta($post->ID,'discount_percentage',true);
-						if(!empty($discount_per) && $discount_per>0)
-						{
-							?>
-							<div class="discount_per_parent">
-								<span class="discount_per">
-									<?php esc_html_e('-'.$discount_per.'%','classiera');?>
-								</span>
-							</div>
-							<?php
-						}
-					?>
-				<!-- Get the image -->	
-				<?php
-					// $imageurl = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $image_size);
-					// $thumb_id = get_post_thumbnail_id($post->ID);
-					$posttype = get_post_meta($post->ID, "ads_type_selected");
-					$post_type = $posttype[0];
-					if( strpos($post_type, 'standard') === false ){
-						$realUrl = get_post_meta($post->ID, "croppedImg_Path_double");
-					} else {
-						$realUrl = get_post_meta($post->ID, "croppedImg_Path");
-					}
-					if( count($realUrl) != 0){
-					?>
-					<img class="img-responsive" src="<?php echo esc_url($realUrl[0]); ?>" alt="<?php echo esc_html($theTitle); ?>" postID="<?=$post->ID?>" posttype="<?=$post_type?>">
-					<?php
-					} else{
-					?>
-					<img class="img-responsive" src="<?php echo get_template_directory_uri() . '/images/nothumb.png'; ?>" alt="<?php echo esc_html($theTitle); ?>" postID="<?=$post->ID?>" posttype="<?=$post_type?>">
-					<?php
-					}
-				?>
-				<!-- / Get the Image -->
-					<!-- Hover content -->
-					<span class="hover-posts">
-						<a href="<?php the_permalink(); ?>" class="btn btn-primary btn-md btn-style-four"><?php esc_html_e('View advert', 'classiera'); ?></a>
-					</span>
-					<!-- / Hover Content -->
-					<?php if(!empty($classiera_ads_type)){?>
-					<!-- Display Ad type -->
-					<!-- <span class="classiera-buy-sel">
-						<?php classiera_buy_sell($classiera_ads_type); ?>
-					</span> -->
-					<!-- / Display Ad type -->
-					<?php } ?>
-					<div class="category">
-						<!-- <span style="background:<?php echo esc_html($category_icon_color); ?>;">
-						<?php 
-						if($classieraIconsStyle == 'icon'){
-							?>
-							<i class="<?php echo esc_html($category_icon_code);?>"></i>
-							<?php
-						}elseif($classieraIconsStyle == 'img'){
-							?>
-							<img src="<?php echo esc_url($classieraCatIcoIMG); ?>" alt="<?php echo esc_html(get_cat_name( $catName )); ?>">
-							<?php
-						}
+	<div class="<?php echo $largeAds;?>">
+		<div class="classiera-box-div classiera-box-div-v4">
+			<figure class="clearfix">
+				<div class="premium-img">
+				<?php 
+					$classieraFeaturedPost = get_post_meta($post->ID, 'featured_post', true);
+					if($classieraFeaturedPost == 1){
 						?>
-						</span> -->
-						<a href="<?php echo esc_url($categoryLink); ?>"><?php echo esc_html($postCatgory[0]->name); ?></a>
-						<!-- <a href="tel:<?php echo esc_html($post_phone); ?>"><?php echo esc_html($post_phone); ?></a> -->
-						
-					</div><!--category-->
-				</div><!--premium-img-inner-->
+						<!-- <div class="featured-tag">
+							<span class="left-corner"></span>
+							<span class="right-corner"></span>
+							<div class="featured">
+								<p><?php esc_html_e( 'Featured', 'classiera' ); ?></p>
+							</div>
+						</div> -->
+						<?php
+					}
+					?>
 
-			</div><!--premium-img-->
-		</figure>
-	</div><!--row-->
-</div>		<?php } ?><!--item item-grid item-masonry-->
+					<div class="premium-img-inner">
+						<?php
+							$discount_per = get_post_meta($post->ID,'discount_percentage',true);
+							if(!empty($discount_per) && $discount_per>0)
+							{
+								?>
+								<div class="discount_per_parent">
+									<span class="discount_per">
+										<?php esc_html_e('-'.$discount_per.'%','classiera');?>
+									</span>
+								</div>
+								<?php
+							}
+						?>
+					<!-- Get the image -->	
+					<?php
+						// $imageurl = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $image_size);
+						// $thumb_id = get_post_thumbnail_id($post->ID);
+						$posttype = get_post_meta($post->ID, "ads_type_selected");
+						$post_type = $posttype[0];
+						if( strpos($post_type, 'standard') === false ){
+							$realUrl = get_post_meta($post->ID, "croppedImg_Path_double");
+						} else {
+							$realUrl = get_post_meta($post->ID, "croppedImg_Path");
+						}
+						if( count($realUrl) != 0){
+						?>
+						<img class="img-responsive" src="<?php echo esc_url($realUrl[0]); ?>" alt="<?php echo esc_html($theTitle); ?>" postID="<?=$post->ID?>" posttype="<?=$post_type?>">
+						<?php
+						} else{
+						?>
+						<img class="img-responsive" src="<?php echo get_template_directory_uri() . '/images/nothumb.png'; ?>" alt="<?php echo esc_html($theTitle); ?>" postID="<?=$post->ID?>" posttype="<?=$post_type?>">
+						<?php
+						}
+					?>
+					<!-- / Get the Image -->
+						<!-- Hover content -->
+						<a href="<?php the_permalink(); ?>">
+							<span class="hover-posts">
+								<div class="row">
+									<div class="col-lg-12">
+										<h4 style="color: white"><?php echo esc_html($theTitle); ?></h4>
+									</div>
+									<div class="col-lg-12">
+
+										<!-- Start 15 Minutes Price -->
+										<?php if (!empty($fifteen_min_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('15 Min', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($fifteen_min_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End 15 Minutes Price -->
+										
+										<!-- Start 30 Minutes Price -->
+										<?php if (!empty($thirty_min_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('30 Min', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($thirty_min_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End 30 Minutes Price -->
+
+										<!-- Start 45 Minutes Price -->
+										<?php if (!empty($fourty_five_min_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('45 Min', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($fourty_five_min_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End 45 Minutes price -->
+
+										<!-- Start One Hour Price -->
+										<?php if (!empty($one_hour_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('1 Hour', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($one_hour_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End One hour price -->
+
+										<!-- Start Full Day Price -->
+										<?php if (!empty($full_day_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('Full Day', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($full_day_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End Full Day Price -->
+										<!-- Start Business Date -->
+										<?php if (!empty($business_date_euro)) { ?>
+											<div class="col-lg-6">
+												<span class="pull-right"><?php esc_html_e('Date', 'classiera'); ?></span>
+											</div>
+											<div class="col-lg-6">
+												<span class="pull-left"><?php echo esc_html($business_date_euro); ?> &euro;</span>
+											</div>
+										<?php } ?>
+										<!-- End Business Date Price -->
+
+									</div>
+								</div>
+							</span>
+						</a>
+						<!-- / Hover Content -->
+						<div class="category">
+							<a href="<?php echo esc_url($categoryLink); ?>"><?php echo esc_html($postCatgory[0]->name); ?></a>
+							<!-- <a href="tel:<?php echo esc_html($post_phone); ?>"><?php echo esc_html($post_phone); ?></a> -->
+						</div><!--category-->
+					</div><!--premium-img-inner-->
+
+				</div><!--premium-img-->
+			</figure>
+		</div><!--row-->
+	</div>
+<?php } ?><!--item item-grid item-masonry-->

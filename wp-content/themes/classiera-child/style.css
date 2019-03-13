@@ -1983,3 +1983,8 @@ keyframes
   color: white !important;
   font-size: 16px;
 }
+
+#comments-modal .modal-footer {
+  margin-right: -15px;
+  margin-left: -15px;
+}

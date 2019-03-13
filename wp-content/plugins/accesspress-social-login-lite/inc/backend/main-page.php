@@ -208,6 +208,9 @@
                                                     <input type='hidden' name='network_ordering[]' value='google' />
                                                     <div class='apsl-info'>
                                                         <span class='apsl-info-note'><?php _e('Note:', 'accesspress-social-login-lite'); ?></span> <br />
+                                                        <br/>
+                                                        <span class='apsl-info-content' style="color:red"><strong>Important Notice: </strong> In prior to google+ being shutdown from March 7, 2019, the code for Google+ login to google oauth login has been updated. You might need to revalidate and create the client key & client secret again. </span>
+                                                        <br/><br/>
                                                         <span class='apsl-info-content'>You need to create new google API application to setup the google login. Please follow the instructions to create new application.</span>
                                                         <ul class='apsl-info-lists'>
                                                             <li>Go to <a href='https://console.developers.google.com/project' target='_blank'>https://console.developers.google.com/project.</a> </li>

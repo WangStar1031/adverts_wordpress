@@ -198,14 +198,14 @@ a {
 	-o-transform: scale(0);
   text-align: center; }
   .hover-posts a {
-    top: 50%;
+    /*top: 50%;*/
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);	
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%); 
 	-o-transform: translateY(-50%);
-    display: inline-block;
-    position: relative;
+    /*display: inline-block;*/
+    /*position: relative;*/
     z-index: 100; }
 
 .border-none {

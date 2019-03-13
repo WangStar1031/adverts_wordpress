@@ -5968,18 +5968,12 @@ button.close {
   height: 50px;
   overflow: scroll;
 }
-
-.modal-content {
-    -webkit-box-shadow: 0px 2px 45px 0px rgba(255, 0, 0, .5);
-            box-shadow: 0px 2px 45px 0px rgba(255, 0, 0, .5);
-  }
-  
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
     margin: 30px auto;
   }
- .modal-content {
+  .modal-content {
     -webkit-box-shadow: 0px 2px 45px 0px rgba(255, 0, 0, .5);
             box-shadow: 0px 2px 45px 0px rgba(255, 0, 0, .5);
   }

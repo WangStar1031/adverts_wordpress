@@ -3,15 +3,16 @@
  * Plugin Name: Gutenberg
  * Plugin URI: https://github.com/WordPress/gutenberg
  * Description: Printing since 1440. This is the development plugin for the new block editor in core.
- * Version: 5.1.1
+ * Version: 5.2.0
  * Author: Gutenberg Team
+ * Text Domain: gutenberg
  *
  * @package gutenberg
  */
 
 ### BEGIN AUTO-GENERATED DEFINES
-define( 'GUTENBERG_VERSION', '5.1.1' );
-define( 'GUTENBERG_GIT_COMMIT', '73ee13f46221eb7f59e8a89377e7c8d00a86bd6c' );
+define( 'GUTENBERG_VERSION', '5.2.0' );
+define( 'GUTENBERG_GIT_COMMIT', '6de5263995fb574229fdd4b388f38a1006710746' );
 ### END AUTO-GENERATED DEFINES
 
 gutenberg_pre_init();
@@ -75,6 +76,15 @@ function gutenberg_menu() {
 		__( 'Demo', 'gutenberg' ),
 		'edit_posts',
 		'gutenberg'
+	);
+
+	add_submenu_page(
+		'gutenberg',
+		__( 'Widgets (beta)', 'gutenberg' ),
+		__( 'Widgets (beta)', 'gutenberg' ),
+		'edit_theme_options',
+		'gutenberg-widgets',
+		'the_gutenberg_widgets'
 	);
 
 	if ( current_user_can( 'edit_posts' ) ) {
@@ -225,104 +235,4 @@ function gutenberg_init( $return, $post ) {
 	the_gutenberg_project();
 
 	return true;
-}
-
-/**
- * Adds the filters to register additional links for the Gutenberg editor in
- * the post/page screens.
- *
- * @since 1.5.0
- * @deprecated 5.0.0
- */
-function gutenberg_add_edit_link_filters() {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-}
-
-/**
- * Registers an additional link in the post/page screens to edit any post/page in
- * the Classic editor.
- *
- * @since 1.5.0
- * @deprecated 5.0.0
- *
- * @param array $actions Post actions.
- *
- * @return array Updated post actions.
- */
-function gutenberg_add_edit_link( $actions ) {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-
-	return $actions;
-}
-
-/**
- * Removes the Edit action from the reusable block list's Bulk Actions dropdown.
- *
- * @since 3.8.0
- * @deprecated 5.0.0
- *
- * @param array $actions Bulk actions.
- *
- * @return array Updated bulk actions.
- */
-function gutenberg_block_bulk_actions( $actions ) {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-
-	return $actions;
-}
-
-/**
- * Prints the JavaScript to replace the default "Add New" button.$_COOKIE
- *
- * @since 1.5.0
- * @deprecated 5.0.0
- */
-function gutenberg_replace_default_add_new_button() {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-}
-
-/**
- * Adds the block-editor-page class to the body tag on the Gutenberg page.
- *
- * @since 1.5.0
- * @deprecated 5.0.0
- *
- * @param string $classes Space separated string of classes being added to the body tag.
- * @return string The $classes string, with block-editor-page appended.
- */
-function gutenberg_add_admin_body_class( $classes ) {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-
-	return $classes;
-}
-
-/**
- * Adds attributes to kses allowed tags that aren't in the default list
- * and that Gutenberg needs to save blocks such as the Gallery block.
- *
- * @deprecated 5.0.0
- *
- * @param array $tags Allowed HTML.
- * @return array (Maybe) modified allowed HTML.
- */
-function gutenberg_kses_allowedtags( $tags ) {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-
-	return $tags;
-}
-
-/**
- * Adds the wp-embed-responsive class to the body tag if the theme has opted in to
- * Gutenberg responsive embeds.
- *
- * @since 4.1.0
- * @deprecated 5.0.0
- *
- * @param Array $classes Array of classes being added to the body tag.
- * @return Array The $classes array, with wp-embed-responsive appended.
- */
-function gutenberg_add_responsive_body_class( $classes ) {
-	_deprecated_function( __FUNCTION__, '5.0.0' );
-
-	return $classes;
 }

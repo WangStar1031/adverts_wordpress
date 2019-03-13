@@ -414,6 +414,13 @@
 		'customizer_width'	=> '200px',
 		'icon'				=> 'el el-indent-left',
 		'fields'			=> array(
+            array(
+                'id' => 'fieldsgender',
+                'type' => 'textarea',
+                'title' => __('Gender', 'classiera'),
+                'subtitle' => '',
+                'desc' => __('Advertisers Gender' , 'classiera'),
+            ),
 			array(
 				'id' => 'fieldsnationality',
 				'type' => 'textarea',

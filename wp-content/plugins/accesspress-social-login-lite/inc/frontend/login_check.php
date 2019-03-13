@@ -37,7 +37,8 @@ if( !class_exists( 'APSL_Lite_Login_Check_Class' ) ) {
                         include( APSL_PLUGIN_DIR . 'google/Client.php' );
                     }
                     if(!class_exists('Google_Service_Plus')){
-                        include( APSL_PLUGIN_DIR . 'google/Service/Plus.php' );
+                        include( APSL_PLUGIN_DIR . 'google/Service/Oauth2.php' );
+                        //include( APSL_PLUGIN_DIR . 'google/Service/Plus.php' );
                     }
                         $this->onGoogleLogin();
                     break;
@@ -463,13 +464,19 @@ if( !class_exists( 'APSL_Lite_Login_Check_Class' ) ) {
             $client->setClientId( $client_id );
             $client->setClientSecret( $client_secret );
             $client->setRedirectUri( $redirect_uri );
-            $client->addScope( "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.profile.emails.read" );
+            //$client->addScope( "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.profile.emails.read" );
+            
+            $client->setScopes([
+                "profile", // can give: all we need, but no email
+                "email", // can give: all we need, but no language (do we need that?)
+            ]);
+            
             if( isset( $encoded_url ) && $encoded_url != '' ) {
                 $client->setState( base64_encode( "redirect_to=$encoded_url" ) );
             }
             
-            $service = new Google_Service_Plus( $client );
-            
+            //$service = new Google_Service_Plus( $client );
+            $service = new Google_Service_Oauth2($client);
             if( $action == 'login' ) { // Get identity from user and redirect browser to OpenID Server
             	unset($_SESSION['access_token']);
                 if( !( isset( $_SESSION['access_token'] ) && $_SESSION['access_token'] ) ) {
@@ -492,7 +499,8 @@ if( !class_exists( 'APSL_Lite_Login_Check_Class' ) ) {
                 $client->setAccessToken( $_SESSION['access_token'] );
                 
                 try {
-                    $user = $service->people->get( "me", array() );
+                    //$user = $service->people->get( "me", array() );
+                     $user = $service->userinfo->get();
                 }
                 catch( Exception $fault ) {
                     unset( $_SESSION['access_token'] );
@@ -502,14 +510,17 @@ if( !class_exists( 'APSL_Lite_Login_Check_Class' ) ) {
                 }
                 
                 if( !empty( $user ) ) {
-                    if( !empty( $user->emails ) ) {
+                    if( !empty( $user->email ) ) {
                         
-                        $response->email = $user->emails[0]->value;
-                        $response->username = ($user->name->givenName) ? strtolower($user->name->givenName) : $user_email;
-                        $response->first_name = $user->name->givenName;
-                        $response->last_name = $user->name->familyName;
+                        $response->email = $user->email;
+                        //$response->username = ($user->name->givenName) ? strtolower($user->name->givenName) : $user_email;
+                        $response->username = ($user->givenName != '') ? strtolower($user->givenName) : $user->email;
+                        $response->first_name = $user->givenName;
+                        $response->last_name = $user->familyName;
                         $response->deuid = $user->emails[0]->value;
-                        $response->deuimage = $user->image->url;
+                        //$response->deuimage = $user->image->url;
+                        $imageUrl = substr($user->picture, 0, strpos($user->picture . "?sz=", "?sz=")) . '?sz=450';
+                        $response->deuimage = $imageUrl;
                         $response->gender = isset($user->gender) ? $user->gender : 'N/A';
                         $response->id = $user->id;
                         $response->about = $user->aboutMe;
