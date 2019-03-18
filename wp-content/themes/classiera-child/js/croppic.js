@@ -314,7 +314,7 @@
 
                 that.imgUrl = response.url;
 
-                var img = $('<img src="'+response.url+'">')
+                var img = $('<img style="display:none;" src="'+response.url+'">')
 
 				that.obj.append(img);
 
@@ -322,6 +322,7 @@
 					that.initCropper();
 					that.hideLoader();
 					if (that.options.onAfterImgUpload) that.options.onAfterImgUpload.call(that);
+					img.show();
 				});
                                 
                 if (that.options.onAfterImgUpload) that.options.onAfterImgUpload.call(that);

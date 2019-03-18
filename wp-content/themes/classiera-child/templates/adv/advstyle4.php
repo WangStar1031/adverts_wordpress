@@ -40,6 +40,10 @@ if( $_age != ""){
 	if( isset($_GET['tags'])) $_tags = $_GET['tags'];
 	$_cost = "";
 	if( isset($_GET['cost'])) $_cost = $_GET['cost'];
+	$_gender = "";
+	if( isset($_GET['gender'])) $_gender = $_GET['gender'];
+	$_nationality = "";
+	if( isset($_GET['nationality'])) $_nationality = $_GET['nationality'];
 	$_metaQuery = array();
 	if( $_age != ""){
 		$arrAge = explode(",", $_age);
@@ -232,6 +236,31 @@ if( $_age != ""){
 			'compare'	=> '='
 		);
 		$_metaQuery[] = $cri_travel;
+	}
+	if( $_gender != ""){
+		$cri_gender = array(
+			'key'		=> 'gender',
+			'value'		=> $_gender,
+			'compare'	=> '='
+		);
+		$_metaQuery[] = $cri_gender;
+	}
+	if( $_gender != ""){
+		$cri_gender = array(
+			'key'		=> 'gender',
+			'value'		=> $_gender,
+			'compare'	=> '='
+		);
+		$_metaQuery[] = $cri_gender;
+	}
+	if( $_nationality != ""){
+		$cri_nationality = array(
+			'key'		=> 'nationality',
+			'value'		=> $_nationality,
+			'compare'	=> '='
+		);
+		// print_r($cri_nationality);
+		$_metaQuery[] = $cri_nationality;
 	}
 	// print_r($_metaQuery);
 	$arags = array(
