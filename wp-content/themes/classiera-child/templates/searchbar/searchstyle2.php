@@ -134,6 +134,20 @@
 		$arrPubicArea[] = $value->val;
 	}
 
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="gender"' . $strInIDs . ' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrGender = [];
+	foreach ($queryRes as $value) {
+		$arrGender[] = $value->val;
+	}
+
+	$sql='select distinct meta_value as val from ' . $postmeta . ' where meta_key="nationality"' . $strInIDs . ' order by meta_value';
+	$queryRes=$wpdb->get_results($sql);
+	$arrNationality = [];
+	foreach ($queryRes as $value) {
+		$arrNationality[] = $value->val;
+	}
+
 ?>
 <section class="search-section search-section-v2">
 	<div class="container">
@@ -231,7 +245,7 @@
 						<div class="panel-heading" role="tab" id="headingOne">
 							<h4 class="panel-title">
 								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									Collapsible Group Item #1 
+									Collapsible Group Item #1
 								</a>
 							</h4>
 						</div>
@@ -356,6 +370,45 @@
 										</select>
 									</div>
 								</div>
+
+								<!-- Nationality -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Nationality', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="nationality">
+											<option value="" selected disabled><?php esc_html_e('Choose Nationality', 'classiera'); ?></option>
+											<?php
+											foreach ($arrNationality as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+
+								<!-- Gender -->
+								<div class="row">
+									<div class="col-lg-4 col-md-4">
+										<?php esc_html_e('Gender', 'classiera'); ?>
+									</div>
+									<div class="col-md-8 col-lg-8">
+										<select class="form-control" name="filter-category" id="gender">
+											<option value="" selected disabled><?php esc_html_e('Choose Gender', 'classiera'); ?></option>
+											<?php
+											foreach ($arrGender as $value) {
+											?>
+											<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+											<?php
+											}
+											?>
+										</select>
+									</div>
+								</div>
+
 								<!-- Hair color -->
 								<div class="row">
 									<div class="col-lg-4 col-md-4">
@@ -652,6 +705,8 @@
 	<input type="hidden" name="drink">
 	<input type="hidden" name="showers">
 	<input type="hidden" name="travel">
+	<input type="hidden" name="gender">
+	<input type="hidden" name="nationality">
 </form>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.min.js"></script>
@@ -674,6 +729,8 @@
 		$("#filterForm input[name=age]").val($("#age-range").val());
 		// $("#filterForm input[name=cost]").val($("#cost-range").val());
 		$("#filterForm input[name=category]").val($("#filter-category").val());
+		$("#filterForm input[name=gender]").val($("#gender").val());
+		$("#filterForm input[name=nationality]").val($("#nationality").val());
 		$("#filterForm input[name=nat_lang]").val($("#nat_lang").val());
 		$("#filterForm input[name=hair]").val($("#hair_color").val());
 		$("#filterForm input[name=eyes]").val($("#eyes_color").val());

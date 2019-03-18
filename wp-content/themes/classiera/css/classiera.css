@@ -1147,8 +1147,11 @@
       position: relative; }
     .classiera-box-div-v4 figure .premium-img img {
       width: 100%;
-      object-fit: cover;
-      -o-object-fit: cover; }
+      /*object-fit: cover;
+      -o-object-fit: cover;*/
+       object-fit: fill;
+      -o-object-fit: fill;
+    }
     .classiera-box-div-v4 figure .premium-img .category {
       background: url("../images/gradient.png") repeat;
       position: absolute;

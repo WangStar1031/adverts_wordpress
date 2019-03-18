@@ -270,6 +270,7 @@ $disabled_friendly = get_post_meta($post->ID, 'disabled_friendly', true);
 $drinks_supplied = get_post_meta($post->ID, 'drinks_supplied', true);
 $showers_available = get_post_meta($post->ID, 'showers_available', true);
 $can_travel = get_post_meta($post->ID, 'can_travel', true);
+$gender = get_post_meta($post->ID, 'gender', true);
 //Prices
 $fifteen_min_euro = get_post_meta($post->ID, 'fifteen_min_euro', true);
 $fifteen_min_pound = get_post_meta($post->ID, 'fifteen_min_pound', true);
@@ -696,6 +697,14 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           <h3 class="panel-heading text-center"><?php esc_html_e( 'Physical Appearance', 'classiera' ); ?></h3>
           <ul class="list-group">
             
+            <!-- Gender -->
+            <?php if(!empty($gender)) {?>
+              <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
+                <span class="pull-right"><?php echo esc_html($gender); ?></span>
+              </li> 
+            <?php }?>
+            <!-- / Gender -->
+
             <!-- Age -->
             <?php if(!empty($user_age)) {?>
               <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:

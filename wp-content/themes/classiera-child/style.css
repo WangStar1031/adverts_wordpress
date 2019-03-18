@@ -187,17 +187,18 @@ h5.redux_heading {
 @media only screen and (max-width: 640px){
 .classiera-advertisement .masonry-content > .item-masonry.grid-item { width: 33.33%; }
 .classiera-advertisement .masonry-content > .item-masonry.grid-item--width2 { width: 66.66% !important; }
-.classiera-box-div-v4 figure .premium-img .premium-img-inner {
+.classiera-box-div-v4 figure .premium-img img {
     position: relative;
-    height: 173px;
+    height: 173px !important;
 }
+
 .grid .grid-item {
   width: 33.33%;
   float: left;
 }
 .grid .grid-item--width2 { width: 66.66%; float: left; }
 .classiera-advertisement .grid .premium-img, .classiera-advertisement .grid .premium-img img {
-    height: 173px;
+    height: 173px !important;
 }
 
 }
@@ -227,7 +228,7 @@ textarea.offer_comment {
 }
 .grid-item--width2 { width: 33.33%; float: left; }
 .grid .premium-img, .grid .premium-img img {
-    height: 260px;
+    /*height: 260px;*/
 }
 .template_page .grid-item
 {

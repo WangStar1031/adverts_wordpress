@@ -536,7 +536,7 @@ get_header(); ?>
 	$regularAds = null;
 	$curPost = get_post($cur_post_id);
 ?>
-<style type="text/css">
+<!-- <style type="text/css">
 	.emptyRequire{
 		border: 1px solid red !important;
 	}
@@ -544,7 +544,7 @@ get_header(); ?>
 		margin-top: 0px;
 		border-top: 1px solid #888;
 	}
-</style>
+</style> -->
 <div class="closeBump"></div>
 <section class="user-pages">
 	<div class="container">
@@ -555,7 +555,7 @@ get_header(); ?>
 			<div class="col-lg-9 col-md-8">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title text-uppercase"><?php esc_html_e('Edit your AD', 'classiera') ?><!-- <span class="pull-right custom-selected-cat"></span> --></h3>
+						<h3 class="panel-title text-uppercase"><?php esc_html_e('Edit Advert', 'classiera') ?><!-- <span class="pull-right custom-selected-cat"></span> --></h3>
 					</div>
 					<div class="panel-body">
 						<?php 
@@ -623,7 +623,7 @@ get_header(); ?>
 
 								<div id="smartwizard" style="display: block;" class="container-fluid">
 								 
-                                    <ul class="nav nav-pills">
+                                    <ul class="nav nav-pills" style="margin-bottom: 15px">
                                         <li><a href="#step-1"><?php esc_html_e('About Me', 'classiera'); ?></a></li>
                                         <li><a href="#step-2"><?php esc_html_e('Appearance', 'classiera'); ?></a></li>
                                         <li><a href="#step-3"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
@@ -774,7 +774,6 @@ get_header(); ?>
 										<!-- Begin Step-2 -->
 										<div id="step-2">
 											<div class="row">
-												<hr>
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
 														<select name="hair_color" required>
@@ -976,7 +975,7 @@ get_header(); ?>
 										<!-- Begin Step-3 -->
 										<div id="step-3">
 											<div class="row">
-												<hr>
+												
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
 														<select name="native_language" rqeuired>
@@ -1089,7 +1088,7 @@ get_header(); ?>
 										<!-- Begin Step-4 -->
 										<div id="step-4">
 											<div class="row">
-												<hr>
+												
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
 														<select name="disabled_friendly" required>
@@ -1144,7 +1143,7 @@ get_header(); ?>
 										<!-- Begin Step-5 -->
 										<div id="step-5">
 											<div class="row">
-												<hr>
+												
 												<div class="col-sm-12 col-lg-6">
 													<!-- post location -->
 													<?php
@@ -1272,7 +1271,7 @@ get_header(); ?>
 										<!-- Begin Step-6 -->
 										<div id="step-6">
 											<div class="row">
-												<hr>
+												
 												<div class="col-sm-12">
 												<?php			   
 												  /*Image Count Check*/
@@ -1462,7 +1461,7 @@ get_header(); ?>
 											<div class="row">
 
 												<div class="col-sm-12">
-															<hr>
+															
 													<div class="form-group">
 														<div class="row">
 															<div id="toggle">

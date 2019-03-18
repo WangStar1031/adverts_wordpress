@@ -900,7 +900,7 @@ get_header(); ?>
 													<div class="form-group">
 														<!-- Start Gender -->
 														<select name="gender">
-															<option value="" selected="" disabled><?php esc_html_e('Select Your Gender', 'classiera'); ?></option>
+															<option value="" selected disabled><?php esc_html_e('Select Your Gender', 'classiera'); ?></option>
 															<?php foreach ($arrGender as $value) { ?>
 																<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
 															<?php } ?>
@@ -1106,18 +1106,6 @@ get_header(); ?>
 															}
 															?>
 														</select>
-														<!-- Begin Gender Field -->
-														<select name="breast_size" class="fifth-size pull-right add-margin" required>
-															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
-															<?php
-															foreach ($arrBreastssize as $value) {
-															?>
-															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-															<?php
-															}
-															?>
-														</select>
-														<!-- End Gender Field -->
 													</div>
 												</div>
 												<div class="col-sm-12 col-lg-6">
