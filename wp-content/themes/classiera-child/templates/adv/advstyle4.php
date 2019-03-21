@@ -1,6 +1,10 @@
 <?php 
 	$_age = "";
 	if( isset( $_GET['age'])) $_age = $_GET['age'];
+	// echo "string";
+	$_sKeyword = "";
+	if( isset( $_GET['sKeyword'])) $_sKeyword = $_GET['sKeyword'];
+	// print_r($_sKeyword);
 if( $_age != ""){
 	// $_age = "";
 	// if( isset( $_GET['age'])) $_age = $_GET['age'];
@@ -245,21 +249,12 @@ if( $_age != ""){
 		);
 		$_metaQuery[] = $cri_gender;
 	}
-	if( $_gender != ""){
-		$cri_gender = array(
-			'key'		=> 'gender',
-			'value'		=> $_gender,
-			'compare'	=> '='
-		);
-		$_metaQuery[] = $cri_gender;
-	}
 	if( $_nationality != ""){
 		$cri_nationality = array(
 			'key'		=> 'nationality',
 			'value'		=> $_nationality,
 			'compare'	=> '='
 		);
-		// print_r($cri_nationality);
 		$_metaQuery[] = $cri_nationality;
 	}
 	// print_r($_metaQuery);
@@ -304,6 +299,57 @@ if( $_age != ""){
 <?php
 	// print_r($wsp_query);
 	// echo "filter";
+} else if( $_sKeyword != ""){
+	$_catName = "";
+	if( isset($_GET['cat_name'])) $_catName = $_GET['cat_name'];
+	$_location = "";
+	if( isset($_GET['post_state'])) $_location = $_GET['post_state'];
+	$_metaQuery = array();
+
+	$arags = array(
+		'post_type' => 'post',
+		// 'meta_query' => $_metaQuery,
+	);
+
+	$wsp_query = new WP_Query($arags);
+
+	// echo("Search functions.<br>\n");
+	while( $wsp_query->have_posts()) : $wsp_query->the_post();
+		if( $_catName != 1 && $_catName != ""){
+			$curCatSel = get_the_category($post->ID);
+			$curCategory = $curCatSel[0]->term_id;
+			if( $curCategory != $_catName) continue;
+		}
+		if( $_sKeyword != ""){
+			$_postName = get_post_field('post_title', $post->ID);
+			$_postContents = get_post_field('post_content', $post->ID);
+			if( stripos($_postName, $_sKeyword) === false && stripos($_postContents, $_sKeyword) === false) continue;
+		}
+		$featuredPosts[] = $post->ID;
+		get_template_part( 'templates/classiera-loops/loop-canary');
+	endwhile;
+		wp_reset_postdata();
+?>
+<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
+	<div class="tab-divs">
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active">
+				<div class="container">
+					<div class="row standard_type_size">
+						<div class="col-lg-12">
+							<div class="grid">
+<?php
+	wp_reset_postdata();
+?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<?php
 } else{
 	global $redux_demo;	
 
@@ -420,8 +466,7 @@ if( $_age != ""){
 			),
 		);
 
-
-$adsTypeMetaFirst=array('relation' => 'OR',
+	$adsTypeMetaFirst=array('relation' => 'OR',
 			array('relation' => 'AND',
 				array(
 					'key'=>'bump_ads',

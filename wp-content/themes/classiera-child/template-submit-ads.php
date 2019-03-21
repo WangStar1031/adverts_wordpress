@@ -1469,7 +1469,7 @@ get_header(); ?>
 																<div class="classiera-image-box">
 																	<div class="classiera-upload-box">
 																		<input name="image-count" type="hidden" value="<?php echo esc_attr( $imageLimit ); ?>" />
-																		<input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]">
+																		<input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]" multiple="multiple">
 																		<label class="img-label" for="imgInp<?php echo esc_attr( $i ); ?>"><i class="fas fa-plus-square"></i></label>
 																		<div class="classiera-image-preview">
 																			<img class="my-image" src=""/>

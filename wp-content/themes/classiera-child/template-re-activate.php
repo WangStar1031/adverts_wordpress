@@ -137,7 +137,9 @@ if(isset($_POST['postTitle'])){
                         'post_category' => array($classieraCategory),
                         'post_status' => $postStatus
                     );
+                    // print_r($postStatus);
                     wp_update_post($my_post);
+                    // exit();
                 }
 
                 $featuredIMG = $_POST['classiera_featured_img'];
@@ -498,8 +500,12 @@ if(isset($_POST['postTitle'])){
                 }
                 if(isset($_POST['days_to_expire'])){
                     $date=$_POST['days_to_expire'];
-                    $expired_date=date('Y-m-d H:i:s', strtotime('+'.$date.' day'));
+                    $expired_date=date('Y-m-d H:i:s', strtotime(' + '.$date.' day'));
                     update_post_meta($post_id, 'days_to_expire', $expired_date, $allowed);
+                    // print_r($date);
+                    // echo "<br>\n";
+                    // print_r($expired_date);
+                    // exit();
                 }
                 // if($classieraPostType == 'payperpost'){
                 $permalink = $classieraProfileURL;
@@ -1471,7 +1477,7 @@ get_header(); ?>
                                                               <div class="classiera-image-box">
                                                                   <div class="classiera-upload-box">
                                                                       <input name="image-count" type="hidden" value="<?php echo esc_attr( $imageLimit ); ?>" />
-                                                                      <input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]">
+                                                                      <input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]" multiple="multiple">
                                                                       <label class="img-label" for="imgInp<?php echo esc_attr( $i ); ?>"><i class="fas fa-plus-square"></i></label>
                                                                       <div class="classiera-image-preview" <?php if($imgUrl) echo 'style="display: block;"';?>>
                                                                           <img class="my-image" src="<?=$imgUrl?>"/>
@@ -1781,6 +1787,9 @@ get_header(); ?>
                 toolbarButtonPosition: 'right', // left, right
                 showNextButton: true, // show/hide a Next button
             }
+        });
+        setTimeout(function(){
+            window.scrollTo(0,0);
         });
 
         $('#checkbox3').click(function() {

@@ -404,15 +404,45 @@ jQuery(document).ready(function(jQuery){
 		This function will show image preview
 		When select any image on Submit Ad.
 	======================================*/  
+    var arrEmptyImgs = [];
     function readURL() {
+        // debugger;
         var $input = jQuery(this);
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $input.siblings('.classiera-image-preview').show().children('.my-image').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(this.files[0]);
+        console.log($input);
+        for( var i = 0; i < jQuery(".classiera-image-preview img.my-image").length; i++){
+            if( !jQuery(".classiera-image-preview img.my-image").eq(i).attr("src") )
+                arrEmptyImgs.push(i);
         }
+        console.log(arrEmptyImgs);
+        // arrEmptyImgs = jQuery(".classiera-image-preview img.my-image").filter(function(_idx){
+        //     return jQuery(".classiera-image-preview img.my-image").eq(_idx).attr("src") ? false : true;
+        // });
+        for( var i = 0; i < this.files.length; i++){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                var curImgId = arrEmptyImgs.shift();
+                if( typeof curImgId == "undefined") return;
+                var curImg = jQuery(".classiera-image-preview img.my-image").eq(curImgId);
+                curImg.attr("src", e.target.result);
+                curImg.parent().show();
+                // var arrImgs = jQuery(".classiera-image-preview img.my-image");
+                // for( var j = 0; j < arrImgs.length; j++){
+                //     var curImg = arrImgs.eq(j);
+                //     if( curImg.attr("src"))continue;
+                //     curImg.attr("src", e.target.result);
+                //     curImg.parent().show(); 
+                //     break;
+                // }
+            }
+            reader.readAsDataURL(this.files[i]);
+        }
+        // if (this.files && this.files[0]) {
+        //     var reader = new FileReader();
+        //     reader.onload = function(e) {
+        //         $input.siblings('.classiera-image-preview').show().children('.my-image').attr('src', e.target.result);
+        //     };
+        //     reader.readAsDataURL(this.files[0]);
+        // }
     }
 	//Profile Image//
 	function readProfileURL() {
@@ -762,7 +792,11 @@ jQuery(document).ready(function(jQuery){
 	jQuery(document).on('click', '.classieraAjaxResult li > a.SearchCat', function(e){
 		e.preventDefault();
 		var optionValue = jQuery(this).attr('id');
-		jQuery("#ajaxSelectCat").val(optionValue).find("option[value=" + optionValue +"]").attr('selected', true);
+        console.log( optionValue);
+        jQuery("#ajaxSelectCat option").filter(function(_idx){
+            return jQuery("#ajaxSelectCat option").eq(_idx).text().toLowerCase().indexOf(optionValue) != -1
+        }).attr('selected', true);
+		// jQuery("#ajaxSelectCat").val(optionValue).find("option[value=" + optionValue +"]").attr('selected', true);
 		jQuery('.classieraAjaxResult').hide();
 	});
 	jQuery(document).on('click', function(e) {
@@ -835,7 +869,7 @@ jQuery(document).ready(function(jQuery){
 		jQuery(this).parent().find('input').attr('name', 'att_remove[]' );
 		var lableNo = Math.floor((Math.random() * 10) + 1);
 		//var lableNo = Math.random();
-		var myHTML = '<div class="classiera-image-box"><div class="classiera-upload-box"><input class="classiera-input-file imgInp" id="imgInp'+ lableNo +'" type="file" name="upload_attachment[]"><label class="img-label" for="imgInp'+ lableNo +'"><i class="fa fa-plus-square-o"></i></label><div class="classiera-image-preview"><img class="my-image" src=""><span class="remove-img"><i class="fa fa-times-circle"></i></span></div></div></div>';
+		var myHTML = '<div class="classiera-image-box"><div class="classiera-upload-box"><input class="classiera-input-file imgInp" id="imgInp'+ lableNo +'" type="file" name="upload_attachment[]" multiple="multiple"><label class="img-label" for="imgInp'+ lableNo +'"><i class="fa fa-plus-square-o"></i></label><div class="classiera-image-preview"><img class="my-image" src=""><span class="remove-img"><i class="fa fa-times-circle"></i></span></div></div></div>';
 		jQuery(this).parent().parent().parent().append(myHTML);
 	});
 	//Get Custom Fields//

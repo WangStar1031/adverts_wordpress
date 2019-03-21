@@ -159,7 +159,7 @@
 						<div class="input-group side-by-side-input inner-addon right-addon pull-left flip">
 							<div class="input-group-addon input-group-addon-width-sm"><i class="fa fa-bars"></i></div>
 							<i class="form-icon form-icon-size-small fa fa-sort"></i>
-							<select class="form-control form-control-sm" data-placeholder="<?php esc_html_e('Select Category..', 'classiera'); ?>" name="category_name" id="ajaxSelectCat">
+							<select class="form-control form-control-sm" data-placeholder="<?php esc_html_e('Select Category..', 'classiera'); ?>" name="cat_name" id="ajaxSelectCat">
 								<option value="-1" selected disabled><?php esc_html_e('All Categories', 'classiera'); ?></option>
 								<?php 
 								$args = array(
@@ -171,7 +171,7 @@
 									if($cat->category_parent == 0){
 										$catID = $cat->cat_ID;
 										?>
-									<option value="<?php echo esc_attr($cat->slug); ?>">
+									<option value="<?php echo esc_attr($cat->cat_ID); ?>">
 										<?php echo esc_html($cat->cat_name); ?>
 									</option>	
 										<?php
@@ -182,7 +182,7 @@
 										$categories = get_categories($args2);
 										foreach($categories as $cat){
 											?>
-										<option value="<?php echo esc_attr($cat->slug); ?>">- <?php echo esc_html($cat->cat_name); ?></option>	
+										<option value="<?php echo esc_attr($cat->cat_ID); ?>">- <?php echo esc_html($cat->cat_name); ?></option>	
 											<?php
 										}
 									}
@@ -192,7 +192,7 @@
 						</div>
 						<!--Searchkeyword-->
 						<div class="side-by-side-input pull-left flip classieraAjaxInput">
-							<input type="text" name="s" class="form-control form-control-sm" id="classieraSearchAJax" placeholder="<?php esc_html_e( 'Enter keyword...', 'classiera' ); ?>" data-error="<?php esc_html_e( 'Please Type some words..!', 'classiera' ); ?>">
+							<input type="text" name="sKeyword" class="form-control form-control-sm" id="classieraSearchAJax" placeholder="<?php esc_html_e( 'Enter keyword...', 'classiera' ); ?>" data-error="<?php esc_html_e( 'Please Type some words..!', 'classiera' ); ?>">
 							<div class="help-block with-errors"></div>
 							<span class="classieraSearchLoader"><img src="<?php echo get_template_directory_uri().'/images/loader.gif' ?>" alt="classiera loader"></span>
 							<div class="classieraAjaxResult"></div>
@@ -220,7 +220,7 @@
 					<?php } ?>
 					<!--Locations-->
 					<div class="form-group">
-                        <button class="radius" type="submit" name="search" value="Search"><?php esc_html_e( 'Search', 'classiera' ); ?><i class="fa fa-search icon-with-btn-right pull-right flip"></i></button>
+                        <button class="radius" type="submit" value="Search"><?php esc_html_e( 'Search', 'classiera' ); ?><i class="fa fa-search icon-with-btn-right pull-right flip"></i></button>
                     </div>
                     <div class="form-group">
                         <!-- <button class="radius" name="search" value="Search"></button> -->

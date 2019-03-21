@@ -175,18 +175,18 @@ jQuery('form#primaryPostForm input').keyup(function() {
             }
         });
         jQuery('form#primaryPostForm input[type="file"]').each(function() {
-        	console.log(jQuery(this).val());
+        	// console.log(jQuery(this).val());
         	 if (jQuery(this).val() != '') {
                 empty = false;
             }
         });
         jQuery('form#primaryPostForm select').each(function() {
-        	console.log(jQuery(this).val());
+        	// console.log(jQuery(this).val());
             if (jQuery(this).val() == '') {
                 empty = true;
             }
         });
-        console.log(empty);
+        // console.log(empty);
         if (empty) {
         	jQuery('#beforeupdatecheck').attr('disabled', 'disabled'); 
             
@@ -204,18 +204,18 @@ jQuery('form#primaryPostForm select').change(function() {
             }
         });
         jQuery('form#primaryPostForm input[type="file"]').each(function() {
-        	console.log(jQuery(this).val());
+        	// console.log(jQuery(this).val());
         	 if (jQuery(this).val() != '') {
                 empty = false;
             }
         });
         jQuery('form#primaryPostForm select').each(function() {
-        	console.log(jQuery(this).val());
+        	// console.log(jQuery(this).val());
             if (jQuery(this).val() == '') {
                 empty = true;
             }
         });
-        console.log(empty);
+        // console.log(empty);
         if (empty) {
         	jQuery('#beforeupdatecheck').attr('disabled', 'disabled'); 
             

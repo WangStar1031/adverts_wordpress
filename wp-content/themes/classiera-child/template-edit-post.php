@@ -1416,7 +1416,7 @@ get_header(); ?>
 															  <div class="classiera-image-box">
 																  <div class="classiera-upload-box">
 																	  <input name="image-count" type="hidden" value="<?php echo esc_attr( $imageLimit ); ?>" />
-																	  <input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]">
+																	  <input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]" multiple="multiple">
 																	  <label class="img-label" for="imgInp<?php echo esc_attr( $i ); ?>"><i class="fas fa-plus-square"></i></label>
 																	  <div class="classiera-image-preview" <?php if($imgUrl) echo 'style="display: block;"';?>>
 																		  <img class="my-image" src="<?=$imgUrl?>"/>
@@ -1614,11 +1614,14 @@ get_header(); ?>
             },  
 
             toolbarSettings: {
-                toolbarPosition: 'bottom', // none, top, bottom, both
-                toolbarButtonPosition: 'right', // left, right
-                showNextButton: true, // show/hide a Next button
-            }
-        });
+				toolbarPosition: 'bottom', // none, top, bottom, both
+				toolbarButtonPosition: 'right', // left, right
+			    showNextButton: true, // show/hide a Next button
+		    }
+		});
+		setTimeout(function(){
+			window.scrollTo(0,0);
+		});
 		$('#checkbox3').click(function() {
 			if ($(this).is(':checked')) {
 				$('.price-fields').show();
