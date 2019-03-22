@@ -2,8 +2,8 @@
 	$_age = "";
 	if( isset( $_GET['age'])) $_age = $_GET['age'];
 	// echo "string";
-	$_sKeyword = "";
-	if( isset( $_GET['sKeyword'])) $_sKeyword = $_GET['sKeyword'];
+	$_search= "";
+	if( isset( $_GET['Search'])) $_search = $_GET['Search'];
 	// print_r($_sKeyword);
 if( $_age != ""){
 	// $_age = "";
@@ -297,22 +297,44 @@ if( $_age != ""){
 	</div>
 </section>
 <?php
-	// print_r($wsp_query);
-	// echo "filter";
-} else if( $_sKeyword != ""){
+} else if( $_search != ""){
+
+	global $redux_demo;
+	$locShownBy = $redux_demo['location-shown-by'];
+
+	$_sKeyword = "";
+	if( isset( $_GET['sKeyword'])) $_sKeyword = $_GET['sKeyword'];
 	$_catName = "";
 	if( isset($_GET['cat_name'])) $_catName = $_GET['cat_name'];
 	$_location = "";
-	if( isset($_GET['post_state'])) $_location = $_GET['post_state'];
+	if( isset($_GET[$locShownBy])) $_location = $_GET[$locShownBy];
 	$_metaQuery = array();
+	if( $_location != ""){
+		$cri_location = array(
+			'key'		=> $locShownBy,
+			'value'		=> $_location,
+			'compare'	=> '='
+		);
+		$_metaQuery[] = $cri_location;
+	}
 
 	$arags = array(
 		'post_type' => 'post',
-		// 'meta_query' => $_metaQuery,
+		'meta_query' => $_metaQuery,
 	);
 
 	$wsp_query = new WP_Query($arags);
-
+	// print_r($wsp_query);
+?>
+<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
+	<div class="tab-divs">
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active">
+				<div class="container">
+					<div class="row standard_type_size">
+						<div class="col-lg-12">
+							<div class="grid">
+<?php
 	// echo("Search functions.<br>\n");
 	while( $wsp_query->have_posts()) : $wsp_query->the_post();
 		if( $_catName != 1 && $_catName != ""){
@@ -329,17 +351,6 @@ if( $_age != ""){
 		get_template_part( 'templates/classiera-loops/loop-canary');
 	endwhile;
 		wp_reset_postdata();
-?>
-<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
-	<div class="tab-divs">
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active">
-				<div class="container">
-					<div class="row standard_type_size">
-						<div class="col-lg-12">
-							<div class="grid">
-<?php
-	wp_reset_postdata();
 ?>
 							</div>
 						</div>

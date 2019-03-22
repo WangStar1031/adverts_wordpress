@@ -220,7 +220,7 @@
 					<?php } ?>
 					<!--Locations-->
 					<div class="form-group">
-                        <button class="radius" type="submit" value="Search"><?php esc_html_e( 'Search', 'classiera' ); ?><i class="fa fa-search icon-with-btn-right pull-right flip"></i></button>
+                        <button class="radius" type="submit" value="Search" name="Search"><?php esc_html_e( 'Search', 'classiera' ); ?><i class="fa fa-search icon-with-btn-right pull-right flip"></i></button>
                     </div>
                     <div class="form-group">
                         <!-- <button class="radius" name="search" value="Search"></button> -->
