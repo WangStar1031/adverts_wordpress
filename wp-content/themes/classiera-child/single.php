@@ -496,19 +496,29 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           //$count = 1;
           foreach($attachments as $att_id => $attachment){
             // $full_img_url = wp_get_attachment_url($attachment->ID);
-            // $image_large = wp_get_attachment_image_url($attachment->ID, 'large');
-            // $image_thumb = wp_get_attachment_image_url ( $attachment->ID, 'thumbnail' );
+            $image_large = wp_get_attachment_image_url($attachment->ID, 'large');
+            // print_r($image_large);
+            $image_thumb = wp_get_attachment_image_url ( $attachment->ID, 'thumbnail' );
+            // print_r($image_thumb);
             $image_buff = get_attached_file($attachment->ID);
-            $arrUrls = explode("/", $image_buff);
+            // echo "<br>";
+            // print_r($image_buff);
+            // echo "<br>";
+
+            // $image_buff = $image_large;
+            // $arrUrls = explode("/", $image_buff);
+            // print_r($arrUrls);
             $realUrl = "";
-            for($i = 4; $i < count($arrUrls); $i ++){
-              $realUrl .= "/" . $arrUrls[$i];
-            }
+            $realUrl = $image_large;
+            // for( $i = count($arrUrls) - 4; $i < count($arrUrls); $i++){
+            // for($i = 4; $i < count($arrUrls); $i ++){
+            //   $realUrl .= "/" . $arrUrls[$i];
+            // }
 
             $path_parts = pathinfo($realUrl);
             $type = $path_parts['extension'];
             $count = strlen($type) + 1;
-            $squaredImgUrl = substr( $realUrl, 0, strlen($realUrl) - $count) . "-150x150." . $type;
+            $squaredImgUrl = $image_thumb;//substr( $realUrl, 0, strlen($realUrl) - $count) . "-150x150." . $type;
             ?>
           <div class="col-xs-6 col-sm-6 col-lg-3"><!-- Single Image Wrapper -->
             <div class="thumbnail gallery-image" data-src="<?php echo esc_url($realUrl); ?>" ext="<?=$count?>">
