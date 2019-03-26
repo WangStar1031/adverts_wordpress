@@ -575,7 +575,10 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           <ul class="list-group">
 
             <!-- 15 Minutes Price -->
-            <?php if(!empty($fifteen_min_euro)) { ?>
+            <?php
+            $isPrice = false;
+            ?>
+            <?php if(!empty($fifteen_min_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('15 Minutes', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $fifteen_min_euro; ?>
                   <?php
@@ -589,7 +592,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <!-- / 15 Minutes Price -->
 
             <!-- 30 Minutes Price -->
-            <?php if(!empty($thirty_min_euro)) { ?>
+            <?php if(!empty($thirty_min_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('30 Minutes', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $thirty_min_euro; ?>
                   <?php
@@ -603,7 +606,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <!-- / 30 Minutes Price -->
 
             <!-- 45 Minutes Price -->
-            <?php if(!empty($fourty_five_min_euro)) { ?>
+            <?php if(!empty($fourty_five_min_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('45 Minutes', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $fourty_five_min_euro; ?>
                   <?php
@@ -617,7 +620,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <!-- / 45 Minutes Price -->
 
             <!-- 1 Hour Price -->
-            <?php if(!empty($one_hour_euro)) { ?>
+            <?php if(!empty($one_hour_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('1 Hour', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $one_hour_euro; ?>
                   <?php
@@ -631,7 +634,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <!-- / 1 Hour Price -->
 
             <!-- Business Date Price -->
-            <?php if(!empty($business_date_euro)) { ?>
+            <?php if(!empty($business_date_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('Business Date', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $business_date_euro; ?>
                   <?php
@@ -645,7 +648,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <!-- / Business Date Price -->
 
             <!-- Full Day Price -->
-            <?php if(!empty($full_day_euro)) { ?>
+            <?php if(!empty($full_day_euro)) { $isPrice = true;?>
               <li class="list-group-item"><?php esc_html_e('Full Day', 'classiera') ?>:
                 <span class="pull-right">&euro; <?php echo $full_day_euro; ?>
                   <?php
@@ -657,7 +660,15 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
               </li>
             <?php } ?>
             <!-- / Full Day Price -->
-
+            <?php
+            if( $isPrice == false){
+            ?>
+            <li class="list-group-item">
+              <?php esc_html_e('No prices provided', 'classiera'); ?>
+            </li>
+            <?php
+            }
+            ?>
           </ul>
         </div><!-- /Panel -->
 
