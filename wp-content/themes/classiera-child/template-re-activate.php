@@ -1790,6 +1790,13 @@ get_header(); ?>
         });
         setTimeout(function(){
             window.scrollTo(0,0);
+            if( $("#step-8 input[type=number]").filter(function(_idx){
+                return $("#step-8 input[type=number]").eq(_idx).val();
+            }).length == 0){
+                $("#checkbox3").prop("checked", false);
+                $("#step-8 .price-info").show();
+                $("#step-8 .price-fields").hide();
+            }
         });
 
         $('#checkbox3').click(function() {

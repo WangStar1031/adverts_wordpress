@@ -270,11 +270,6 @@ body {
   background-color: #0e0e0e !important;
 }
 
-#lightgallery,
-.author-container {
-  padding-right: 0;
-}
-
 .row-eq-height {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1845,7 +1840,7 @@ keyframes
 }
 
 .consent-modal .img-responsive {
-  max-width: 25% !important;
+  max-width: 35% !important;
   display: block;
   margin: 0 auto;
 }

@@ -311,41 +311,80 @@ if(isset($_POST['postTitle'])){
 				}
 
 				//Prices
-				if(isset($_POST['fifteen_min_euro'])){
-					update_post_meta($post_id, 'fifteen_min_euro', $_POST['fifteen_min_euro'], $allowed);
-				}
-				if(isset($_POST['fifteen_min_pound'])){
-					update_post_meta($post_id, 'fifteen_min_pound', $_POST['fifteen_min_pound'], $allowed);
-				}
-				if(isset($_POST['thirty_min_euro'])){
-					update_post_meta($post_id, 'thirty_min_euro', $_POST['thirty_min_euro'], $allowed);
-				}
-				if(isset($_POST['thirty_min_pound'])){
-					update_post_meta($post_id, 'thirty_min_pound', $_POST['thirty_min_pound'], $allowed);
-				}
-				if(isset($_POST['fourty_five_min_euro'])){
-					update_post_meta($post_id, 'fourty_five_min_euro', $_POST['fourty_five_min_euro'], $allowed);
-				}
-				if(isset($_POST['fourty_five_min_pound'])){
-					update_post_meta($post_id, 'fourty_five_min_pound', $_POST['fourty_five_min_pound'], $allowed);
-				}
-				if(isset($_POST['one_hour_euro'])){
-					update_post_meta($post_id, 'one_hour_euro', $_POST['one_hour_euro'], $allowed);
-				}
-				if(isset($_POST['one_hour_pound'])){
-					update_post_meta($post_id, 'one_hour_pound', $_POST['one_hour_pound'], $allowed);
-				}
-				if(isset($_POST['full_day_euro'])){
-					update_post_meta($post_id, 'full_day_euro', $_POST['full_day_euro'], $allowed);
-				}
-				if(isset($_POST['full_day_pound'])){
-					update_post_meta($post_id, 'full_day_pound', $_POST['full_day_pound'], $allowed);
-				}
-				if(isset($_POST['business_date_euro'])){
-					update_post_meta($post_id, 'business_date_euro', $_POST['business_date_euro'], $allowed);
-				}
-				if(isset($_POST['business_date_pound'])){
-					update_post_meta($post_id, 'business_date_pound', $_POST['business_date_pound'], $allowed);
+				if( isset($_POST['checkbox1'])){
+					if(isset($_POST['fifteen_min_euro'])){
+						update_post_meta($post_id, 'fifteen_min_euro', $_POST['fifteen_min_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'fifteen_min_euro', '', $allowed);
+					}
+					if(isset($_POST['fifteen_min_pound'])){
+						update_post_meta($post_id, 'fifteen_min_pound', $_POST['fifteen_min_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'fifteen_min_pound', '', $allowed);
+					}
+					if(isset($_POST['thirty_min_euro'])){
+						update_post_meta($post_id, 'thirty_min_euro', $_POST['thirty_min_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'thirty_min_euro', '', $allowed);
+					}
+					if(isset($_POST['thirty_min_pound'])){
+						update_post_meta($post_id, 'thirty_min_pound', $_POST['thirty_min_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'thirty_min_pound', '', $allowed);
+					}
+					if(isset($_POST['fourty_five_min_euro'])){
+						update_post_meta($post_id, 'fourty_five_min_euro', $_POST['fourty_five_min_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'fourty_five_min_euro', '', $allowed);
+					}
+					if(isset($_POST['fourty_five_min_pound'])){
+						update_post_meta($post_id, 'fourty_five_min_pound', $_POST['fourty_five_min_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'fourty_five_min_pound', '', $allowed);
+					}
+					if(isset($_POST['one_hour_euro'])){
+						update_post_meta($post_id, 'one_hour_euro', $_POST['one_hour_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'one_hour_euro', '', $allowed);
+					}
+					if(isset($_POST['one_hour_pound'])){
+						update_post_meta($post_id, 'one_hour_pound', $_POST['one_hour_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'one_hour_pound', '', $allowed);
+					}
+					if(isset($_POST['full_day_euro'])){
+						update_post_meta($post_id, 'full_day_euro', $_POST['full_day_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'full_day_euro', '', $allowed);
+					}
+					if(isset($_POST['full_day_pound'])){
+						update_post_meta($post_id, 'full_day_pound', $_POST['full_day_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'full_day_pound', '', $allowed);
+					}
+					if(isset($_POST['business_date_euro'])){
+						update_post_meta($post_id, 'business_date_euro', $_POST['business_date_euro'], $allowed);
+					} else{
+						update_post_meta($post_id, 'business_date_euro', '', $allowed);
+					}
+					if(isset($_POST['business_date_pound'])){
+						update_post_meta($post_id, 'business_date_pound', $_POST['business_date_pound'], $allowed);
+					} else{
+						update_post_meta($post_id, 'business_date_pound', '', $allowed);
+					}
+				} else{
+					update_post_meta($post_id, 'fifteen_min_euro', '', $allowed);
+					update_post_meta($post_id, 'fifteen_min_pound', '', $allowed);
+					update_post_meta($post_id, 'thirty_min_euro', '', $allowed);
+					update_post_meta($post_id, 'thirty_min_pound', '', $allowed);
+					update_post_meta($post_id, 'fourty_five_min_euro', '', $allowed);
+					update_post_meta($post_id, 'fourty_five_min_pound', '', $allowed);
+					update_post_meta($post_id, 'one_hour_euro', '', $allowed);
+					update_post_meta($post_id, 'one_hour_pound', '', $allowed);
+					update_post_meta($post_id, 'full_day_euro', '', $allowed);
+					update_post_meta($post_id, 'full_day_pound', '', $allowed);
+					update_post_meta($post_id, 'business_date_euro', '', $allowed);
+					update_post_meta($post_id, 'business_date_pound', '', $allowed);
 				}
 				if(isset($_POST['gender'])){
 					update_post_meta($post_id, 'gender', $_POST['gender'], $allowed);
@@ -1621,6 +1660,13 @@ get_header(); ?>
 		});
 		setTimeout(function(){
 			window.scrollTo(0,0);
+			if( $("#step-8 input[type=number]").filter(function(_idx){
+				return $("#step-8 input[type=number]").eq(_idx).val();
+			}).length == 0){
+				$("#checkbox3").prop("checked", false);
+				$("#step-8 .price-info").show();
+				$("#step-8 .price-fields").hide();
+			}
 		});
 		$('#checkbox3').click(function() {
 			if ($(this).is(':checked')) {
