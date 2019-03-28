@@ -154,9 +154,15 @@ switch ($post_archive_engine) {
 			DUPX_Log::error(ERR_ZIPARCHIVE);
 		}
 
-        $dupInstallerFolder = DUPX_U::findDupInstallerFolder($archive_path);
+        if (($dupInstallerFolder = DUPX_U::findDupInstallerFolder($archive_path)) === false) {
+            DUPX_Log::info("findDupInstallerFolder error; set no subfolder");
+            // if not found set not subfolder
+            $dupInstallerFolder = '';
+        }
         if (!empty($dupInstallerFolder)) {
             DUPX_Log::info("ARCHIVE dup-installer SUBFOLDER:\"".$dupInstallerFolder."\"");
+        } else {
+            DUPX_Log::info("ARCHIVE dup-installer SUBFOLDER:\"".$dupInstallerFolder."\"", 2);
         }
 
         $dupInstallerZipPath = $dupInstallerFolder.'/dup-installer';
@@ -164,6 +170,7 @@ switch ($post_archive_engine) {
 		$zip = new ZipArchive();
 
 		if ($zip->open($archive_path) === TRUE) {
+			$extract_filenames = array(); 
             for($i = 0; $i < $zip->numFiles; $i++) {
                 $extract_filename = $zip->getNameIndex($i);
                 
@@ -174,20 +181,22 @@ switch ($post_archive_engine) {
 
                 // skip no dupInstallerFolder files
                 if (!empty($dupInstallerFolder) && strpos($extract_filename , $dupInstallerFolder) !== 0) {
+                    DUPX_Log::info("SKIP NOT DUB FOLDER: \"".$extract_filename."\"", 2);
                     continue;
-                }
+				}
+				$extract_filenames[] =  $extract_filename;
+			}
 
-                try {
-                    if (!$zip->extractTo($target , $extract_filename)) {
-                        DUPX_Log::info("FILE EXTRACION ERROR: ".$extract_filename);
-                    } else {
-                        DUPX_Log::info("DONE: ".$extract_filename,2);
-                    }
-                    
-                } catch (Exception $ex) {
-                    DUPX_Log::info("FILE EXTRACION ERROR: {$extract_filename} | MSG:" . $ex->getMessage());
-                }
-            }
+			try {
+				if (!$zip->extractTo($target , $extract_filenames)) {
+					DUPX_Log::info("FILE EXTRACION ERROR: ".implode(',', $extract_filenames));
+				} else {
+					DUPX_Log::info("DONE: ".$extract_filename,2);
+				}
+				
+			} catch (Exception $ex) {
+				DUPX_Log::info("FILE EXTRACION ERROR: {$extract_filename} | MSG:" . $ex->getMessage());
+			}
 
             if (!empty($dupInstallerFolder)) {
                 DUPX_U::moveUpfromSubFolder($target.'/'.$dupInstallerFolder , true);

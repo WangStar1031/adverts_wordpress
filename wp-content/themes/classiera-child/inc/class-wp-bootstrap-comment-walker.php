@@ -49,7 +49,7 @@ class Bootstrap_Comment_Walker extends Walker_Comment {
 			}
 			?>
 				<a href="<?php echo get_comment_link(); ?>" class="media-object">
-					<img class="media-object img-thumbnail" src="<?php echo esc_url($author_avatar_url); ?>">
+					<img class="media-object img-circle" src="<?php echo esc_url($author_avatar_url); ?>">
 				</a>
 			</div>
 			<?php endif; ?>
@@ -114,12 +114,6 @@ class Bootstrap_Comment_Walker extends Walker_Comment {
 										<div class="help-block with-errors"></div>
 									</div>
 								</div><!--eMAIL-->
-								<div class="form-group col-sm-7">
-									<label class="text-capitalize"><?php esc_html_e( 'Website','classiera' ); ?> : <span class="text-danger">*</span> </label>
-									<div class="inner-addon left-addon">
-										<input type="url" name="url" class="form-control form-control-sm" placeholder="<?php esc_html_e( 'enter website url','classiera' ); ?>" value="<?php echo esc_attr( $comment_author_url ); ?>">
-									</div>
-								</div><!--Phone-->
 							<?php } ?>
 								<div class="form-group col-sm-12">
 									<label class="text-capitalize"><?php esc_html_e( 'Message','classiera' ); ?> : <span class="text-danger">*</span></label>

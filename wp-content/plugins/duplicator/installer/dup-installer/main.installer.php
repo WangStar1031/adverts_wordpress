@@ -40,6 +40,7 @@ date_default_timezone_set('UTC'); // Some machines don’t have this set so just
 @ini_set('pcre.backtrack_limit', PHP_INT_MAX);
 @ini_set('default_socket_timeout', 3600);
 
+define('ERR_CONFIG_FOUND', 'A wp-config.php already exists in this location.  This error prevents users from accidentally overwriting a WordPress site or trying to install on top of an existing one.  Extracting an archive on an existing site will overwrite existing files and intermix files causing site incompatibility issues.<br/><br/>  It is highly recommended to place the installer and archive in an empty directory. If you have already manually extracted the archive file that is associated with this installer then choose option #1 below; other-wise consider the other options: <ol><li>Click &gt; Try Again &gt; Options &gt; choose "Manual Archive Extraction".</li><li>Empty the directory except for the archive.zip/daf and installer.php and try again.</li><li>Advanced users only can remove the existing wp-config.php file and try again.</li></ol>');
 ob_start();
 try {
     $exceptionError = false;
@@ -48,6 +49,18 @@ try {
     $GLOBALS['DUPX_ROOT']  = str_replace("\\", '/', (realpath(dirname(__FILE__) . '/..')));
     $GLOBALS['DUPX_INIT']  = "{$GLOBALS['DUPX_ROOT']}/dup-installer";
     $GLOBALS['DUPX_ENFORCE_PHP_INI']  = false;
+
+    require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.exceptions.php');
+    require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.php');
+    require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.notices.manager.php');
+    require_once($GLOBALS['DUPX_INIT'].'/classes/config/class.constants.php');
+    require_once($GLOBALS['DUPX_INIT'] . '/classes/config/class.archive.config.php');
+    $GLOBALS['DUPX_AC'] = DUPX_ArchiveConfig::getInstance();
+
+    if ($GLOBALS['DUPX_AC']->csrf_crypt) {
+        require_once($GLOBALS['DUPX_INIT'].'/classes/Crypt/Rijndael.php');
+        require_once($GLOBALS['DUPX_INIT'].'/classes/Crypt/Random.php');
+    }
     require_once($GLOBALS['DUPX_INIT'].'/classes/class.csrf.php');
 
     // ?view=help
@@ -61,9 +74,39 @@ try {
             die("Bootloader parameter not specified");
         }
     } else if (isset($_GET['is_daws']) && 1 == $_GET['is_daws']) { // For daws action
-        $post_ctrl_csrf_token = isset($_GET['daws_csrf_token']) ? $_GET['daws_csrf_token'] : '';
+        require_once($GLOBALS['DUPX_INIT'].'/classes/utilities/class.u.php');
+        $post_ctrl_csrf_token = isset($_GET['daws_csrf_token']) ? DUPX_U::sanitize_text_field($_GET['daws_csrf_token']) : '';
         if (DUPX_CSRF::check($post_ctrl_csrf_token, 'daws')) {
-            require_once($GLOBALS['DUPX_INIT'].'/lib/dup_archive/daws/daws.php');
+            $outer_root_path = dirname($GLOBALS['DUPX_ROOT']);
+            if (
+                (isset($_GET['daws_action']) && 'start_expand' == $_GET['daws_action'])
+                &&
+                (
+                    !$GLOBALS['DUPX_AC']->installSiteOverwriteOn 
+                    && (
+                            file_exists($GLOBALS['DUPX_ROOT'].'/wp-config.php') 
+                            || 
+                            (
+                                @file_exists($outer_root_path.'/wp-config.php') 
+                                && 
+                                !@file_exists($GLOBALS['DUPX_ROOT'].'/wp-settings.php')
+                                && 
+                                @file_exists($GLOBALS['DUPX_ROOT'].'/wp-admin') 
+                                &&
+                                @file_exists($GLOBALS['DUPX_ROOT'].'/wp-includes')
+                            )
+                        )
+                )
+            ) {
+                $resp = array(
+                    'pass' => 0,
+                    'isWPAlreadyExistsError' => 1,
+                    'error' => "<b style='color:#B80000;'>INSTALL ERROR!</b><br/>". ERR_CONFIG_FOUND,                    
+                );
+                echo json_encode($resp);
+            } else {
+                require_once($GLOBALS['DUPX_INIT'].'/lib/dup_archive/daws/daws.php');
+            }
             die();
         } else {
             die("An invalid request was made to 'daws'.  In order to protect this request from unauthorized access please "
@@ -94,7 +137,6 @@ try {
     require_once($GLOBALS['DUPX_INIT'].'/classes/class.installer.state.php');
     require_once($GLOBALS['DUPX_INIT'].'/classes/class.password.php');
 
-    $GLOBALS['DUPX_AC'] = DUPX_ArchiveConfig::getInstance();
     if ($GLOBALS['DUPX_AC'] == null) {
         die("Can't initialize config globals! Please try to re-run installer.php");
     }
@@ -123,8 +165,6 @@ try {
     if ($GLOBALS['DUPX_STATE'] == null) {
         die("Can't initialize installer state! Please try to re-run installer.php");
     }
-
-    require_once($GLOBALS['DUPX_INIT'] . '/classes/utilities/class.u.php');
 
     if (!empty($GLOBALS['view'])) {
         $post_view = $GLOBALS['view'];
@@ -222,6 +262,27 @@ try {
         die("");
     }
 
+    $helpOpenSection = '';
+    switch ($GLOBALS["VIEW"]) {
+        case "secure" :
+            $helpOpenSection = 'section-security';
+            break;
+        case "step1" :
+            $helpOpenSection = 'section-step-1';
+            break;
+        case "step2" :
+            $helpOpenSection = 'section-step-2';
+            break;
+        case "step3" :
+            $helpOpenSection = 'section-step-3';
+            break;
+        case "step4" :
+            $helpOpenSection = 'section-step-4';
+            break;
+        case "help" :
+        default :
+    }
+
 } catch (Exception $e) {
     $exceptionError = $e;
 }
@@ -229,7 +290,11 @@ try {
 /**
  * clean output
  */
+$unespectOutput = ob_get_contents();
 ob_clean();
+if (!empty($unespectOutput)) {
+    // @todo something for report unespected output
+}
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -257,8 +322,12 @@ ob_clean();
 		<td class="wiz-dupx-version">
 			<a href="javascript:void(0)" onclick="DUPX.openServerDetails()">version:<?php echo DUPX_U::esc_html($GLOBALS['DUPX_AC']->version_dup); ?></a>&nbsp;
 			<?php
-				$help_url = "?view=help&archive={$GLOBALS['FW_ENCODED_PACKAGE_PATH']}&bootloader={$GLOBALS['BOOTLOADER_NAME']}&basic";
-				echo ($GLOBALS['DUPX_AC']->secure_on) 
+				$help_url = "?view=help".
+                "&archive={$GLOBALS['FW_ENCODED_PACKAGE_PATH']}".
+                "&bootloader={$GLOBALS['BOOTLOADER_NAME']}&".
+                "basic".
+                '&open_section='.$helpOpenSection;
+            echo ($GLOBALS['DUPX_AC']->secure_on)
 					? "<a href='{$help_url}#secure' target='_blank'><i class='fa fa-lock'></i></a>"
 					: "<a href='{$help_url}#secure' target='_blank'><i class='fa fa-unlock-alt'></i></a>" ;
 			?>
@@ -285,6 +354,19 @@ ob_clean();
 		}
 	?>
 </div>
+
+<?php
+
+/****************************/
+/*** NOTICE MANAGER TESTS ***/
+//DUPX_NOTICE_MANAGER::testNextStepFullMessageData();
+//DUPX_NOTICE_MANAGER::testNextStepMessaesLevels();
+//DUPX_NOTICE_MANAGER::testFinalReporMessaesLevels();
+//DUPX_NOTICE_MANAGER::testFinalReportFullMessages();
+/****************************/
+
+DUPX_NOTICE_MANAGER::getInstance()->displayStepMessages();
+?>
 
 <!-- =========================================
 FORM DATA: User-Interface views -->

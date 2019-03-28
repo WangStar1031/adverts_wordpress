@@ -161,9 +161,54 @@ class WPConfigTransformer {
 		if ( false === strpos( $this->wp_config_src, $anchor ) ) {
 			$other_anchor_points = array(
 				'/** Absolute path to the WordPress directory',
+				// ABSPATH defined check with single quote
 				"if ( !defined('ABSPATH') )",
+				"if ( ! defined( 'ABSPATH' ) )",
+				"if (!defined('ABSPATH') )",
+				"if(!defined('ABSPATH') )",
+				"if(!defined('ABSPATH'))",
+				"if ( ! defined( 'ABSPATH' ))",
+				"if ( ! defined( 'ABSPATH') )",
+				"if ( ! defined('ABSPATH' ) )",
+				"if (! defined( 'ABSPATH' ))",
+				"if (! defined( 'ABSPATH') )",
+				"if (! defined('ABSPATH' ) )",
+				"if ( !defined( 'ABSPATH' ))",
+				"if ( !defined( 'ABSPATH') )",
+				"if ( !defined('ABSPATH' ) )",
+				"if( !defined( 'ABSPATH' ))",
+				"if( !defined( 'ABSPATH') )",
+				"if( !defined('ABSPATH' ) )",
+				// ABSPATH defined check with double quote
+				'if ( !defined("ABSPATH") )',
+				'if ( ! defined( "ABSPATH" ) )',
+				'if (!defined("ABSPATH") )',
+				'if(!defined("ABSPATH") )',
+				'if(!defined("ABSPATH"))',
+				'if ( ! defined( "ABSPATH" ))',
+				'if ( ! defined( "ABSPATH") )',
+				'if ( ! defined("ABSPATH" ) )',
+				'if (! defined( "ABSPATH" ))',
+				'if (! defined( "ABSPATH") )',
+				'if (! defined("ABSPATH" ) )',
+				'if ( !defined( "ABSPATH" ))',
+				'if ( !defined( "ABSPATH") )',
+				'if ( !defined("ABSPATH" ) )',
+				'if( !defined( "ABSPATH" ))',
+				'if( !defined( "ABSPATH") )',
+				'if( !defined("ABSPATH" ) )',
+				
 				'/** Sets up WordPress vars and included files',
 				'require_once(ABSPATH',
+				'require_once ABSPATH',
+				'require_once( ABSPATH',
+				'require_once',
+				"define( 'DB_NAME'",
+				'define( "DB_NAME"',
+				"define('DB_NAME'",
+				'define("DB_NAME"',
+				'require',
+				'include_once',				
 			);
 			foreach ($other_anchor_points as $anchor_point) {
 				$anchor_point    = (string) $anchor_point;
@@ -318,8 +363,9 @@ class WPConfigTransformer {
 			}
 		}
 
-		preg_match_all( '/(?<=^|;|<\?php\s|<\?\s)(\h*define\s*\(\s*[\'"](\w*?)[\'"]\s*)(,\s*([\'"].*?[\'"]|.*?)\s*)((?:,\s*(?:true|false)\s*)?\)\s*;)/ims', $src, $constants );
-		preg_match_all( '/(?<=^|;|<\?php\s|<\?\s)(\h*\$(\w+)\s*=)(\s*([\'"].*?[\'"]|.*?)\s*;)/ims', $src, $variables );
+		preg_match_all( '/(?<=^|;|<\?php\s|<\?\s)(\h*define\s*\(\s*[\'"](\w*?)[\'"]\s*)(,\s*(\'\'|""|\'.*?[^\\\\]\'|".*?[^\\\\]"|.*?)\s*)((?:,\s*(?:true|false)\s*)?\)\s*;)/ims', $src, $constants );
+        preg_match_all( '/(?<=^|;|<\?php\s|<\?\s)(\h*\$(\w+)\s*=)(\s*(\'\'|""|\'.*?[^\\\\]\'|".*?[^\\\\]"|.*?)\s*;)/ims', $src, $variables );
+
 
 		if ( ! empty( $constants[0] ) && ! empty( $constants[1] ) && ! empty( $constants[2] ) && ! empty( $constants[3] ) && ! empty( $constants[4] ) && ! empty( $constants[5] ) ) {
 			foreach ( $constants[2] as $index => $name ) {

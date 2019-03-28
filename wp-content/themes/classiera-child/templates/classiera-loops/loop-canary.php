@@ -138,8 +138,11 @@
 									</div>
 									<div class="col-lg-12">
 
+										<?php
+										$_isNoPrice = true;
+										?>
 										<!-- Start 15 Minutes Price -->
-										<?php if (!empty($fifteen_min_euro)) { ?>
+										<?php if (!empty($fifteen_min_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('15 Min', 'classiera'); ?></span>
 											</div>
@@ -150,7 +153,7 @@
 										<!-- End 15 Minutes Price -->
 										
 										<!-- Start 30 Minutes Price -->
-										<?php if (!empty($thirty_min_euro)) { ?>
+										<?php if (!empty($thirty_min_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('30 Min', 'classiera'); ?></span>
 											</div>
@@ -161,7 +164,7 @@
 										<!-- End 30 Minutes Price -->
 
 										<!-- Start 45 Minutes Price -->
-										<?php if (!empty($fourty_five_min_euro)) { ?>
+										<?php if (!empty($fourty_five_min_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('45 Min', 'classiera'); ?></span>
 											</div>
@@ -172,7 +175,7 @@
 										<!-- End 45 Minutes price -->
 
 										<!-- Start One Hour Price -->
-										<?php if (!empty($one_hour_euro)) { ?>
+										<?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('1 Hour', 'classiera'); ?></span>
 											</div>
@@ -183,7 +186,7 @@
 										<!-- End One hour price -->
 
 										<!-- Start Full Day Price -->
-										<?php if (!empty($full_day_euro)) { ?>
+										<?php if (!empty($full_day_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('Full Day', 'classiera'); ?></span>
 											</div>
@@ -193,7 +196,7 @@
 										<?php } ?>
 										<!-- End Full Day Price -->
 										<!-- Start Business Date -->
-										<?php if (!empty($business_date_euro)) { ?>
+										<?php if (!empty($business_date_euro)) { $_isNoPrice = false; ?>
 											<div class="col-lg-6">
 												<span class="pull-right"><?php esc_html_e('Date', 'classiera'); ?></span>
 											</div>
@@ -202,7 +205,11 @@
 											</div>
 										<?php } ?>
 										<!-- End Business Date Price -->
-
+										<?php if( $_isNoPrice == true){?>
+											<div class="col-lg-12">
+												<span><?php esc_html_e('No prices provided', 'classiera'); ?></span>
+											</div>
+										<?php }?>
 									</div>
 								</div>
 							</span>

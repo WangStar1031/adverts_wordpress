@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 4.4
+ * Version: 4.5
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -13,7 +13,7 @@
  *
  * @package ic-devops
  *
- * Copyright (C) 2014-2018 Iulia Cazan
+ * Copyright (C) 2014-2019 Iulia Cazan
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -56,7 +56,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @var boolean
 	 */
 	public static $is_configured = false;
-
 	/**
 	 * Plugin settings.
 	 *
@@ -141,9 +140,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				add_filter( 'admin_post_thumbnail_html', array( $called, 'append_image_generate_button' ), 60, 3 );
 			} else {
 				add_action( 'image_regenerate_select_crop_button', array( $called, 'image_regenerate_select_crop_button' ) );
+				// The init action that is used with older core versions.
+				add_action( 'init', array( $called, 'register_image_button' ) );
 			}
 			add_action( 'admin_enqueue_scripts', array( $called, 'load_assets' ) );
-			add_action( 'init', array( $called, 'register_image_button' ) );
+
 			add_action( 'add_meta_boxes', array( $called, 'register_image_meta' ), 10, 3 );
 			add_action( 'wp_ajax_sirsc_show_actions_result', array( $called, 'show_actions_result' ) );
 			add_action( 'plugins_loaded', array( $called, 'load_textdomain' ) );

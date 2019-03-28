@@ -40,7 +40,7 @@ require('inc/class-wp-bootstrap-comment-walker.php');
 if ( comments_open()) :
 	if ((is_page() || is_single()) && ( ! is_home() && ! is_front_page())):
 ?>
-	<div class="user-comments border-bottom">
+	<div class="user-comments">
 		<?php if ( have_comments()){?>
 		<ul class="media-list">
 		<?php
@@ -111,12 +111,6 @@ if ( comments_open()) :
 									<div class="help-block with-errors"></div>
 								</div>
 							</div><!--eMAIL-->
-							<div class="form-group col-sm-7">
-								<label class="text-capitalize"><?php esc_html_e( 'Website','classiera' ); ?> : </label>
-								<div class="inner-addon left-addon">
-									<input type="url" name="url" class="form-control form-control-sm" placeholder="<?php esc_html_e( 'enter website url','classiera' ); ?>" value="<?php echo esc_attr( $comment_author_url ); ?>">
-								</div>
-							</div><!--Phone-->
 							<?php } ?>
 							<div class="form-group col-sm-12">
 								<label class="text-capitalize"><?php esc_html_e( 'Message','classiera' ); ?> : <span class="text-danger">*</span></label>

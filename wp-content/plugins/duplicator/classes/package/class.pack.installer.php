@@ -93,9 +93,9 @@ class DUP_Installer
 			$mini_expander_string = '';
 		}
 
-		$search_array	 = array('@@ARCHIVE@@', '@@VERSION@@', '@@ARCHIVE_SIZE@@', '@@PACKAGE_HASH@@', '@@DUPARCHIVE_MINI_EXPANDER@@');
+		$search_array	 = array('@@ARCHIVE@@', '@@VERSION@@', '@@ARCHIVE_SIZE@@', '@@PACKAGE_HASH@@', '@@CSRF_CRYPT@@', '@@DUPARCHIVE_MINI_EXPANDER@@');
 		$package_hash	 = $this->Package->getPackageHash();
-		$replace_array	 = array($this->Package->Archive->File, DUPLICATOR_VERSION, @filesize($archive_filepath), $package_hash, $mini_expander_string);
+		$replace_array	 = array($this->Package->Archive->File, DUPLICATOR_VERSION, @filesize($archive_filepath), $package_hash, DUPLICATOR_INSTALLER_CSRF_CRYPT, $mini_expander_string);
 		$installer_contents = str_replace($search_array, $replace_array, $installer_contents);
 
 		if (@file_put_contents($installer_filepath, $installer_contents) === false) {
@@ -125,6 +125,8 @@ class DUP_Installer
 		$hasher		 = new DUP_PasswordHash(8, FALSE);
 		$pass_hash	 = $hasher->HashPassword($this->Package->Installer->OptsSecurePass);
 
+        $this->Package->Database->getScannerData();
+
 		//READ-ONLY: COMPARE VALUES
 		$ac->created	 = $this->Package->Created;
 		$ac->version_dup = DUPLICATOR_VERSION;
@@ -136,20 +138,20 @@ class DUP_Installer
 
 		//READ-ONLY: GENERAL
 		// $ac->installer_base_name  = $global->installer_base_name;
-		$ac->installer_base_name	 = 'installer.php';
-		$ac->package_name			 = "{$this->Package->NameHash}_archive.{$extension}";
-		$ac->package_hash			 = $this->Package->getPackageHash();
-		$ac->package_notes			 = $this->Package->Notes;
-		$ac->url_old				 = get_option('siteurl');
-		$ac->opts_delete			 = json_encode($GLOBALS['DUPLICATOR_OPTS_DELETE']);
-		$ac->blogname				 = esc_html(get_option('blogname'));
-		$ac->wproot					 = DUPLICATOR_WPROOTPATH;
-		$ac->relative_content_dir	 = str_replace(ABSPATH, '', WP_CONTENT_DIR);
-		$ac->exportOnlyDB			 = $this->Package->Archive->ExportOnlyDB;
-		$ac->installSiteOverwriteOn	 = DUPLICATOR_INSTALL_SITE_OVERWRITE_ON;
-		$ac->wplogin_url			 = wp_login_url();
+		$ac->installer_base_name    = 'installer.php';
+        $ac->package_name           = "{$this->Package->NameHash}_archive.{$extension}";
+        $ac->package_hash           = $this->Package->getPackageHash();
+        $ac->package_notes          = $this->Package->Notes;
+        $ac->url_old                = get_option('siteurl');
+        $ac->opts_delete            = DUP_JSON::encode($GLOBALS['DUPLICATOR_OPTS_DELETE']);
+        $ac->blogname               = esc_html(get_option('blogname'));
+        $ac->wproot                 = DUPLICATOR_WPROOTPATH;
+        $ac->relative_content_dir   = str_replace(ABSPATH, '', WP_CONTENT_DIR);
+        $ac->exportOnlyDB           = $this->Package->Archive->ExportOnlyDB;
+        $ac->installSiteOverwriteOn = DUPLICATOR_INSTALL_SITE_OVERWRITE_ON;
+        $ac->wplogin_url            = wp_login_url();
 
-		//PRE-FILLED: GENERAL
+        //PRE-FILLED: GENERAL
 		$ac->secure_on		 = $this->Package->Installer->OptsSecureOn;
 		$ac->secure_pass	 = $pass_hash;
 		$ac->skipscan		 = false;
@@ -162,10 +164,10 @@ class DUP_Installer
 		$ac->mu_mode						 = DUP_MU::getMode();
 		$ac->is_outer_root_wp_config_file	 = (!file_exists(DUPLICATOR_WPROOTPATH.'wp-config.php')) ? true : false;
 		$ac->is_outer_root_wp_content_dir	 = $this->Package->Archive->isOuterWPContentDir();
+		$ac->csrf_crypt = DUPLICATOR_INSTALLER_CSRF_CRYPT;
 
-		$json = json_encode($ac);
-
-		DUP_Log::TraceObject('json', $json);
+        $json = DUP_JSON::encodePrettyPrint($ac);
+        DUP_Log::TraceObject('json', $json);
 
 		if (file_put_contents($archive_config_filepath, $json) === false) {
 			DUP_Log::error("Error writing archive config", "Couldn't write archive config at $archive_config_filepath", Dup_ErrorBehavior::LogOnly);
