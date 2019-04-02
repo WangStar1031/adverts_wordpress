@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Image Regenerate & Select Crop package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Image Regenerate & Select Crop 4.4\n"
+"Project-Id-Version: Image Regenerate & Select Crop 4.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/image-regenerate-"
 "select-crop\n"
 "POT-Creation-Date: 2018-12-20 10:51:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-12-20 14:24+0200\n"
+"PO-Revision-Date: 2019-03-26 14:24+0200\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
 "%100<=19) ? 1 : 2);\n"
@@ -399,6 +399,10 @@ msgstr "Le puteți regenera mai târziu dacă apăsați butonul de regenerare."
 msgid "Regenerate"
 msgstr "Regenerare"
 
+#: image-regenerate-select-crop.php:1786 image-regenerate-select-crop.php:1915
+msgid "Delete"
+msgstr "Șterge"
+
 #: image-regenerate-select-crop.php:1095
 msgid ""
 "This option allows you to regenerate the images for the selected image size."
@@ -621,9 +625,9 @@ msgstr "NU A FOST GĂSIT"
 
 #: image-regenerate-select-crop.php:1769
 msgid ""
-"Cannot be generated, the original image is smaller than the requested size."
+"The width and height of the original image are smaller than the requested image size."
 msgstr ""
-"Nu s-a putut genera, imaginea originală este mai mică decât mărimea cerută."
+"Lățimea și înălțimea imaginii originale sunt mai mici decât mărimea de imagine cerută."
 
 #: image-regenerate-select-crop.php:1779
 msgid "Info"
@@ -678,7 +682,7 @@ msgstr "RĂMÂN SĂ SE CUREȚE"
 
 #: image-regenerate-select-crop.php:2316
 msgid "The image "
-msgstr "Imaginea"
+msgstr "Imaginea "
 
 #: image-regenerate-select-crop.php:2316
 msgid "has been deleted."

@@ -677,20 +677,20 @@ if(isset($_POST['unfollow'])){
                                             </div><!--media-left-->
                                             <div class="media-body">
                                                 <h5 class="media-heading text-uppercase">
-													<a href="<?php //echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php //echo esc_attr($authorName); ?></a>
+													<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo esc_attr($authorName); ?></a>
 													<?php echo classiera_author_verified($user_ID);?>
 												</h5>
                                                 <p><?php esc_html_e('Member Since', 'classiera') ?>&nbsp;<?php echo esc_html($classieraRegDate);?></p>
-                                                <a href="<?php //echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php //esc_html_e( 'see all ads', 'classiera' ); ?></a>
-												<?php// if ( is_user_logged_in()){ 
-													//$current_user = wp_get_current_user();
-													//$user_id = $current_user->ID;
-													//if(isset($user_id)){
-														//if($user_ID != $user_id){							
-															//echo classiera_authors_follower_check($user_ID, $user_id);
-														//}
-													//}
-												//}												
+                                                <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php esc_html_e( 'see all ads', 'classiera' ); ?></a>
+												<?php if ( is_user_logged_in()){ 
+													$current_user = wp_get_current_user();
+													$user_id = $current_user->ID;
+													if(isset($user_id)){
+														if($user_ID != $user_id){							
+															echo classiera_authors_follower_check($user_ID, $user_id);
+														}
+													}
+												}												
 												?>
 												
                                             </div><!--media-body-->

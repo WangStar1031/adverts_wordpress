@@ -54,6 +54,7 @@
 	<div class="container">
 		<div class="row">
 			<?php if($classieraFooterWidgets == 1){ ?>
+				<!-- <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/images/logo.svg" alt="<?php bloginfo( 'name' ); ?>"> -->
 			<?php dynamic_sidebar( 'footer-one' ); ?>
 			<?php } ?>
 		</div><!--row-->

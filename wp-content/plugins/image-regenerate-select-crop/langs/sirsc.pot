@@ -316,6 +316,10 @@ msgstr ""
 msgid "Regenerate"
 msgstr ""
 
+#: image-regenerate-select-crop.php:1786 image-regenerate-select-crop.php:1915
+msgid "Delete"
+msgstr ""
+
 #: image-regenerate-select-crop.php:1095
 msgid ""
 "This option allows you to regenerate the images for the selected image size."
@@ -511,7 +515,7 @@ msgstr ""
 
 #: image-regenerate-select-crop.php:1769
 msgid ""
-"Cannot be generated, the original image is smaller than the requested size."
+"The width and height of the original image are smaller than the requested image size."
 msgstr ""
 
 #: image-regenerate-select-crop.php:1779

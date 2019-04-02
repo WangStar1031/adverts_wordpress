@@ -3,7 +3,7 @@ Contributors: Iulia Cazan
 Tags: image crop, image regenerate, image sizes details, image quality, default crop, wp-cli, media, image, image sizes, missing images, image placeholder, image debug, command line
 Requires at least: not tested
 Tested up to: 5.1.1
-Stable tag: 4.5
+Stable tag: 4.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -37,6 +37,15 @@ image_regenerate_select_crop_button, sirsc_custom_upload_rule
 None
 
 == Changelog ==
+=4.6.1 =
+* Expose the native medium large hidden size
+* Add delete option for generated images that are smaller than the expected size.
+
+= 4.6 =
+* Translation fix for the button used with the Gutenberg block
+* Added targeted delete option in the lightbox for each image size generated for an image
+* Link the media settings (medium and large crop option + define new custom image sizes) in the plugin settings page.
+
 = 4.5 =
 * Tested up to 5.1.1 version
 * Comment out the buttons action that is no longer necessary for WP >= 5.1.
@@ -105,6 +114,8 @@ None
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 == Version history ==
+4.6.1 - Expose the native medium large hidden size, add delete option for generated images that are smaller than the expected size.
+4.6 - Translation fix, added targeted delete option in the lightbox for each image size generated for an image, link the media settings in the plugin settings page.
 4.5 - Tested up to 5.1.1 version, comment out the buttons action that is no longer necessary for WP >= 5.1.
 4.4 - Tested up to 5.0.1 version, new settings for crop option of the native medium and large images, new options for registering custom image sizes from the UI, Gutenberg support for the featured image buttons that allows to see details and regenerate.
 4.3 - Tested up to 4.9.8 version, new WP-CLI command and flags, configurable custom rules and new hook for more complex rules, links to the images from the info view, styling updates, translations

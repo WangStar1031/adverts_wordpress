@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 4.5
+ * Version: 4.6.1
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -38,7 +38,7 @@ if ( ! file_exists( $dest_path ) ) {
 define( 'SIRSC_PLUGIN_FOLDER', dirname( __FILE__ ) );
 define( 'SIRSC_PLACEHOLDER_FOLDER', realpath( $dest_path ) );
 define( 'SIRSC_PLACEHOLDER_URL', esc_url( $dest_url ) );
-define( 'SIRSC_ASSETS_VER', '20181220.1434' );
+define( 'SIRSC_ASSETS_VER', '20190327.1501' );
 
 /**
  * Class for Image Regenerate & Select Crop.
@@ -98,6 +98,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @var string
 	 */
 	public static $plugin_url = '';
+	/**
+	 * Plugin native sizes.
+	 *
+	 * @var array
+	 */
+	private static $wp_native_sizes = array( 'thumbnail', 'medium', 'medium_large', 'large' );
 	/**
 	 * Plugin debug to file.
 	 *
@@ -230,6 +236,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			'time_warning'           => __( 'This operation might take a while, depending on how many images you have.', 'sirsc' ),
 			'irreversible_operation' => __( 'The operation is irreversible!', 'sirsc' ),
 			'resolution'             => __( 'Resolution', 'sirsc' ),
+			'button_options'         => __( 'Details/Options', 'sirsc' ),
+			'button_details'         => __( 'Image Details', 'sirsc' ),
+			'button_regenerate'      => __( 'Regenerate', 'sirsc' ),
 		) );
 		wp_enqueue_script( 'sirsc-custom-js' );
 	}
@@ -260,7 +269,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$debug  = PHP_EOL . ( true === $time ) ? '---' . microtime( true ) . PHP_EOL : '';
 			$debug .= ( ! is_scalar( $ob ) ) ? print_r( $ob, 1 ) : $ob;
 			file_put_contents( dirname( __FILE__ ) . '/logproc', PHP_EOL . $debug, FILE_APPEND );
-
 			if ( true === $log ) {
 				error_log( $debug );
 			}
@@ -955,7 +963,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		<div class="wrap">
 			<h1 class="wp-heading-inline"><?php esc_html_e( 'Image Regenerate & Select Crop Settings', 'sirsc' ); ?></h1>
 			<div class="sirsc-image-generate-functionality">
-				<p><?php esc_html_e( 'Please make sure you visit and update your settings here whenever you activate a new theme or plugins, so that the new image size registered, adjusted or removed to be reflected also here, and in this way to assure the optimal behavior for the features of this plugin.', 'sirsc' ); ?></p>
+				<p>
+					<?php esc_html_e( 'Please make sure you visit and update your settings here whenever you activate a new theme or plugins, so that the new image size registered, adjusted or removed to be reflected also here, and in this way to assure the optimal behavior for the features of this plugin.', 'sirsc' ); ?>
+					<span class="dashicons dashicons-image-crop"></span> <a href="<?php echo esc_url( admin_url( 'options-media.php' ) ); ?>#opt_new_crop"><?php esc_html_e( 'Images Custom Settings', 'sirsc' ); ?></a>
+					<span class="dashicons dashicons-format-gallery"></span> <a href="<?php echo esc_url( admin_url( 'options-media.php' ) ); ?>#opt_new_sizes"><?php esc_html_e( 'Define Custom Image Sizes', 'sirsc' ); ?></a>
+				</p>
 
 				<?php
 				if ( false === self::$is_configured ) {
@@ -1692,12 +1704,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					if ( ! empty( $filename ) ) :
 						$original_w = $image['width'];
 						$original_h = $image['height'];
-						$folder = str_replace( basename( $image['file'] ), '', $image['file'] );
-						$upload_dir   = wp_upload_dir();
-						$path = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
+						$folder     = str_replace( basename( $image['file'] ), '', $image['file'] );
+						$upload_dir = wp_upload_dir();
+						$path       = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
 						$original_filesize = ( ! empty( $image['file'] ) ) ? @filesize( trailingslashit( $upload_dir['basedir'] ) . $image['file'] ) : 0;
 						$img_filename = $folder . basename( $filename );
-						$img_url = trailingslashit( $upload_dir['baseurl'] ) . $img_filename;
+						$img_url      = trailingslashit( $upload_dir['baseurl'] ) . $img_filename;
 						?>
 						<div class="sirsc_under-image-options"></div>
 						<div class="sirsc_image-size-selection-box">
@@ -1767,7 +1779,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 										$action_title = '<span class="sirsc-size-label disabled"><div class="dashicons dashicons-editor-expand"></div> ' . esc_html__( 'Scale image', 'sirsc' ) . '</span>';
 									}
 
-									$action .= '<table class="wp-list-table widefat fixed "><tr><td>' . esc_html__( 'Cannot be generated, the original image is smaller than the requested size.', 'sirsc' ) . '</td></tr></table>';
+									$action .= '<table class="wp-list-table widefat fixed"><tr><td class="sirsc-small-info">' . esc_html__( 'The width and height of the original image are smaller than the requested image size.', 'sirsc' ) . '</td></tr></table>';
 								}
 
 								$cl        = ( 1 === $count % 2 ) ? 'alternate' : '';
@@ -1775,16 +1787,27 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 								$size_quality = ( empty( self::$settings['default_quality'][ $k ] ) ) ? 100 : (int) self::$settings['default_quality'][ $k ];
 
-								$filesize = ( ! empty( $image['sizes'][ $k ]['file'] ) ) ? @filesize( $path . $image['sizes'][ $k ]['file'] ) : 0;
+								$filesize = 0;
+								if ( ! empty( $image['sizes'][ $k ]['file'] ) && file_exists( $path . $image['sizes'][ $k ]['file'] ) ) {
+									$filesize = @filesize( $path . $image['sizes'][ $k ]['file'] );
+								}
 
-								echo '<tr class="' . $cl . ' textright bottom-border"><td><b class="sirsc-size-label size"><span id="idsrc' . (int) $post_data['post_id'] . $k . '-url">' . $maybelink . '</span>' . $k . '</b> <span class="sirsc-small-info">' . esc_html__( 'Info', 'sirsc' ) . ': ' . $size_text . '</span></td><td width="120" class="textleft">' . $action_title . '<span class="sirsc-small-info">' . esc_html__( 'Quality', 'sirsc' ) . ': <b>' . $size_quality . '%</b></span>
+								$del = '';
+								if ( 0 != $filesize ) {
+									if ( ! substr_count( $image['file'], $image['sizes'][ $k ]['file'] ) ) {
+										// The size is the not the original file.
+										$del = '<a class="sirsc_delSize" onclick="sirsc_start_delete(\'' . intval( $post_data['post_id'] ) . $k . '\');" title="' . esc_attr__( 'Delete', 'sirsc' ) . '"><b class="dashicons dashicons-trash"></b></a>';
+									}
+								}
+
+								echo '<tr class="' . $cl . ' textright"><td><b class="sirsc-size-label size" title="' . esc_attr( $k ) . '"><span id="idsrc' . (int) $post_data['post_id'] . $k . '-url">' . $maybelink . '</span>' . $k . '</b> <span class="sirsc-small-info">' . esc_html__( 'Info', 'sirsc' ) . ': ' . $size_text . '</span></td><td width="120" class="textleft">' . $action_title . '<span class="sirsc-small-info">' . esc_html__( 'Quality', 'sirsc' ) . ': <b>' . $size_quality . '%</b></span>
 								</td></tr>
-								<tr class="' . $cl . '" id="sirsc_recordsArray_' . (int) $post_data['post_id'] . $k . '">
+								<tr class="' . $cl . ' bottom-border" id="sirsc_recordsArray_' . (int) $post_data['post_id'] . $k . '">
 									<input type="hidden" name="post_id" id="post_id' . (int) $post_data['post_id'] . $k . '" value="' . (int) $post_data['post_id'] . '" />
 									<input type="hidden" name="selected_size" id="selected_size' . (int) $post_data['post_id'] . $k . '" value="' . $k . '" />
 									<td class="image-src-column"><div class="result_inline"><div id="sirsc_recordsArray_' . (int) $post_data['post_id'] . $k . '_result" class="result inline"><span class="spinner off"></span></div></div>' . $im . '<br><span class="image-size-column">' . esc_html__( 'File size', 'sirsc' ) . ': <b class="image-file-size">' . self::human_filesize( $filesize ) . '</b></span>
 									</td>
-									<td class="sirsc_image-action-column">' . $action . '</td>
+									<td class="sirsc_image-action-column">' . $del . ' ' . $action . '</td>
 								</tr>'; // WPCS: XSS OK.
 							}
 							echo '
@@ -1828,48 +1851,121 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$factor = floor( ( strlen( $bytes ) - 1 ) / 3 );
 		return sprintf( "%.{$decimals}f", $bytes / pow( 1024, $factor ) ) . @$sz[ $factor ];
 	}
+
+	/**
+	 * Regenerate the image sizes for a specified image.
+	 */
+	public static function ajax_delete_image_sizes_on_request() {
+		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
+			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			if ( ! empty( $post_data['post_id'] ) && ! empty( $post_data['selected_size'] ) ) {
+				$size  = $post_data['selected_size'];
+				$image = wp_get_attachment_metadata( $post_data['post_id'] );
+				$file  = '';
+				if ( ! empty( $image['sizes'][ $size ] ) ) {
+					if ( ! substr_count( $image['file'], $image['sizes'][ $size ]['file'] ) ) {
+						// The size is not the original file.
+						if ( ! empty( $image['sizes'][ $size ]['path'] ) && file_exists( $image['sizes'][ $size ]['path'] ) ) {
+							$file = $image['sizes'][ $size ]['path'];
+						} else {
+							if ( ! empty( $image['sizes'][ $size ]['file'] ) && ! empty( $image['file'] ) ) {
+								$folder     = str_replace( basename( $image['file'] ), '', $image['file'] );
+								$upload_dir = wp_upload_dir();
+								$path       = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
+								$file       = $path . $image['sizes'][ $size ]['file'];
+							}
+						}
+						unset( $image['sizes'][ $size ] );
+					}
+				}
+				if ( ! empty( $file ) ) {
+					unlink( $file );
+				}
+				wp_update_attachment_metadata( $post_data['post_id'], $image );
+				self::expose_image_after_processing( $post_data['post_id'], $size );
+			}
+		}
+	}
+	/**
+	 * Expose image after processing.
+	 *
+	 * @param  intget  $post_id    The attachment ID.
+	 * @param  string  $sel_size   The image size.
+	 * @param  boolean $generate   True if the size should be regenerated.
+	 * @param  string  $crop_small Maybe a specific crop position.
+	 * @return void
+	 */
+	public static function expose_image_after_processing( $post_id, $sel_size, $generate = false, $crop_small = '' ) {
+		if ( empty( $post_id ) ) {
+			echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Something went wrong!', 'sirsc' ) . '</span>';
+			// Fail-fast.
+			return;
+		}
+		self::load_settings_for_post_id( (int) $post_id );
+		$sizes = ( ! empty( $sel_size ) ) ? trim( $sel_size ) : 'all';
+		if ( true === $generate ) {
+			self::make_images_if_not_exists( $post_id, $sizes, $crop_small );
+		}
+
+		if ( 'all' !== $sizes ) {
+			$th_src = '';
+			$image  = wp_get_attachment_metadata( $post_id );
+			if ( ! empty( $image['sizes'][ $sizes ] ) ) {
+				$th     = wp_get_attachment_image_src( $post_id, $sizes );
+				$th_src = $th[0];
+			}
+
+			$crop_table  = '';
+			$tmp_details = self::get_all_image_sizes( $sizes );
+			if ( ! empty( $tmp_details['crop'] ) ) {
+				$crop_table = '<div class="sirsc_clearAll"></div>' . preg_replace( '/[\x00-\x1F\x80-\xFF]/', '', self::make_generate_images_crop( (int) $post_id, $sizes ) );
+			}
+			$button = '<div class="sirsc_clearAll"></div><a class="button" onclick="sirsc_start_regenerate(\'' . (int) $post_id . $sizes . '\');"><b class="dashicons dashicons-update"></b> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</a>';
+
+			if ( ! empty( $th_src ) ) {
+				if ( ! substr_count( $image['file'], $image['sizes'][ $sizes ]['file'] ) ) {
+					// The size is the not the original file.
+					$crop_table = '<a class="sirsc_delSize" onclick="sirsc_start_delete(\'' . intval( $post_id ) . $sizes . '\');" title="' . esc_attr__( 'Delete', 'sirsc' ) . '"><b class="dashicons dashicons-trash"></b></a>' . $crop_table;
+				}
+			}
+
+			$filesize = 0;
+			if ( ! empty( $th_src ) ) {
+				$folder     = str_replace( basename( $image['file'] ), '', $image['file'] );
+				$upload_dir = wp_upload_dir();
+				$path       = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
+				$file       = $path . $image['sizes'][ $sizes ]['file'];
+				if ( file_exists( $file ) ) {
+					$filesize = @filesize( $file );
+				}
+			}
+			$w = ( ! empty( $image['sizes'][ $sizes ]['width'] ) ) ? $image['sizes'][ $sizes ]['width'] : 0;
+			$h = ( ! empty( $image['sizes'][ $sizes ]['height'] ) ) ? $image['sizes'][ $sizes ]['height'] : 0;
+
+			if ( ! empty( $th_src ) ) {
+				$th_src .= '?v=' . time();
+			}
+			echo '<script>
+			jQuery(document).ready(function () {
+				sirsc_thumbnail_details(\'' . intval( $post_id ) . '\', \'' . $sizes . '\', \'' . $th_src . '\', \'' . $w . '\', \'' . $h . '\', \'' . addslashes( $crop_table . $button ) . '\');
+				jQuery(\'#sirsc_recordsArray_' . $post_id . $sel_size . ' .image-file-size\').html(\'' . self::human_filesize( $filesize ) . '\');
+			});
+			</script>'; // WPCS: XSS OK.
+		}
+		echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Done!', 'sirsc' ) . '</span>';
+	}
 	/**
 	 * Regenerate the image sizes for a specified image.
 	 */
 	public static function ajax_process_image_sizes_on_request() {
 		if ( ! empty( $_REQUEST['sirsc_data'] ) ) {
-			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
-			if ( ! empty( $post_data['post_id'] ) ) {
-				$post = get_post( $post_data['post_id'] );
+			$data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
+			if ( ! empty( $data['post_id'] ) ) {
+				$post = get_post( $data['post_id'] );
 				if ( ! empty( $post ) ) {
-					self::load_settings_for_post_id( (int) $post_data['post_id'] );
-					$sizes           = ( ! empty( $post_data['selected_size'] ) ) ? $post_data['selected_size'] : 'all';
-					$crop_small_type = ( ! empty( $post_data[ 'crop_small_type_' . $sizes ] ) ) ? $post_data[ 'crop_small_type_' . $sizes ] : '';
-					self::make_images_if_not_exists( $post_data['post_id'], $sizes, $crop_small_type );
-
-					if ( 'all' !== $sizes ) {
-						$image       = wp_get_attachment_metadata( $post_data['post_id'] );
-						$th          = wp_get_attachment_image_src( $post_data['post_id'], $sizes );
-						$th_src      = $th[0];
-						$crop_table  = '';
-						$tmp_details = self::get_all_image_sizes( $sizes );
-						if ( ! empty( $tmp_details['crop'] ) ) {
-							$crop_table = '<div class="sirsc_clearAll"></div>' . preg_replace( '/[\x00-\x1F\x80-\xFF]/', '', self::make_generate_images_crop( (int) $post_data['post_id'], $sizes ) ) . '<div class="sirsc_clearAll"></div><a class="button" onclick="sirsc_start_regenerate(\'' . (int) $post_data['post_id'] . $sizes . '\');"><b class="dashicons dashicons-update"></b> Regenerate</a>';
-						}
-
-						$filesize = 0;
-						if ( ! empty( $th_src ) ) {
-							$original_w = $image['width'];
-							$original_h = $image['height'];
-							$folder = str_replace( basename( $image['file'] ), '', $image['file'] );
-							$upload_dir   = wp_upload_dir();
-							$path = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
-							$filesize = ( ! empty( $th_src ) ) ? @filesize( str_replace( $upload_dir['baseurl'], $upload_dir['basedir'], $th_src ) ) : 0;
-						}
-
-						echo '<script>
-						jQuery(document).ready(function () {
-							sirsc_thumbnail_details(\'' . intval( $post_data['post_id'] ) . '\', \'' . $sizes . '\', \'' . $th_src . '?v=' . time() . '\', \'' . $image['sizes'][ $sizes ]['width'] . '\', \'' . $image['sizes'][ $sizes ]['height'] . '\', \'' . addslashes( $crop_table ) . '\');
-							jQuery(\'#sirsc_recordsArray_' . $post_data['post_id'] . $post_data['selected_size'] . ' .image-file-size\').html(\'' . self::human_filesize( $filesize ) . '\');
-						});
-						</script>'; // WPCS: XSS OK.
-					}
-					echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Done!', 'sirsc' ) . '</span>';
+					$size = ( ! empty( $data['selected_size'] ) ) ? $data['selected_size'] : 'all';
+					$crop = ( ! empty( $data[ 'crop_small_type_' . $size ] ) ) ? $data[ 'crop_small_type_' . $size ] : '';
+					self::expose_image_after_processing( $data['post_id'], $size, true, $crop );
 				}
 			} else {
 				echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Something went wrong!', 'sirsc' ) . '</span>';
@@ -2172,7 +2268,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$get_intermediate_image_sizes = get_intermediate_image_sizes();
 		// Create the full array with sizes and crop info.
 		foreach ( $get_intermediate_image_sizes as $_size ) {
-			if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ), true ) ) {
+			if ( in_array( $_size, self::$wp_native_sizes, true ) ) {
 				$sizes[ $_size ]['width'] = get_option( $_size . '_size_w' );
 				$sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
 				$sizes[ $_size ]['crop'] = (bool) get_option( $_size . '_crop' );
@@ -2660,7 +2756,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		// Add the custom section to media.
 		add_settings_section(
 			'sirsc_override_section',
-			'<hr><br><div class="dashicons dashicons-image-crop"></div> ' . __( 'Images Custom Settings', 'sirsc' ),
+			'<a name="opt_new_crop"></a><hr><br><div class="dashicons dashicons-image-crop"></div> ' . __( 'Images Custom Settings', 'sirsc' ),
 			array( get_called_class(), 'sirsc_override_section_callback' ),
 			'media'
 		);
@@ -2687,11 +2783,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		register_setting( 'media', 'sirsc_override_medium_size' );
 		register_setting( 'media', 'sirsc_override_large_size' );
 
-
 		// Add the custom section to media.
 		add_settings_section(
 			'sirsc_custom_sizes_section',
-			'<hr><br><div class="dashicons dashicons-format-gallery"></div> ' . __( 'Define Custom Image Sizes', 'sirsc' ),
+			'<a name="opt_new_sizes"></a><hr><br><div class="dashicons dashicons-format-gallery"></div> ' . __( 'Define Custom Image Sizes', 'sirsc' ),
 			array( get_called_class(), 'sirsc_custom_sizes_section_callback' ),
 			'media'
 		);
@@ -2854,6 +2949,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 		$all = maybe_unserialize( get_option( 'sirsc_use_custom_image_sizes' ) );
 		if ( ! empty( $all['sizes'] ) ) {
+			$native = self::$wp_native_sizes;
+			$native = array_push( $native, 'full' );
 			foreach ( $all['sizes'] as $i => $value ) {
 				$all['sizes'][ $i ]['name']   = str_replace( '-', '_', sanitize_title( $value['name'] ) );
 				$all['sizes'][ $i ]['width']  = abs( (int) $value['width'] );
@@ -2863,7 +2960,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					unset( $all['sizes'][ $i ]['crop'] );
 				}
 
-				if ( in_array( $all['sizes'][ $i ]['name'], array( 'thumbnail', 'medium', 'large', 'full' ) )
+				if ( in_array( $all['sizes'][ $i ]['name'], $native )
 					|| empty( $all['sizes'][ $i ]['name'] )
 					|| ( empty( $all['sizes'][ $i ]['width'] ) && empty( $all['sizes'][ $i ]['height'] ) ) ) {
 					unset( $all['sizes'][ $i ] );

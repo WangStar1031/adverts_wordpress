@@ -53,18 +53,18 @@
 											{className: 'button-primary button-large sirsc-block-action-details', 'data-sirsc-id': thid},
 											el(
 												'div',
-												{className: 'dashicons dashicons-format-gallery', title: __( 'Detalii/Opțiuni', 'sirsc' )}
+												{className: 'dashicons dashicons-format-gallery', title: SIRSC_settings.button_options}
 											),
-											__( 'Detalii imagine', 'sirsc' ),
+											SIRSC_settings.button_details,
 										),
 										el(
 											'div',
 											{className: 'button-primary button-large sirsc-block-action-regenerate', 'data-sirsc-id': thid},
 											el(
 												'div',
-												{className: 'dashicons dashicons-update', title: __( 'Regenerare', 'sirsc' )}
+												{className: 'dashicons dashicons-update', title: SIRSC_settings.button_regenerate}
 											),
-											__( 'Regenerare', 'sirsc' ),
+											SIRSC_settings.button_regenerate,
 										),
 										el(
 											'div',

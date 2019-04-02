@@ -115,6 +115,11 @@ function sirsc_start_regenerate(id) {
   sirsc_show_ajax_action('ajax_process_image_sizes_on_request', 'sirsc_recordsArray_' + id, 'sirsc_recordsArray_' + id + '_result');
 }
 
+function sirsc_start_delete(id) {
+  sirsc_spinner_off(id);
+  sirsc_show_ajax_action('ajax_delete_image_sizes_on_request', 'sirsc_recordsArray_' + id, 'sirsc_recordsArray_' + id + '_result');
+}
+
 function sirsc_crop_position(id) {
   sirsc_spinner_off(id);
   sirsc_show_ajax_action('ajax_process_image_sizes_on_request', 'sirsc_recordsArray_' + id, 'sirsc_recordsArray_' + id + '_result');
@@ -125,8 +130,13 @@ function sirsc_clear_result(id) {
 }
 
 function sirsc_thumbnail_details(id, size, src, w, h, crop) {
-  jQuery('#idsrc' + id + size + '').html('<img src="' + src + '" /><div class="sirsc_clearAll"></div>' + SIRSC_settings.resolution + ': <b>' + w + '</b>x<b>' + h + '</b>px');
-  jQuery('#idsrc' + id + size + '-url').html('<a href="' + src + '" target="_blank"><div class="dashicons dashicons-admin-links"></div></a>');
+  if (src != '') {
+    jQuery('#idsrc' + id + size + '').html('<img src="' + src + '" /><div class="sirsc_clearAll"></div>' + SIRSC_settings.resolution + ': <b>' + w + '</b>x<b>' + h + '</b>px');
+    jQuery('#idsrc' + id + size + '-url').html('<a href="' + src + '" target="_blank"><div class="dashicons dashicons-admin-links"></div></a>');
+  } else {
+    jQuery('#idsrc' + id + size + '').html('');
+    jQuery('#idsrc' + id + size + '-url').html('');
+  }
   if (crop != '') {
     jQuery('#sirsc_recordsArray_' + id + size + ' .sirsc_image-action-column').html(crop);
   }

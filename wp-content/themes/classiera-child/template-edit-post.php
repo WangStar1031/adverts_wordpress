@@ -183,6 +183,10 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['post_phone'])){
 					update_post_meta($post_id, 'post_phone', $_POST['post_phone'], $allowed);
 				}
+				// Second Person Name
+				if(isset($_POST['second_person_name'])){
+					update_post_meta($post_id, 'second_person_name', $_POST['second_person_name'], $allowed);
+				}
 				// Second Phone Number
 				if(isset($_POST['second_phone'])){
 					update_post_meta($post_id, 'second_phone', $_POST['second_phone'], $allowed);
@@ -738,6 +742,9 @@ get_header(); ?>
 														?>
 														<div class="form-group has-error has-danger">
 															<input id="title" data-minlength="1" name="postTitle" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Your Nickname', 'classiera') ?>" required value="<?= $postTitle?>">
+														</div>
+														<div class="form-group has-error has-danger">
+															<input id="second-person-name" data-minlength="1" name="second_person_name" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('2nd Person Nickname', 'classiera') ?>" required>
 														</div>
 														<input  value="1" type="hidden" name="classiera_ads_status">
 														<input  value="1" type="hidden" name="classiera_ads_statustime">
