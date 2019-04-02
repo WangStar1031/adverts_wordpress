@@ -669,13 +669,14 @@ get_header(); ?>
                                     <ul class="nav nav-pills" style="margin-bottom: 15px">
                                         <li><a href="#step-1"><?php esc_html_e('About Me', 'classiera'); ?></a></li>
                                         <li><a href="#step-2"><?php esc_html_e('Appearance', 'classiera'); ?></a></li>
-                                        <li><a href="#step-3"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
-                                        <li><a href="#step-4"><?php esc_html_e('Facilities', 'classiera'); ?></a></li>
-                                        <li><a href="#step-5"><?php esc_html_e('Location', 'classiera'); ?></a></li>
-                                        <li><a href="#step-6"><?php esc_html_e('Image', 'classiera'); ?></a></li>
-                                        <li><a href="#step-7"><?php esc_html_e('Gallery', 'classiera'); ?></a></li>
-                                        <li><a href="#step-8"><?php esc_html_e('Prices', 'classiera'); ?></a></li>
-                                        <li><a href="#step-9"><?php esc_html_e('Publish', 'classiera'); ?></a></li>
+                                        <li><a href="#step-3"><?php esc_html_e('AppearancePair', 'classiera'); ?></a></li>
+                                        <li><a href="#step-4"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
+                                        <li><a href="#step-5"><?php esc_html_e('Facilities', 'classiera'); ?></a></li>
+                                        <li><a href="#step-6"><?php esc_html_e('Location', 'classiera'); ?></a></li>
+                                        <li><a href="#step-7"><?php esc_html_e('Image', 'classiera'); ?></a></li>
+                                        <li><a href="#step-8"><?php esc_html_e('Gallery', 'classiera'); ?></a></li>
+                                        <li><a href="#step-9"><?php esc_html_e('Prices', 'classiera'); ?></a></li>
+                                        <li><a href="#step-10"><?php esc_html_e('Publish', 'classiera'); ?></a></li>
                                     </ul>
 
 									<div class="step-container clearfix">
@@ -698,7 +699,7 @@ get_header(); ?>
 														</select>
 														<!-- End Gender -->
 														<!--Category-->
-														<select id="categorySelect" name="categorySelect" required>
+														<select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
 															<option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
 															<?php 
 																$categories = get_terms('category', array(
@@ -1021,6 +1022,187 @@ get_header(); ?>
 										<!-- Begin Step-3 -->
 										<div id="step-3">
 											<div class="row">
+												<div class="col-lg-12">
+													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('AppearancePair', 'classiera'); ?></h3>
+												</div>
+												<div class="col-sm-12 col-lg-6">
+													<div class="form-group">
+														<select name="hair_color_1" required>
+															<option value="" disabled selected><?php esc_html_e('Hair Color', 'classiera'); ?></option>
+															<?php
+															foreach ($arrHaircolor as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="eyes_color_1" required>
+															<option value="" disabled selected><?php esc_html_e('Eyes Color', 'classiera'); ?></option>
+															<?php
+															foreach ($arrEyescolor as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="ethnicity_1" required>
+															<option value="" disabled selected><?php esc_html_e('Ethnicity', 'classiera'); ?></option>
+															<?php
+															foreach ($arrEthnicity as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
+														<select name="height_inches_1" class="third-size pull-right" required>
+															<option value="" disabled selected><?php esc_html_e('Inches', 'classiera'); ?></option>
+															<?php
+															foreach ($arrHeightinches as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>"</option>
+															<?php
+															}
+															?>
+														</select>
+														<select name="height_feet_1" class="third-size pull-right add-margin" required>
+															<option value="" disabled selected><?php esc_html_e('Feet', 'classiera'); ?></option>
+															<?php
+															foreach ($arrHeightfeet as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														
+
+														<select name="weight_1" required>
+															<option value="" selected disabled><?php esc_html_e('Weight in Kilograms', 'classiera'); ?></option>
+															<?php
+															foreach ($arrWeight as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
+														<select name="breast_type_1" class="fifth-size pull-right" required>
+															<option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreaststype as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														<select name="breast_size_cup_1" class="fifth-size pull-right add-margin" required>
+															<option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastscup as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														<select name="breast_size_1" class="fifth-size pull-right add-margin" required>
+															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastssize as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+													</div>
+												</div>
+												<div class="col-sm-12 col-lg-6">
+													<div class="form-group">
+														<select name="waist_size_1" required>
+															<option selected disabled><?php esc_html_e('Waist Size in Inches', 'classiera'); ?></option>
+															<?php
+															foreach ($arrWaist as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>"</option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="hips_size_1" required>
+															<option value="" selected disabled><?php esc_html_e('Hips Size in Inches', 'classiera'); ?></option>
+															<?php
+															foreach ($arrHips as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>"</option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="dress_size_1" required>
+															<option value="" selected disabled><?php esc_html_e('Dress Size', 'classiera'); ?></option>
+															<?php
+															foreach ($arrDresssize as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="shoe_size_1" required>
+															<option value="" selected disabled><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></option>
+															<?php
+															foreach ($arrShoesize as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="pubic_area_1" required>
+															<option selected disabled><?php esc_html_e('Pubic Area', 'classiera'); ?></option>
+															<?php
+															foreach ($arrPubicarea as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+														<select name="smoker_1" required>
+															<option value="" selected disabled><?php esc_html_e('Are You a Smoker?', 'classiera'); ?></option>
+															<?php
+															foreach ($arrSmoker as $value) {
+															?>
+															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- End Step-3 -->
+										<!-- Begin Step-4 -->
+										<div id="step-4">
+											<div class="row">
 												
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
@@ -1130,9 +1312,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-3 -->
-										<!-- Begin Step-4 -->
-										<div id="step-4">
+										<!-- End Step-4 -->
+										<!-- Begin Step-5 -->
+										<div id="step-5">
 											<div class="row">
 												
 												<div class="col-sm-12 col-lg-6">
@@ -1185,9 +1367,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-4 -->
-										<!-- Begin Step-5 -->
-										<div id="step-5">
+										<!-- End Step-5 -->
+										<!-- Begin Step-6 -->
+										<div id="step-6">
 											<div class="row">
 												
 												<div class="col-sm-12 col-lg-6">
@@ -1313,197 +1495,196 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-5 -->
-										<!-- Begin Step-6 -->
-										<div id="step-6">
+										<!-- End Step-6 -->
+										<!-- Begin Step-7 -->
+										<div id="step-7">
 											<div class="row">
 												
 												<div class="col-sm-12">
 												<?php			   
-												  /*Image Count Check*/
-												  global $redux_demo;
-												  global $wpdb;
-												  $paidIMG = $redux_demo['premium-ads-limit'];
-												  $regularIMG = $redux_demo['regular-ads-limit'];			   
-												  $current_user = wp_get_current_user();
-												  $userID = $current_user->ID;
-												  $result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}classiera_plans WHERE user_id = $userID ORDER BY id DESC" );
-												  $totalAds = 0;
-												  $usedAds = 0;
-												  $availableADS = '';
-												  if(!empty($result)){
+													/*Image Count Check*/
+													global $redux_demo;
+													global $wpdb;
+													$paidIMG = $redux_demo['premium-ads-limit'];
+													$regularIMG = $redux_demo['regular-ads-limit'];			   
+													$current_user = wp_get_current_user();
+													$userID = $current_user->ID;
+													$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}classiera_plans WHERE user_id = $userID ORDER BY id DESC" );
+													$totalAds = 0;
+													$usedAds = 0;
+													$availableADS = '';
+													if(!empty($result)){
 													foreach ( $result as $info ){
-													  $availAds = $info->ads;
-													  if (is_numeric($availAds)) {
-														$totalAds += $info->ads;
-														$usedAds += $info->used;
-													  }
+														$availAds = $info->ads;
+														if (is_numeric($availAds)) {
+															$totalAds += $info->ads;
+															$usedAds += $info->used;
+														}
 													}
-												  }
-												  $availableADS = $totalAds-$usedAds;
-												  if($availableADS == "0" || empty($result)){
-													$imageLimit = $regularIMG;
-												  }else{
+													}
+													$availableADS = $totalAds-$usedAds;
+													if($availableADS == "0" || empty($result)){
+														$imageLimit = $regularIMG;
+													}else{
+														$imageLimit = $paidIMG;
+													}
+													if($currentRole == "administrator"){
 													$imageLimit = $paidIMG;
-												  }
-												  if($currentRole == "administrator"){
-													$imageLimit = $paidIMG;
-												  }
-												if($imageLimit != 0){ 
+													}
+													if($imageLimit != 0){ 
 												?>
-												<div class="form-main-section media-detail">
-												  <div class="form-group">
-														<div class="col-lg-12">
-															<div class="row">
-																<?php
-																$croppedImgUrl = "";
-																$croppedImgUrlDouble = "";
-																$ads_type_selected = get_post_meta($cur_post_id, 'ads_type_selected', true);
-																// print_r($ads_type_selected);
-																if( strpos($ads_type_selected, "standard") !== false){
-																	$croppedImgUrl = get_post_meta($cur_post_id,'croppedImg_Path', true);
-																?>
-																<div class="col-sm-12 col-lg-12">
-																	<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
-																	<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
-																	<div id="croppic_image" style="margin: 0 auto; background-position: center;">
-																		<div style="text-align: center;">
-																			<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
-																			<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -343px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+													<div class="form-main-section media-detail">
+														<div class="form-group">
+															<div class="col-lg-12">
+																<div class="row">
+																	<?php
+																	$croppedImgUrl = "";
+																	$croppedImgUrlDouble = "";
+																	$ads_type_selected = get_post_meta($cur_post_id, 'ads_type_selected', true);
+																	// print_r($ads_type_selected);
+																	if( strpos($ads_type_selected, "standard") !== false){
+																		$croppedImgUrl = get_post_meta($cur_post_id,'croppedImg_Path', true);
+																	?>
+																	<div class="col-sm-12 col-lg-12">
+																		<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
+																		<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
+																		<div id="croppic_image" style="margin: 0 auto; background-position: center;">
+																			<div style="text-align: center;">
+																				<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
+																				<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -343px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																			</div>
 																		</div>
 																	</div>
-																</div>
-																<?php
-																} else{
-																	$croppedImgUrl = get_post_meta($cur_post_id, 'croppedImg_Path', true);
-																	$croppedImgUrlDouble = get_post_meta($cur_post_id, 'croppedImg_Path_double', true);
-																?>
-																<input type="hidden" name="isDoubleCroppic" value="true">
-																<div class="col-sm-12 col-lg-12">
-																	<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
-																	<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
-																	<div id="croppic_image" style="margin: 0 auto; background-position: center;">
-																		<div style="text-align: center;">
-																			<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
-																			<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -343px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																	<?php
+																	} else{
+																		$croppedImgUrl = get_post_meta($cur_post_id, 'croppedImg_Path', true);
+																		$croppedImgUrlDouble = get_post_meta($cur_post_id, 'croppedImg_Path_double', true);
+																	?>
+																	<input type="hidden" name="isDoubleCroppic" value="true">
+																	<div class="col-sm-12 col-lg-12">
+																		<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
+																		<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
+																		<div id="croppic_image" style="margin: 0 auto; background-position: center;">
+																			<div style="text-align: center;">
+																				<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
+																				<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -343px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																			</div>
 																		</div>
 																	</div>
-																</div>
-																<div class="col-sm-12 col-lg-12">
-																	<input type="hidden" name="croppedImgUrlDouble" id="croppedImgUrlDouble" value="<?=$croppedImgUrlDouble?>">
-																	<div id="croppic-double" style="margin: 0 auto; display: none;" originalW="510" originalH="343"></div>
-																	<div id="croppic-double_image" style="margin: 0 auto;  background-position: center;">
-																		<div style="text-align: center;">
-																			<img src="<?=$croppedImgUrlDouble?>" style="width:510px; height: 343px; max-width: 100%;">
-																			<div class="btnClose" onclick="xClicked('croppic-double')" style="position: relative; top: -343px; left: 490px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																	<div class="col-sm-12 col-lg-12">
+																		<input type="hidden" name="croppedImgUrlDouble" id="croppedImgUrlDouble" value="<?=$croppedImgUrlDouble?>">
+																		<div id="croppic-double" style="margin: 0 auto; display: none;" originalW="510" originalH="343"></div>
+																		<div id="croppic-double_image" style="margin: 0 auto;  background-position: center;">
+																			<div style="text-align: center;">
+																				<img src="<?=$croppedImgUrlDouble?>" style="width:510px; height: 343px; max-width: 100%;">
+																				<div class="btnClose" onclick="xClicked('croppic-double')" style="position: relative; top: -343px; left: 490px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																			</div>
 																		</div>
 																	</div>
+																	<?php
+																	}
+																	?>
 																</div>
-																<?php
-																}
-																?>
 															</div>
 														</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="step-7">
-                                        <div class="row">
-                                        	<div class="col-sm-12">
-                                            	<div class="form-main-section media-detail">
-                                                	<div class="form-group">
-														<div class="col-sm-12">
-															<div class="classiera-dropzone-heading">
-																<div class="classiera-dropzone-heading-text">
-																	<p><?php esc_html_e('Select files to Upload', 'classiera') ?></p>
-																	<p><?php esc_html_e('You can add multiple images. Ads With photo get 50% more Responses', 'classiera') ?></p>
-																	<p class="limitIMG"><?php esc_html_e('You can upload', 'classiera') ?>&nbsp;<?php echo esc_attr( $imageLimit ); ?>&nbsp;<?php esc_html_e('Images maximum.', 'classiera') ?></p>
+													</div>
+												</div>
+                                        	</div>
+                                    	</div>
+	                                    <div id="step-8">
+	                                        <div class="row">
+	                                        	<div class="col-sm-12">
+	                                            	<div class="form-main-section media-detail">
+	                                                	<div class="form-group">
+															<div class="col-sm-12">
+																<div class="classiera-dropzone-heading">
+																	<div class="classiera-dropzone-heading-text">
+																		<p><?php esc_html_e('Select files to Upload', 'classiera') ?></p>
+																		<p><?php esc_html_e('You can add multiple images. Ads With photo get 50% more Responses', 'classiera') ?></p>
+																		<p class="limitIMG"><?php esc_html_e('You can upload', 'classiera') ?>&nbsp;<?php echo esc_attr( $imageLimit ); ?>&nbsp;<?php esc_html_e('Images maximum.', 'classiera') ?></p>
+																	</div>
+																</div>
+																<!-- HTML heavily inspired by http://blueimp.github.io/jQuery-File-Upload/ -->
+																<div id="mydropzone" class="classiera-image-upload clearfix" data-maxfile="<?php echo esc_attr( $imageLimit ); ?>">
+															  	<input type="hidden" name="removablePostIds">
+																<!--Imageloop-->
+																<?php
+																$upload_dir = wp_upload_dir();
+																$attachments = get_children(array(
+																	'post_parent' => $cur_post_id,
+																	'post_status' => 'inherit',
+																	'post_type' => 'attachment',
+																	'post_mime_type' => 'image',
+																	'order' => 'ASC',
+																	'orderby' => 'menu_order ID'
+																	)
+																);
+																// print_r($attachments);
+																$urls = [];
+																$ids = [];
+																foreach ($attachments as $attachment) {
+																	$curUrl = get_attached_file($attachment->ID);
+																	$arrUrls = explode("/", $curUrl);
+																	$realUrl = "";
+																	for( $i = count($arrUrls) - 3; $i < count($arrUrls); $i++){
+																		$realUrl .= "/" . $arrUrls[$i];
+																	}
+																	$urls[] = $upload_dir['baseurl'] . $realUrl;
+																	$ids[] = $attachment->ID;
+																}
+																$_nCount = count($urls);
+																for ($i = 0; $i < $imageLimit; $i++){
+																	$imgUrl = "";
+																	$id = "";
+																	if( $i < $_nCount){
+																		$imgUrl = $urls[$i];
+																		$id = $ids[$i];
+																	}
+																?>
+																<div class="classiera-image-box">
+																	<div class="classiera-upload-box">
+																		<input name="image-count" type="hidden" value="<?php echo esc_attr( $imageLimit ); ?>" />
+																		<input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]" multiple="multiple">
+																		<label class="img-label" for="imgInp<?php echo esc_attr( $i ); ?>"><i class="fas fa-plus-square"></i></label>
+																		<div class="classiera-image-preview" <?php if($imgUrl) echo 'style="display: block;"';?>>
+																			  <img class="my-image" src="<?=$imgUrl?>"/>
+																			  <span class="remove-img" idVal="<?=$id?>"><i class="fas fa-times-circle"></i></span>
+																		</div>
+																	</div>
+																</div>
+																<?php } ?>
+																<input type="hidden" name="classiera_featured_img" id="classiera_featured_img" value="0">
+																<input type="hidden" name="images_verified" id="images_verified" value="0">
+																<!--Imageloop-->
+															</div>
+															<?php 
+															$classiera_video_postads = $redux_demo['classiera_video_postads'];
+															if($classiera_video_postads == 1){
+															?>
+															<div class="iframe">
+																<div class="iframe-heading">
+																	<i class="fa fa-video-camera"></i>
+																	<span><?php esc_html_e('Put here iframe or video url.', 'classiera') ?></span>
+																</div>
+																<?php
+																$post_video = get_post_meta($cur_post_id, 'post_video', true);
+																?>
+																<textarea class="form-control" name="video" id="video-code" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
+																<div class="help-block">
+																	<p><?php esc_html_e('Add iframe or video URL (iframe 710x400) (youtube, vimeo, etc)', 'classiera') ?></p>
 																</div>
 															</div>
-															<!-- HTML heavily inspired by http://blueimp.github.io/jQuery-File-Upload/ -->
-															<div id="mydropzone" class="classiera-image-upload clearfix" data-maxfile="<?php echo esc_attr( $imageLimit ); ?>">
-														  	<input type="hidden" name="removablePostIds">
-															<!--Imageloop-->
-															<?php
-															$upload_dir = wp_upload_dir();
-															$attachments = get_children(array(
-																'post_parent' => $cur_post_id,
-																'post_status' => 'inherit',
-																'post_type' => 'attachment',
-																'post_mime_type' => 'image',
-																'order' => 'ASC',
-																'orderby' => 'menu_order ID'
-																)
-															);
-															// print_r($attachments);
-															$urls = [];
-															$ids = [];
-															foreach ($attachments as $attachment) {
-																$curUrl = get_attached_file($attachment->ID);
-																$arrUrls = explode("/", $curUrl);
-																$realUrl = "";
-																for( $i = count($arrUrls) - 3; $i < count($arrUrls); $i++){
-																	$realUrl .= "/" . $arrUrls[$i];
-																}
-																$urls[] = $upload_dir['baseurl'] . $realUrl;
-																$ids[] = $attachment->ID;
-															}
-															$_nCount = count($urls);
-															for ($i = 0; $i < $imageLimit; $i++){
-																$imgUrl = "";
-																$id = "";
-																if( $i < $_nCount){
-																	$imgUrl = $urls[$i];
-																	$id = $ids[$i];
-																}
-															?>
-															  <div class="classiera-image-box">
-																  <div class="classiera-upload-box">
-																	  <input name="image-count" type="hidden" value="<?php echo esc_attr( $imageLimit ); ?>" />
-																	  <input class="classiera-input-file imgInp" id="imgInp<?php echo esc_attr( $i ); ?>" type="file" name="upload_attachment[]" multiple="multiple">
-																	  <label class="img-label" for="imgInp<?php echo esc_attr( $i ); ?>"><i class="fas fa-plus-square"></i></label>
-																	  <div class="classiera-image-preview" <?php if($imgUrl) echo 'style="display: block;"';?>>
-																		  <img class="my-image" src="<?=$imgUrl?>"/>
-																		  <span class="remove-img" idVal="<?=$id?>"><i class="fas fa-times-circle"></i></span>
-																	  </div>
-																  </div>
-															  </div>
 															<?php } ?>
-															 <input type="hidden" name="classiera_featured_img" id="classiera_featured_img" value="0">
-															 <input type="hidden" name="images_verified" id="images_verified" value="0">
-															<!--Imageloop-->
-														  </div>
-														  <?php 
-														  $classiera_video_postads = $redux_demo['classiera_video_postads'];
-														  if($classiera_video_postads == 1){
-														  ?>
-														  <div class="iframe">
-															  <div class="iframe-heading">
-																  <i class="fa fa-video-camera"></i>
-																  <span><?php esc_html_e('Put here iframe or video url.', 'classiera') ?></span>
-															  </div>
-															  <?php
-															  $post_video = get_post_meta($cur_post_id, 'post_video', true);
-															  ?>
-															  <textarea class="form-control" name="video" id="video-code" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
-															  <div class="help-block">
-																  <p><?php esc_html_e('Add iframe or video URL (iframe 710x400) (youtube, vimeo, etc)', 'classiera') ?></p>
-															  </div>
-														  </div>
-														  <?php } ?>
-													  </div>
-												  </div>
+														</div>
+													</div>
 												</div>
-											  	<?php } ?>
-											  	<!-- add photos and media -->
+												  	<?php } ?>
+												  	<!-- add photos and media -->
 												</div>
 											</div>
 										</div>
-										<!-- End Step-6 -->
-										<!-- Begin Step-8 -->
-										<div id="step-8">
+										<!-- Begin Step-9 -->
+										<div id="step-9">
 											<div class="row">
 
 												<div class="col-sm-12">
@@ -1585,37 +1766,16 @@ get_header(); ?>
 
 											</div>
 										</div>
-										<!-- End Step-8 -->
-										<!-- Begin Step-9 -->
-										<div id="step-9" class="clearfix">
+										<!-- End Step-9 -->
+										<!-- Begin Step-10 -->
+										<div id="step-10" class="clearfix">
 											<div class="row">
-
 											   	<div class="col-sm-12 col-lg-12 style="margin-top: 50px;">
 											   		<button onclick="submitForm()" type="button" class="btn btn-primary extra-padding post-advert-btn" id="beforeupdatecheck_1"><?php esc_html_e('Update Advert', 'classiera') ?></button>
 											   	</div>
-
-											   	<!-- Credits modal -->
-<!-- 											   	<div id="myModal" class="modal fade" role="dialog">
-											   		<div class="modal-dialog">
-											   			<div class="modal-content">
-											   				<div class="modal-header">
-											   					<button type="button" class="close" data-dismiss="modal">&times;</button>
-											   					<h4 class="modal-title"></h4>
-											   				</div>
-											   				<div class="modal-body">
-											   					<p class="modal-body-info"></p>
-											   				</div>
-											   				<div class="modal-footer">
-											   				</div>
-											   			</div>
-											   		</div>
-											   	</div>
- -->											   	<!-- Credits Modal -->
-
-
 										   	</div><!-- Row -->
 										</div>
-										<!-- End Step-9 -->
+									<!-- End Step-10 -->
 									</div>
 								</div><!-- / Smart Wizard Content -->
 
@@ -1646,6 +1806,19 @@ get_header(); ?>
 
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/smartWizard.js"></script>
 <script>
+	var isShown = true;
+	function hideStep3(){
+		isShown = false;
+		$("#smartwizard > ul > li").eq(2).hide();
+		$("#step-3").hide();
+		$("#step-3").css("visibility", "hidden");
+	}
+	function showStep3(){
+		isShown = true;
+		$("#smartwizard > ul > li").eq(2).show();
+		$("#step-3").css("visibility", "visible");
+		// $("#step-3").show();
+	}
 	jQuery(document).ready(function($) {
         $('#smartwizard').smartWizard({
             transitionEffect: 'fade',
@@ -1665,14 +1838,16 @@ get_header(); ?>
 			    showNextButton: true, // show/hide a Next button
 		    }
 		});
+		hideStep3();
+		categoryChanged();
 		setTimeout(function(){
 			window.scrollTo(0,0);
-			if( $("#step-8 input[type=number]").filter(function(_idx){
+			if( $("#step-9 input[type=number]").filter(function(_idx){
 				return $("#step-8 input[type=number]").eq(_idx).val();
 			}).length == 0){
 				$("#checkbox3").prop("checked", false);
-				$("#step-8 .price-info").show();
-				$("#step-8 .price-fields").hide();
+				$("#step-9 .price-info").show();
+				$("#step-9 .price-fields").hide();
 			}
 		});
 		$('#checkbox3').click(function() {
@@ -1726,7 +1901,17 @@ get_header(); ?>
 	});
 	var isSet = false;
 	$("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
-		if( stepNumber == 5){
+		if( isShown == false && stepNumber == 2 && stepDirection == "forward"){
+			// $("#smartwizard > ul > li").eq(2).click();
+			$("#smartwizard").smartWizard("goToStep",3);
+			return true;
+		}
+		if( isShown == false && stepNumber == 2 && stepDirection == "backward"){
+			// $("#smartwizard > ul > li").eq(2).click();
+			$("#smartwizard").smartWizard("goToStep",1);
+			return true;
+		}
+		if( stepNumber == 6){
 			if( isSet != false)return;
 			isSet = true;
 			console.log( stepNumber);
@@ -1765,6 +1950,9 @@ get_header(); ?>
         var elmForm = $("#step-" + (stepNumber*1+1));
         // only on forward navigation, that makes easy navigation on backwards still do the validation when going next
         
+		if( isShown == false && stepNumber == 2	&& stepDirection == "forward"){
+			return true;
+		}
 		if( stepNumber == 0){
 			var activedTags = jQuery(".tagBtn.active");
 			var arrTags = [];
@@ -1775,7 +1963,7 @@ get_header(); ?>
 			}
 			var strTags = arrTags.join(",");
 			jQuery("input[name=tags]").val(strTags);
-		} else if( stepNumber == 5){ // step 6
+		} else if( stepNumber == 6){ // step 7
             if( $("#croppic_image").is(":hidden")){
                 var arrCroppedImgs = elmForm.find("#croppic .croppedImg");
                 if( arrCroppedImgs.length == 0){
@@ -1795,7 +1983,7 @@ get_header(); ?>
                     $("#croppedImgUrlDouble").val(arrDoubleCroppedImgs.eq(0).attr("src"));
                 }
             }
-        } else if( stepNumber == 6) { // step 7
+        } else if( stepNumber == 7) { // step 8
             var arrThumbImgs = $(".classiera-upload-box .classiera-image-preview img");
             var isExistsImg = false;
             for( var i = 0; i < arrThumbImgs.length; i ++){
@@ -1880,6 +2068,50 @@ get_header(); ?>
 		jQuery(_this).toggleClass("active");
 	}
 
+	function categoryChanged(){
+		var newTagTitle = "AppearancePair";
+		var catText = $("#categorySelect option:selected").text();
+		console.log(catText);
+		if( catText.toLowerCase() == "duo" || catText.toLowerCase() == "couple"){
+			console.log("Duo or Couple Selected.");
+			// $("#smartwizard").html(oriSmart);
+			showStep3();
+			return;
+			var arrNavs = $("#smartwizard > ul > li");
+			for( var i = 2; i < arrNavs.length; i++){
+				var curLi = arrNavs.eq(i);
+				curLi.find("a").attr("href", "#step-" + (i+2));
+			}
+			var arrSteps = $("#smartwizard > .step-container > div");
+			for( var i = 2; i < arrSteps.length; i++){
+				var curStep = arrSteps.eq(i);
+				curStep.attr("id", "step-" + (i+2));
+			}
+			$('<li><a href="#step-3">'+newTagTitle+'</a></li>').insertAfter(arrNavs.eq(1));
+			var strInsertingHtml = $("#insertedSection").html();
+			$(strInsertingHtml).insertAfter($("#step-2"));
+		} else{
+			hideStep3();
+			return;
+			var newTag = $("#smartwizard > ul > li").filter(function(_idx){
+				return $(this).text() == newTagTitle;
+			});
+			if( newTag.length ){
+				newTag.remove();
+				$("#smartwizard #step-3").remove();
+				var arrNavs = $("#smartwizard > ul > li");
+				for( var i = 2; i < arrNavs.length; i++){
+					var curLi = arrNavs.eq(i);
+					curLi.find("a").attr("href", "step-" + (i + 1));
+				}
+				var arrSteps = $("#smartwizard > .step-container > div");
+				for( var i = 2; i < arrSteps.length; i++){
+					var curStep = arrSteps.eq(i);
+					curStep.attr("id", "step-" + (i+1));
+				}
+			}
+		}
+	}
 </script>
 
 <?php get_footer(); ?>

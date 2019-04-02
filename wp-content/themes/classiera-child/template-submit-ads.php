@@ -1460,9 +1460,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-3 -->
-										<!-- Begin Step-4 -->
-										<div id="step-4">
+										<!-- End Step-4 -->
+										<!-- Begin Step-5 -->
+										<div id="step-5">
 											<div class="row">
 												<div class="col-lg-12">
 													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Facilities', 'classiera'); ?></h3>
@@ -1505,9 +1505,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-4 -->
-										<!-- Begin Step-5 -->
-										<div id="step-5">
+										<!-- End Step-5 -->
+										<!-- Begin Step-6 -->
+										<div id="step-6">
 											<div class="row">
 												<div class="col-lg-12"><!-- Heading Container -->
 													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Location', 'classiera'); ?></h3><!-- Heading -->
@@ -1574,9 +1574,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-5 -->
-										<!-- Begin Step-6 -->
-										<div id="step-6">
+										<!-- End Step-6 -->
+										<!-- Begin Step-7 -->
+										<div id="step-7">
 											<div class="row">
 											   	<div class="col-lg-12">
 												  <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Main Advert Image', 'classiera'); ?></h3>
@@ -1635,9 +1635,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-6 -->
-										<!-- Begin step-7 -->
-										<div id="step-7">
+										<!-- End Step-7 -->
+										<!-- Begin step-8 -->
+										<div id="step-8">
 											<div class="row">
 												<div class="col-lg-12">
 													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Image Gallery', 'classiera'); ?></h3>
@@ -1694,9 +1694,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-7 -->
-										<!-- Begin step-8 -->
-										<div id="step-8">
+										<!-- End Step-8 -->
+										<!-- Begin step-9 -->
+										<div id="step-9">
 											<div class="row">
 
 												<div class="col-sm-12">
@@ -1754,9 +1754,9 @@ get_header(); ?>
 
 											</div>
 										</div>
-										<!-- End step-8 -->
-										<!-- Begin step-9 -->
-										<div id="step-9">
+										<!-- End step-9 -->
+										<!-- Begin step-10 -->
+										<div id="step-10">
 											<div class="row">
 
 												<div class="col-lg-12">
@@ -1876,7 +1876,7 @@ get_header(); ?>
 
 										   	</div><!-- Row -->
 										</div>
-										<!-- End step-9 -->
+										<!-- End step-10 -->
 									</div>
 								</div><!-- / Smart Wizard Content -->
 
@@ -1920,7 +1920,6 @@ get_header(); ?>
 		// $("#step-3").show();
 	}
 	jQuery(document).ready(function($) {
-		// console.log(oriSmart);
 		$('#smartwizard').smartWizard({
 			transitionEffect: 'fade',
 			toolbarButtonPosition: 'right',
