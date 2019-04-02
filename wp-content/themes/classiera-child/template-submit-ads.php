@@ -881,14 +881,14 @@ get_header(); ?>
 									<ul class="nav nav-pills">
 										<li><a href="#step-1"><?php esc_html_e('About Me', 'classiera'); ?></a></li>
 										<li><a href="#step-2"><?php esc_html_e('Appearance', 'classiera'); ?></a></li>
-										<li><a href="#step-2.1"><?php esc_html_e('Appearance', 'classiera'); ?></a></li>
-										<li><a href="#step-3"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
-										<li><a href="#step-4"><?php esc_html_e('Facilities', 'classiera'); ?></a></li>
-										<li><a href="#step-5"><?php esc_html_e('Location', 'classiera'); ?></a></li>
-										<li><a href="#step-6"><?php esc_html_e('Image', 'classiera'); ?></a></li>
-										<li><a href="#step-7"><?php esc_html_e('Gallery', 'classiera'); ?></a></li>
-										<li><a href="#step-8"><?php esc_html_e('Prices', 'classiera'); ?></a></li>
-										<li><a href="#step-9"><?php esc_html_e('Publish', 'classiera'); ?></a></li>
+										<li><a href="#step-3"><?php esc_html_e('AppearancePair', 'classiera'); ?></a></li>
+										<li><a href="#step-4"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
+										<li><a href="#step-5"><?php esc_html_e('Facilities', 'classiera'); ?></a></li>
+										<li><a href="#step-6"><?php esc_html_e('Location', 'classiera'); ?></a></li>
+										<li><a href="#step-7"><?php esc_html_e('Image', 'classiera'); ?></a></li>
+										<li><a href="#step-8"><?php esc_html_e('Gallery', 'classiera'); ?></a></li>
+										<li><a href="#step-9"><?php esc_html_e('Prices', 'classiera'); ?></a></li>
+										<li><a href="#step-10"><?php esc_html_e('Publish', 'classiera'); ?></a></li>
 									</ul>
 								 
 									<div class="step-container clearfix">
@@ -908,7 +908,7 @@ get_header(); ?>
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
 														<!--Category-->
-														<select id="categorySelect" name="categorySelect" required>
+														<select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
 															<option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
 															<?php 
 																$categories = get_terms('category', array(
@@ -1192,15 +1192,15 @@ get_header(); ?>
 											</div>
 										</div>
 										<!-- End Step-2 -->
-										<!-- Begin Step-2 -->
-										<div id="step-2.1">
+										<!-- Begin Step-3 -->
+										<div id="step-3">
 											<div class="row">
 												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Appearance', 'classiera'); ?></h3>
+													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('AppearancePair', 'classiera'); ?></h3>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
-														<select name="hair_color" required>
+														<select name="hair_color_1" required>
 															<option value="" disabled selected><?php esc_html_e('Hair Color', 'classiera'); ?></option>
 															<?php
 															foreach ($arrHaircolor as $value) {
@@ -1211,7 +1211,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="eyes_color" required>
+														<select name="eyes_color_1" required>
 															<option value="" disabled selected><?php esc_html_e('Eyes Color', 'classiera'); ?></option>
 															<?php
 															foreach ($arrEyescolor as $value) {
@@ -1222,7 +1222,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="ethnicity" required>
+														<select name="ethnicity_1" required>
 															<option value="" disabled selected><?php esc_html_e('Ethnicity', 'classiera'); ?></option>
 															<?php
 															foreach ($arrEthnicity as $value) {
@@ -1234,7 +1234,7 @@ get_header(); ?>
 														</select>
 
 														<span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
-														<select name="height_inches" class="third-size pull-right" required>
+														<select name="height_inches_1" class="third-size pull-right" required>
 															<option value="" disabled selected><?php esc_html_e('Inches', 'classiera'); ?></option>
 															<?php
 															foreach ($arrHeightinches as $value) {
@@ -1244,7 +1244,7 @@ get_header(); ?>
 															}
 															?>
 														</select>
-														<select name="height_feet" class="third-size pull-right add-margin" required>
+														<select name="height_feet_1" class="third-size pull-right add-margin" required>
 															<option value="" disabled selected><?php esc_html_e('Feet', 'classiera'); ?></option>
 															<?php
 															foreach ($arrHeightfeet as $value) {
@@ -1256,7 +1256,7 @@ get_header(); ?>
 														</select>
 														
 
-														<select name="weight" required>
+														<select name="weight_1" required>
 															<option value="" selected disabled><?php esc_html_e('Weight in Kilograms', 'classiera'); ?></option>
 															<?php
 															foreach ($arrWeight as $value) {
@@ -1268,7 +1268,7 @@ get_header(); ?>
 														</select>
 
 														<span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
-														<select name="breast_type" class="fifth-size pull-right" required>
+														<select name="breast_type_1" class="fifth-size pull-right" required>
 															<option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
 															<?php
 															foreach ($arrBreaststype as $value) {
@@ -1278,7 +1278,7 @@ get_header(); ?>
 															}
 															?>
 														</select>
-														<select name="breast_size_cup" class="fifth-size pull-right add-margin" required>
+														<select name="breast_size_cup_1" class="fifth-size pull-right add-margin" required>
 															<option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
 															<?php
 															foreach ($arrBreastscup as $value) {
@@ -1288,7 +1288,7 @@ get_header(); ?>
 															}
 															?>
 														</select>
-														<select name="breast_size" class="fifth-size pull-right add-margin" required>
+														<select name="breast_size_1" class="fifth-size pull-right add-margin" required>
 															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
 															<?php
 															foreach ($arrBreastssize as $value) {
@@ -1302,7 +1302,7 @@ get_header(); ?>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<div class="form-group">
-														<select name="waist_size" required>
+														<select name="waist_size_1" required>
 															<option selected disabled><?php esc_html_e('Waist Size in Inches', 'classiera'); ?></option>
 															<?php
 															foreach ($arrWaist as $value) {
@@ -1313,7 +1313,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="hips_size" required>
+														<select name="hips_size_1" required>
 															<option value="" selected disabled><?php esc_html_e('Hips Size in Inches', 'classiera'); ?></option>
 															<?php
 															foreach ($arrHips as $value) {
@@ -1324,7 +1324,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="dress_size" required>
+														<select name="dress_size_1" required>
 															<option value="" selected disabled><?php esc_html_e('Dress Size', 'classiera'); ?></option>
 															<?php
 															foreach ($arrDresssize as $value) {
@@ -1335,7 +1335,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="shoe_size" required>
+														<select name="shoe_size_1" required>
 															<option value="" selected disabled><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></option>
 															<?php
 															foreach ($arrShoesize as $value) {
@@ -1346,7 +1346,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="pubic_area" required>
+														<select name="pubic_area_1" required>
 															<option selected disabled><?php esc_html_e('Pubic Area', 'classiera'); ?></option>
 															<?php
 															foreach ($arrPubicarea as $value) {
@@ -1357,7 +1357,7 @@ get_header(); ?>
 															?>
 														</select>
 
-														<select name="smoker" required>
+														<select name="smoker_1" required>
 															<option value="" selected disabled><?php esc_html_e('Are You a Smoker?', 'classiera'); ?></option>
 															<?php
 															foreach ($arrSmoker as $value) {
@@ -1372,9 +1372,9 @@ get_header(); ?>
 												</div>
 											</div>
 										</div>
-										<!-- End Step-2 -->
-										<!-- Begin Step-3 -->
-										<div id="step-3">
+										<!-- End Step-3 -->
+										<!-- Begin Step-4 -->
+										<div id="step-4">
 											<div class="row">
 												<div class="col-lg-12">
 												  <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Communication', 'classiera'); ?></h3>
@@ -1906,8 +1906,21 @@ get_header(); ?>
 </div>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/smartWizard.js"></script>
 <script>
+	var isShown = true;
+	function hideStep3(){
+		isShown = false;
+		$("#smartwizard > ul > li").eq(2).hide();
+		$("#step-3").hide();
+		$("#step-3").css("visibility", "hidden");
+	}
+	function showStep3(){
+		isShown = true;
+		$("#smartwizard > ul > li").eq(2).show();
+		$("#step-3").css("visibility", "visible");
+		// $("#step-3").show();
+	}
 	jQuery(document).ready(function($) {
-
+		// console.log(oriSmart);
 		$('#smartwizard').smartWizard({
 			transitionEffect: 'fade',
 			toolbarButtonPosition: 'right',
@@ -1918,15 +1931,14 @@ get_header(); ?>
 				enableAllAnchors: true, // Activates all anchors clickable all times
 				markDoneStep: true, // add done css
 				enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
-			},  
-
+			},
 			toolbarSettings: {
 				toolbarPosition: 'bottom', // none, top, bottom, both
 				toolbarButtonPosition: 'right', // left, right
 				showNextButton: true, // show/hide a Next button
 			}
 		});
-
+		hideStep3();
 		$('#checkbox3').click(function() {
 			if ($(this).is(':checked')) {
 				$('.price-fields').show();
@@ -1936,17 +1948,6 @@ get_header(); ?>
 				$('.price-info').show();
 			}
 		});
-		// setTimeout( function(){
-			// var width = 255;
-			// width = $("#croppic").width();
-			// console.log( "width : " + width);
-			// $("#croppic").height(width * 343 / 255);
-
-			// var width_double = 510;
-			// width_double = $("#croppic-double").width();
-			// $("#croppic-double").height( width_double * 343 / 510);
-		// }, 1000);
-
 	});
 	function customValidate(_this){
 		if( _this.is("select")){
@@ -1986,8 +1987,23 @@ get_header(); ?>
 			$(this).removeClass("emptyRequire");
 		}
 	});
+	$("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+		if( isShown == false && stepNumber == 2 && stepDirection == "forward"){
+			// $("#smartwizard > ul > li").eq(2).click();
+			$("#smartwizard").smartWizard("goToStep",3);
+			return true;
+		}
+		if( isShown == false && stepNumber == 2 && stepDirection == "backward"){
+			// $("#smartwizard > ul > li").eq(2).click();
+			$("#smartwizard").smartWizard("goToStep",1);
+			return true;
+		}
+	});
 	$("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
 		var elmForm = $("#step-" + (stepNumber*1+1));
+		if( isShown == false && stepNumber == 2	&& stepDirection == "forward"){
+			return true;
+		}
 		// only on forward navigation, that makes easy navigation on backwards still do the validation when going next
 		if( stepNumber == 0){
 			var activedTags = jQuery(".tagBtn.active");
@@ -2000,7 +2016,7 @@ get_header(); ?>
 			var strTags = arrTags.join(",");
 			jQuery("input[name=tags]").val(strTags);
 		}
-		if( stepNumber == 5){ // step 6
+		if( stepNumber == 6){ // step 6
 			var arrCroppedImgs = elmForm.find("#croppic .croppedImg");
 			if( arrCroppedImgs.length == 0){
 				$("#croppic").addClass("emptyRequire");
@@ -2016,7 +2032,7 @@ get_header(); ?>
 				}
 				$("#croppedImgUrlDouble").val(arrDoubleCroppedImgs.eq(0).attr("src"));
 			}
-		} else if( stepNumber == 6){
+		} else if( stepNumber == 7){
 
 			var arrThumbImgInputs = $("input.classiera-input-file.imgInp");
 			var isUploaded = false;
@@ -2049,6 +2065,51 @@ get_header(); ?>
 		jQuery(_this).toggleClass("active");
 	}
 
+	function categoryChanged(){
+		var newTagTitle = "AppearancePair";
+		var catText = $("#categorySelect option:selected").text();
+		console.log(catText);
+		if( catText.toLowerCase() == "duo" || catText.toLowerCase() == "couple"){
+			console.log("Duo or Couple Selected.");
+			// $("#smartwizard").html(oriSmart);
+			showStep3();
+			return;
+			var arrNavs = $("#smartwizard > ul > li");
+			for( var i = 2; i < arrNavs.length; i++){
+				var curLi = arrNavs.eq(i);
+				curLi.find("a").attr("href", "#step-" + (i+2));
+			}
+			var arrSteps = $("#smartwizard > .step-container > div");
+			for( var i = 2; i < arrSteps.length; i++){
+				var curStep = arrSteps.eq(i);
+				curStep.attr("id", "step-" + (i+2));
+			}
+			$('<li><a href="#step-3">'+newTagTitle+'</a></li>').insertAfter(arrNavs.eq(1));
+			var strInsertingHtml = $("#insertedSection").html();
+			$(strInsertingHtml).insertAfter($("#step-2"));
+		} else{
+			hideStep3();
+			return;
+			var newTag = $("#smartwizard > ul > li").filter(function(_idx){
+				return $(this).text() == newTagTitle;
+			});
+			if( newTag.length ){
+				newTag.remove();
+				$("#smartwizard #step-3").remove();
+				var arrNavs = $("#smartwizard > ul > li");
+				for( var i = 2; i < arrNavs.length; i++){
+					var curLi = arrNavs.eq(i);
+					curLi.find("a").attr("href", "step-" + (i + 1));
+				}
+				var arrSteps = $("#smartwizard > .step-container > div");
+				for( var i = 2; i < arrSteps.length; i++){
+					var curStep = arrSteps.eq(i);
+					curStep.attr("id", "step-" + (i+1));
+				}
+			}
+		}
+	}
 
+	
 </script>
 <?php get_footer(); ?>

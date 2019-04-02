@@ -561,6 +561,9 @@
             // Trigger "themeChanged" event
             this._triggerEvent("themeChanged", [this.options.theme]);
         },
+        goToStep: function (stepNum) {
+            this._showStep(stepNum);
+        },
         next: function () {
             this._showNext();
         },
