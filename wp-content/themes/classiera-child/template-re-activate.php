@@ -312,6 +312,89 @@ if(isset($_POST['postTitle'])){
                     update_post_meta($post_id, 'can_travel', $_POST['can_travel'], $allowed);
                 }
 
+                //Partner's Appearance
+                if(isset($_POST['partner_name'])){
+                    update_post_meta($post_id, 'partner_name', $_POST['partner_name'], $allowed);
+                }
+
+                if(isset($_POST['gender_1'])){
+                    update_post_meta($post_id, 'gender_1', $_POST['gender_1'], $allowed);
+                }
+
+                //Hair Color
+                if(isset($_POST['hair_color_1'])){
+                    update_post_meta($post_id, 'hair_color_1', $_POST['hair_color_1'], $allowed);
+                }
+                //Eyes Color
+                if(isset($_POST['eyes_color_1'])){
+                    update_post_meta($post_id, 'eyes_color_1', $_POST['eyes_color_1'], $allowed);
+                }
+                //Ethnicity
+                if(isset($_POST['ethnicity_1'])){
+                    update_post_meta($post_id, 'ethnicity_1', $_POST['ethnicity_1'], $allowed);
+                }
+                //Height Feet
+                if(isset($_POST['height_feet_1'])){
+                    update_post_meta($post_id, 'height_feet_1', $_POST['height_feet_1'], $allowed);
+                }
+                //Height Inches
+                if(isset($_POST['height_inches_1'])){
+                    update_post_meta($post_id, 'height_inches_1', $_POST['height_inches_1'], $allowed);
+                }
+                //Weight
+                if(isset($_POST['weight_1'])){
+                    update_post_meta($post_id, 'weight_1', $_POST['weight_1'], $allowed);
+                }
+                //Breast Size
+                if(isset($_POST['breast_type_1'])){
+                    update_post_meta($post_id, 'breast_type_1', $_POST['breast_type_1'], $allowed);
+                }
+                //Breast Size Cup
+                if(isset($_POST['breast_size_cup_1'])){
+                    update_post_meta($post_id, 'breast_size_cup_1', $_POST['breast_size_cup_1'], $allowed);
+                }
+                //Breast Size Letters
+                if(isset($_POST['breast_size_1'])){
+                    update_post_meta($post_id, 'breast_size_1', $_POST['breast_size_1'], $allowed);
+                }
+                //Waist Size
+                if(isset($_POST['waist_size_1'])){
+                    update_post_meta($post_id, 'waist_size_1', $_POST['waist_size_1'], $allowed);
+                }
+                //Hips Size
+                if(isset($_POST['hips_size_1'])){
+                    update_post_meta($post_id, 'hips_size_1', $_POST['hips_size_1'], $allowed);
+                }
+                //Dress Size
+                if(isset($_POST['dress_size_1'])){
+                    update_post_meta($post_id, 'dress_size_1', $_POST['dress_size_1'], $allowed);
+                }
+                //Shoe Size
+                if(isset($_POST['shoe_size_1'])){
+                    update_post_meta($post_id, 'shoe_size_1', $_POST['shoe_size_1'], $allowed);
+                }
+                //Pubic Area
+                if(isset($_POST['pubic_area_1'])){
+                    update_post_meta($post_id, 'pubic_area_1', $_POST['pubic_area_1'], $allowed);
+                }
+                //Smoker
+                if(isset($_POST['smoker_1'])){
+                    update_post_meta($post_id, 'smoker_1', $_POST['smoker_1'], $allowed);
+                }
+                //Native Language
+                if(isset($_POST['native_language_1'])){
+                    update_post_meta($post_id, 'native_language_1', $_POST['native_language_1'], $allowed);
+                }
+                // Nationality
+                if(isset($_POST['nationality_1'])){
+                    update_post_meta($post_id, 'nationality_1', $_POST['nationality_1'], $allowed);
+                }
+                //User Age
+                if(isset($_POST['user_age_1'])){
+                    update_post_meta($post_id, 'user_age_1', $_POST['user_age_1'], $allowed);
+                }
+                //End Partner's Appearance
+
                 //Prices
                 if(isset($_POST['fifteen_min_euro'])){
                     update_post_meta($post_id, 'fifteen_min_euro', $_POST['fifteen_min_euro'], $allowed);
@@ -626,12 +709,8 @@ get_header(); ?>
     $curPost = get_post($cur_post_id);
 ?>
 <style type="text/css">
-    .emptyRequire{
-        border: 1px solid red !important;
-    }
-    hr{
-        margin-top: 0px;
-        border-top: 1px solid #888;
+    .main_panel_contents{
+        display: none;
     }
 </style>
 <div class="closeBump"></div>
@@ -642,7 +721,7 @@ get_header(); ?>
                 <?php get_template_part( 'templates/profile/userabout' ); ?>
             </div><!--col-lg-3 col-md-4-->
             <div class="col-lg-9 col-md-8">
-                <div class="panel panel-default">
+                <div class="panel panel-default main_panel_contents">
                     <div class="panel-heading">
                         <h3 class="panel-title text-uppercase"><?php esc_html_e('Re-activate Advert', 'classiera') ?><!-- <span class="pull-right custom-selected-cat"></span> --></h3>
                     </div>
@@ -715,7 +794,7 @@ get_header(); ?>
                                     <ul class="nav nav-pills">
                                         <li><a href="#step-1"><?php esc_html_e('About Me', 'classiera'); ?></a></li>
                                         <li><a href="#step-2"><?php esc_html_e('Appearance', 'classiera'); ?></a></li>
-                                        <li><a href="#step-3"><?php esc_html_e('AppearancePair', 'classiera'); ?></a></li>
+                                        <li><a href="#step-3"><?php esc_html_e('Partner', 'classiera'); ?></a></li>
                                         <li><a href="#step-4"><?php esc_html_e('Communication', 'classiera'); ?></a></li>
                                         <li><a href="#step-5"><?php esc_html_e('Facilities', 'classiera'); ?></a></li>
                                         <li><a href="#step-6"><?php esc_html_e('Location', 'classiera'); ?></a></li>
@@ -729,128 +808,122 @@ get_header(); ?>
                                         <!-- Begin Step-1 -->
                                         <div id="step-1">
                                             <div class="row">
-                                                <hr>
                                                 <div class="col-sm-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <!-- Begin Gender -->
-                                                        <select name="gender">
-                                                            <?php
-                                                            $gender = get_post_meta($cur_post_id, 'gender', true);
-                                                            foreach ($arrGender as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
 
-                                                        </select>
-                                                        <!-- End Gender -->
-                                                        <!--Category-->
-                                                        <select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
-                                                            <option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
-                                                            <?php 
-                                                                $categories = get_terms('category', array(
-                                                                'hide_empty' => 0,
-                                                                'parent' => 0,
-                                                                'order'=> 'ASC'
-                                                                ) 
-                                                            );
-                                                                $curCatSel = get_the_category($cur_post_id);
-                                                                $curCategory = $curCatSel[0]->term_id;
-                                                                // $curCategory = get_the_category($cur_post_id);
-                                                            // $curCategory = get_post_meta($cur_post_id, 'categorySelect', true);
-                                                            // echo "<option>" . $curCategory . "</option>";
-                                                            // echo($curCategory);
-                                                            foreach ($categories as $category){
-                                                                //print_r($category);
-                                                                $tag = $category->term_id;
-                                                                $classieraCatFields = get_option(MY_CATEGORY_FIELDS);
-                                                            if (isset($classieraCatFields[$tag])){
-                                                                $classieraCatIconCode = $classieraCatFields[$tag]['category_icon_code'];
-                                                                $classieraCatIcoIMG = $classieraCatFields[$tag]['your_image_url'];
-                                                                $classieraCatIconClr = $classieraCatFields[$tag]['category_icon_color'];
-                                                            }
-                                                            if (empty($classieraCatIconClr)){
-                                                                $iconColor = $primaryColor;
-                                                            } else {
-                                                                $iconColor = $classieraCatIconClr;
-                                                            }
-                                                                $category_icon = stripslashes($classieraCatIconCode);
-                                                            ?>
-                                                            <option value="<?php echo esc_attr( $tag ); ?>" <?php if($curCategory == esc_attr($tag)) echo "selected";?>><?php echo esc_html(get_cat_name( $tag )); ?></option>
-                                                            <?php } ?>
-                                                        </select><!--list-unstyled-->                                                       
-                                                        <input type="hidden" name="adstype_price" value="2" id="adstype_price">
-                                                        <input class="classiera-main-cat-field" name="classiera-main-cat-field" type="hidden" value="">
-                                                        <!--Category-->
-                                                        <!-- Nickname -->
+                                                    <!-- Nickname -->
+                                                    <?php
+                                                    $postTitle = get_the_title($cur_post_id);// get_post_meta( $cur_post_id, 'postTitle', true);
+                                                    ?>
+                                                    <span class="form-field-label"><?php esc_html_e('Nickname', 'classiera'); ?></span>
+                                                    <input id="title" data-minlength="1" name="postTitle" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Your Nickname', 'classiera') ?>" required value="<?= $postTitle?>">
+                                                    <!-- End Nickname -->
+
+                                                    <!-- Begin Gender -->
+                                                    <span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
+                                                    <select name="gender">
                                                         <?php
-                                                        $postTitle = get_the_title($cur_post_id);// get_post_meta( $cur_post_id, 'postTitle', true);
+                                                        $gender = get_post_meta($cur_post_id, 'gender', true);
+                                                        foreach ($arrGender as $value) {
                                                         ?>
-                                                        <div class="form-group has-error has-danger">
-                                                            <input id="title" data-minlength="1" name="postTitle" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Your Nickname', 'classiera') ?>" required value="<?= $postTitle?>">
-                                                        </div>
-                                                        <input  value="1" type="hidden" name="classiera_ads_status">
-                                                        <input  value="1" type="hidden" name="classiera_ads_statustime">
-                                                        <!-- / Nickname -->
-                                                        <!-- Age -->
-                                                        <input id="age" name="user_age" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Age', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'user_age', true);?>">
-                                                        <input type="hidden" name="age_verified" id="age_verified" value="0">
-                                                        <!-- / Age -->
-                                                    </div><!-- / Form group -->
+                                                        <option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                    <!-- End Gender -->
+
+                                                    <!-- Age -->
+                                                    <span class="form-field-label"><?php esc_html_e('Age', 'classiera'); ?></span>
+                                                    <input id="age" name="user_age" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Age', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'user_age', true);?>">
+                                                    <input type="hidden" name="age_verified" id="age_verified" value="0">
+                                                    <!-- / Age -->
+
+                                                    <!--Category-->
+                                                    <span class="form-field-label"><?php esc_html_e('Category', 'classiera'); ?></span>
+                                                    <select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
+                                                        <option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
+                                                        <?php 
+                                                            $categories = get_terms('category', array(
+                                                            'hide_empty' => 0,
+                                                            'parent' => 0,
+                                                            'order'=> 'ASC'
+                                                            ) 
+                                                        );
+                                                            $curCatSel = get_the_category($cur_post_id);
+                                                            $curCategory = $curCatSel[0]->term_id;
+                                                            // $curCategory = get_the_category($cur_post_id);
+                                                        // $curCategory = get_post_meta($cur_post_id, 'categorySelect', true);
+                                                        // echo "<option>" . $curCategory . "</option>";
+                                                        // echo($curCategory);
+                                                        foreach ($categories as $category){
+                                                            //print_r($category);
+                                                            $tag = $category->term_id;
+                                                            $classieraCatFields = get_option(MY_CATEGORY_FIELDS);
+                                                        if (isset($classieraCatFields[$tag])){
+                                                            $classieraCatIconCode = $classieraCatFields[$tag]['category_icon_code'];
+                                                            $classieraCatIcoIMG = $classieraCatFields[$tag]['your_image_url'];
+                                                            $classieraCatIconClr = $classieraCatFields[$tag]['category_icon_color'];
+                                                        }
+                                                        if (empty($classieraCatIconClr)){
+                                                            $iconColor = $primaryColor;
+                                                        } else {
+                                                            $iconColor = $classieraCatIconClr;
+                                                        }
+                                                            $category_icon = stripslashes($classieraCatIconCode);
+                                                        ?>
+                                                        <option value="<?php echo esc_attr( $tag ); ?>" <?php if($curCategory == esc_attr($tag)) echo "selected";?>><?php echo esc_html(get_cat_name( $tag )); ?></option>
+                                                        <?php } ?>
+                                                    </select><!--list-unstyled-->                                                       
+                                                    <input type="hidden" name="adstype_price" value="2" id="adstype_price">
+                                                    <input class="classiera-main-cat-field" name="classiera-main-cat-field" type="hidden" value="">
+                                                    <!--Category-->
+                                                    <input  value="1" type="hidden" name="classiera_ads_status">
+                                                    <input  value="1" type="hidden" name="classiera_ads_statustime">
                                                 </div><!-- / col-sm-12 col-lg-6 -->
                                                 
 
-                                                <div class="col-sm-12 col-lg-6">
-                                                    <!--ContactPhone 1-->
-                                                    <div class="form-group">
-                                                        <input type="number" name="post_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Mobile Number', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'post_phone', true);?>">
-                                                        <input type="number" name="second_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Second Mobile Number', 'classiera') ?>" value="<?= get_post_meta($cur_post_id, 'second_phone', true);?>">
+                                                <!--ContactPhone 1-->
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <span class="form-field-label"><?php esc_html_e('Phone Number', 'classiera'); ?></span>
+                                                    <input type="number" name="post_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Mobile Number', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'post_phone', true);?>">
+                                                    <span class="form-field-label"><?php esc_html_e('Alternative Phone Number', 'classiera'); ?></span>
+                                                    <input type="number" name="second_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Second Mobile Number', 'classiera') ?>" value="<?= get_post_meta($cur_post_id, 'second_phone', true);?>">
+                                                    <?php
+                                                    $nationality = get_post_meta($cur_post_id, 'nationality', true);
+                                                    ?>
+                                                    <span class="form-field-label"><?php esc_html_e('Nationality', 'classiera'); ?></span>
+                                                    <select name="nationality" required>
                                                         <?php
-                                                        $nationality = get_post_meta($cur_post_id, 'nationality', true);
+                                                        foreach ($arrNationality as $value) {
                                                         ?>
-                                                        <select name="nationality" required>
-                                                            <?php
-                                                            foreach ($arrNationality as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($nationality == $value) echo"selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select> 
-                                                    </div>
-                                                    <!-- / ContactPhone 1-->                                                    
-                                                    <!-- <div class="classieraExtraFields" style="display:none;"></div> -->
+                                                        <option value="<?=$value?>" <?php if($nationality == $value) echo"selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select> 
+                                                <!-- / ContactPhone 1-->                                                    
                                                 </div>
 
 
                                                 <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <?php
-                                                        $postContent = $curPost->post_content;
-                                                        $tags_input = implode(",", $curPost->tags_input);
-                                                        print_r($tags_input);
-                                                        ?>
-                                                        <textarea name="postContent" id="description" class="form-control" data-error="<?php esc_html_e('Write description', 'classiera') ?>" required ><?= $postContent?></textarea>
-                                                        <!-- Keywords Field -->
-                                                        <input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>" value="<?=$tags_input?>">
-                                                        <!-- / Keywords Field -->
-                                                    </div><!--Ad description-->
+                                                    <?php
+                                                    $postContent = $curPost->post_content;
+                                                    $tags_input = implode(",", $curPost->tags_input);
+                                                    print_r($tags_input);
+                                                    ?>
+                                                    <span class="form-field-label"><?php esc_html_e('About Myself', 'classiera'); ?></span>
+                                                    <textarea name="postContent" id="description" class="form-control" rows="8" data-error="<?php esc_html_e('Write description', 'classiera') ?>" required ><?= $postContent?></textarea>
+                                                    <!-- Keywords Field -->
+                                                    <!-- <input id="fav-tags" type="text" name="post_tags" class="form-control form-control-md" placeholder="<?php esc_html_e('enter keywords for better search..!', 'classiera') ?>" value="<?=$tags_input?>"> -->
+                                                    <!-- / Keywords Field -->
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <input type="hidden" name="tags">
-                                                        <div style="margin-bottom: 20px;">
-                                                            <?php
-                                                            foreach ($arrRealTags as $value) {
-                                                            ?>
-                                                            <div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </div>
-                                                    </div>
+                                                <div class="col-sm-12 tag-container">
+                                                    <input type="hidden" name="tags">
+                                                    <?php foreach ($arrRealTags as $value) { ?>
+                                                        <div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -858,182 +931,185 @@ get_header(); ?>
                                         <!-- Begin Step-2 -->
                                         <div id="step-2">
                                             <div class="row">
-                                                <hr>
                                                 <div class="col-sm-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <select name="hair_color" required>
-                                                            <?php
-                                                            $hair_color = get_post_meta($cur_post_id, 'hair_color', true);
-                                                            foreach ($arrHaircolor as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($value == $hair_color) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                    <span class="form-field-label"><?php esc_html_e('Hair Color', 'classiera'); ?></span>
+                                                    <select name="hair_color" required>
+                                                        <?php
+                                                        $hair_color = get_post_meta($cur_post_id, 'hair_color', true);
+                                                        foreach ($arrHaircolor as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($value == $hair_color) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Eyes Color', 'classiera'); ?></span>
+                                                    <select name="eyes_color" required>
+                                                        <?php
+                                                        $eyes_color = get_post_meta($cur_post_id, 'eyes_color', true);
+                                                        foreach ($arrEyescolor as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($eyes_color == $value) echo "selected";?>><?php esc_html_e( $value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
 
-                                                        <select name="eyes_color" required>
-                                                            <?php
-                                                            $eyes_color = get_post_meta($cur_post_id, 'eyes_color', true);
-                                                            foreach ($arrEyescolor as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($eyes_color == $value) echo "selected";?>><?php esc_html_e( $value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                    <span class="form-field-label"><?php esc_html_e('Ethnicity', 'classiera'); ?></span>
+                                                    <select name="ethnicity" required>
+                                                        <?php
+                                                        $ethnicity = get_post_meta($cur_post_id, 'ethnicity', true);
+                                                        foreach ($arrEthnicity as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($ethnicity == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
 
-                                                        <select name="ethnicity" required>
-                                                            <?php
-                                                            $ethnicity = get_post_meta($cur_post_id, 'ethnicity', true);
-                                                            foreach ($arrEthnicity as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($ethnicity == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                    <span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
+                                                    <select name="height_inches" class="third-size pull-right" required>
+                                                        <?php
+                                                        $height_inches = get_post_meta($cur_post_id, 'height_inches', true);
+                                                        foreach ($arrHeightinches as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($height_inches == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?>"</option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <select name="height_feet" class="third-size pull-right add-margin" required>
+                                                        <?php
+                                                        $height_feet = get_post_meta($cur_post_id, 'height_feet', true);
+                                                        foreach ($arrHeightfeet as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($height_feet == $value) echo "selected"; ?>><?php esc_html_e($value . ' Feet', 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label" style="display: block;"><?php esc_html_e('Weight', 'classiera'); ?></span>
+                                                    <select name="weight" required>
+                                                        <option value="" selected disabled><?php esc_html_e('Weight in Kilograms', 'classiera'); ?></option>
+                                                        <?php
+                                                        $weight = get_post_meta($cur_post_id, 'weight', true);
+                                                        foreach ($arrWeight as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($weight == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' kg', 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
 
-                                                        <span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
-                                                        <select name="height_inches" class="third-size pull-right" required>
-                                                            <?php
-                                                            $height_inches = get_post_meta($cur_post_id, 'height_inches', true);
-                                                            foreach ($arrHeightinches as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($height_inches == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?>"</option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                        <select name="height_feet" class="third-size pull-right add-margin" required>
-                                                            <?php
-                                                            $height_feet = get_post_meta($cur_post_id, 'height_feet', true);
-                                                            foreach ($arrHeightfeet as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($height_feet == $value) echo "selected"; ?>><?php esc_html_e($value . ' Feet', 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                        
-
-                                                        <select name="weight" required>
-                                                            <option value="" selected disabled><?php esc_html_e('Weight in Kilograms', 'classiera'); ?></option>
-                                                            <?php
-                                                            $weight = get_post_meta($cur_post_id, 'weight', true);
-                                                            foreach ($arrWeight as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($weight == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
-                                                        <select name="breast_type" class="fifth-size pull-right" required>
-                                                            <?php
-                                                            $breast_type = get_post_meta($cur_post_id, 'breast_type', true);
-                                                            foreach ($arrBreaststype as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                        <select name="breast_size_cup" class="fifth-size pull-right add-margin" required>
-                                                            <?php
-                                                            $breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
-                                                            foreach ($arrBreastscup as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                        <select name="breast_size" class="fifth-size pull-right add-margin" required>
-                                                            <?php
-                                                            $breast_size = get_post_meta($cur_post_id, 'breast_size', true);
-                                                            foreach ($arrBreastssize as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
+                                                    <span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
+                                                    <select name="breast_type" class="fifth-size pull-right" required>
+                                                        <?php
+                                                        $breast_type = get_post_meta($cur_post_id, 'breast_type', true);
+                                                        foreach ($arrBreaststype as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <select name="breast_size_cup" class="fifth-size pull-right add-margin" required>
+                                                        <?php
+                                                        $breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
+                                                        foreach ($arrBreastscup as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <select name="breast_size" class="fifth-size pull-right add-margin" required>
+                                                        <?php
+                                                        $breast_size = get_post_meta($cur_post_id, 'breast_size', true);
+                                                        foreach ($arrBreastssize as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                                 <div class="col-sm-12 col-lg-6">
-                                                    <div class="form-group">
-                                                        <select name="waist_size" required>
-                                                            <option selected disabled><?php esc_html_e('Waist Size in Inches', 'classiera'); ?></option>
-                                                            <?php
-                                                            $waist_size = get_post_meta($cur_post_id, 'waist_size', true);
-                                                            foreach ($arrWaist as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($waist_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?>"</option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <select name="hips_size" required>
-                                                            <option value="" selected disabled><?php esc_html_e('Hips Size in Inches', 'classiera'); ?></option>
-                                                            <?php
-                                                            $hips_size = get_post_meta($cur_post_id, 'hips_size', true);
-                                                            foreach ($arrHips as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($hips_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?>"</option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <select name="dress_size" required>
-                                                            <?php
-                                                            $dress_size = get_post_meta($cur_post_id, 'dress_size', true);
-                                                            foreach ($arrDresssize as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($dress_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <select name="shoe_size" required>
-                                                            <option value="" disabled><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></option>
-                                                            <?php
-                                                            $shoe_size = get_post_meta($cur_post_id, 'shoe_size', true);
-                                                            foreach ($arrShoesize as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($shoe_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <select name="pubic_area" required>
-                                                            <?php
-                                                            $pubic_area = get_post_meta($cur_post_id, 'pubic_area', true);
-                                                            foreach ($arrPubicarea as $key => $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($pubic_area == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                        <select name="smoker" required>
-                                                            <?php
-                                                            $smoker = get_post_meta($cur_post_id, 'smoker', true);
-                                                            foreach ($arrSmoker as $value) {
-                                                            ?>
-                                                            <option value="<?=$value?>" <?php if($smoker == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-
-                                                    </div>
+                                                    <span class="form-field-label"><?php esc_html_e('Waist Size', 'classiera'); ?></span>
+                                                    <select name="waist_size" required>
+                                                        <option selected disabled><?php esc_html_e('Waist Size in Inches', 'classiera'); ?></option>
+                                                        <?php
+                                                        $waist_size = get_post_meta($cur_post_id, 'waist_size', true);
+                                                        foreach ($arrWaist as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($waist_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?>"</option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Hips Size', 'classiera'); ?></span>
+                                                    <select name="hips_size" required>
+                                                        <option value="" selected disabled><?php esc_html_e('Hips Size in Inches', 'classiera'); ?></option>
+                                                        <?php
+                                                        $hips_size = get_post_meta($cur_post_id, 'hips_size', true);
+                                                        foreach ($arrHips as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($hips_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?>"</option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Dress Size', 'classiera'); ?></span>
+                                                    <select name="dress_size" required>
+                                                        <?php
+                                                        $dress_size = get_post_meta($cur_post_id, 'dress_size', true);
+                                                        foreach ($arrDresssize as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($dress_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Shoe Size', 'classiera'); ?></span>
+                                                    <select name="shoe_size" required>
+                                                        <option value="" disabled><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></option>
+                                                        <?php
+                                                        $shoe_size = get_post_meta($cur_post_id, 'shoe_size', true);
+                                                        foreach ($arrShoesize as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($shoe_size == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Pubic Area', 'classiera'); ?></span>
+                                                    <select name="pubic_area" required>
+                                                        <?php
+                                                        $pubic_area = get_post_meta($cur_post_id, 'pubic_area', true);
+                                                        foreach ($arrPubicarea as $key => $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($pubic_area == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    
+                                                    <span class="form-field-label"><?php esc_html_e('Are you a smoker?', 'classiera'); ?></span>
+                                                    <select name="smoker" required>
+                                                        <?php
+                                                        $smoker = get_post_meta($cur_post_id, 'smoker', true);
+                                                        foreach ($arrSmoker as $value) {
+                                                        ?>
+                                                        <option value="<?=$value?>" <?php if($smoker == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -1042,10 +1118,41 @@ get_header(); ?>
                                         <div id="step-3">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('AppearancePair', 'classiera'); ?></h3>
+                                                    <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Partner\'s Appearance', 'classiera'); ?></h3>
                                                 </div>
                                                 <div class="col-sm-12 col-lg-6">
-                                                    <div class="form-group">
+
+                                                        <!-- Nickname -->
+                                                        <span class="form-field-label"><?php esc_html_e('Nickname', 'classiera'); ?></span>
+                                                        <?php $postTitle_1 = get_post_meta($cur_post_id, 'partner_name', true); ?>
+                                                        <input id="partner-name" data-minlength="1" name="partner_name" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Your Nickname', 'classiera') ?>" required value="<?= $postTitle_1?>">
+                                                        <!-- End Nickname -->
+
+                                                        <!-- Begin Gender -->
+                                                        <span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
+                                                        <select name="gender_1">
+                                                            <?php
+                                                                $gender_1 = get_post_meta($cur_post_id, 'gender_1', true);
+                                                                foreach ($arrGender as $value) { ?>
+                                                                    <option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                        <!-- End Gender -->
+
+                                                        <!-- Age -->
+                                                        <span class="form-field-label"><?php esc_html_e('Age', 'classiera'); ?></span>
+                                                        <input id="age_1" name="user_age_1" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Age', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'user_age_1', true);?>">
+                                                        <!-- End Age -->
+
+                                                        <?php $nationality_1 = get_post_meta($cur_post_id, 'nationality_1', true); ?>
+                                                        <span class="form-field-label"><?php esc_html_e('Nationality', 'classiera'); ?></span>
+                                                        <select name="nationality_1" required>
+                                                            <?php foreach ($arrNationality as $value) { ?>
+                                                                <option value="<?=$value?>" <?php if($nationality_1 == $value) echo"selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php } ?>
+                                                        </select> 
+                                                        
+                                                        <span class="form-field-label"><?php esc_html_e('Hair Color', 'classiera'); ?></span>
                                                         <select name="hair_color_1" required>
                                                             <option value="" disabled selected><?php esc_html_e('Hair Color', 'classiera'); ?></option>
                                                             <?php
@@ -1057,6 +1164,7 @@ get_header(); ?>
                                                             ?>
                                                         </select>
 
+                                                        <span class="form-field-label"><?php esc_html_e('Eyes Color', 'classiera'); ?></span>
                                                         <select name="eyes_color_1" required>
                                                             <option value="" disabled selected><?php esc_html_e('Eyes Color', 'classiera'); ?></option>
                                                             <?php
@@ -1068,6 +1176,7 @@ get_header(); ?>
                                                             ?>
                                                         </select>
 
+                                                        <span class="form-field-label"><?php esc_html_e('Ethnicity', 'classiera'); ?></span>
                                                         <select name="ethnicity_1" required>
                                                             <option value="" disabled selected><?php esc_html_e('Ethnicity', 'classiera'); ?></option>
                                                             <?php
@@ -1078,6 +1187,7 @@ get_header(); ?>
                                                             }
                                                             ?>
                                                         </select>
+                                                        
 
                                                         <span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
                                                         <select name="height_inches_1" class="third-size pull-right" required>
@@ -1090,6 +1200,7 @@ get_header(); ?>
                                                             }
                                                             ?>
                                                         </select>
+
                                                         <select name="height_feet_1" class="third-size pull-right add-margin" required>
                                                             <option value="" disabled selected><?php esc_html_e('Feet', 'classiera'); ?></option>
                                                             <?php
@@ -1101,7 +1212,7 @@ get_header(); ?>
                                                             ?>
                                                         </select>
                                                         
-
+                                                        
                                                         <select name="weight_1" required>
                                                             <option value="" selected disabled><?php esc_html_e('Weight in Kilograms', 'classiera'); ?></option>
                                                             <?php
@@ -1124,6 +1235,7 @@ get_header(); ?>
                                                             }
                                                             ?>
                                                         </select>
+
                                                         <select name="breast_size_cup_1" class="fifth-size pull-right add-margin" required>
                                                             <option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
                                                             <?php
@@ -1134,6 +1246,7 @@ get_header(); ?>
                                                             }
                                                             ?>
                                                         </select>
+
                                                         <select name="breast_size_1" class="fifth-size pull-right add-margin" required>
                                                             <option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
                                                             <?php
@@ -1144,7 +1257,6 @@ get_header(); ?>
                                                             }
                                                             ?>
                                                         </select>
-                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 col-lg-6">
                                                     <div class="form-group">
@@ -1222,7 +1334,7 @@ get_header(); ?>
                                         <!-- Begin Step-4 -->
                                         <div id="step-4">
                                             <div class="row">
-                                                <hr>
+                                                
                                                 <div class="col-sm-12 col-lg-6">
                                                     <div class="form-group">
                                                         <select name="native_language" rqeuired>
@@ -1331,7 +1443,7 @@ get_header(); ?>
                                         <!-- Begin Step-5 -->
                                         <div id="step-5">
                                             <div class="row">
-                                                <hr>
+                                                
                                                 <div class="col-sm-12 col-lg-6">
                                                     <div class="form-group">
                                                         <select name="disabled_friendly" required>
@@ -1386,7 +1498,7 @@ get_header(); ?>
                                         <!-- Begin Step-6 -->
                                         <div id="step-6">
                                             <div class="row">
-                                                <hr>
+                                                
                                                 <div class="col-sm-12 col-lg-6">
                                                     <!-- post location -->
                                                     <?php
@@ -1514,7 +1626,7 @@ get_header(); ?>
                                         <!-- Begin Step-7 -->
                                         <div id="step-7">
                                             <div class="row">
-                                                <hr>
+                                                
                                                 <div class="col-sm-12">
                                                 <?php              
                                                   /*Image Count Check*/
@@ -1706,7 +1818,7 @@ get_header(); ?>
                                             <div class="row">
 
                                                 <div class="col-sm-12">
-                                                            <hr>
+                                                            
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <div id="toggle">
@@ -1788,7 +1900,7 @@ get_header(); ?>
                                         <!-- Begin Step-10 -->
                                         <div id="step-10">
                                             <div class="row">
-                                                <hr>
+                                                
 
                                                 <div class="col-sm-12 col-lg-6">
                                                     <!--Select Ads Type-->
@@ -1996,7 +2108,10 @@ get_header(); ?>
                 $("#step-8 .price-info").show();
                 $("#step-8 .price-fields").hide();
             }
-        });
+            setTimeout(function(){
+                $(".main_panel_contents").show();
+            }, 100);
+        }, 100);
 
         $('#checkbox3').click(function() {
             if ($(this).is(':checked')) {

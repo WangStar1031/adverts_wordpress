@@ -3,7 +3,7 @@
  * Plugin Name: Gutenberg
  * Plugin URI: https://github.com/WordPress/gutenberg
  * Description: Printing since 1440. This is the development plugin for the new block editor in core.
- * Version: 5.3.0
+ * Version: 5.4.0
  * Author: Gutenberg Team
  * Text Domain: gutenberg
  *
@@ -11,8 +11,8 @@
  */
 
 ### BEGIN AUTO-GENERATED DEFINES
-define( 'GUTENBERG_VERSION', '5.3.0' );
-define( 'GUTENBERG_GIT_COMMIT', '0563f6f8f9cc2912b67ed6d9ba4a3c910b70e71b' );
+define( 'GUTENBERG_VERSION', '5.4.0' );
+define( 'GUTENBERG_GIT_COMMIT', '3f9b083568d7244b2d6c07d7300c188548c192b9' );
 ### END AUTO-GENERATED DEFINES
 
 gutenberg_pre_init();
@@ -94,7 +94,8 @@ function is_gutenberg_page() {
 	_deprecated_function( __FUNCTION__, '5.3.0', 'WP_Screen::is_block_editor' );
 
 	require_once ABSPATH . 'wp-admin/includes/screen.php';
-	return get_current_screen()->is_block_editor();
+	$screen = get_current_screen();
+	return ! is_null( $screen ) && get_current_screen()->is_block_editor();
 }
 
 /**
@@ -160,5 +161,6 @@ function gutenberg_init() {
 	_deprecated_function( __FUNCTION__, '5.3.0' );
 
 	require_once ABSPATH . 'wp-admin/includes/screen.php';
-	return get_current_screen()->is_block_editor();
+	$screen = get_current_screen();
+	return ! is_null( $screen ) && get_current_screen()->is_block_editor();
 }

@@ -64,6 +64,7 @@
 	$full_day_euro = get_post_meta($post->ID, 'full_day_euro', true);
 	$business_date_euro = get_post_meta($post->ID, 'business_date_euro', true);
 	$theTitle = get_the_title();
+	$partner_name =  get_post_meta($post->ID, 'partner_name', true);
 	$postCatgory = get_the_category( $post->ID );
 	$categoryLink = get_category_link($catID);
 	$classieraPostAuthor = $post->post_author;
@@ -134,7 +135,13 @@
 							<span class="hover-posts">
 								<div class="row">
 									<div class="col-lg-12">
-										<h4 style="color: white"><?php echo esc_html($theTitle); ?></h4>
+										<h4 style="color: white">
+											<?php if(in_category(array('couple', 'duo'))) { ?>
+												<?php echo esc_html($theTitle); ?> &amp; <?php echo esc_html($partner_name); ?>
+											<?php } else { ?>
+												<?php echo esc_html($theTitle); ?>
+											<?php } ?>		
+										</h4>
 									</div>
 									<div class="col-lg-12">
 

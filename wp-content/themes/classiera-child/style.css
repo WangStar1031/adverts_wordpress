@@ -371,57 +371,64 @@ span.discount_per:before {
   margin-bottom: 20px !important;
 }
 
-#smartwizard .form-group input,
-#smartwizard .form-group select,
-#smartwizard .form-group textarea {
+#smartwizard  input,
+#smartwizard  select,
+#smartwizard  textarea {
   margin-bottom: 20px; }
 
 #smartwizard .form-group .row {
-  margin-left: 0;
-  margin-right: 0;
   margin-top: 1%; }
 
-#smartwizard .form-group input {
+#smartwizard .form-group input,
+#smartwizard input {
   padding: 5px 10px;
-  height: 50px; }
+  height: 50px;
+  margin-bottom: 15px; }
 
-#smartwizard .form-group select {
+#smartwizard .tag-container {
+  margin-bottom: 20px;
+}
+
+#smartwizard select {
   height: 50px;
   width: 100%;
   border-color: #ccc;
-  background: none; }
+  background: none;
+  margin-bottom: 15px }
 
-#smartwizard .form-group .pre-heading {
-  line-height: 50px; }
+#smartwizard .pre-heading {
+  line-height: 89px; }
 
-#smartwizard .form-group .third-size {
-  width: 35%; }
+#smartwizard .third-size {
+  width: 35%;
+  margin-top: 24px }
 
-#smartwizard .form-group .fifth-size {
-  width: 20%; }
+#smartwizard .fifth-size {
+  width: 20%;
+  margin-top: 24px }
 
-#smartwizard .form-group .quarter-size {
+#smartwizard .quarter-size {
   width: 25%; }
 
-#smartwizard .form-group .half-size {
+#smartwizard .half-size {
   width: 50%; }
 
-#smartwizard .form-group .fit-two-fields {
+#smartwizard .fit-two-fields {
   width: 47.5%; }
 
-#smartwizard .form-group .fit-three-fields {
+#smartwizard .fit-three-fields {
   width: 25%; }
 
-#smartwizard .form-group .add-margin {
+#smartwizard .add-margin {
   margin-right: 5%; }
 
-#smartwizard .form-group textarea {
+#smartwizard textarea {
   resize: none;
   border-color: #ccc;
   padding: 10px;
 }
 
-#smartwizard .form-group .price-info {
+#smartwizard .price-info {
   text-align: center;
   font-size: 22px;
   -webkit-font-smoothing: antialiased;
@@ -436,9 +443,9 @@ span.discount_per:before {
   height: 0;
 }
 
-#smartwizard .form-group #step-7,
-#smartwizard .form-group :before,
-#smartwizard .form-group :after {
+#smartwizard #step-7,
+#smartwizard :before,
+#smartwizard :after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
@@ -449,12 +456,13 @@ span.discount_per:before {
   outline: none;
   /*font-family: Helvetica Neue,helvetica,arial,verdana,sans-serif;*/ }
 
-#smartwizard .form-group #toggle {
+#smartwizard #toggle {
   width: 60px;
   text-align: center;
-  margin: 0 auto; }
+  margin: 30px auto; }
 
-#smartwizard .form-group .ios-toggle, #smartwizard .form-group .ios-toggle:active {
+#smartwizard .ios-toggle,
+#smartwizard .ios-toggle:active {
   position: absolute;
   top: -5000px;
   height: 0;
@@ -463,7 +471,7 @@ span.discount_per:before {
   border: none;
   outline: none; }
 
-#smartwizard .form-group .checkbox-label {
+#smartwizard .checkbox-label {
   display: block;
   position: relative;
   padding: 10px;
@@ -477,7 +485,7 @@ span.discount_per:before {
   background: #f8f8f8;
   cursor: pointer; }
 
-#smartwizard .form-group .checkbox-label:before {
+#smartwizard .checkbox-label:before {
   content: '';
   display: block;
   position: absolute;
@@ -496,7 +504,7 @@ span.discount_per:before {
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px #dddddd;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px #dddddd; }
 
-#smartwizard .form-group .checkbox-label:after {
+#smartwizard .checkbox-label:after {
   content: attr(data-off);
   display: block;
   position: absolute;
@@ -510,36 +518,36 @@ span.discount_per:before {
   color: #bfbfbf;
   white-space: nowrap; }
 
-#smartwizard .form-group .ios-toggle:checked + .checkbox-label {
+#smartwizard .ios-toggle:checked + .checkbox-label {
   /*box-shadow*/
   -webkit-box-shadow: inset 0 0 0 20px #13bf11, 0 0 0 2px #13bf11;
   box-shadow: inset 0 0 0 20px #13bf11, 0 0 0 2px #13bf11; }
 
-#smartwizard .form-group .ios-toggle:checked + .checkbox-label:before {
+#smartwizard .ios-toggle:checked + .checkbox-label:before {
   left: calc(100% - 36px);
   /*box-shadow*/
   -webkit-box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, 0.3); }
 
-#smartwizard .form-group .ios-toggle:checked + .checkbox-label:after {
+#smartwizard .ios-toggle:checked + .checkbox-label:after {
   content: attr(data-on);
   left: 60px;
   width: 36px; }
 
-#smartwizard .form-group #checkbox3 + .checkbox-label,
-#smartwizard .form-group #check-smoker + .checkbox-label {
+#smartwizard  #checkbox3 + .checkbox-label,
+#smartwizard  #check-smoker + .checkbox-label {
   /*box-shadow*/
   -webkit-box-shadow: inset 0 0 0 0px #c60303,0 0 0 2px #dddddd;
   box-shadow: inset 0 0 0 0px #c60303,0 0 0 2px #dddddd; }
 
-#smartwizard .form-group #checkbox3:checked + .checkbox-label,
-#smartwizard .form-group #check-smoker:checked + .checkbox-label {
+#smartwizard  #checkbox3:checked + .checkbox-label,
+#smartwizard  #check-smoker:checked + .checkbox-label {
   /*box-shadow*/
   -webkit-box-shadow: inset 0 0 0 20px #c60303,0 0 0 2px #c60303;
   box-shadow: inset 0 0 0 20px #c60303,0 0 0 2px #c60303; }
 
-#smartwizard .form-group #checkbox3:checked + .checkbox-label:after,
-#smartwizard .form-group #check-smoker:checked + .checkbox-label:after {
+#smartwizard  #checkbox3:checked + .checkbox-label:after,
+#smartwizard  #check-smoker:checked + .checkbox-label:after {
   color: #c60303; }
 
 .nav-tabs {
@@ -597,9 +605,9 @@ span.discount_per:before {
   padding: 3px 6px;
 }
 
-#smartwizard .form-group {
-    margin-left: 0;
-    margin-right: 0;
+#smartwizard .small-form-fields-heading {
+   line-height: 50px;
+   font-size: 13px !important;
 }
 
 #smartwizard .step-container h3 {
@@ -644,7 +652,7 @@ span.discount_per:before {
 }
 
 #smartwizard .post-advert-btn {
-  margin: 0 auto;
+  margin: 30px auto;
   display: block;
 }
 
@@ -665,7 +673,12 @@ span.discount_per:before {
 }
 
 #smartwizard .nav li a {
-  padding: 10px 12px;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+#smartwizard .nav.nav-pills {
+  margin-bottom: 15px;
 }
 
 .selectize-input.focus {
