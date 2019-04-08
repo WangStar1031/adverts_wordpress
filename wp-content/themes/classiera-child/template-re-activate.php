@@ -2161,6 +2161,7 @@ get_header(); ?>
             $(this).removeClass("emptyRequire");
         }
     });
+    var isSet = false;
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
         if( isShown == false && stepNumber == 2 && stepDirection == "forward"){
             // $("#smartwizard > ul > li").eq(2).click();
