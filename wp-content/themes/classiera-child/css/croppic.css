@@ -12,14 +12,9 @@
 				background-repeat: no-repeat;
 				background-position: center;
 				/*box-shadow: 8px 8px 0px rgba(0,0,0,0.1);*/
-				/*max-width: 100%;*/
-				top: 10px;
-				left: -10px;
+				max-width: 100%;
 			}
 
-			#croppic_imag img {
-				border: 1px solid black;
-			}
 			.croppedImg{
 			/*#croppic>img, #croppic-double>img{*/
 				max-width: 100%;
@@ -38,9 +33,7 @@
 				background-repeat: no-repeat;
 				background-position: center;
 				/*box-shadow: 8px 8px 0px rgba(0,0,0,0.1);*/
-				/*max-width: 100%;*/
-				top: 10px;
-				left: -10px;
+				max-width: 100%;
 			}
 			
 			/* DO NOT CHANGE FROM HERE ( unless u know what u are doing) */
