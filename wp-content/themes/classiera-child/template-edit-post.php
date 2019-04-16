@@ -2219,6 +2219,7 @@ get_header(); ?>
 				var cropperHeaderDouble = new Croppic('croppic-double', cropperOptionsDouble);
 			}
 		}
+		$("#"+_id).parent().find(".btnClose").hide();
 	}
 	function submitForm(){
 		document.getElementById("primaryPostForm_edit").submit();
