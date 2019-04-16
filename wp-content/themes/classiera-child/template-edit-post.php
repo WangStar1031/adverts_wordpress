@@ -1662,15 +1662,18 @@ get_header(); ?>
 															?>
 															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
-																<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
-																<div id="croppic_image" style="margin: 0 auto; background-position: center;">
-																	<div style="text-align: center;">
-																		<span class="form-field-label std-croppic-wrapper"><?php esc_html_e('Standard Size', 'classiera'); ?>
-																			<div class="btnClose" onclick="xClicked('croppic')">&times;</div>
-																		</span>
-																		<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
+																<span class="form-field-label std-croppic-wrapper">
+																	<div class="inner-label">
+																		<span><?php esc_html_e('Standard Size', 'classiera'); ?></span>
+																		<div class="btnClose" onclick="xClicked('croppic')">&times;</div>
 																	</div>
-																</div>
+																	<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
+																	<div id="croppic_image" style="margin: 0 auto; background-position: center;">
+																		<div style="text-align: center;">
+																			<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
+																		</div>
+																	</div>
+																</span>
 															</div>
 															<?php
 															} else{
@@ -1719,6 +1722,9 @@ get_header(); ?>
 
 	                                    <div id="step-8">
 	                                        <div class="row">
+	                                        	<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Gallery Images', 'classiera'); ?></h4>
+												</div>
 	                                        	<div class="col-sm-12">
 	                                            	<div class="form-main-section media-detail">
 														<div class="classiera-dropzone-heading">
@@ -1808,7 +1814,9 @@ get_header(); ?>
 										<!-- Begin Step-9 -->
 										<div id="step-9">
 											<div class="row">
-												
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Pricing Information', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12">
 													<div id="toggle">
 														<input type="checkbox" name="checkbox1" id="checkbox3" class="ios-toggle" checked/>
@@ -1871,7 +1879,6 @@ get_header(); ?>
 
 												<div class="col-sm-12 col-lg-6"><!-- Form Container -->
 													<div class="price-fields"><!-- Form Group Container -->
-															
 														<div class="col-lg-4 col-xs-4">
 															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
 															<?php
@@ -1925,6 +1932,9 @@ get_header(); ?>
 										<!-- Begin Step-10 -->
 										<div id="step-10">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Finalize Advert', 'classiera'); ?></h4>
+												</div>
 											   	<div class="col-sm-12 col-lg-12">
 											   		<button onclick="submitForm()" type="button" class="btn btn-primary extra-padding post-advert-btn" id="beforeupdatecheck_1"><?php esc_html_e('Update Advert', 'classiera') ?></button>
 											   	</div>
