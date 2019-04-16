@@ -93,7 +93,12 @@
                                 'print' => '<span class="media-icon"><i class="fa fa-print"></i> </span>Print',
                             );
                             ?>
-                            <?php foreach ( $options[ 'social_networks' ] as $key => $val ) {
+                            <?php
+                            // echo"<pre>";
+                            // print_r($options);
+                            // echo "</pre>";
+
+                             foreach ( $options[ 'social_networks' ] as $key => $val ) {
                                 ?>
                                 <div class="apss-option-wrapper">
                                     <div class="apss-option-field">
@@ -150,7 +155,6 @@
                                 echo "checked='checked'";
                             }
                             ?> ><label for="apss_all"><?php _e( 'Other (search results, etc)', 'accesspress-social-share' ); ?></label></p>
-
                     </div>
 
                     <div class="apss-tab-contents apss-display-settings" id="tab-apss-display-settings" style='display:none'>

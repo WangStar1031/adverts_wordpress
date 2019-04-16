@@ -81,18 +81,11 @@ get_header();
 					</div>
 					<div class="panel-body">
 						<div class="user-detail-section">
-							<!-- my ads -->
-							<?php
-							// echo '<pre>';
-							// print_r($redux_demo);
-							// echo '</pre>';
-							?>
-
+							<!-- my ads -->						
 							<div class="user-ads user-my-ads">
 								<!-- <h5 class="redux_heading">Get Credits</h5>
 								<p class="redux_body"></p> -->
 								<?php 
-									//print_r($user_id);
 									global $paged, $wp_query, $wp;
 									$args = wp_parse_args($wp->matched_query);
 									if ( !empty ( $args['paged'] ) && 0 == $paged ) {
@@ -103,7 +96,7 @@ get_header();
 									$kulPost = array(
 										'post_type'  => 'post',
 										'author' => $user_id,
-										'posts_per_page' => 12,
+										'posts_per_page' => 3,
 										'paged' => $paged,
 										'post_status' => array( 'publish', 'pending', 'future', 'draft', 'private' ),
 									);
@@ -138,7 +131,7 @@ get_header();
 											</div>
 											<div class="col-lg-6">
 												<?php
-												if($classiera_ads_status == 0){ ?>
+												if($classiera_ads_status == 0) { ?>
 												<h5 class="media-heading tmerh">
 													<script>
 
@@ -196,15 +189,10 @@ get_header();
 														}
 													</script>
 												</h5>
-												<?php 
-												}
-												// print_r($current_time);
-												// print_r($days_to_expire);
-												 if($classiera_ads_status==1 && $current_time <= $days_to_expire && $postStatus=='publish'):
-												?>
-												<?php
-													//print_r($days_to_expire);
-												?>
+												<?php } ?>
+
+												<?php if($classiera_ads_status==1 && $current_time <= $days_to_expire && $postStatus=='publish'): ?>
+												
 												<span class="media-heading tmerhm pull-right" id="tmerhm<?= $post->ID?>">
 													
 													<script>
@@ -254,7 +242,7 @@ get_header();
 
 												<span class="pull-right hidden-xs" style="margin-right: 10px"><?php esc_html_e('Display Time Left', 'classiera') ?>:</span>
 
-												<?php endif;?>
+												<?php endif; ?>
 											</div>
 										</div>
 										

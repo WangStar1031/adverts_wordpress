@@ -468,6 +468,14 @@
 				'subtitle' => 'Add more Options here',
 				'desc' => __('Advertisers Heigtht in Inches' , 'classiera'),
 			),
+            array(
+                'id' => 'fieldsheight',
+                'type' => 'textarea',
+                'rows' => '1',
+                'title' => __('Height', 'classiera'),
+                'subtitle' => 'Add more Options here',
+                'desc' => __('Advertisers Heigtht' , 'classiera'),
+            ),
 			array(
 				'id' => 'fieldsweight',
 				'type' => 'textarea',

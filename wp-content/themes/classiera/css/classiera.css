@@ -7251,7 +7251,7 @@ div.classiera_verify_congrats{
 	transform: translateY(-50%);
 } 
 .tab-content .modal-dialog{
-  width: 100%;
+  /*width: 100%;*/
 }
 .tab-content .modal-dialog .modal-content{
   border: none;

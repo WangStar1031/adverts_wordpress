@@ -713,6 +713,7 @@ get_header(); ?>
         display: none;
     }
 </style>
+
 <div class="closeBump"></div>
 <section class="user-pages">
     <div class="container">

@@ -117,36 +117,6 @@ if(isset($_POST['submit'])) {
 
     }
   }
-  // if($_POST['submit'] == 'report_to_admin'){    
-  //   $displayMessage = '';
-  //   $report_ad = $_POST['report_ad_val'];
-  //   if($report_ad == "illegal") {
-  //     $message = esc_html__('This is illegal/fraudulent Ads, please take action.', 'classiera');
-  //   }
-  //   if($report_ad == "spam") {
-  //     $message = esc_html__('This Ad is SPAM, please take action', 'classiera');      
-  //   }
-  //   if($report_ad == "duplicate") {
-  //     $message = esc_html__('This ad is a duplicate, please take action', 'classiera');     
-  //   }
-  //   if($report_ad == "wrong_category") {
-  //     $message = esc_html__('This ad is in the wrong category, please take action', 'classiera');     
-  //   }
-  //   if($report_ad == "post_rules") {
-  //     $message = esc_html__('The ad goes against posting rules, please take action', 'classiera');      
-  //   }
-  //   if($report_ad == "post_other") {
-  //     $message = $_POST['other_report'];        
-  //   }   
-  //   $classieraPostTitle = $_POST['classiera_post_title']; 
-  //   $classieraPostURL = $_POST['classiera_post_url'];
-  //   //print_r($message); exit();
-  //   classiera_reportAdtoAdmin($message, $classieraPostTitle, $classieraPostURL);
-  //   if(!empty($message)){
-  //     $displayMessage = esc_html__('Thanks for report, Our Team will take action ASAP.', 'classiera');
-  //   }
-  // }
-  
 }
 if(isset($_POST['favorite'])){
   $author_id = $_POST['author_id'];
@@ -238,6 +208,21 @@ function convertString2Array($_strValue){
 $tags = get_post_meta($post->ID, 'tags', true);
 /// Xing
 
+// Metric to Imperial Conversion
+function metersToFeetInches($meters, $echo = true) {
+  $m = $meters;
+  $valInFeet = $m*3.2808399;
+  $valFeet = (int)$valInFeet;
+  $valInches = round(($valInFeet-$valFeet)*12);
+  $data = $valFeet."&prime;".$valInches."&Prime;";
+  if($echo == true)
+  {
+    echo $data;
+  } else {
+    return $data;
+  }
+}
+
 // My Additions
 $second_phone = get_post_meta($post->ID, 'second_phone', true);
 $nationality = get_post_meta($post->ID, 'nationality', true);
@@ -245,8 +230,7 @@ $user_age = get_post_meta($post->ID, 'user_age', true);
 $hair_color = get_post_meta($post->ID, 'hair_color', true);
 $eyes_color = get_post_meta($post->ID, 'eyes_color', true);
 $ethnicity = get_post_meta($post->ID, 'ethnicity', true);
-$height_feet = get_post_meta($post->ID, 'height_feet', true);
-$height_inches = get_post_meta($post->ID, 'height_inches', true);
+$height = get_post_meta($post->ID, 'height', true);
 $weight = get_post_meta($post->ID, 'weight', true);
 $breast_type = get_post_meta($post->ID, 'breast_type', true);
 $breast_size = get_post_meta($post->ID, 'breast_size', true);
@@ -279,8 +263,7 @@ $gender_1 = get_post_meta($post->ID, 'gender_1', true);
 $hair_color_1 = get_post_meta($post->ID, 'hair_color_1', true);
 $eyes_color_1 = get_post_meta($post->ID, 'eyes_color_1', true);
 $ethnicity_1 = get_post_meta($post->ID, 'ethnicity_1', true);
-$height_feet_1 = get_post_meta($post->ID, 'height_feet_1', true);
-$height_inches_1 = get_post_meta($post->ID, 'height_inches_1', true);
+$height_1 = get_post_meta($post->ID, 'height_1', true);
 $weight_1 = get_post_meta($post->ID, 'weight_1', true);
 $breast_type_1 = get_post_meta($post->ID, 'breast_type_1', true);
 $breast_size_1 = get_post_meta($post->ID, 'breast_size_1', true);
@@ -319,6 +302,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
 ?>
 
   <!-- Add your site or application content here -->
+
   <div class="container main-wrapper"><!-- Main Wrapper -->
 
     <div class="row"><!-- breadcrumbs row -->
@@ -775,11 +759,12 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
       </div>
 
       <div class="col-lg-4">
-        <div class="panel panel-default">
 
-        <h3 class="panel-heading text-center"><?php the_title()?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?></h3>
-      
-			<ul class="list-group">
+        <div class="panel panel-default">
+          <h3 class="panel-heading text-center"><?php the_title()?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?></h3>
+
+          <ul class="list-group" >
+
             <!-- Gender -->
             <?php if(!empty($gender)) {?>
               <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
@@ -820,15 +805,11 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <?php } ?>
             <!-- / Ethnicity -->
 
-             <!-- Height -->
-            <?php if(!empty($height_feet)) { ?>
+            <!-- Height -->
+            <?php if(!empty($height)) { ?>
               <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
-                <?php
-                  $converted_Feet = $height_feet * 30.48;
-                  $converted_Inches = $height_inches * 2.54;
-                  $converted_height = round($converted_Feet + $converted_Inches);
-                ?>
-                <span class="pull-right"><?php echo $height_feet; ?>" <?php echo $height_inches; ?><?php esc_html_e('\' / ', ''); ?><?php echo $converted_height; ?><?php esc_html_e(' cm', 'classiera'); ?></span>
+                <?php $height_converted = $height / 100; ?>
+                <span class="pull-right"><?php metersToFeetInches($height_converted); ?> / <?php echo $height; ?> <?php esc_html_e(' cm', 'classiera'); ?></span>
               </li>
             <?php } ?>
             <!-- / Height -->
@@ -911,13 +892,12 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
 		
 		<?php
 		if(in_category(array('couple', 'duo'))){ ?>
-		
 			<div class="col-lg-4">
 			  <div class="panel panel-default">
 			    <h3 class="panel-heading text-center">
             <?php if(!empty($partner_name)){?>
-            <?php echo esc_html($partner_name); ?>
-            <?php } ?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?>
+              <?php echo esc_html($partner_name); ?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?>
+            <?php } ?>
           </h3>
 
 			    <ul class="list-group">
@@ -964,17 +944,13 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
 			      <!-- / Ethnicity -->
 
 			      <!-- Height -->
-			      <?php if(!empty($height_feet_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
-                <?php
-                  $converted_Feet_1 = $height_feet_1 * 30.48;
-                  $converted_Inches_1 = $height_inches_1 * 2.54;
-                  $converted_height_1 = round($converted_Feet_1 + $converted_Inches_1);
-                ?>
-			          <span class="pull-right"><?php echo $height_feet_1; ?>" <?php echo $height_inches_1; ?><?php esc_html_e('\' / ', ''); ?><?php echo $converted_height_1; ?><?php esc_html_e(' cm', 'classiera'); ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Height -->
+            <?php if(!empty($height_1)) { ?>
+              <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
+                <?php $height_converted_1 = $height_1 / 100; ?>
+                <span class="pull-right"><?php metersToFeetInches($height_converted_1); ?> / <?php echo $height_1; ?> <?php esc_html_e(' cm', 'classiera'); ?></span>
+              </li>
+            <?php } ?>
+            <!-- / Height -->
 
 			      <!-- Weight -->
 			      <?php if(!empty($weight_1)) { ?>
@@ -1169,7 +1145,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
       enableDrag: true,
       enableSwipe: true
     });
-    
+
   });
   
 </script>

@@ -1,10 +1,10 @@
 <?php
 defined( 'ABSPATH' ) or die( "No script kiddies please!" );
 /*
-  Plugin name: Social Share WordPress Plugin - AccessPress Social Share
+  Plugin name: Social Share WordPress Plugin - AccessPress Social Share (Tester)
   Plugin URI: https://accesspressthemes.com/wordpress-plugins/accesspress-social-share/
   Description: A plugin to add various social media shares to a site with dynamic configuration options.
-  Version: 4.4.1
+  Version: 4.4.2
   Author: AccessPress Themes
   Author URI: http://accesspressthemes.com
   Text Domain: accesspress-social-share
@@ -123,7 +123,6 @@ if ( ! class_exists( 'APSS_Class' ) ) {
             if ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == 'accesspress-social-share' ) {
                 wp_enqueue_style( 'aps-admin-css', APSS_CSS_DIR . '/backend.css', false, APSS_VERSION ); //registering plugin admin css
                 wp_enqueue_style( 'fontawesome-css', APSS_CSS_DIR . '/font-awesome/font-awesome.min.css', false, APSS_VERSION );
-
                 /**
                  * Backend JS
                  * */
@@ -421,6 +420,10 @@ if ( ! class_exists( 'APSS_Class' ) ) {
             } else {
                 $json_string = $this -> get_json_values( 'https://graph.facebook.com/?id=' . $url );
                 $json = json_decode( $json_string, true );
+
+                // echo"<pre>";
+                // print_r($json);
+                // echo"</pre>";
                 $facebook_count = isset( $json[ 'share' ][ 'share_count' ] ) ? intval( $json[ 'share' ][ 'share_count' ] ) : 0;
             }
             return $facebook_count;
@@ -431,20 +434,29 @@ if ( ! class_exists( 'APSS_Class' ) ) {
          * */
         function get_fb_access_token(){
             $apss_settings = $this -> apss_settings;
+
+            // echo"<pre>";
+            // print_r($apss_settings);
+            // echo"</pre>";
+
             $app_id = $apss_settings[ 'api_configuration' ][ 'facebook' ][ 'app_id' ];
             $app_secret = $apss_settings[ 'api_configuration' ][ 'facebook' ][ 'app_secret' ];
             $api_url = 'https://graph.facebook.com/';
-            $app_id = $apss_settings[ 'api_configuration' ][ 'facebook' ][ 'app_id' ];
-            $app_secret = $apss_settings[ 'api_configuration' ][ 'facebook' ][ 'app_secret' ];
             $url = sprintf(
                     '%soauth/access_token?client_id=%s&client_secret=%s&grant_type=client_credentials', $api_url, $app_id, $app_secret
             );
 
             $access_token = wp_remote_get( $url, array( 'timeout' => 60 ) );
+            // echo "Access Token:"
+            // echo"<pre>";
+            // print_r($access_token);
+            // echo"</pre>";
             if ( is_wp_error( $access_token ) || ( isset( $access_token[ 'response' ][ 'code' ] ) && 200 != $access_token[ 'response' ][ 'code' ] ) ) {
+                //echo 1;
                 return '';
             } else {
                 $json_decode = json_decode( $access_token[ 'body' ] );
+                //echo 2; 
                 return sanitize_text_field( $json_decode -> access_token );
             }
         }
@@ -465,10 +477,13 @@ if ( ! class_exists( 'APSS_Class' ) ) {
                 return $facebook_count;
             } else {
                 $access_token = self:: get_fb_access_token();
+
                 $api_url = 'https://graph.facebook.com/';
                 $facebook_count = sprintf(
                         '%s?access_token=%s&id=%s', $api_url, $access_token, $url
                 );
+                //$facebook_count = 'https://graph.facebook.com/?fields=og_object%7Blikes.summary(true).limit(0)%7D,share&id=' . $url;
+
                 $apss_settings = $this -> apss_settings;
                 if ( isset( $apss_settings[ 'enable_cache' ] ) && $apss_settings[ 'enable_cache' ] == '1' ) {
                     ////////////////////////for transient//////////////////////////////
@@ -494,7 +509,10 @@ if ( ! class_exists( 'APSS_Class' ) ) {
                 } else {
                     $json_string = $this -> get_json_values( $facebook_count );
                     $json = json_decode( $json_string, true );
-                    $facebook_count = isset( $json[ 'share' ][ 'share_count' ] ) ? intval( $json[ 'share' ][ 'share_count' ] ) : 0;
+                    // echo"<pre>";
+                    // print_r($json);
+                    // echo"</pre>";
+                    $facebook_count = isset( $json[ 'share' ][ 'share_count' ] ) ? intval( $json[ 'share' ][ 'share_count' ] ) : 0 ;
                 }
                 return $facebook_count;
                 die();

@@ -130,7 +130,7 @@ jQuery('#ads_length').change(function(){
 	var vText = jQuery('#'+ads_type_selected+'-ads_cost_change-'+id).val();
 	var totalPay = parseInt(vText);
 	jQuery('#ads_cost').val(totalPay);
-	jQuery('#'+ads_type_selected+'-ads_cost-'+id).show();
+	jQuery('#'+ads_type_selected+'-ads_cost-'+id).css("display", "inline");
 	var uw_balance=jQuery('#uw_balance').val();
 	console.log(uw_balance);
 	console.log(totalPay);
@@ -423,3 +423,5 @@ jQuery(document).on('click', ".remove-img", function () {
 		}
 	}
 	checkWelcomeCookie();
+
+	jQuery('.collapse').collapse();

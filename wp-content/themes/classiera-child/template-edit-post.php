@@ -39,14 +39,29 @@ function convertString2Array($_strValue){
 	}
 	return $arrRetVal;
 }
+
+function metersToFeetInches($meters, $echo = true)
+	{
+		$m = $meters;
+		$valInFeet = $m*3.2808399;
+		$valFeet = (int)$valInFeet;
+		$valInches = round(($valInFeet-$valFeet)*12);
+		$data = $valFeet."&prime;".$valInches."&Prime;";
+		if($echo == true)
+		{
+			echo $data;
+		} else {
+			return $data;
+		}
+	}
+
 $arrRealTags = convertString2Array($redux_demo["tags-collection"]);
 $arrNationality = convertString2Array($redux_demo["fieldsnationality"]);
 $arrHaircolor = convertString2Array($redux_demo["fieldshaircolor"]);
 $arrEyescolor = convertString2Array($redux_demo["fieldseyescolor"]);
 $arrEthnicity = convertString2Array($redux_demo["fieldsethnicity"]);
 $arrGender = convertString2Array($redux_demo["fieldsgender"]);
-$arrHeightfeet = convertString2Array($redux_demo["fieldsheightfeet"]);
-$arrHeightinches = convertString2Array($redux_demo["fieldsheightinches"]);
+$arrHeight = convertString2Array($redux_demo["fieldsheight"]);
 $arrWeight = convertString2Array($redux_demo["fieldsweight"]);
 $arrBreastssize = convertString2Array($redux_demo["fieldsbreastssize"]);
 $arrBreastscup = convertString2Array($redux_demo["fieldsbreastscup"]);
@@ -218,12 +233,8 @@ if(isset($_POST['postTitle'])){
 					update_post_meta($post_id, 'ethnicity', $_POST['ethnicity'], $allowed);
 				}
 				//Height Feet
-				if(isset($_POST['height_feet'])){
-					update_post_meta($post_id, 'height_feet', $_POST['height_feet'], $allowed);
-				}
-				//Height Inches
-				if(isset($_POST['height_inches'])){
-					update_post_meta($post_id, 'height_inches', $_POST['height_inches'], $allowed);
+				if(isset($_POST['height'])){
+					update_post_meta($post_id, 'height', $_POST['height'], $allowed);
 				}
 				//Weight
 				if(isset($_POST['weight'])){
@@ -335,13 +346,9 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['ethnicity_1'])){
 					update_post_meta($post_id, 'ethnicity_1', $_POST['ethnicity_1'], $allowed);
 				}
-				//Height Feet
-				if(isset($_POST['height_feet_1'])){
-					update_post_meta($post_id, 'height_feet_1', $_POST['height_feet_1'], $allowed);
-				}
-				//Height Inches
-				if(isset($_POST['height_inches_1'])){
-					update_post_meta($post_id, 'height_inches_1', $_POST['height_inches_1'], $allowed);
+				//Height
+				if(isset($_POST['height_1'])){
+					update_post_meta($post_id, 'height_1', $_POST['height_1'], $allowed);
 				}
 				//Weight
 				if(isset($_POST['weight_1'])){
@@ -771,8 +778,10 @@ get_header(); ?>
 										<!-- Begin Step-1 -->
 										<div id="step-1">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Personal Information', 'classiera'); ?></h4>
+												</div>
 												<div class="col-lg-6 col-sm-12">
-													
 													<!-- Nickname -->
 													<?php $postTitle = get_the_title($cur_post_id); ?><!-- get_post_meta( $cur_post_id, 'postTitle', true); -->
 													<span class="form-field-label"><?php esc_html_e('Nickname', 'classiera'); ?></span>
@@ -874,6 +883,7 @@ get_header(); ?>
 												</div>
 
 												<div class="col-sm-12 tag-container">
+													<h5><?php esc_html_e('Select services you provide', 'classiera'); ?>:</h5>
 													<input type="hidden" name="tags">
 														<?php
 														$curTag = get_post_meta($cur_post_id, 'tags', true);
@@ -884,7 +894,7 @@ get_header(); ?>
 																$act = " active";
 															}
 														?>
-														<div class="tagBtn btn btn-primary<?=$act?>" onclick="TagClicked(this)"><?=$value?></div>
+														<div class="tagBtn btn services-btn<?=$act?>" onclick="TagClicked(this)"><?=$value?></div>
 														<?php
 														}
 														?>
@@ -895,6 +905,9 @@ get_header(); ?>
 										<!-- Begin Step-2 -->
 										<div id="step-2">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Physical Appearance', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12 col-lg-6">
 													
 													<span class="form-field-label"><?php esc_html_e('Hair Color', 'classiera'); ?></span>
@@ -933,25 +946,17 @@ get_header(); ?>
 														?>
 													</select>
 
-													<span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
-													<select name="height_inches" class="third-size pull-right" required>
-														<!-- <option value="" disabled selected><?php esc_html_e('Inches', 'classiera'); ?></option> -->
-														<?php
-														$height_inches = get_post_meta($cur_post_id, 'height_inches', true);
-														foreach ($arrHeightinches as $value) {
-														?>
-														<option value="<?=$value?>" <?php if($height_inches == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?>"</option>
-														<?php
-														}
-														?>
-													</select>
+													
+													<span class="form-field-label"><?php esc_html_e('Height', 'classiera'); ?>:</span>
+													<select name="height" required>
 
-													<select name="height_feet" class="third-size pull-right add-margin" required>
 														<?php
-														$height_feet = get_post_meta($cur_post_id, 'height_feet', true);
-														foreach ($arrHeightfeet as $value) {
+														$height = get_post_meta($cur_post_id, 'height', true);
+														foreach ($arrHeight as $value) {
+															$height_converted = $value / 100;
 														?>
-														<option value="<?=$value?>" <?php if($height_feet == $value) echo "selected"; ?>><?php esc_html_e($value . ' Feet', 'classiera'); ?></option>
+														
+														<option value="<?=$value?>" <?php if($height == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' cm', 'classiera'); ?> / <?php metersToFeetInches($height_converted); ?></option>
 														<?php
 														}
 														?>
@@ -1104,8 +1109,8 @@ get_header(); ?>
 										<!-- Begin Step-3 -->
 										<div id="step-3">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Partner\'s Appearance', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Partner\'s Appearance', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<!-- Nickname -->
@@ -1170,25 +1175,20 @@ get_header(); ?>
 														?>
 													</select>
 													
-													<span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
-													<select name="height_inches_1" class="third-size pull-right" required>
+													<span class="form-field-label"><?php esc_html_e('Height', 'classiera'); ?>:</span>
+													<select name="height_1" required>
+
 														<?php
-														foreach ($arrHeightinches as $value) {
+														$height_1 = get_post_meta($cur_post_id, 'height_1', true);
+														foreach ($arrHeight as $value) {
+															$height_converted_1 = $value / 100;
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>"</option>
+														
+														<option value="<?=$value?>" <?php if($height_1 == $value) echo "selected"; ?>><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' cm', 'classiera'); ?> / <?php metersToFeetInches($height_converted_1); ?></option>
 														<?php
 														}
 														?>
 													</select>
-													<select name="height_feet_1" class="third-size pull-right add-margin" required>
-														<?php
-														foreach ($arrHeightfeet as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>'</option>
-														<?php
-														}
-														?>
-													</select>	
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Weight', 'classiera'); ?></span>
@@ -1264,7 +1264,7 @@ get_header(); ?>
 														?>
 													</select>
 													
-													<span class="form-field-label"><?php esc_html_e('Shoe Size', 'classiera'); ?></span>
+													<span class="form-field-label"><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></span>
 													<select name="shoe_size_1" required>
 														<?php
 														foreach ($arrShoesize as $value) {
@@ -1303,6 +1303,9 @@ get_header(); ?>
 										<!-- Begin Step-4 -->
 										<div id="step-4">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Language and Communication', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12 col-lg-6">
 														<span class="form-field-label"><?php esc_html_e('Native Language', 'classiera'); ?></span>
 														<select name="native_language" rqeuired>
@@ -1425,6 +1428,9 @@ get_header(); ?>
 										<!-- Begin Step-5 -->
 										<div id="step-5">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Facilities Available', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Disabled Friendly', 'classiera'); ?></span>
 													<select name="disabled_friendly" required>
@@ -1478,6 +1484,9 @@ get_header(); ?>
 										<!-- Begin Step-6 -->
 										<div id="step-6">
 											<div class="row">
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Location', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12 col-lg-6">
 													<!-- post location -->
 													<?php
@@ -1589,13 +1598,13 @@ get_header(); ?>
 															<?php } ?>
 															<!--Select City-->
 															<!--Address-->
-															<?php if($classieraAddress == 1){?>
+															<!-- <?php if($classieraAddress == 1){?>
 															<div class="">
 															  <label class="col-sm-3 text-left flip"><?php esc_html_e('Address', 'classiera'); ?> : <span>*</span></label>
 															  <div class="col-sm-9">
 																  <input id="address" type="text" name="address" class="form-control form-control-md" placeholder="<?php esc_html_e('Address or City', 'classiera') ?>">
 															  </div>
-														  	</div>
+														  	</div> -->
 															<?php } ?>
 															<!--Address-->
 												  	<?php } ?>
@@ -1639,6 +1648,9 @@ get_header(); ?>
 													}
 													if($imageLimit != 0){ ?>
 													<div class="form-main-section media-detail">
+														<div class="col-sm-12">
+															<h4 class="text-center form-step-heading"><?php esc_html_e('Advert Image', 'classiera'); ?></h4>
+														</div>
 														<div class="col-lg-12">
 															<?php
 															$croppedImgUrl = "";
@@ -1648,13 +1660,15 @@ get_header(); ?>
 															if( strpos($ads_type_selected, "standard") !== false){
 																$croppedImgUrl = get_post_meta($cur_post_id,'croppedImg_Path', true);
 															?>
-															<div class="col-sm-12 col-lg-12">
+															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
 																<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
 																<div id="croppic_image" style="margin: 0 auto; background-position: center;">
 																	<div style="text-align: center;">
+																		<span class="form-field-label std-croppic-wrapper"><?php esc_html_e('Standard Size', 'classiera'); ?>
+																			<div class="btnClose" onclick="xClicked('croppic')">&times;</div>
+																		</span>
 																		<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
-																		<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -341.31px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
 																	</div>
 																</div>
 															</div>
@@ -1664,25 +1678,36 @@ get_header(); ?>
 																$croppedImgUrlDouble = get_post_meta($cur_post_id, 'croppedImg_Path_double', true);
 															?>
 															<input type="hidden" name="isDoubleCroppic" value="true">
-															<div class="col-sm-12 col-lg-12">
+															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrl" id="croppedImgUrl" value="<?=$croppedImgUrl?>">
-																<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
-																<div id="croppic_image" style="margin: 0 auto; background-position: center;">
-																	<div style="text-align: center;">
-																		<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
-																		<div class="btnClose" onclick="xClicked('croppic')" style="position: relative; top: -341.31px; left: 235px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																<span class="form-field-label std-croppic-wrapper">
+																	<div class="inner-label">
+																		<span><?php esc_html_e('Standard Size', 'classiera'); ?></span>
+																		<div class="btnClose" onclick="xClicked('croppic')">&times;</div>
 																	</div>
-																</div>
+																	<div id="croppic" style="margin: 0 auto; display: none;" originalW="255" originalH="343"></div>
+																	<div id="croppic_image" style="margin: 0 auto; background-position: center;">
+																		<div style="text-align: center;">
+																			<img src="<?=$croppedImgUrl?>" style="width: 255px; height: 343px; max-width: 100%;">
+																		</div>
+																	</div>
+																</span>
 															</div>
-															<div class="col-sm-12 col-lg-12">
+
+															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrlDouble" id="croppedImgUrlDouble" value="<?=$croppedImgUrlDouble?>">
-																<div id="croppic-double" style="margin: 0 auto; display: none;" originalW="510" originalH="343"></div>
-																<div id="croppic-double_image" style="margin: 0 auto;  background-position: center;">
-																	<div style="text-align: center;">
-																		<img src="<?=$croppedImgUrlDouble?>" style="width:510px; height: 343px; max-width: 100%;">
-																		<div class="btnClose" onclick="xClicked('croppic-double')" style="position: relative; top: -341.31px; left: 490px; font-size: 20px; width: 20px; background-color: #8080806e; padding: 0px 5px; cursor: pointer; color: red;">&times;</div>
+																<span class="form-field-label double-croppic-wrapper">
+																	<div class="inner-label clearfix">
+																		<span><?php esc_html_e('Double Size', 'classiera'); ?></span>
+																		<div class="btnClose" onclick="xClicked('croppic-double')">&times;</div>
 																	</div>
-																</div>
+																	<div id="croppic-double" style="margin: 0 auto; display: none;" originalW="510" originalH="343"></div>
+																	<div id="croppic-double_image" style="margin: 0 auto;  background-position: center;">
+																		<div style="text-align: center;">
+																			<img src="<?=$croppedImgUrlDouble?>" style="width:510px; height: 343px; max-width: 100%;">
+																		</div>
+																	</div>
+																</span>
 															</div>
 															<?php } ?>
 														</div>
@@ -2061,8 +2086,8 @@ get_header(); ?>
 
 				$("#croppic").height(width * 343 / 255);
 				$("#croppic_image img").height(width * 343 / 255);
-				$("#croppic_image .btnClose").css({top: - width * 343 / 255});
-				$("#croppic_image .btnClose").css({left: ($("#croppic_image").width() + width) / 2 - 20});
+				// $("#croppic_image .btnClose").css({top: - width * 343 / 255});
+				// $("#croppic_image .btnClose").css({left: ($("#croppic_image").width() + width) / 2 - 20});
 
 				if( $("#croppic-double")){
 					var width_double = 510;
@@ -2073,8 +2098,8 @@ get_header(); ?>
 					}
 					$("#croppic-double").height( width_double * 343 / 510);
 					$("#croppic-double_image img").height(width_double * 343 / 510);
-					$("#croppic-double_image .btnClose").css({top: - width_double * 343 / 510});
-					$("#croppic-double_image .btnClose").css({left: ($("#croppic-double_image").width() + width_double) / 2 - 20});
+					// $("#croppic-double_image .btnClose").css({top: - width_double * 343 / 510});
+					// $("#croppic-double_image .btnClose").css({left: ($("#croppic-double_image").width() + width_double) / 2 - 20});
 				}
 			}, 500);
 
@@ -2161,8 +2186,8 @@ get_header(); ?>
 		console.log("width : " + width);
 		$("#" + _id).height(width * 343 / fullWidth);
 		$("#" + _id + "_image img").height( width * 343 / fullWidth);
-		$("#" + _id + "_image .btnClose").css({top: - width * 343 / fullWidth});
-		$("#" + _id + "_image .btnClose").css({ left: ($("#" + _id + "_image").width() + width) / 2 - 20});
+		// $("#" + _id + "_image .btnClose").css({top: - width * 343 / fullWidth});
+		// $("#" + _id + "_image .btnClose").css({ left: ($("#" + _id + "_image").width() + width) / 2 - 20});
 
 		if( _id == 'croppic'){
 			var cropperOptions = {
@@ -2247,6 +2272,7 @@ get_header(); ?>
 			}
 		}
 	}
+
 </script>
 
 <?php get_footer(); ?>
