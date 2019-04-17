@@ -11,7 +11,7 @@ jQuery('.post_adverts').click(function(){//Choose Your Advert Type
 	var adsPrice = jQuery(this).attr('id');//Set Variable adsPrice
 	console.log(adsPrice + 'advert price');
 	if( adsPrice.indexOf("standard") != -1){
-		jQuery("#croppic").parent().removeClass("col-lg-4").addClass("col-lg-12");
+		// jQuery("#croppic").parent().removeClass("col-lg-4").addClass("col-lg-12");  //Investigate this line
 		jQuery("#croppic-double").parent().hide();
 	}
 	var currentPrice = jQuery('#'+adsPrice+'-ads_cost_change-0').val();

@@ -62,6 +62,7 @@ $arrEyescolor = convertString2Array($redux_demo["fieldseyescolor"]);
 $arrEthnicity = convertString2Array($redux_demo["fieldsethnicity"]);
 $arrHeight = convertString2Array($redux_demo["fieldsheight"]);
 $arrWeight = convertString2Array($redux_demo["fieldsweight"]);
+$arrPenissize = convertString2Array($redux_demo["fieldspenissize"]);
 $arrBreastssize = convertString2Array($redux_demo["fieldsbreastssize"]);
 $arrBreastscup = convertString2Array($redux_demo["fieldsbreastscup"]);
 $arrBreaststype = convertString2Array($redux_demo["fieldsbreaststype"]);
@@ -167,6 +168,10 @@ if(isset($_POST['postTitle'])){
 			}
 			if(empty($_POST['weight'])){
 				$catError = esc_html__( 'Select Your Weight', 'classiera' );
+				$hasError = true;
+			}
+			if(empty($_POST['penis_size'])){
+				$catError = esc_html__( 'Select Your Penis Size', 'classiera' );
 				$hasError = true;
 			}
 			if(empty($_POST['breast_type'])){
@@ -381,6 +386,10 @@ if(isset($_POST['postTitle'])){
 				if(isset($_POST['weight'])){
 					update_post_meta($post_id, 'weight', $_POST['weight'], $allowed);
 				}
+				//Penis Size
+				if(isset($_POST['penis_size'])){
+					update_post_meta($post_id, 'penis_size', $_POST['penis_size'], $allowed);
+				}
 				//Breast Size
 				if(isset($_POST['breast_type'])){
 					update_post_meta($post_id, 'breast_type', $_POST['breast_type'], $allowed);
@@ -494,6 +503,10 @@ if(isset($_POST['postTitle'])){
 				//Weight
 				if(isset($_POST['weight_1'])){
 					update_post_meta($post_id, 'weight_1', $_POST['weight_1'], $allowed);
+				}
+				//Penis Size
+				if(isset($_POST['penis_size_1'])){
+					update_post_meta($post_id, 'penis_size_1', $_POST['penis_size_1'], $allowed);
 				}
 				//Breast Size
 				if(isset($_POST['breast_type_1'])){
@@ -987,15 +1000,15 @@ get_header(); ?>
 										<!-- Begin Step-1 -->
 										<div id="step-1">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('About Me', 'classiera') ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Personal Information', 'classiera'); ?></h4>
 												</div>
 
 												<div class="col-sm-12 col-lg-6">
 
 														<!-- Nickname -->
 														<span class="form-field-label"><?php esc_html_e('Nickname', 'classiera'); ?></span>
-														<input id="title" data-minlength="1" name="postTitle" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Your Nickname', 'classiera') ?>" required>
+														<input id="title" data-minlength="1" name="postTitle" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Nickname', 'classiera') ?>" required>
 
 														<input  value="1" type="hidden" name="classiera_ads_status">
 														<input  value="1" type="hidden" name="classiera_ads_statustime">
@@ -1004,7 +1017,7 @@ get_header(); ?>
 														<!-- Start Gender -->
 														<span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
 														<select name="gender">
-															<option value="" selected disabled><?php esc_html_e('Select Your Gender', 'classiera'); ?></option>
+															<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 															<?php foreach ($arrGender as $value) { ?>
 																<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
 															<?php } ?>
@@ -1020,7 +1033,7 @@ get_header(); ?>
 														<!--Category-->
 														<span class="form-field-label"><?php esc_html_e('Category', 'classiera'); ?></span>
 														<select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
-															<option value="" selected disabled><?php esc_html_e('Choose Your Category', 'classiera'); ?></option>
+															<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 															<?php 
 																$categories = get_terms('category', array(
 																'hide_empty' => 0,
@@ -1061,7 +1074,7 @@ get_header(); ?>
 													<input type="number" name="second_phone" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter your Second Mobile Number', 'classiera') ?>">
 													<span class="form-field-label"><?php esc_html_e('Nationality', 'classiera'); ?></span>
 													<select name="nationality" required>
-														<option value="" selected disabled><?php esc_html_e('Select Your Nationality', 'classiera'); ?></option>
+														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php
 															foreach ($arrNationality as $value) {
 														?>
@@ -1083,12 +1096,13 @@ get_header(); ?>
 												</div>
 
 												<div class="col-sm-12 tag-container">
+													<h5><?php esc_html_e('Select services you provide', 'classiera'); ?>:</h5>
 													<input type="hidden" name="tags">
 													<div style="margin-bottom: 20px;">
 														<?php
 														foreach ($arrRealTags as $value) {
 														?>
-														<div class="tagBtn btn btn-primary" onclick="TagClicked(this)"><?=$value?></div>
+														<div class="tagBtn btn services-btn" onclick="TagClicked(this)"><?=$value?></div>
 														<?php
 														}
 														?>
@@ -1100,8 +1114,8 @@ get_header(); ?>
 										<!-- Begin Step-2 -->
 										<div id="step-2">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Appearance', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Physical Appearance', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Hair Color', 'classiera'); ?></span>
@@ -1139,33 +1153,9 @@ get_header(); ?>
 														?>
 													</select>
 
-													<!-- Old height Section -->
-													<!-- <span class="pre-heading"><?php esc_html_e('Height', 'classiera'); ?>:</span>
-													<select name="height_inches" class="third-size pull-right" required>
-														<option value="" disabled selected><?php esc_html_e('Inches', 'classiera'); ?></option>
-														<?php
-														foreach ($arrHeightinches as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?>"</option>
-														<?php
-														}
-														?>
-													</select>
-													<select name="height_feet" class="third-size pull-right add-margin" required>
-														<option value="" disabled selected><?php esc_html_e('Feet', 'classiera'); ?></option>
-														<?php
-														foreach ($arrHeightfeet as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select> -->
-													<!-- Old height Section -->
-
 													<span class="form-field-label"><?php esc_html_e('Height', 'classiera'); ?>:</span>
 													<select name="height" required>
-
+														<option value="" disabled selected><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php
 														foreach ($arrHeight as $value) {
 															$height_converted = $value / 100;
@@ -1182,8 +1172,22 @@ get_header(); ?>
 														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php
 														foreach ($arrWeight as $value) {
+															$weight_converted = round($value * 2.205) //Convert kg to lbs
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' kg', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' kg', 'classiera'); ?> / <?php esc_html_e($weight_converted); ?> <?php esc_html_e('lbs', 'classiera'); ?></option>
+														<?php
+														}
+														?>
+													</select>
+
+													<span class="form-field-label"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
+													<select name="penis_size" required>
+														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
+														<?php
+														foreach ($arrPenissize as $value) {
+															$length_converted = round($value / 2.54); //Convert cm to Inches
+														?>
+														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' cm', 'classiera'); ?> / <?php esc_html_e($length_converted); ?>"</option>
 														<?php
 														}
 														?>
@@ -1230,7 +1234,7 @@ get_header(); ?>
 														foreach ($arrWaist as $value) {
 															$valueConverted = round($value * 2.54);
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?> <?php esc_html_e('Inch', 'classiera'); ?> / <?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php esc_html_e($value, 'classiera'); ?>"</option>
 														<?php } ?>
 													</select>
 
@@ -1241,7 +1245,7 @@ get_header(); ?>
 														foreach ($arrHips as $value) {
 															$valueConverted = round($value * 2.54);
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?> <?php esc_html_e('Inch', 'classiera'); ?> / <?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php esc_html_e($value, 'classiera'); ?>"</option>
 														<?php
 														}
 														?>
@@ -1301,8 +1305,8 @@ get_header(); ?>
 										<!-- Begin Step-3 -->
 										<div id="step-3">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Partner\'s Appearance', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Partner\'s Appearance', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Nickname', 'classiera'); ?></span>
@@ -1372,7 +1376,7 @@ get_header(); ?>
 
 													<span class="form-field-label"><?php esc_html_e('Height', 'classiera'); ?>:</span>
 													<select name="height_1" required>
-
+														<option value="" disabled selected><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php
 														foreach ($arrHeight as $value) {
 															$height_converted_1 = $value / 100;
@@ -1386,14 +1390,28 @@ get_header(); ?>
 
 												</div>
 												<div class="col-sm-12 col-lg-6">
-													
-													<span class="form-field-label"><?php esc_html_e('Weight', 'classiera'); ?></span>
+
+													<span class="form-field-label" style="display: block;"><?php esc_html_e('Weight', 'classiera'); ?></span>
 													<select name="weight_1" required>
 														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php
 														foreach ($arrWeight as $value) {
+															$weight_converted_1 = round($value * 2.205) //Convert kg to lbs
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' kg', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' kg', 'classiera'); ?> / <?php esc_html_e($weight_converted_1); ?> <?php esc_html_e('lbs', 'classiera'); ?></option>
+														<?php
+														}
+														?>
+													</select>
+
+													<span class="form-field-label"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
+													<select name="penis_size_1" required>
+														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
+														<?php
+														foreach ($arrPenissize as $value) {
+															$length_converted_1 = round($value / 2.54); //Convert cm to Inches
+														?>
+														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?><?php esc_html_e(' cm', 'classiera'); ?> / <?php esc_html_e($length_converted_1); ?>"</option>
 														<?php
 														}
 														?>
@@ -1438,7 +1456,7 @@ get_header(); ?>
 														foreach ($arrWaist as $value) {
 															$valueConverted = round($value * 2.54);
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?> <?php esc_html_e('Inch', 'classiera'); ?> / <?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php esc_html_e($value, 'classiera'); ?>"</option>
 														<?php
 														}
 														?>
@@ -1451,7 +1469,7 @@ get_header(); ?>
 														foreach ($arrHips as $value) {
 															$valueConverted = round($value * 2.54);
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?> <?php esc_html_e('Inch', 'classiera'); ?> / <?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?></option>
+														<option value="<?=$value?>"><?php esc_html_e($valueConverted); ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php esc_html_e($value, 'classiera'); ?>"</option>
 														<?php
 														}
 														?>
@@ -1510,8 +1528,8 @@ get_header(); ?>
 										<!-- Begin Step-4 -->
 										<div id="step-4">
 											<div class="row">
-												<div class="col-lg-12">
-												  <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Communication', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Language and Communication', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 
@@ -1615,8 +1633,8 @@ get_header(); ?>
 										<!-- Begin Step-5 -->
 										<div id="step-5">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Facilities', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Facilities Available', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Disabled Friendly', 'classiera'); ?></span>
@@ -1660,9 +1678,9 @@ get_header(); ?>
 										<!-- Begin Step-6 -->
 										<div id="step-6">
 											<div class="row">
-												<div class="col-lg-12"><!-- Heading Container -->
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Location', 'classiera'); ?></h3><!-- Heading -->
-												</div><!--  / Heading Container -->
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Location', 'classiera'); ?></h4>
+												</div>
 												<div class="col-sm-12 col-lg-6">
 													<!-- post location -->
 													<?php
@@ -1730,8 +1748,8 @@ get_header(); ?>
 										<!-- Begin Step-7 -->
 										<div id="step-7">
 											<div class="row">
-											   	<div class="col-lg-12">
-												  <h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Main Advert Image', 'classiera'); ?></h3>
+											   	<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Advert Image', 'classiera'); ?></h4>
 												</div>
 												<div class="col-sm-12">
 												<?php			   
@@ -1769,28 +1787,39 @@ get_header(); ?>
 												<div class="form-main-section media-detail">
 													<div class="col-lg-12">
 														<div class="row">
-															<div class="col-sm-12 col-lg-12" style="margin-bottom: 20px;">
+															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrl" id="croppedImgUrl">
-																<div id="croppic" style="margin: 0 auto" originalW="255" originalH="343"></div>
+																<div class="form-field-label std-croppic-wrapper">
+																	<div class="inner-label">
+																		<span><?php esc_html_e('Standard Size', 'classiera'); ?></span>
+																	</div>
+																	<div id="croppic" style="margin: 0 auto" originalW="255" originalH="343"></div>
+																</div>
 															</div>
-															<div class="col-sm-12 col-lg-12" style="margin-bottom: 20px;">
+
+															<div class="col-sm-12 col-lg-12 croppic-wrapper">
 																<input type="hidden" name="croppedImgUrlDouble" id="croppedImgUrlDouble">
-																<div id="croppic-double" style="margin: 0 auto" originalW="510" originalH="343"></div>
+																<div class="form-field-label double-croppic-wrapper">
+																	<div class="inner-label clearfix">
+																		<span><?php esc_html_e('Double Size', 'classiera'); ?></span>
+																	</div>
+																	<div id="croppic-double" style="margin: 0 auto" originalW="510" originalH="343"></div>
+																</div>
 															</div>
-														</div>
-													</div>
-												</div>
+														</div><!--  / Row -->
+													</div><!--  / col-lg-12 -->
+												</div><!--  / form-main-section media-detail -->
 											  	<?php } ?>
 											  	<!-- add photos and media -->
-												</div>
-											</div>
+												</div><!--  / col-sm-12 -->
+											</div><!--  / Row -->
 										</div>
 										<!-- End Step-7 -->
 										<!-- Begin step-8 -->
 										<div id="step-8">
 											<div class="row">
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Image Gallery', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Gallery Images', 'classiera'); ?></h4>
 												</div>
 												<div class="form-main-section media-detail">
 													<div class="col-sm-12">
@@ -1829,13 +1858,9 @@ get_header(); ?>
 													  ?>
 														<div class="iframe">
 															<div class="iframe-heading">
-																<i class="fa fa-video-camera"></i>
 																<span><?php esc_html_e('Put here iframe or video url.', 'classiera') ?></span>
 															</div>
 															<textarea class="form-control" name="video" id="video-code" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"></textarea>
-															<div class="help-block">
-																<p><?php esc_html_e('Add iframe or video URL (iframe 710x400) (youtube, vimeo, etc)', 'classiera') ?></p>
-															</div>
 														</div>
 													  <?php } ?>
 													</div>
@@ -1849,11 +1874,16 @@ get_header(); ?>
 
 												<div class="col-sm-12">
 													<div class="row">
-														<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Price Fields', 'classiera'); ?></h3><!-- Heading -->
+														<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Pricing Information', 'classiera'); ?></h4>
+													</div>
+													<div class="col-sm-12">
 														<div id="toggle">
 															<input type="checkbox" name="checkbox1" id="checkbox3" class="ios-toggle" checked/>
 															<label for="checkbox3" class="checkbox-label" data-off="Prices Off" data-on="Prices On"></label>
 														</div>
+														<p class="price-info" style="display: none;"><?php esc_html_e('I do not wish to disclose price information!', 'classiera'); ?></p>
+													</div>
 													</div><!-- / Row -->
 													<p class="price-info" style="display: none;"><?php esc_html_e('I do not wish to disclose price information!', 'classiera'); ?></p>
 												</div>
@@ -1945,8 +1975,8 @@ get_header(); ?>
 										<div id="step-10">
 											<div class="row">
 
-												<div class="col-lg-12">
-													<h3 class="text-center" style="margin-bottom: 30px;"><?php esc_html_e('Publish Advert', 'classiera'); ?></h3>
+												<div class="col-sm-12">
+													<h4 class="text-center form-step-heading"><?php esc_html_e('Finalize Advert', 'classiera'); ?></h4>
 												</div>
 												
 										   		<div class="col-sm-12 col-lg-6">
@@ -2035,7 +2065,7 @@ get_header(); ?>
 
 											   	<div class="col-sm-12 col-lg-6 tcs-container">
 											   		<button type="button" class="btn btn-primary extra-padding post-advert-btn" id="beforeupdatecheck" disabled="false" data-toggle="modal" data-target="#myModal"><?php esc_html_e('Publish Advert', 'classiera') ?></button>
-										   			<p class="tcs-info"><?php esc_html_e('By clicking "Post Advert", you agree to our', 'classiera') ?>
+										   			<p class="tcs-info"><?php esc_html_e('By clicking "Publish Advert", you agree to our', 'classiera') ?>
 										   				<a href="<?php echo esc_url($termsandcondition); ?>" target="_blank"><?php esc_html_e('Terms of Use', 'classiera') ?></a>
 										   				<?php esc_html_e('and acknowledge that you are the rightful owner of this item', 'classiera') ?>
 										   			</p>
@@ -2090,7 +2120,7 @@ get_header(); ?>
 <div class="loader_submit_form">
 	<img src="<?php echo get_template_directory_uri().'/images/loader180.gif' ?>">
 </div>
-<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/smartWizard.js"></script>
+<!-- <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/smartWizard.js"></script> -->
 <script>
 	var isShown = true;
 	function hideStep3(){
@@ -2124,6 +2154,8 @@ get_header(); ?>
 			}
 		});
 		hideStep3();
+
+		//Price Toggle switch
 		$('#checkbox3').click(function() {
 			if ($(this).is(':checked')) {
 				$('.price-fields').show();
@@ -2133,6 +2165,7 @@ get_header(); ?>
 				$('.price-info').show();
 			}
 		});
+
 	});
 	function customValidate(_this){
 		if( _this.is("select")){

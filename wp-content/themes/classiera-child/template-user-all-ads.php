@@ -101,7 +101,9 @@ get_header();
 										'post_status' => array( 'publish', 'pending', 'future', 'draft', 'private' ),
 									);
 									$wp_query = new WP_Query($kulPost);
+									$noAds = true;
 									while ($wp_query->have_posts()) : $wp_query->the_post();
+									$noAds = false;
 									$title = get_the_title($post->ID); 
 									$classieraPstatus = get_post_status( $post->ID );
 									$dateFormat = get_option( 'date_format' );
@@ -469,7 +471,13 @@ get_header();
 								</div>
 
 								<?php endwhile; ?>
-								<?php									
+								
+								<?php
+									if( $noAds == true){ ?>
+										<p><?php esc_html_e('You have not created any adverts yet.', 'classiera'); ?></p>
+								<?php } ?>
+
+								<?php
 								  if(function_exists('classiera_pagination')){
 									classiera_pagination();
 								  }

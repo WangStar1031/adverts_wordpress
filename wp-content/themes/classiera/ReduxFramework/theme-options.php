@@ -484,6 +484,14 @@
 				'subtitle' => 'Add more Options here',
 				'desc' => __('Advertisers Wigth in KG' , 'classiera'),
 			),
+            array(
+                'id' => 'fieldspenissize',
+                'type' => 'textarea',
+                'rows' => '1',
+                'title' => __('Penis Size', 'classiera'),
+                'subtitle' => 'Add more Options here',
+                'desc' => __('Advertisers Penis Size' , 'classiera'),
+            ),
 			array(
 				'id' => 'fieldsbreastssize',
 				'type' => 'textarea',
