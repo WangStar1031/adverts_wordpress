@@ -552,7 +552,7 @@ span.discount_per:before {
 #smartwizard .ios-toggle,
 #smartwizard .ios-toggle:active {
   position: absolute;
-  top: -5000px;
+  /*top: -5000px;*/
   height: 0;
   width: 0;
   opacity: 0;
