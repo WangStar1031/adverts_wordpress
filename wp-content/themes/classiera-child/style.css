@@ -355,6 +355,47 @@ span.discount_per:before {
 
 /*End My New Single Styles*/
 
+/*Single.php Columns styling*/
+#single-column .nav-tabs > li {
+  width: 50%;
+}
+
+#single-column .nav-tabs li a {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+#single-column .nav-tabs > li > a,
+#single-column .list-group-item:first-child {
+  margin-right: 0;
+  border-radius: 0;
+}
+
+#single-column .nav-tabs li a {
+  color: #262626;
+}
+
+#single-column .nav-tabs > li:first-child {
+  border-right: 1px solid #ddd;
+}
+
+#single-column .nav-tabs li.active a {
+  background-color: #6c6c6c;
+  color: #f5f5f5
+}
+
+#single-column .list-group {
+  margin-bottom: 0;
+}
+
+#single-column .nav-tabs > li.active a,
+#single-column .nav-tabs > li a {
+  border: 0;
+}
+
+/* End Single.php Columns styling*/
+
+
 /*Post Ad Styles*/
 
 #test-select {
@@ -462,8 +503,8 @@ span.discount_per:before {
   margin-top: 24px }
 
 #smartwizard .fifth-size {
-  width: 20%;
-  margin-top: 24px }
+  width: 33.333333%;
+  /*margin-top: 24px*/ }
 
 #smartwizard .quarter-size {
   width: 25%; }
@@ -484,6 +525,18 @@ span.discount_per:before {
   resize: none;
   padding: 10px;
   border-radius: 0px 0px 4px 4px !important;
+}
+
+#smartwizard .multi-select select {
+  float: right;
+}
+
+#smartwizard .multi-select select {
+  border-radius: 0 !important;
+}
+
+#smartwizard .multi-select select:first-child {
+  border-radius: 0 0 0 4px !important;
 }
 
 #smartwizard .price-info {
