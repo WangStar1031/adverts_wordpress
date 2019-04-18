@@ -4,7 +4,7 @@
   Plugin URI: https://wordpress.org/plugins/wp-file-manager
   Description: Manage your WP files.
   Author: mndpsingh287
-  Version: 4.4
+  Version: 4.5
   Author URI: https://profiles.wordpress.org/mndpsingh287
   License: GPLv2
  **/
@@ -33,6 +33,10 @@ if (!class_exists('mk_file_folder_manager')):
             */
             add_action('wp_ajax_mk_filemanager_verify_email', array(&$this, 'mk_filemanager_verify_email_callback'));
             add_action('wp_ajax_verify_filemanager_email', array(&$this, 'verify_filemanager_email_callback'));
+            /*
+            Media Upload
+            */
+            add_action('wp_ajax_mk_file_folder_manager_media_upload', array(&$this, 'mk_file_folder_manager_media_upload'));
         }
 
         /* Verify Email*/
@@ -526,6 +530,55 @@ if (!class_exists('mk_file_folder_manager')):
         {
             wp_enqueue_style('fm_custom_style', plugins_url('/css/fm_custom_style.css', __FILE__));
         }
+        /* 
+        * Media Upload
+        */
+        public function mk_file_folder_manager_media_upload() {	
+			$uploadedfiles = isset($_POST['uploadefiles']) ? $_POST['uploadefiles'] : '';
+			  if(!empty($uploadedfiles)) {
+				 $files = '';
+				 $fileCount = 1;
+				 foreach($uploadedfiles as $uploadedfile) {					 
+				 /* Start - Uploading Image to Media Lib */
+				   $this->upload_to_media_library($uploadedfile);
+				 /* End - Uploading Image to Media Lib */
+				 }
+			  }
+			  die;
+        }
+       /* Upload Images to Media Library */
+		 public function upload_to_media_library($image_url) {
+            $allowed_exts = array('jpg','jpe','jpeg','gif','png','svg','pdf','zip');
+            $url = $image_url;
+            preg_match('/[^\?]+\.(jpg|jpe|jpeg|gif|png|pdf|zip)/i', $url, $matches);
+             if(in_array($matches[1], $allowed_exts)) {
+			// Need to require these files
+					if ( !function_exists('media_handle_upload') ) {
+						require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+						require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+						require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+					}
+					
+					$tmp = download_url( $url );
+					$post_id = 0;
+					$desc = "";
+					$file_array = array();     
+					$file_array['name'] = basename($matches[0]);					
+					// If error storing temporarily, unlink
+					if ( is_wp_error( $tmp ) ) {
+						@unlink($file_array['tmp_name']);
+						$file_array['tmp_name'] = '';
+					} else {
+						$file_array['tmp_name'] = $tmp;
+					}
+					$id = media_handle_sideload( $file_array, $post_id, $desc );
+					if ( is_wp_error($id) ) {
+						@unlink($file_array['tmp_name']);
+						return $id;
+                    }
+            }
+		 }
+
     }
     $filemanager = new mk_file_folder_manager();
     global $filemanager;

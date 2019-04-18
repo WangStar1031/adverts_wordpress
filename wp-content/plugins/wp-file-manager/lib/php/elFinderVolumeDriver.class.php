@@ -6264,10 +6264,10 @@ abstract class elFinderVolumeDriver
                 return imagecreatefromgif($path);
 
             case 'image/x-ms-bmp':
-                if (!function_exists('imagecreatefrombmp')) {
+                if (!function_exists('imagecreatefrombmpnew')) {
                     include_once dirname(__FILE__) . '/libs/GdBmp.php';
                 }
-                return imagecreatefrombmp($path);
+                return imagecreatefrombmpnew($path);
 
             case 'image/xbm':
                 return imagecreatefromxbm($path);

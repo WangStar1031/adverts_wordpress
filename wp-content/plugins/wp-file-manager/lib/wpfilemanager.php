@@ -7,7 +7,7 @@
     $wp_fm_theme = get_transient('wp_fm_theme');
     $current_user = wp_get_current_user();
     $vle_nonce = wp_create_nonce('verify-filemanager-email');
-    $syntax_checker = get_option('wp_file_manager_settings');
+    $opt = get_option('wp_file_manager_settings');
     ?>
         <script src="<?php echo plugins_url('codemirror/lib/codemirror.js', __FILE__); ?>"></script>
         <link rel="stylesheet" href="<?php echo plugins_url('codemirror/lib/codemirror.css', __FILE__); ?>">
@@ -26,7 +26,28 @@
                         height: 500,
                         lang : fmlang,
                         /* Start */
-                        handlers : {},
+                        handlers : {
+                            <?php if(isset($opt['fm_enable_media_upload']) && $opt['fm_enable_media_upload'] == '1'):?>
+						        /* Upload */
+								upload: function(event, instance) {
+									var filepaths = [];
+									var uploadedFiles = event.data.added;
+									for (i in uploadedFiles) {
+										var file = uploadedFiles[i];
+										filepaths.push(file.url);
+									}	
+									if(filepaths != '') {
+										      var data = {
+													'action': 'mk_file_folder_manager_media_upload',		
+													'uploadefiles' : filepaths
+												};										
+												jQuery.post(ajaxurl, data, function(response) {	
+																									
+												});
+									 }								
+								},
+								<?php endif; ?>
+                                },
                             
                         commandsOptions: {
                                         edit : {

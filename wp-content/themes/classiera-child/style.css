@@ -527,7 +527,8 @@ span.discount_per:before {
 }
 
 #smartwizard .form-field-label .inner-label {
-  padding: 10px
+  padding: 10px;
+  color: white;
 }
 
 #smartwizard #step-7,
@@ -546,7 +547,7 @@ span.discount_per:before {
 #smartwizard #toggle {
   width: 60px;
   text-align: center;
-  margin: 30px auto; }
+  margin: 0 auto 30px; }
 
 #smartwizard .ios-toggle,
 #smartwizard .ios-toggle:active {
@@ -729,7 +730,7 @@ span.discount_per:before {
 }
 
 #smartwizard .post-advert-btn {
-  margin: 30px auto;
+  margin: 0 auto 30px;
   display: block;
 }
 

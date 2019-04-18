@@ -1818,7 +1818,7 @@ get_header(); ?>
 															<?php
 															$post_video = get_post_meta($cur_post_id, 'post_video', true);
 															?>
-															<textarea class="form-control" name="video" id="video-code" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
+															<textarea class="form-control" name="video" id="video-code" rows="5" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
 														</div>
 														<?php } ?>
 													</div>

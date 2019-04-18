@@ -504,12 +504,6 @@ class elFinder
     {
         // set default_charset
         if (version_compare(PHP_VERSION, '5.6', '>=')) {
-            if (($_val = ini_get('iconv.internal_encoding')) && strtoupper($_val) !== 'UTF-8') {
-                ini_set('iconv.internal_encoding', '');
-            }
-            if (($_val = ini_get('mbstring.internal_encoding')) && strtoupper($_val) !== 'UTF-8') {
-                ini_set('mbstring.internal_encoding', '');
-            }
             if (($_val = ini_get('internal_encoding')) && strtoupper($_val) !== 'UTF-8') {
                 ini_set('internal_encoding', '');
             }
@@ -2451,7 +2445,7 @@ class elFinder
                     return false;
                 }
             }
-            $method = (function_exists('curl_exec') && !ini_get('safe_mode') && !ini_get('open_basedir')) ? 'curl_get_contents' : 'fsock_get_contents';
+            $method = (function_exists('curl_exec') && !ini_get('open_basedir')) ? 'curl_get_contents' : 'fsock_get_contents';
             return $this->$method($url, $timeout, $redirect_max, $ua, $fp);
         }
         return false;
@@ -4647,7 +4641,7 @@ class elFinder
      */
     public static function curlExec($curl, $options = array(), $headers = array())
     {
-        $followLocation = (!ini_get('safe_mode') && !ini_get('open_basedir'));
+        $followLocation = (!ini_get('open_basedir'));
         if ($followLocation) {
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         }

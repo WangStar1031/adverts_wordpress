@@ -1754,6 +1754,9 @@ get_header(); ?>
                                         <div id="step-8">
                                             <div class="row">
                                                 <div class="col-sm-12">
+                                                    <h4 class="text-center form-step-heading"><?php esc_html_e('Gallery Images', 'classiera'); ?></h4>
+                                                </div>
+                                                <div class="col-sm-12">
                                                     <div class="form-main-section media-detail">
                                                         <div class="form-group">
                                                             <div class="col-sm-12">
@@ -1823,16 +1826,12 @@ get_header(); ?>
                                                                 ?>
                                                                 <div class="iframe">
                                                                     <div class="iframe-heading">
-                                                                        <i class="fa fa-video-camera"></i>
                                                                         <span><?php esc_html_e('Put here iframe or video url.', 'classiera') ?></span>
                                                                     </div>
                                                                     <?php
-                                                                        $post_video = get_post_meta($cur_post_id, 'post_video', true);
+                                                                    $post_video = get_post_meta($cur_post_id, 'post_video', true);
                                                                     ?>
-                                                                    <textarea class="form-control" name="video" id="video-code" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
-                                                                    <div class="help-block">
-                                                                        <p><?php esc_html_e('Add iframe or video URL (iframe 710x400) (youtube, vimeo, etc)', 'classiera') ?></p>
-                                                                    </div>
+                                                                    <textarea class="form-control" name="video" id="video-code" rows="5" placeholder="<?php esc_html_e('Put here iframe or video url.', 'classiera') ?>"><?=$post_video?></textarea>
                                                                 </div>
                                                                 <?php } ?>
                                                             </div>
@@ -1847,7 +1846,9 @@ get_header(); ?>
                                         <!-- Begin Step-9 -->
                                         <div id="step-9">
                                             <div class="row">
-
+                                                <div class="col-sm-12">
+                                                    <h4 class="text-center form-step-heading"><?php esc_html_e('Pricing Information', 'classiera'); ?></h4>
+                                                </div>
                                                 <div class="col-sm-12">
                                                     <div id="toggle">
                                                         <input type="checkbox" name="checkbox1" id="checkbox3" class="ios-toggle" checked/>
@@ -1910,7 +1911,6 @@ get_header(); ?>
 
                                                 <div class="col-sm-12 col-lg-6"><!-- Form Container -->
                                                     <div class="price-fields"><!-- Form Group Container -->
-                                                            
                                                         <div class="col-lg-4 col-xs-4">
                                                             <span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
                                                             <?php
@@ -1958,7 +1958,6 @@ get_header(); ?>
                                                         </div>
                                                     </div><!-- / Form Group Container -->
                                                 </div>
-
                                             </div>
                                         </div>
                                         <!-- End Step-9 -->
@@ -2070,7 +2069,7 @@ get_header(); ?>
                                                     </div>
                                                 </div><!-- Cost of advert -->
 
-                                                <div class="col-sm-12 col-lg-6 tcs-container">
+                                                <div class="col-sm-12 col-lg-12 tcs-container">
                                                     <button type="button" class="btn btn-primary extra-padding post-advert-btn" id="btn_reactivate" data-toggle="modal" data-target="#myModal"><?php esc_html_e('Re Activate Advert', 'classiera') ?></button>
                                                 </div>
 
