@@ -798,7 +798,7 @@ get_header(); ?>
 
 													<!-- Begin Gender -->
 													<span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
-													<select name="gender">
+													<select name="gender" onchange="genderChanged()">
 														<?php
 															$gender = get_post_meta($cur_post_id, 'gender', true);
 															foreach ($arrGender as $value) { ?>
@@ -2114,8 +2114,6 @@ get_header(); ?>
 
 				$("#croppic").height(width * 343 / 255);
 				$("#croppic_image img").height(width * 343 / 255);
-				// $("#croppic_image .btnClose").css({top: - width * 343 / 255});
-				// $("#croppic_image .btnClose").css({left: ($("#croppic_image").width() + width) / 2 - 20});
 
 				if( $("#croppic-double")){
 					var width_double = 510;
@@ -2126,13 +2124,10 @@ get_header(); ?>
 					}
 					$("#croppic-double").height( width_double * 343 / 510);
 					$("#croppic-double_image img").height(width_double * 343 / 510);
-					// $("#croppic-double_image .btnClose").css({top: - width_double * 343 / 510});
-					// $("#croppic-double_image .btnClose").css({left: ($("#croppic-double_image").width() + width_double) / 2 - 20});
 				}
 			}, 500);
 
 		}
-		// alert("You are on step "+stepNumber+" now");
 	});
     $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
         var elmForm = $("#step-" + (stepNumber*1+1));
@@ -2300,8 +2295,74 @@ get_header(); ?>
 				}
 			}
 		}
+		genderVerify();
 	}
-
+	function genderVerify(){
+		var gender = $("select[name=gender]").val();
+		if( gender == "Male"){
+			// penis : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Penis Size";
+			}).show();
+			$("select[name=penis_size]").show();
+			$("select[name=penis_size_1").show();
+			// dress : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Dress Size";
+			}).hide();
+			$("select[name=dress_size]").hide();
+			$("select[name=dress_size_1]").hide();
+			// breast : hide
+			$("span.pre-heading").filter(function(){
+				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
+			}).hide();
+			$("select[name=breast_type]").hide();
+			$("select[name=breast_type_1]").hide();
+			$("select[name=breast_size_cup]").hide();
+			$("select[name=breast_size_cup_1]").hide();
+			$("select[name=breast_size]").hide();
+			$("select[name=breast_size_1]").hide();
+			// shoe : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Shoe Size (UK Size)";
+			}).hide();
+			$("select[name=shoe_size]").hide();
+			$("select[name=shoe_size_1]").hide();
+		} else{
+			// penis : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Penis Size";
+			}).hide();
+			$("select[name=penis_size]").hide();
+			$("select[name=penis_size_1").hide();
+			// dress : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Dress Size";
+			}).show();
+			$("select[name=dress_size]").show();
+			$("select[name=dress_size_1]").show();
+			// breast : show
+			$("span.pre-heading").filter(function(){
+				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
+			}).show();
+			$("select[name=breast_type]").show();
+			$("select[name=breast_type_1]").show();
+			$("select[name=breast_size_cup]").show();
+			$("select[name=breast_size_cup_1]").show();
+			$("select[name=breast_size]").show();
+			$("select[name=breast_size_1]").show();
+			// shoe : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Shoe Size (UK Size)";
+			}).show();
+			$("select[name=shoe_size]").show();
+			$("select[name=shoe_size_1]").show();
+		}
+	}
+	function genderChanged(){
+		genderVerify();
+	}
+	genderVerify();
 </script>
 
 <?php get_footer(); ?>
