@@ -18,7 +18,8 @@ jQuery('.post_adverts').click(function(){//Choose Your Advert Type
 	console.log(currentPrice + 'some price');
 	jQuery('#ads_type_selected').val(adsPrice);
 	jQuery('#ads_cost').val(currentPrice);
-	jQuery('#'+adsPrice+'-ads_cost-0').show();
+	jQuery('#'+adsPrice+'-ads_cost-0').css("display", "inline");
+	// jQuery('#'+adsPrice+'-ads_cost-0').show();
 	jQuery('#section_type').hide();
 	var uw_balance=jQuery('#uw_balance').val();
 	console.log(uw_balance + 'balance')
