@@ -1138,7 +1138,7 @@ get_header(); ?>
 
 													<!-- Begin Gender -->
 													<span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
-													<select name="gender_1">
+													<select name="gender_1" onchange="genderChanged()">
 														<?php
 															$gender_1 = get_post_meta($cur_post_id, 'gender_1', true);
 															foreach ($arrGender as $value) { ?>
@@ -2299,58 +2299,95 @@ get_header(); ?>
 	}
 	function genderVerify(){
 		var gender = $("select[name=gender]").val();
-		if( gender == "Male"){
+		var gender_1 = $("select[name=gender_1]").val();
+		if( gender_1 == "Male"){
 			// penis : show
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Penis Size";
-			}).show();
-			$("select[name=penis_size]").show();
+			}).eq(1).show();
 			$("select[name=penis_size_1").show();
 			// dress : hide
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Dress Size";
-			}).hide();
-			$("select[name=dress_size]").hide();
+			}).eq(1).hide();
 			$("select[name=dress_size_1]").hide();
 			// breast : hide
 			$("span.pre-heading").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
-			}).hide();
-			$("select[name=breast_type]").hide();
+			}).eq(1).hide();
 			$("select[name=breast_type_1]").hide();
-			$("select[name=breast_size_cup]").hide();
 			$("select[name=breast_size_cup_1]").hide();
-			$("select[name=breast_size]").hide();
 			$("select[name=breast_size_1]").hide();
 			// shoe : hide
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Shoe Size (UK Size)";
-			}).hide();
-			$("select[name=shoe_size]").hide();
+			}).eq(1).hide();
 			$("select[name=shoe_size_1]").hide();
 		} else{
 			// penis : hide
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Penis Size";
-			}).hide();
-			$("select[name=penis_size]").hide();
+			}).eq(1).hide();
 			$("select[name=penis_size_1").hide();
 			// dress : show
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Dress Size";
-			}).show();
-			$("select[name=dress_size]").show();
+			}).eq(1).show();
 			$("select[name=dress_size_1]").show();
 			// breast : show
 			$("span.pre-heading").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
-			}).show();
-			$("select[name=breast_type]").show();
+			}).eq(1).show();
 			$("select[name=breast_type_1]").show();
-			$("select[name=breast_size_cup]").show();
 			$("select[name=breast_size_cup_1]").show();
-			$("select[name=breast_size]").show();
 			$("select[name=breast_size_1]").show();
+			// shoe : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Shoe Size (UK Size)";
+			}).eq(1).show();
+			$("select[name=shoe_size_1]").show();
+		}
+		if( gender == "Male"){
+			// penis : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Penis Size";
+			}).eq(0).show();
+			$("select[name=penis_size]").show();
+			// dress : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Dress Size";
+			}).eq(0).hide();
+			$("select[name=dress_size]").hide();
+			// breast : hide
+			$("span.pre-heading").filter(function(){
+				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
+			}).eq(0).hide();
+			$("select[name=breast_type]").hide();
+			$("select[name=breast_size_cup]").hide();
+			$("select[name=breast_size]").hide();
+			// shoe : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Shoe Size (UK Size)";
+			}).eq(0).hide();
+			$("select[name=shoe_size]").hide();
+		} else{
+			// penis : hide
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Penis Size";
+			}).eq(0).hide();
+			$("select[name=penis_size]").hide();
+			// dress : show
+			$("span.form-field-label").filter(function(){
+				return $(this).text().trim() == "Dress Size";
+			}).eq(0).show();
+			$("select[name=dress_size]").show();
+			// breast : show
+			$("span.pre-heading").filter(function(){
+				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
+			}).eq(0).show();
+			$("select[name=breast_type]").show();
+			$("select[name=breast_size_cup]").show();
+			$("select[name=breast_size]").show();
 			// shoe : show
 			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Shoe Size (UK Size)";
