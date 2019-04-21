@@ -342,7 +342,6 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
                   <?php esc_html_e( 'Age ', 'classiera' ); ?>:
                 <?php } ?>                
 	            	<?php $meta = get_post_meta( get_the_ID(), 'age_verified', true );
-	            		//print_r($meta);
 	            	    if ($meta == '1') { ?>
 	            	        <span class="glyphicon glyphicon-ok pull-right verified age-icon" data-toggle="tooltip" data-placement="top" title="Age Verified" style="margin-left: 5px"></span>
 	            	    <?php } else { ?>
@@ -401,18 +400,22 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             </p>
             <?php } ?>
             <!-- / City -->
-            <p><?php esc_html_e( 'Images Verified', 'classiera' ); ?>:
-	            <?php $meta = get_post_meta( get_the_ID(), 'images_verified', true );
-	            	//print_r($meta);
-	                if ($meta == '1') { ?>
-	                    <span class="pull-right image-verification verified" data-toggle="tooltip" data-placement="top" title="Images Verified"><span class="glyphicon glyphicon-ok"></span></span>
-	                <?php } else { ?>
-	                    <span class="pull-right not-verified" data-toggle="tooltip" data-placement="top" title="Images Not Verified"><span class="glyphicon glyphicon-remove"></span>
-	                <?php }
-	             ?>
-            </p>
+            <!-- Image Verification -->
+            <?php
+              if ($images_verified == '1') { ?>
+                <p>
+                  <?php esc_html_e( 'Images Verified', 'classiera' ); ?>:
+                  <span class="pull-right image-verification verified" data-toggle="tooltip" data-placement="top" title="Images Verified"><span class="glyphicon glyphicon-ok"></span></span>
+                </p>
+            <?php } else { ?>
+                <p>
+                  <?php esc_html_e( 'Images Not Verified', 'classiera' ); ?>:
+                  <span class="pull-right not-verified" data-toggle="tooltip" data-placement="top" title="Images Not Verified"><span class="glyphicon glyphicon-remove"></span>
+                </p>
+            <?php } ?>
+            <!-- End Image Verification -->
             <!-- Check If user looged in and Display PM Button according to User Role -->
-            <?php 
+            <!-- <?php 
                 global $user_login, $current_user;
                 wp_get_current_user();
                 $user_info = get_userdata($current_user->ID);
@@ -424,11 +427,10 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <?php if (is_user_logged_in() && array_intersect( $roles, $user_info->roles)) { ?>
               <button class="btn btn-primary btn-block" data-toggle="modal" data-target=".bs-example-modal-sm"><?php esc_html_e( 'Send PM', 'classiera' ); ?></button>
             <?php } elseif (in_array( 'seller', (array) $current_user->roles )) { ?>
-              <!-- <button class="btn btn-primary btn-block disabled" type="submit"><?php esc_html_e( 'You can not send PM', 'classiera' ); ?></button> -->
               <p><?php esc_html_e( 'Views', 'classiera' ); ?>: <span class="pull-right"><?php echo classiera_get_post_views(get_the_ID()); ?></span></p>
             <?php } else { ?>
               <button class="btn btn-primary btn-block disabled" type="submit"><?php esc_html_e( 'Login to Send PM', 'classiera' ); ?></button>
-            <?php } ?>
+            <?php } ?> -->
             <!-- / Check If user looged in and Display Form -->
             
             <!-- Modal Window -->
@@ -523,7 +525,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
       ?>
       <?php if ( has_post_thumbnail() || !empty($attachments)){?>
         <div id="lightgallery" class="col-xs-12 col-sm-12 col-lg-9 gallery-wrapper">
-        
+          <div class="row">
         <?php 
         if(empty($attachments)){
           if ( has_post_thumbnail()){
@@ -557,18 +559,18 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             $count = strlen($type) + 1;
             $squaredImgUrl = $image_thumb;//substr( $realUrl, 0, strlen($realUrl) - $count) . "-150x150." . $type;
             ?>
-          <div class="col-xs-6 col-sm-6 col-lg-3"><!-- Single Image Wrapper -->
-            <div class="thumbnail gallery-image" data-src="<?php echo esc_url($realUrl); ?>" ext="<?=$count?>">
-              <img class="img-responsive" src="<?php echo esc_url($squaredImgUrl); ?>" alt="<?php the_title(); ?>">
+            <div class="col-xs-6 col-sm-6 col-lg-3"><!-- Single Image Wrapper -->
+              <div class="thumbnail gallery-image" data-src="<?php echo esc_url($realUrl); ?>" ext="<?=$count?>">
+                <img class="img-responsive" src="<?php echo esc_url($squaredImgUrl); ?>" alt="<?php the_title(); ?>">
+              </div>
             </div>
-          </div>
           <?php
           //$count++;
           }
         }
         ?>  
-        
-      </div><!--  / Gallery Wrapper -->
+          </div>
+        </div><!--  / Gallery Wrapper -->
       <?php } ?>
 
     </div><!--  / Author Images Row -->
@@ -597,7 +599,9 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
                 $arrTags = convertString2Array($tags);
                 foreach ($arrTags as $value) {
                 ?>
-                  <div class="services"><?php echo $value; ?></div>
+                  <div class="services">
+                    <p class="pull-left single-page-tag"><?php echo $value; ?></p>
+                  </div>
                 <?php
                 }
                 ?>
@@ -715,7 +719,12 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
 
             <!-- Nationality -->
             <?php if(!empty($nationality)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Nationality', 'classiera') ?>:
+              <li class="list-group-item">
+                <?php if (in_category(array('couple', 'duo'))) { ?>
+                  <?php the_title(); ?><?php esc_html_e('\'s Nationality', 'classiera') ?>:
+                <?php } else { ?>
+                  <?php esc_html_e('Nationality', 'classiera') ?>:
+                <?php } ?>
                 <span class="pull-right"><?php echo $nationality; ?></span>
               </li>
             <?php } ?>
@@ -724,7 +733,7 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <?php if(in_category( array( 'couple', 'duo' ) )) { ?>
               <!-- Nationality -->
               <?php if(!empty($nationality_1)) { ?>
-                <li class="list-group-item"><?php esc_html_e('Partner\'s Nationality', 'classiera') ?>:
+                <li class="list-group-item"><?php echo $partner_name; ?><?php esc_html_e('\'s Nationality', 'classiera') ?>:
                   <span class="pull-right"><?php echo $nationality_1; ?></span>
                 </li>
               <?php } ?>
@@ -760,277 +769,449 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
         </div><!-- /Panel -->
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4" id="single-column">
+        <?php if (in_category(array('couple', 'duo'))) { ?>
+          <!-- Display Duo or Couple Profile -->
+          <div class="panel panel-default">
+            <h3 class="panel-heading text-center"><?php esc_html_e('Appearance', 'classiera'); ?></h3>
 
-        <div class="panel panel-default">
-          <h3 class="panel-heading text-center"><?php the_title()?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?></h3>
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#<?php the_title(); ?>" aria-controls="<?php the_title(); ?>" role="tab" data-toggle="tab"><?php the_title(); ?></a></li>
+              <li role="presentation"><a href="#<?php echo $partner_name ?>" aria-controls="<?php echo $partner_name ?>" role="tab" data-toggle="tab"><?php echo $partner_name ?></a></li>
+            </ul>
 
-          <ul class="list-group" >
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <!-- Single Profile -->
+              <div role="tabpanel" class="tab-pane fade in active" id="<?php the_title(); ?>">
+                <ul class="list-group" >
 
-            <!-- Gender -->
-            <?php if(!empty($gender)) {?>
-              <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
-                <span class="pull-right"><?php echo esc_html($gender); ?></span>
-              </li> 
-            <?php }?>
-            <!-- / Gender -->
-            <!-- Age -->
-            <?php if(!empty($user_age)) {?>
-              <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:
-                <span class="pull-right"><?php echo esc_html($user_age); ?></span>
-              </li> 
-            <?php }?>
-            <!-- / Age -->
+                  <!-- Gender -->
+                  <?php if(!empty($gender)) {?>
+                    <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
+                      <span class="pull-right"><?php echo esc_html($gender); ?></span>
+                    </li> 
+                  <?php }?>
+                  <!-- / Gender -->
+                  <!-- Age -->
+                  <?php if(!empty($user_age)) {?>
+                    <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:
+                      <span class="pull-right"><?php echo esc_html($user_age); ?> <?php esc_html_e('years', 'classiera'); ?></span>
+                    </li> 
+                  <?php }?>
+                  <!-- / Age -->
 
-            
-            <!-- Hair Colour -->
-            <?php if(!empty($hair_color)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Hair Colour', 'classiera') ?>:
-                <span class="pull-right"><?php echo $hair_color; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Hair Coulour -->
+                  
+                  <!-- Hair Colour -->
+                  <?php if(!empty($hair_color)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Hair Colour', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $hair_color; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Hair Coulour -->
 
-            <!-- Eyes Colour -->
-            <?php if(!empty($eyes_color)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Eyes Colour', 'classiera') ?>:
-                <span class="pull-right"><?php echo $eyes_color; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Eyes Coulour -->
+                  <!-- Eyes Colour -->
+                  <?php if(!empty($eyes_color)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Eyes Colour', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $eyes_color; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Eyes Coulour -->
 
-            <!-- Ethnicity -->
-            <?php if(!empty($ethnicity)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Ethnicity', 'classiera'); ?>:
-                <span class="pull-right"><?php echo $ethnicity; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Ethnicity -->
+                  <!-- Ethnicity -->
+                  <?php if(!empty($ethnicity)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Ethnicity', 'classiera'); ?>:
+                      <span class="pull-right"><?php echo $ethnicity; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Ethnicity -->
 
-            <!-- Height -->
-            <?php if(!empty($height)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
-                <?php $height_converted = $height / 100; ?>
-                <span class="pull-right"><?php metersToFeetInches($height_converted); ?> / <?php echo $height; ?> <?php esc_html_e(' cm', 'classiera'); ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Height -->
+                  <!-- Height -->
+                  <?php if(!empty($height)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
+                      <?php $height_converted = $height / 100; ?>
+                      <span class="pull-right"><?php echo $height; ?> <?php esc_html_e(' cm', 'classiera'); ?> / <?php metersToFeetInches($height_converted); ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Height -->
 
-            <!-- Weight -->
-            <?php if(!empty($weight)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Weight', 'classiera') ?>:
-                <?php
-                $convertedWeight = round($weight * 2.205);
-                 ?>
-                <span class="pull-right"><?php echo $convertedWeight; ?> lbs / <?php echo $weight;?> kg</span>
-              </li>
-            <?php } ?>
-            <!-- / Weight -->
+                  <!-- Weight -->
+                  <?php if(!empty($weight)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Weight', 'classiera') ?>:
+                      <?php
+                      $convertedWeight = round($weight * 2.205);
+                       ?>
+                      <span class="pull-right"><?php echo $weight;?> <?php esc_html_e('kg', 'classiera'); ?> / <?php echo $convertedWeight; ?> <?php esc_html_e('lbs', 'classiera'); ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Weight -->
 
-            <!-- Breast Size -->
-            <?php if(!empty($breast_size)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Breast Size', 'classiera') ?>:
-                <span class="pull-right"><?php echo $breast_size; ?> <?php echo $breast_size_cup; ?> <?php echo $breast_type; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Breast Size -->
+                  <?php if ($gender == 'Male') { ?>
+                    <!-- Penis Size -->
+                    <?php
+                    if(!empty($penis_size)) {
+                      $penis_converted = round($penis_size / 2.54);
+                    ?>
+                      <li class="list-group-item"><?php esc_html_e('Penis Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $penis_size; ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php echo $penis_converted; ?>"</span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Penis Size -->
+                  <?php } else { ?>
+                    <!-- Breast Size -->
+                    <?php if(!empty($breast_size)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Breast Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $breast_size; ?> <?php echo $breast_size_cup; ?> <?php echo $breast_type; ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Breast Size -->
+                  <?php } ?>
 
-            <!-- Waist Size -->
-            <?php if(!empty($waist_size)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Waist Size', 'classiera') ?>:
-                <?php
-                $convertedWaist = round($waist_size * 2.54);//Inches to cm conversion
-                ?>
-                <span class="pull-right"><?php echo $waist_size; ?> <?php esc_html_e('Inch', 'classiera')?> / <?php echo $convertedWaist; ?> <?php esc_html_e('cm', 'classiera')?></span>
-              </li>
-            <?php } ?>
-            <!-- / Waist Size -->
+                  <!-- Waist Size -->
+                  <?php if(!empty($waist_size)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Waist Size', 'classiera') ?>:
+                      <?php
+                      $convertedWaist = round($waist_size * 2.54);//Inches to cm conversion
+                      ?>
+                      <span class="pull-right"><?php echo $convertedWaist; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $waist_size; ?>"</span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Waist Size -->
 
-            <!-- Hips Size -->
-            <?php if(!empty($hips_size)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Hips Size', 'classiera') ?>:
-                <?php
-                $convertedHips = round($hips_size * 2.54);
-                ?>
-                <span class="pull-right"><?php echo $hips_size; ?> <?php esc_html_e('Inch', 'classiera')?> / <?php echo $convertedHips; ?> <?php esc_html_e('cm', 'classiera')?></span>
-              </li>
-            <?php } ?>
-            <!-- / Hips Size -->
+                  <!-- Hips Size -->
+                  <?php if(!empty($hips_size)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Hips Size', 'classiera') ?>:
+                      <?php
+                      $convertedHips = round($hips_size * 2.54);
+                      ?>
+                      <span class="pull-right"><?php echo $convertedHips; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $hips_size; ?>"</span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Hips Size -->
+                  
+                  <?php if ($gender == 'Female') { ?>
+                     <!-- Dress Size -->
+                    <?php if(!empty($dress_size)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Dress Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $dress_size; ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Dress Size -->
+                    <!-- Shoe Size -->
+                    <?php if(!empty($shoe_size)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Shoe Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $shoe_size; ?> <?php esc_html_e('UK Size', 'classiera') ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Shoe Size -->
+                  <?php } ?>
 
-            <!-- Dress Size -->
-            <?php if(!empty($dress_size)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Dress Size', 'classiera') ?>:
-                <span class="pull-right"><?php echo $dress_size; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Dress Size -->
+                  <!-- Pubic Area -->
+                  <?php if(!empty($pubic_area)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Pubic Area', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $pubic_area; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Pubic Area -->
 
-            <!-- Shoe Size -->
-            <?php if(!empty($shoe_size)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Shoe Size', 'classiera') ?>:
-                <span class="pull-right"><?php echo $shoe_size; ?> <?php esc_html_e('UK Size', 'classiera') ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Shoe Size -->
+                  <!-- Are You a Smoker? -->
+                  <?php if(!empty($smoker)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Smoker', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $smoker; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Are You a Smoker? -->
+                </ul>
+              </div>
+              <!-- Partner's Profile -->
+              <div role="tabpanel" class="tab-pane fade" id="<?php echo $partner_name ?>">
+                <ul class="list-group">
+                  
+                  <!-- Gender -->
+                  <?php if(!empty($gender_1)) {?>
+                    <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
+                      <span class="pull-right"><?php echo esc_html($gender_1); ?></span>
+                    </li> 
+                  <?php }?>
+                  <!-- / Gender -->
 
-            <!-- Pubic Area -->
-            <?php if(!empty($pubic_area)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Pubic Area', 'classiera') ?>:
-                <span class="pull-right"><?php echo $pubic_area; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Pubic Area -->
+                  <!-- Age -->
+                  <?php if(!empty($user_age_1)) {?>
+                    <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:
+                      <span class="pull-right"><?php echo esc_html($user_age_1); ?> <?php esc_html_e('years', 'classiera'); ?></span>
+                    </li> 
+                  <?php }?>
+                  <!-- / Age -->
 
-            <!-- Are You a Smoker? -->
-            <?php if(!empty($smoker)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Smoker', 'classiera') ?>:
-                <span class="pull-right"><?php echo $smoker; ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Are You a Smoker? -->
-          </ul>
-        </div><!-- /Panel -->
+                  
+                  <!-- Hair Colour -->
+                  <?php if(!empty($hair_color_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Hair Colour', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $hair_color_1; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Hair Coulour -->
+
+                  <!-- Eyes Colour -->
+                  <?php if(!empty($eyes_color_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Eyes Colour', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $eyes_color_1; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Eyes Coulour -->
+
+                  <!-- Ethnicity -->
+                  <?php if(!empty($ethnicity_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Ethnicity', 'classiera'); ?>:
+                      <span class="pull-right"><?php echo $ethnicity_1; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Ethnicity -->
+
+                  <!-- Height -->
+                  <?php if(!empty($height_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
+                      <?php $height_converted_1 = $height_1 / 100; ?>
+                      <span class="pull-right"><?php echo $height_1; ?> <?php esc_html_e(' cm', 'classiera'); ?> / <?php metersToFeetInches($height_converted_1); ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Height -->
+
+                  <!-- Weight -->
+                  <?php if(!empty($weight_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Weight', 'classiera') ?>:
+                      <?php
+                      $convertedWeight_1 = round($weight_1 * 2.205);
+                       ?>
+                      <span class="pull-right"><?php echo $weight_1;?> <?php esc_html_e('kg', 'classiera'); ?> / <?php echo $convertedWeight_1; ?> <?php esc_html_e('lbs', 'classiera'); ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Weight -->
+
+                   <!-- Penis Size -->
+                  <?php if($gender_1 == 'Male') { ?>
+                    <?php
+                      if(!empty($penis_size_1)) {
+                        $penis_converted_1 = round($penis_size_1 / 2.54);
+                      ?>
+                      <li class="list-group-item"><?php esc_html_e('Penis Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $penis_size_1; ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php echo $penis_converted_1; ?>"</span>
+                      </li>
+                    <?php } ?>
+                  <?php } else { ?>
+                    <!-- Breast Size -->
+                    <?php if(!empty($breast_size_1)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Breast Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $breast_size_1; ?> <?php echo $breast_size_cup_1; ?> <?php echo $breast_type_1; ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Breast Size -->
+                  <?php } ?>
+                  <!-- / Penis Size -->
+
+                  <!-- Waist Size -->
+                  <?php if(!empty($waist_size_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Waist Size', 'classiera') ?>:
+                      <?php
+                      $convertedWaist_1 = round($waist_size_1 * 2.54);//Inches to cm conversion
+                      ?>
+                      <span class="pull-right"><?php echo $convertedWaist_1; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $waist_size_1; ?> <?php esc_html_e('Inch', 'classiera')?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Waist Size -->
+
+                  <!-- Hips Size -->
+                  <?php if(!empty($hips_size_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Hips Size', 'classiera') ?>:
+                      <?php
+                      $convertedHips_1 = round($hips_size_1 * 2.54);
+                      ?>
+                      <span class="pull-right"><?php echo $convertedHips_1; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $hips_size_1; ?>"</span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Hips Size -->
+
+                  <?php if ($gender_1 == 'Female') { ?>
+                    <!-- Dress Size -->
+                    <?php if(!empty($dress_size_1)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Dress Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $dress_size_1; ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Dress Size -->
+                    <!-- Shoe Size -->
+                    <?php if(!empty($shoe_size_1)) { ?>
+                      <li class="list-group-item"><?php esc_html_e('Shoe Size', 'classiera') ?>:
+                        <span class="pull-right"><?php echo $shoe_size_1; ?> <?php esc_html_e('UK Size', 'classiera') ?></span>
+                      </li>
+                    <?php } ?>
+                    <!-- / Shoe Size -->
+                  <?php } ?>
+
+                  <!-- Pubic Area -->
+                  <?php if(!empty($pubic_area_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Pubic Area', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $pubic_area_1; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Pubic Area -->
+
+                  <!-- Are You a Smoker? -->
+                  <?php if(!empty($smoker_1)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Smoker', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $smoker_1; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Are You a Smoker? -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        <?php } else { ?>
+          <!-- Display single profile -->
+          <div class="panel panel-default">
+            <h3 class="panel-heading text-center"><?php esc_html_e( 'Physical Appearance', 'classiera' ); ?></h3>
+              <ul class="list-group" >
+
+                <!-- Gender -->
+                <?php if(!empty($gender)) {?>
+                  <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
+                    <span class="pull-right"><?php echo esc_html($gender); ?></span>
+                  </li> 
+                <?php }?>
+                <!-- / Gender -->
+                <!-- Age -->
+                <?php if(!empty($user_age)) {?>
+                  <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:
+                    <span class="pull-right"><?php echo esc_html($user_age); ?> <?php esc_html_e('years', 'classiera'); ?></span>
+                  </li> 
+                <?php }?>
+                <!-- / Age -->
+
+                
+                <!-- Hair Colour -->
+                <?php if(!empty($hair_color)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Hair Colour', 'classiera') ?>:
+                    <span class="pull-right"><?php echo $hair_color; ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Hair Coulour -->
+
+                <!-- Eyes Colour -->
+                <?php if(!empty($eyes_color)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Eyes Colour', 'classiera') ?>:
+                    <span class="pull-right"><?php echo $eyes_color; ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Eyes Coulour -->
+
+                <!-- Ethnicity -->
+                <?php if(!empty($ethnicity)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Ethnicity', 'classiera'); ?>:
+                    <span class="pull-right"><?php echo $ethnicity; ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Ethnicity -->
+
+                <!-- Height -->
+                <?php if(!empty($height)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
+                    <?php $height_converted = $height / 100; ?>
+                    <span class="pull-right"><?php echo $height; ?> <?php esc_html_e(' cm', 'classiera'); ?> / <?php metersToFeetInches($height_converted); ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Height -->
+
+                <!-- Weight -->
+                <?php if(!empty($weight)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Weight', 'classiera') ?>:
+                    <?php
+                    $convertedWeight = round($weight * 2.205);
+                     ?>
+                    <span class="pull-right"><?php echo $weight;?> <?php esc_html_e('kg', 'classiera'); ?> / <?php echo $convertedWeight; ?> <?php esc_html_e('lbs', 'classiera'); ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Weight -->
+
+                <?php if ($gender == 'Male') { ?>
+                  <!-- Penis Size -->
+                  <?php
+                  if(!empty($penis_size)) {
+                    $penis_converted = round($penis_size / 2.54);
+                  ?>
+                    <li class="list-group-item"><?php esc_html_e('Penis Size', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $penis_size; ?> <?php esc_html_e('cm', 'classiera'); ?> / <?php echo $penis_converted; ?>"</span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Penis Size -->
+                <?php } else { ?>
+                  <!-- Breast Size -->
+                  <?php if(!empty($breast_size)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Breast Size', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $breast_size; ?> <?php echo $breast_size_cup; ?> <?php echo $breast_type; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Breast Size -->
+                <?php } ?>
+
+                <!-- Waist Size -->
+                <?php if(!empty($waist_size)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Waist Size', 'classiera') ?>:
+                    <?php
+                    $convertedWaist = round($waist_size * 2.54);//Inches to cm conversion
+                    ?>
+                    <span class="pull-right"><?php echo $convertedWaist; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $waist_size; ?>"</span>
+                  </li>
+                <?php } ?>
+                <!-- / Waist Size -->
+
+                <!-- Hips Size -->
+                <?php if(!empty($hips_size)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Hips Size', 'classiera') ?>:
+                    <?php
+                    $convertedHips = round($hips_size * 2.54);
+                    ?>
+                    <span class="pull-right"><?php echo $convertedHips; ?> <?php esc_html_e('cm', 'classiera')?> / <?php echo $hips_size; ?>"</span>
+                  </li>
+                <?php } ?>
+                <!-- / Hips Size -->
+                
+                <?php if ($gender == 'Female') { ?>
+                   <!-- Dress Size -->
+                  <?php if(!empty($dress_size)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Dress Size', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $dress_size; ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Dress Size -->
+                  <!-- Shoe Size -->
+                  <?php if(!empty($shoe_size)) { ?>
+                    <li class="list-group-item"><?php esc_html_e('Shoe Size', 'classiera') ?>:
+                      <span class="pull-right"><?php echo $shoe_size; ?> <?php esc_html_e('UK Size', 'classiera') ?></span>
+                    </li>
+                  <?php } ?>
+                  <!-- / Shoe Size -->
+                <?php } ?>
+
+                <!-- Pubic Area -->
+                <?php if(!empty($pubic_area)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Pubic Area', 'classiera') ?>:
+                    <span class="pull-right"><?php echo $pubic_area; ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Pubic Area -->
+
+                <!-- Are You a Smoker? -->
+                <?php if(!empty($smoker)) { ?>
+                  <li class="list-group-item"><?php esc_html_e('Smoker', 'classiera') ?>:
+                    <span class="pull-right"><?php echo $smoker; ?></span>
+                  </li>
+                <?php } ?>
+                <!-- / Are You a Smoker? -->
+              </ul>
+          </div><!-- /Panel -->
+        <?php } ?>
       </div>
-		
-		<?php
-		if(in_category(array('couple', 'duo'))){ ?>
-			<div class="col-lg-4">
-			  <div class="panel panel-default">
-			    <h3 class="panel-heading text-center">
-            <?php if(!empty($partner_name)){?>
-              <?php echo esc_html($partner_name); ?><?php esc_html_e( '\'s Appearance', 'classiera' ); ?>
-            <?php } ?>
-          </h3>
-
-			    <ul class="list-group">
-			      
-			      <!-- Gender -->
-			      <?php if(!empty($gender_1)) {?>
-			        <li class="list-group-item"><?php esc_html_e( 'Gender', 'classiera' ); ?>:
-			          <span class="pull-right"><?php echo esc_html($gender_1); ?></span>
-			        </li> 
-			      <?php }?>
-			      <!-- / Gender -->
-
-			      <!-- Age -->
-			      <?php if(!empty($user_age_1)) {?>
-			        <li class="list-group-item"><?php esc_html_e( 'Age', 'classiera' ); ?>:
-			          <span class="pull-right"><?php echo esc_html($user_age_1); ?></span>
-			        </li> 
-			      <?php }?>
-			      <!-- / Age -->
-
-			      
-			      <!-- Hair Colour -->
-			      <?php if(!empty($hair_color_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Hair Colour', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $hair_color_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Hair Coulour -->
-
-			      <!-- Eyes Colour -->
-			      <?php if(!empty($eyes_color_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Eyes Colour', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $eyes_color_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Eyes Coulour -->
-
-			      <!-- Ethnicity -->
-			      <?php if(!empty($ethnicity_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Ethnicity', 'classiera'); ?>:
-			          <span class="pull-right"><?php echo $ethnicity_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Ethnicity -->
-
-			      <!-- Height -->
-            <?php if(!empty($height_1)) { ?>
-              <li class="list-group-item"><?php esc_html_e('Height', 'classiera') ?>:
-                <?php $height_converted_1 = $height_1 / 100; ?>
-                <span class="pull-right"><?php metersToFeetInches($height_converted_1); ?> / <?php echo $height_1; ?> <?php esc_html_e(' cm', 'classiera'); ?></span>
-              </li>
-            <?php } ?>
-            <!-- / Height -->
-
-			      <!-- Weight -->
-			      <?php if(!empty($weight_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Weight', 'classiera') ?>:
-			          <?php
-			          $convertedWeight_1 = round($weight_1 * 2.205);
-			           ?>
-			          <span class="pull-right"><?php echo $convertedWeight_1; ?> <?php esc_html_e('lbs', 'classiera'); ?> / <?php echo $weight_1;?> <?php esc_html_e('kg', 'classiera'); ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Weight -->
-
-			      <!-- Breast Size -->
-			      <?php if(!empty($breast_size_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Breast Size', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $breast_size_1; ?> <?php echo $breast_size_cup_1; ?> <?php echo $breast_type_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Breast Size -->
-
-			      <!-- Waist Size -->
-			      <?php if(!empty($waist_size_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Waist Size', 'classiera') ?>:
-			          <?php
-			          $convertedWaist_1 = round($waist_size_1 * 2.54);//Inches to cm conversion
-			          ?>
-			          <span class="pull-right"><?php echo $waist_size_1; ?> <?php esc_html_e('Inch', 'classiera')?> / <?php echo $convertedWaist_1; ?> <?php esc_html_e('cm', 'classiera')?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Waist Size -->
-
-			      <!-- Hips Size -->
-			      <?php if(!empty($hips_size_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Hips Size', 'classiera') ?>:
-			          <?php
-			          $convertedHips_1 = round($hips_size_1 * 2.54);
-			          ?>
-			          <span class="pull-right"><?php echo $hips_size_1; ?> <?php esc_html_e('Inch', 'classiera')?> / <?php echo $convertedHips_1; ?> <?php esc_html_e('cm', 'classiera')?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Hips Size -->
-
-			      <!-- Dress Size -->
-			      <?php if(!empty($dress_size_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Dress Size', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $dress_size_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Dress Size -->
-
-			      <!-- Shoe Size -->
-			      <?php if(!empty($shoe_size_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Shoe Size', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $shoe_size_1; ?> <?php esc_html_e('UK Size', 'classiera') ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Shoe Size -->
-
-			      <!-- Pubic Area -->
-			      <?php if(!empty($pubic_area_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Pubic Area', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $pubic_area_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Pubic Area -->
-
-			      <!-- Are You a Smoker? -->
-			      <?php if(!empty($smoker_1)) { ?>
-			        <li class="list-group-item"><?php esc_html_e('Smoker', 'classiera') ?>:
-			          <span class="pull-right"><?php echo $smoker_1; ?></span>
-			        </li>
-			      <?php } ?>
-			      <!-- / Are You a Smoker? -->
-			    </ul>
-			  </div><!-- /Panel -->
-			</div>
-
-		<?php } ?>
 
      <div class="col-lg-4">
         <div class="panel panel-default">

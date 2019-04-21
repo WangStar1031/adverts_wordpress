@@ -678,15 +678,12 @@ get_header(); ?>
 	$regularAds = null;
 	$curPost = get_post($cur_post_id);
 ?>
-<!-- <style type="text/css">
+<style type="text/css">
 	.emptyRequire{
 		border: 1px solid red !important;
 	}
-	hr{
-		margin-top: 0px;
-		border-top: 1px solid #888;
-	}
-</style> -->
+	
+</style>
 <style type="text/css">
 	.main_panel_contents{
 		display: none;
@@ -970,7 +967,7 @@ get_header(); ?>
 														?>
 													</select>
 													
-													<span class="form-field-label" style="display: block;"><?php esc_html_e('Weight', 'classiera'); ?></span>
+													<span class="form-field-label"><?php esc_html_e('Weight', 'classiera'); ?></span>
 													<select name="weight" required>
 														<?php
 														$weight = get_post_meta($cur_post_id, 'weight', true);
@@ -983,7 +980,7 @@ get_header(); ?>
 														?>
 													</select>
 
-													<span class="form-field-label" style="display: block;"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
+													<span class="form-field-label"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
 													<select name="penis_size" required>
 														<?php
 														$penis_size = get_post_meta($cur_post_id, 'penis_size', true);
@@ -995,49 +992,52 @@ get_header(); ?>
 														}
 														?>
 													</select>
+													
+													<div class="multi-select">
+														<span class="form-field-label"><?php esc_html_e('Breast Size', 'classiera'); ?>:</span>
+														<select name="breast_type" class="fifth-size pull-right" style="border-radius: 0 0 4px 0 !important" required>
+															<?php
+															$breast_type = get_post_meta($cur_post_id, 'breast_type', true);
+															?>
+															<option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreaststype as $value) {
+															?>
+															<option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
 
-													<span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
-													<select name="breast_type" class="fifth-size pull-right" required>
-														<?php
-														$breast_type = get_post_meta($cur_post_id, 'breast_type', true);
-														?>
-														<option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
-														<?php
-														foreach ($arrBreaststype as $value) {
-														?>
-														<option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
+														<select name="breast_size_cup" class="fifth-size" style="border-right: 0 !important" required>
+															<option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
+															<?php
+															$breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
+															?>
+															<?php
+															foreach ($arrBreastscup as $value) {
+															?>
+															<option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
 
-													<select name="breast_size_cup" class="fifth-size pull-right add-margin" required>
-														<option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
-														<?php
-														$breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
-														?>
-														<?php
-														foreach ($arrBreastscup as $value) {
-														?>
-														<option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
-
-													<select name="breast_size" class="fifth-size pull-right add-margin" required>
-														<?php
-														$breast_size = get_post_meta($cur_post_id, 'breast_size', true);
-														?>
-														<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
-														<?php
-														foreach ($arrBreastssize as $value) {
-														?>
-														<option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
+														<select name="breast_size" class="fifth-size" style="border-right: 0 !important; border-radius: 0 0 0 4px !important;" required>
+															<?php
+															$breast_size = get_post_meta($cur_post_id, 'breast_size', true);
+															?>
+															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastssize as $value) {
+															?>
+															<option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+													</div>
+													
 												</div>
 												<div class="col-sm-12 col-lg-6">
 													<span class="form-field-label"><?php esc_html_e('Waist Size', 'classiera'); ?></span>
@@ -1142,7 +1142,7 @@ get_header(); ?>
 														<?php
 															$gender_1 = get_post_meta($cur_post_id, 'gender_1', true);
 															foreach ($arrGender as $value) { ?>
-																<option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+																<option value="<?=$value?>" <?php if($gender == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php } ?>
 													</select>
 													<!-- End Gender -->
@@ -1162,9 +1162,11 @@ get_header(); ?>
 													
 													<span class="form-field-label"><?php esc_html_e('Hair Color', 'classiera'); ?></span>
 													<select name="hair_color_1" required>
-														<?php foreach ($arrHaircolor as $value) {
+														<?php
+														$hair_color_1 = get_post_meta($cur_post_id, 'hair_color_1', true);
+														foreach ($arrHaircolor as $value) {
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+														<option value="<?=$value?>" <?php if($hair_color_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php
 														}
 														?>
@@ -1173,9 +1175,10 @@ get_header(); ?>
 													<span class="form-field-label"><?php esc_html_e('Eyes Color', 'classiera'); ?></span>
 													<select name="eyes_color_1" required>
 														<?php
+														$eyes_color_1 = get_post_meta($cur_post_id, 'eyes_color_1', true);
 														foreach ($arrEyescolor as $value) {
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+														<option value="<?=$value?>" <?php if($eyes_color_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php
 														}
 														?>
@@ -1184,9 +1187,10 @@ get_header(); ?>
 													<span class="form-field-label"><?php esc_html_e('Ethnicity', 'classiera'); ?></span>
 													<select name="ethnicity_1" required>
 														<?php
+														$ethnicity_1 = get_post_meta($cur_post_id, 'ethnicity_1', true);
 														foreach ($arrEthnicity as $value) {
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+														<option value="<?=$value?>" <?php if($ethnicity_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php
 														}
 														?>
@@ -1223,7 +1227,7 @@ get_header(); ?>
 														?>
 													</select>
 
-													<span class="form-field-label"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
+													<span class="form-field-label" style="display: block;"><?php esc_html_e('Penis Size', 'classiera'); ?></span>
 													<select name="penis_size_1" required>
 														<?php
 														$penis_size_1 = get_post_meta($cur_post_id, 'penis_size_1', true);
@@ -1236,36 +1240,50 @@ get_header(); ?>
 														?>
 													</select>
 
-													<span class="pre-heading"><?php esc_html_e('Breast Size', 'classiera'); ?>:</span>
-													<select name="breast_type_1" class="fifth-size pull-right" required>
-														<?php
-														foreach ($arrBreaststype as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
-													<select name="breast_size_cup_1" class="fifth-size pull-right add-margin" required>
-														<?php
-														foreach ($arrBreastscup as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
-													<select name="breast_size_1" class="fifth-size pull-right add-margin" required>
-														<?php
-														foreach ($arrBreastssize as $value) {
-														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-														<?php
-														}
-														?>
-													</select>
+													<div class="multi-select clearfix">
+														<span class="form-field-label"><?php esc_html_e('Breast Size', 'classiera'); ?>:</span>
+														<select name="breast_type_1" class="fifth-size" style="border-radius: 0 0 4px 0 !important" required>
+															<?php
+															$breast_type_1 = get_post_meta($cur_post_id, 'breast_type_1', true);
+															?>
+															<option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreaststype as $value) {
+															?>
+															<option value="<?=$value?>" <?php if( $breast_type_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														<select name="breast_size_cup_1" class="fifth-size" style="border-right: 0 !important" required>
+															<?php
+															$breast_size_cup_1 = get_post_meta($cur_post_id, 'breast_size_cup_1', true);
+															?>
+															<option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastscup as $value) {
+															?>
+															<option value="<?=$value?>" <?php if( $breast_size_cup_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+														<select name="breast_size_1" class="fifth-size pull-right" style="border-right: 0 !important; border-radius: 0 0 0 4px !important" required>
+															<?php
+															$breast_size_1 = get_post_meta($cur_post_id, 'breast_size_1', true);
+															?>
+															<option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
+															<?php
+															foreach ($arrBreastssize as $value) {
+															?>
+															<option value="<?=$value?>" <?php if( $breast_size_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+															<?php
+															}
+															?>
+														</select>
+													</div>
 													
-													<span class="form-field-label"><?php esc_html_e('Waist Size', 'classiera'); ?></span>
+													<span class="form-field-label" style="display: block;"><?php esc_html_e('Waist Size', 'classiera'); ?></span>
 													<select name="waist_size_1" required>
 														<?php
 														$waist_size_1 = get_post_meta($cur_post_id, 'waist_size_1', true);
@@ -1294,9 +1312,10 @@ get_header(); ?>
 													<span class="form-field-label"><?php esc_html_e('Dress Size', 'classiera'); ?></span>
 													<select name="dress_size_1" required>
 														<?php
+														$dress_size_1 = get_post_meta($cur_post_id, 'dress_size_1', true);
 														foreach ($arrDresssize as $value) {
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+														<option value="<?=$value?>" <?php if($dress_size_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php
 														}
 														?>
@@ -1305,9 +1324,10 @@ get_header(); ?>
 													<span class="form-field-label"><?php esc_html_e('Shoe Size (UK Size)', 'classiera'); ?></span>
 													<select name="shoe_size_1" required>
 														<?php
+														$shoe_size_1 = get_post_meta($cur_post_id, 'shoe_size_1', true);
 														foreach ($arrShoesize as $value) {
 														?>
-														<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+														<option value="<?=$value?>" <?php if($shoe_size_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php
 														}
 														?>
@@ -1316,18 +1336,20 @@ get_header(); ?>
 													<span class="form-field-label"><?php esc_html_e('Pubic Area', 'classiera'); ?></span>
 													<select name="pubic_area_1" required>
 														<?php
-															foreach ($arrPubicarea as $value) {
+														$pubic_area_1 = get_post_meta($cur_post_id, 'pubic_area_1', true);
+														foreach ($arrPubicarea as $value) {
 														?>
-															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<option value="<?=$value?>" <?php if($pubic_area_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php } ?>
 													</select>
 													
 													<span class="form-field-label"><?php esc_html_e('Are you a smoker?', 'classiera'); ?></span>
 													<select name="smoker_1" required>
 														<?php
-															foreach ($arrSmoker as $value) {
+														$smoker_1 = get_post_meta($cur_post_id, 'smoker_1', true);
+														foreach ($arrSmoker as $value) {
 														?>
-															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+															<option value="<?=$value?>" <?php if($smoker_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php } ?>
 													</select>
 												</div>
@@ -2312,7 +2334,7 @@ get_header(); ?>
 			}).eq(1).hide();
 			$("select[name=dress_size_1]").hide();
 			// breast : hide
-			$("span.pre-heading").filter(function(){
+			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
 			}).eq(1).hide();
 			$("select[name=breast_type_1]").hide();
@@ -2335,7 +2357,7 @@ get_header(); ?>
 			}).eq(1).show();
 			$("select[name=dress_size_1]").show();
 			// breast : show
-			$("span.pre-heading").filter(function(){
+			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
 			}).eq(1).show();
 			$("select[name=breast_type_1]").show();
@@ -2359,7 +2381,7 @@ get_header(); ?>
 			}).eq(0).hide();
 			$("select[name=dress_size]").hide();
 			// breast : hide
-			$("span.pre-heading").filter(function(){
+			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
 			}).eq(0).hide();
 			$("select[name=breast_type]").hide();
@@ -2382,7 +2404,7 @@ get_header(); ?>
 			}).eq(0).show();
 			$("select[name=dress_size]").show();
 			// breast : show
-			$("span.pre-heading").filter(function(){
+			$("span.form-field-label").filter(function(){
 				return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
 			}).eq(0).show();
 			$("select[name=breast_type]").show();

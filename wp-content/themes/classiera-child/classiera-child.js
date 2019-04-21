@@ -30,7 +30,7 @@ jQuery('.post_adverts').click(function(){//Choose Your Advert Type
 			Header = "Confirm Re-activating Current Advert";
 			Message = "Re-activating current advert for " + totalPay + " Credits.";
 		}
-		var footer='<button class="post-submit btn btn-default" type="submit" name="op" value="Publish Ad">OK</button><button type="button" id="cancelBtn" class="btn btn-default" data-dismiss="modal">Cancel</button>';
+		var footer='<button class="post-submit btn btn-primary" type="submit" name="op" value="Publish Ad">OK</button><button type="button" id="cancelBtn" class="btn btn-primary" data-dismiss="modal">Cancel</button>';
 		jQuery('#myModal .modal-title').text(Header);
 		jQuery('#myModal .modal-body-info').text(Message);
 		if( document.location.href.indexOf("re-activate") == -1){
@@ -142,7 +142,7 @@ jQuery('#ads_length').change(function(){
 			Header = "Confirm Re-activating Current Advert";
 			Message = "Re-activating current advert for " + totalPay + " Credits.";
 		}
-		var footer='<button class="post-submit btn btn-default" type="submit" name="op" value="Publish Ad">OK</button><button type="button" id="cancelBtn" class="btn btn-default" data-dismiss="modal">Cancel</button>';
+		var footer='<button class="post-submit btn btn-primary" type="submit" name="op" value="Publish Ad">OK</button><button type="button" id="cancelBtn" class="btn btn-primary" data-dismiss="modal">Cancel</button>';
 		jQuery('#myModal .modal-title').text(Header);
 		jQuery('#myModal .modal-body-info').text(Message);
 		jQuery('#myModal .modal-footer').html(footer); //post-submit btn btn-primary sharp btn-md btn-style-one btn-block

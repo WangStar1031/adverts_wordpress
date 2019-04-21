@@ -729,6 +729,12 @@ get_header(); ?>
     }
 </style>
 
+<style type="text/css">
+	.emptyRequire{
+		border: 1px solid red !important;
+	}
+</style>
+
 <div class="closeBump"></div>
 <section class="user-pages">
     <div class="container">
@@ -1027,37 +1033,40 @@ get_header(); ?>
                                                         ?>
                                                     </select>
 
-                                                    <span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
-                                                    <select name="breast_type" class="fifth-size pull-right" required>
-                                                        <?php
-                                                        $breast_type = get_post_meta($cur_post_id, 'breast_type', true);
-                                                        foreach ($arrBreaststype as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                    <select name="breast_size_cup" class="fifth-size pull-right add-margin" required>
-                                                        <?php
-                                                        $breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
-                                                        foreach ($arrBreastscup as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                    <select name="breast_size" class="fifth-size pull-right add-margin" required>
-                                                        <?php
-                                                        $breast_size = get_post_meta($cur_post_id, 'breast_size', true);
-                                                        foreach ($arrBreastssize as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <div class="multi-select clearfix">
+                                                        <span class="form-field-label"><?php esc_html_e('Breast Size', 'classiera'); ?>:</span>
+                                                        <select name="breast_type" class="fifth-size" style="border-radius: 0 0 4px 0 !important" required>
+                                                            <?php
+                                                            $breast_type = get_post_meta($cur_post_id, 'breast_type', true);
+                                                            foreach ($arrBreaststype as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>" <?php if( $breast_type == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <select name="breast_size_cup" class="fifth-size" style="border-right: 0 !important" required>
+                                                            <?php
+                                                            $breast_size_cup = get_post_meta($cur_post_id, 'breast_size_cup', true);
+                                                            foreach ($arrBreastscup as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>" <?php if($breast_size_cup == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                        <select name="breast_size" class="fifth-size" style="border-right: 0 !important; border-radius: 0 0 0 4px !important" required>
+                                                            <?php
+                                                            $breast_size = get_post_meta($cur_post_id, 'breast_size', true);
+                                                            foreach ($arrBreastssize as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>" <?php if($breast_size==$value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
                                                 </div>
                                                 <div class="col-sm-12 col-lg-6">
 
@@ -1246,39 +1255,41 @@ get_header(); ?>
                                                         ?>
                                                     </select>
 
-                                                    <span class="pre-heading"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
-                                                    <select name="breast_type_1" class="fifth-size pull-right" required>
-                                                        <option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
-                                                        <?php
-                                                        foreach ($arrBreaststype as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <div class="multi-select clearfix">
+                                                        <span class="form-field-label"><?php esc_html_e('Breast Type', 'classiera'); ?>:</span>
+                                                        <select name="breast_type_1" class="fifth-size" style="border-radius: 0 0 4px 0 !important" required>
+                                                            <option value="" disabled selected><?php esc_html_e('Type', 'classiera'); ?></option>
+                                                            <?php
+                                                            foreach ($arrBreaststype as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
 
-                                                    <select name="breast_size_cup_1" class="fifth-size pull-right add-margin" required>
-                                                        <option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
-                                                        <?php
-                                                        foreach ($arrBreastscup as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                        <select name="breast_size_cup_1" class="fifth-size" style="border-right: 0 !important" required>
+                                                            <option value="" disabled selected><?php esc_html_e('Cup', 'classiera'); ?></option>
+                                                            <?php
+                                                            foreach ($arrBreastscup as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
 
-                                                    <select name="breast_size_1" class="fifth-size pull-right add-margin" required>
-                                                        <option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
-                                                        <?php
-                                                        foreach ($arrBreastssize as $value) {
-                                                        ?>
-                                                        <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                        <select name="breast_size_1" class="fifth-size" style="border-right: 0 !important; border-radius: 0 0 0 4px !important" required>
+                                                            <option value="" disabled selected><?php esc_html_e('Size', 'classiera'); ?></option>
+                                                            <?php
+                                                            foreach ($arrBreastssize as $value) {
+                                                            ?>
+                                                            <option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
 
                                                     <span class="form-field-label"><?php esc_html_e('Waist Size', 'classiera'); ?></span>
                                                     <select name="waist_size_1" required>
@@ -2085,7 +2096,7 @@ get_header(); ?>
                                                                 <p class="modal-body-info"><?php esc_html_e("Re-activating current advert for " . $totalPay . " Credits.", "classiera") ?></p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button class="post-submit btn btn-default" name="op" value="Publish Ad" onclick="submitForm()">OK</button><button type="button" id="cancelBtn" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                                <button class="post-submit btn btn-primary" name="op" value="Publish Ad" onclick="submitForm()">OK</button><button type="button" id="cancelBtn" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2453,7 +2464,7 @@ get_header(); ?>
             }).eq(1).hide();
             $("select[name=dress_size_1]").hide();
             // breast : hide
-            $("span.pre-heading").filter(function(){
+            $("span.form-field-label").filter(function(){
                 return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
             }).eq(1).hide();
             $("select[name=breast_type_1]").hide();
@@ -2476,7 +2487,7 @@ get_header(); ?>
             }).eq(1).show();
             $("select[name=dress_size_1]").show();
             // breast : show
-            $("span.pre-heading").filter(function(){
+            $("span.form-field-label").filter(function(){
                 return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
             }).eq(1).show();
             $("select[name=breast_type_1]").show();
@@ -2500,7 +2511,7 @@ get_header(); ?>
             }).eq(0).hide();
             $("select[name=dress_size]").hide();
             // breast : hide
-            $("span.pre-heading").filter(function(){
+            $("span.form-field-label").filter(function(){
                 return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
             }).eq(0).hide();
             $("select[name=breast_type]").hide();
@@ -2523,7 +2534,7 @@ get_header(); ?>
             }).eq(0).show();
             $("select[name=dress_size]").show();
             // breast : show
-            $("span.pre-heading").filter(function(){
+            $("span.form-field-label").filter(function(){
                 return $(this).text().trim() == "Breast Size:" || $(this).text().trim() == "Breast Type:";
             }).eq(0).show();
             $("select[name=breast_type]").show();

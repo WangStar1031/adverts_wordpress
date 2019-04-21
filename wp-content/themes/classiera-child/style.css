@@ -2125,12 +2125,8 @@ keyframes
   }
 }
 
-.services {
-  display: inline-block;
-    background: red;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
+.single-page-tag {
+  margin-right: 10px;
 }
 
 .hover-posts span {
