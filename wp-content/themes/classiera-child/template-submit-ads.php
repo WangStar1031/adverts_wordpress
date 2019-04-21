@@ -846,11 +846,6 @@ get_header(); ?>
 	$regularUsed = null;
 	$regularAds = null;
 ?>
-<style type="text/css">
-	.emptyRequire{
-		border: 1px solid red !important;
-	}
-</style>
 <div class="closeBump"></div>
 <section class="user-pages">
 	<div class="container">
@@ -1016,7 +1011,7 @@ get_header(); ?>
 
 														<!-- Start Gender -->
 														<span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
-														<select name="gender" onchange="genderChanged()">
+														<select name="gender" onchange="genderChanged()" required>
 															<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 															<?php foreach ($arrGender as $value) { ?>
 																<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
@@ -1317,7 +1312,7 @@ get_header(); ?>
 
 													<!-- Start Gender -->
 													<span class="form-field-label"><?php esc_html_e('Gender', 'classiera'); ?></span>
-													<select name="gender_1" onchange="genderChanged()">
+													<select name="gender_1" onchange="genderChanged()" required>
 														<option value="" selected disabled><?php esc_html_e('Select One', 'classiera'); ?></option>
 														<?php foreach ($arrGender as $value) { ?>
 															<option value="<?=$value?>"><?php esc_html_e($value, 'classiera'); ?></option>
@@ -2438,4 +2433,10 @@ get_header(); ?>
     genderVerify();
 	
 </script>
+
+<style type="text/css">
+	#smartwizard .emptyRequire{
+		border: 2px solid red !important;
+	}
+</style>
 <?php get_footer(); ?>
