@@ -349,7 +349,7 @@ span.discount_per:before {
 
 .discount_per_parent{
     position: absolute;
-    right: 0;
+    /*right: 0;*/
     z-index: 2;
 }
 

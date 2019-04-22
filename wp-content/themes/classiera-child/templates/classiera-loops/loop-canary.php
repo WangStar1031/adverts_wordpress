@@ -208,7 +208,7 @@
 						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
 						if(!empty($discount_per) && $discount_per > 0)
 						{ ?>
-							<div class="discount_per_parent">
+							<div class="discount_per_parent" style="display: none;">
 								<span class="discount_per">
 									<span class="discount-inner" style="transform: rotate(45deg) !important;"><?php esc_html_e('-' . $discount_per .'%', 'classiera' );?></span>
 								</span>
@@ -226,8 +226,9 @@
 	var discountDiv = $(".premium-img .discount_per_parent");
 	for( var i = 0; i < discountDiv.length; i++){
 		var imgDiv = discountDiv.eq(i).parent().find(".premium-img-inner").eq(0);
-		discountDiv.css("left", imgDiv.width() - 16);
-		discountDiv.css("top", "1px");
+		discountDiv.eq(i).css("left", imgDiv.width() - 16);
+		discountDiv.eq(i).css("top", "1px");
+		discountDiv.eq(i).show();
 	}
 	$(document).ready(function(){
 		
