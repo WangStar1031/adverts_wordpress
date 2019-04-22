@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 /**
  * Dimox Breadcrumbs
  * http://dimox.net/wordpress-breadcrumbs-without-a-plugin/
@@ -21,6 +21,7 @@ function classiera_breadcrumbs(){
 	$delimiter   = '&nbsp;'; // delimiter between crumbs
 	$before      = '<li class="active">'; // tag before the current crumb
 	$after       = '</li>'; // tag after the current crumb
+
 	/* === END OF OPTIONS === */
 
 	global $post;

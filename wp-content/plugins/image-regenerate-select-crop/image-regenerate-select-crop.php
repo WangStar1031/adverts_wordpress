@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 4.6.1
+ * Version: 4.7.1
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -38,7 +38,7 @@ if ( ! file_exists( $dest_path ) ) {
 define( 'SIRSC_PLUGIN_FOLDER', dirname( __FILE__ ) );
 define( 'SIRSC_PLACEHOLDER_FOLDER', realpath( $dest_path ) );
 define( 'SIRSC_PLACEHOLDER_URL', esc_url( $dest_url ) );
-define( 'SIRSC_ASSETS_VER', '20190327.1501' );
+define( 'SIRSC_ASSETS_VER', '20190422.0800' );
 
 /**
  * Class for Image Regenerate & Select Crop.
@@ -168,6 +168,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			);
 			self::$plugin_url = admin_url( 'options-general.php?page=image-regenerate-select-crop-settings' );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $called, 'plugin_action_links' ) );
+
+			add_filter( 'manage_media_columns', array( $called, 'register_media_columns' ), 5 );
+			add_action( 'manage_media_custom_column', array( $called, 'media_column_value' ), 5, 2 );
 		}
 		// This is global, as the image sizes can be also registerd in the themes or other plugins.
 		add_filter( 'intermediate_image_sizes_advanced', array( $called, 'filter_ignore_global_image_sizes' ), 10, 2 );
@@ -628,12 +631,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Generates an image size version of a specified image.
 	 *
-	 * @param  integer $id         Attachemnt ID.
-	 * @param  integer $max_width  Image max width.
-	 * @param  integer $max_height Image max height.
-	 * @param  string  $size_name  Maybe an image size name.
+	 * @param  integer $id            Attachemnt ID.
+	 * @param  integer $max_width     Image max width.
+	 * @param  integer $max_height    Image max height.
+	 * @param  string  $size_name     Maybe an image size name.
+	 * @param  integer $force_quality Maybe a custom quality.
 	 */
-	public static function process_image_resize_brute( $id, $max_width, $max_height, $size_name = '' ) {
+	public static function process_image_resize_brute( $id, $max_width, $max_height, $size_name = '', $force_quality = 0 ) {
 		self::load_settings_for_post_id( $id );
 
 		// Get the metadata.
@@ -679,7 +683,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 			if ( $to_replace ) {
-				$img->set_quality( 100 );
+				$mime    = ( ! empty( $m['sizes'][ $size_name ]['mime-type'] ) ) ? $m['sizes'][ $size_name ]['mime-type'] : '';
+				$quality = self::editor_set_custom_quality( $size_name, $mime, $force_quality );
+
+				$img->set_quality( $quality );
 				$saved      = $img->save();
 				$upload_dir = wp_upload_dir();
 				if ( @copy( $saved['path'], $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $m['file'] ) ) {
@@ -985,7 +992,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					<?php wp_nonce_field( '_sirsc_settings_save', '_sirsc_settings_nonce' ); ?>
 
 					<h3><?php esc_html_e( 'Option to Enable Placeholders', 'sirsc' ); ?></h3>
-					<p><?php esc_html_e( 'This option allows you to display placeholders for the front-side images called programmatically (the images that are not embedded in the content with their src, but exposed using WordPress native functions). If there is no placeholder set, then the WordPress default behavior would be to display the full-size image instead of a missing image size, hence your pages might load slower, and when using grids, the items would not look even.', 'sirsc' ); ?></p>
+					<p><?php esc_html_e( 'This option allows you to display placeholders for the front-side images called programmatically (the images that are not embedded in the content with their src, but exposed using WordPress native functions). If there is no placeholder set, then the WordPress default behavior would be to display the full-size image instead of a missing image size, hence your pages might load slower, and when using grids, the items would not look even.', 'sirsc' ); ?>
+						<?php
+						if ( ! wp_is_writable( realpath( SIRSC_PLACEHOLDER_FOLDER ) ) ) {
+							esc_html_e( 'This feature might not work properly, your placeholders folder is not writtable.', 'sirsc' );
+						}
+						?>
+					</p>
 
 					<style>
 
@@ -1738,6 +1751,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							foreach ( $all_size as $k => $v ) {
 								++ $count;
 								$rez_img = self::allow_resize_from_original( $filename, $image, $all_size, $k );
+
+								$size_quality = ( empty( self::$settings['default_quality'][ $k ] ) ) ? 100 : (int) self::$settings['default_quality'][ $k ];
+
 								$action = '';
 								$action_title = '';
 								if ( ! empty( $rez_img['native_crop_type'] ) ) {
@@ -1771,7 +1787,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 										$action_title = '<span class="sirsc-size-label"><div class="dashicons dashicons-editor-expand"></div> ' . esc_html__( 'Scale image', 'sirsc' ) . '</span>';
 									}
 									$iddd    = intval( $post_data['post_id'] ) . $k;
-									$action .= '<div class="sirsc_clearAll"></div><a class="button" onclick="sirsc_start_regenerate(\'' . $iddd . '\');"><b class="dashicons dashicons-update"></b> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</a>';
+									$action .= '<div class="sirsc_clearAll"></div><div class="sirsc-size-quality-wrap">' . esc_html__( 'Quality', 'sirsc' ) . '<input type="number" name="selected_quality" id="selected_quality' . (int) $post_data['post_id'] . $k . '" value="' . $size_quality . '" class="sirsc-size-quality">%</div><a class="button" onclick="sirsc_start_regenerate(\'' . $iddd . '\');"><b class="dashicons dashicons-update"></b> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</a>';
 								} else {
 									if ( ! empty( $rez_img['native_crop_type'] ) ) {
 										$action_title = '<span class="sirsc-size-label disabled"><div class="dashicons dashicons-image-crop"></div> ' . esc_html__( 'Crop image', 'sirsc' ) . '</span>';
@@ -1800,11 +1816,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 									}
 								}
 
-								echo '<tr class="' . $cl . ' textright"><td><b class="sirsc-size-label size" title="' . esc_attr( $k ) . '"><span id="idsrc' . (int) $post_data['post_id'] . $k . '-url">' . $maybelink . '</span>' . $k . '</b> <span class="sirsc-small-info">' . esc_html__( 'Info', 'sirsc' ) . ': ' . $size_text . '</span></td><td width="120" class="textleft">' . $action_title . '<span class="sirsc-small-info">' . esc_html__( 'Quality', 'sirsc' ) . ': <b>' . $size_quality . '%</b></span>
+								echo '<tr class="' . $cl . ' textright"><td><b class="sirsc-size-label size" title="' . esc_attr( $k ) . '"><span id="idsrc' . (int) $post_data['post_id'] . $k . '-url">' . $maybelink . '</span>' . $k . '</b> <span class="sirsc-small-info">' . esc_html__( 'Info', 'sirsc' ) . ': ' . $size_text . '</span></td><td width="120" class="textleft">' . $action_title . '<span class="sirsc-small-info">' . esc_html__( 'Default quality', 'sirsc' ) . ': <b>' . $size_quality . '</b>%</span>
 								</td></tr>
 								<tr class="' . $cl . ' bottom-border" id="sirsc_recordsArray_' . (int) $post_data['post_id'] . $k . '">
 									<input type="hidden" name="post_id" id="post_id' . (int) $post_data['post_id'] . $k . '" value="' . (int) $post_data['post_id'] . '" />
 									<input type="hidden" name="selected_size" id="selected_size' . (int) $post_data['post_id'] . $k . '" value="' . $k . '" />
+
 									<td class="image-src-column"><div class="result_inline"><div id="sirsc_recordsArray_' . (int) $post_data['post_id'] . $k . '_result" class="result inline"><span class="spinner off"></span></div></div>' . $im . '<br><span class="image-size-column">' . esc_html__( 'File size', 'sirsc' ) . ': <b class="image-file-size">' . self::human_filesize( $filesize ) . '</b></span>
 									</td>
 									<td class="sirsc_image-action-column">' . $del . ' ' . $action . '</td>
@@ -1860,6 +1877,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$post_data = self::parse_ajax_data( $_REQUEST['sirsc_data'] );
 			if ( ! empty( $post_data['post_id'] ) && ! empty( $post_data['selected_size'] ) ) {
 				$size  = $post_data['selected_size'];
+				$qual  = (int) $post_data['selected_quality'];
 				$image = wp_get_attachment_metadata( $post_data['post_id'] );
 				$file  = '';
 				if ( ! empty( $image['sizes'][ $size ] ) ) {
@@ -1882,20 +1900,21 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					unlink( $file );
 				}
 				wp_update_attachment_metadata( $post_data['post_id'], $image );
-				self::expose_image_after_processing( $post_data['post_id'], $size );
+				self::expose_image_after_processing( $post_data['post_id'], $size, false, false, $qual );
 			}
 		}
 	}
 	/**
 	 * Expose image after processing.
 	 *
-	 * @param  intget  $post_id    The attachment ID.
+	 * @param  integer $post_id    The attachment ID.
 	 * @param  string  $sel_size   The image size.
 	 * @param  boolean $generate   True if the size should be regenerated.
 	 * @param  string  $crop_small Maybe a specific crop position.
+	 * @param  integer $quality    Perhaps a quality.
 	 * @return void
 	 */
-	public static function expose_image_after_processing( $post_id, $sel_size, $generate = false, $crop_small = '' ) {
+	public static function expose_image_after_processing( $post_id, $sel_size, $generate = false, $crop_small = '', $quality = 0 ) {
 		if ( empty( $post_id ) ) {
 			echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Something went wrong!', 'sirsc' ) . '</span>';
 			// Fail-fast.
@@ -1904,7 +1923,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		self::load_settings_for_post_id( (int) $post_id );
 		$sizes = ( ! empty( $sel_size ) ) ? trim( $sel_size ) : 'all';
 		if ( true === $generate ) {
-			self::make_images_if_not_exists( $post_id, $sizes, $crop_small );
+			self::make_images_if_not_exists( $post_id, $sizes, $crop_small, $quality );
 		}
 
 		if ( 'all' !== $sizes ) {
@@ -1914,13 +1933,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$th     = wp_get_attachment_image_src( $post_id, $sizes );
 				$th_src = $th[0];
 			}
-
 			$crop_table  = '';
 			$tmp_details = self::get_all_image_sizes( $sizes );
 			if ( ! empty( $tmp_details['crop'] ) ) {
 				$crop_table = '<div class="sirsc_clearAll"></div>' . preg_replace( '/[\x00-\x1F\x80-\xFF]/', '', self::make_generate_images_crop( (int) $post_id, $sizes ) );
 			}
-			$button = '<div class="sirsc_clearAll"></div><a class="button" onclick="sirsc_start_regenerate(\'' . (int) $post_id . $sizes . '\');"><b class="dashicons dashicons-update"></b> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</a>';
+			$button = '<div class="sirsc_clearAll"></div><div class="sirsc-size-quality-wrap">' . esc_html__( 'Quality', 'sirsc' ) . '<input type="number" name="selected_quality" id="selected_quality' . (int) $post_id . $sizes . '" value="' . (int) $quality . '" class="sirsc-size-quality">%</div><a class="button" onclick="sirsc_start_regenerate(\'' . (int) $post_id . $sizes . '\');"><b class="dashicons dashicons-update"></b> ' . esc_html__( 'Regenerate', 'sirsc' ) . '</a>';
 
 			if ( ! empty( $th_src ) ) {
 				if ( ! substr_count( $image['file'], $image['sizes'][ $sizes ]['file'] ) ) {
@@ -1936,6 +1954,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$path       = trailingslashit( trailingslashit( $upload_dir['basedir'] ) . $folder );
 				$file       = $path . $image['sizes'][ $sizes ]['file'];
 				if ( file_exists( $file ) ) {
+					// Clear the file cache, so that the filesize to be read correct.
+					clearstatcache( true, $file );
 					$filesize = @filesize( $file );
 				}
 			}
@@ -1965,7 +1985,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( ! empty( $post ) ) {
 					$size = ( ! empty( $data['selected_size'] ) ) ? $data['selected_size'] : 'all';
 					$crop = ( ! empty( $data[ 'crop_small_type_' . $size ] ) ) ? $data[ 'crop_small_type_' . $size ] : '';
-					self::expose_image_after_processing( $data['post_id'], $size, true, $crop );
+					$qual = ( ! empty( $data['selected_quality'] ) ) ? $data['selected_quality'] : 0;
+					self::expose_image_after_processing( $data['post_id'], $size, true, $crop, $qual );
 				}
 			} else {
 				echo '<span class="sirsc_successfullysaved">' . esc_html__( 'Something went wrong!', 'sirsc' ) . '</span>';
@@ -2021,13 +2042,50 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Assess the quality by mime-type.
+	 *
+	 * @param string  $sname         Size name.
+	 * @param string  $mime          Mime-type.
+	 * @param integer $force_quality Custom quality.
+	 * @return integer
+	 */
+	public static function editor_set_custom_quality( $sname, $mime, $force_quality ) {
+		if ( ! empty( $force_quality ) ) {
+			$quality = (int) $force_quality;
+		} else {
+			$quality = ( ! empty( self::$settings['default_quality'][ $sname ] ) ) ? (int) self::$settings['default_quality'][ $sname ] : 100;
+		}
+		$quality = ( $quality < 0 ) ? 0 : $quality;
+		$quality = ( $quality > 100 ) ? 100 : $quality;
+
+		if ( ! empty( $quality ) && 'image/png' == $mime ) {
+			$quality = abs( 10 - ceil( $quality / 10 ) );
+			if ( $quality > 9 ) {
+				$quality = 9;
+			}
+			if ( $quality < 0 ) {
+				$quality = 0;
+			}
+		}
+
+		if ( ! empty( $quality ) ) {
+			add_filter( 'wp_editor_set_quality', function( $m ) use ( $mime, $quality ) {
+				return $quality;
+			}, 90 );
+		}
+
+		return $quality;
+	}
+
+	/**
 	 * Create the image for a specified attachment and image size if that does not exist and update the image metadata. This is useful for example in the cases when the server configuration does not permit to generate many images from a single uploaded image (timeouts or image sizes defined after images have been uploaded already). This should be called before the actual call of wp_get_attachment_image_src with a specified image size
 	 *
 	 * @param integer $id            Id of the attachment.
 	 * @param array   $selected_size The set of defined image sizes used by the site.
 	 * @param array   $small_crop    The position of a potential crop (lt = left/top, lc = left/center, etc.).
+	 * @param integer $force_quality Maybe force a specific custom quality, not the default.
 	 */
-	public static function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '' ) {
+	public static function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '', $force_quality = 0 ) {
 		try {
 			$execute_crop = false;
 			self::load_settings_for_post_id( $id );
@@ -2053,7 +2111,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					if ( ! empty( self::$settings['force_original_to'] )
 						&& $selected_size === self::$settings['force_original_to'] ) {
 						$size = self::get_all_image_sizes( self::$settings['force_original_to'] );
-						self::process_image_resize_brute( $id, $size['width'], $size['height'], $selected_size );
+						self::process_image_resize_brute( $id, $size['width'], $size['height'], $selected_size, $force_quality );
 					}
 					$sizes = array(
 						$selected_size => $alls[ $selected_size ],
@@ -2075,6 +2133,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							$w = ( ! empty( $sval['width'] ) ) ? (int) $sval['width'] : 0;
 							$h = ( ! empty( $sval['height'] ) ) ? (int) $sval['height'] : 0;
 							$c = ( ! empty( $sval['crop'] ) ) ? $sval['crop'] : false;
+							$mime = ( ! empty( $image['sizes'][ $sname ]['mime-type'] ) ) ? $image['sizes'][ $sname ]['mime-type'] : '';
+							self::editor_set_custom_quality( $sname, $mime, $force_quality );
 
 							$new_meta = image_make_intermediate_size( $filename, $w, $h, $c );
 							if ( ! empty( $new_meta ) && is_array( $new_meta ) ) {
@@ -2191,10 +2251,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 								$c   = self::identify_crop_pos( $sname, $small_crop );
 								$img = wp_get_image_editor( $filename );
 								if ( ! is_wp_error( $img ) ) {
-									$img->resize( $w, $h, $c );
-									$maybe_quality = ( ! empty( self::$settings['default_quality'][ $selected_size ] ) ) ? (int) self::$settings['default_quality'][ $selected_size ] : 100;
-									$maybe_quality = ( $maybe_quality < 10 || $maybe_quality > 100 ) ? 100 : $maybe_quality;
+									$mime = ( ! empty( $image['sizes'][ $sname ]['mime-type'] ) ) ? $image['sizes'][ $sname ]['mime-type'] : '';
+									$maybe_quality = self::editor_set_custom_quality( $sname, $mime, $force_quality );
 									$img->set_quality( $maybe_quality );
+									$img->resize( $w, $h, $c );
 									$saved = $img->save();
 									if ( ! empty( $saved ) ) {
 										$img_meta = wp_get_attachment_metadata( $id );
@@ -2684,38 +2744,50 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			} elseif ( empty( $size['width'] ) && ! empty( $size['height'] ) ) {
 				$iw = $ih;
 			}
+
+			$ew = $iw;
+			$eh = $ih;
 			if ( $iw >= 9999 ) {
 				$iw = self::$limit9999;
+				$ew = '0';
 			}
 			if ( $ih >= 9999 ) {
 				$ih = self::$limit9999;
+				$eh = '0';
+			}
+
+			$dest_url = 'https://dummyimage.com/' . $iw . 'x' . $ih . '/' . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) . '/ffffff&fsize=7&size=7&text=+++placeholder+' . $ew . 'x' . $eh . '++';
+
+			if ( ! wp_is_writable( realpath( SIRSC_PLACEHOLDER_FOLDER ) ) ) {
+				// By default set the dummy, the folder is not writtable.
+				return $dest_url;
 			}
 
 			if ( function_exists( 'imagettfbbox' ) ) {
-				$im = @imagecreatetruecolor( $iw, $ih );
+				$im    = @imagecreatetruecolor( $iw, $ih );
 				$white = @imagecolorallocate( $im, 255, 255, 255 );
 				$rand  = @imagecolorallocate( $im, mt_rand( 0, 150 ), mt_rand( 0, 150 ), mt_rand( 0, 150 ) );
 				@imagefill( $im, 0, 0, $rand );
 				$font = @realpath( SIRSC_PLUGIN_FOLDER . '/assets/fonts' ) . '/arial.ttf';
 				@imagettftext( $im, 6.5, 0, 2, 10, $white, $font, 'placeholder' );
 				@imagettftext( $im, 6.5, 0, 2, 20, $white, $font, $selected_size );
-				@imagettftext( $im, 6.5, 0, 2, 30, $white, $font, $size['width'] . 'x' . $size['height'] . 'px' );
+				@imagettftext( $im, 6.5, 0, 2, 30, $white, $font, $size['width'] . 'x' . $size['height'] );
 				@imagepng( $im, $dest, 9 );
 				@imagedestroy( $im );
 			} elseif ( class_exists( 'Imagick' ) ) {
-				$im = new Imagick();
-				$draw = new ImagickDraw();
+				$im    = new Imagick();
+				$draw  = new ImagickDraw();
 				$pixel = new ImagickPixel( '#' . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) );
 				$im->newImage( $iw, $ih, $pixel );
 				$draw->setFillColor( '#FFFFFF' );
 				$draw->setFont( 'Arial' );
 				$draw->setFontSize( 12 );
 				$draw->setGravity( Imagick::GRAVITY_CENTER );
-				$im->annotateImage( $draw, 0, 0, 0, $size['width'] . 'x' . $size['height'] . 'px' );
+				$im->annotateImage( $draw, 0, 0, 0, $size['width'] . 'x' . $size['height'] );
 				$im->setImageFormat( 'png' );
 				$im->writeimage( $dest );
 			} else {
-				$dest_url = 'https://dummyimage.com/' . $size['width'] . 'x' . $size['height'] . '/' . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) . mt_rand( 10, 99 ) . '/ffffff&text=' . $size['width'] . 'x' . $size['height'] . 'px&fsize=7&size=7';
+				return $dest_url;
 			}
 		}
 		return $dest_url;
@@ -2987,6 +3059,41 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			foreach ( $all['sizes'] as $i => $value ) {
 				$crop = ( ! empty( $value['crop'] ) ) ? true : false;
 				add_image_size( $value['name'], (int) $value['width'], (int) $value['height'], $crop );
+			}
+		}
+	}
+
+	/**
+	 * Add the custom column.
+	 *
+	 * @access public
+	 * @static
+	 * @param array $columns The defined columns.
+	 * @return array
+	 */
+	public static function register_media_columns( $columns ) {
+		if ( ! empty( $columns ) ) {
+			$before  = array_slice( $columns, 1, 1, true );
+			$after   = array_slice( $columns, 2, count( $columns ) - 1, true );
+			$columns = array_merge( $before, array( 'sirsc_buttons' => esc_html__( 'Details/Options', 'sirsc' ) ), $after );
+		}
+		return $columns;
+	}
+
+	/**
+	 * Output the custom column value.
+	 *
+	 * @access public
+	 * @static
+	 * @param string  $column The current column.
+	 * @param integer $value  The current column value.
+	 * @return void
+	 */
+	public static function media_column_value( $column, $value ) {
+		if ( 'sirsc_buttons' === $column ) {
+			global $post;
+			if ( ! empty( $post ) && ! empty( $post->post_mime_type ) && substr_count( $post->post_mime_type, 'image/' ) ) {
+				echo self::append_image_generate_button( '', '', $post->ID ); // WPCS: XSS OK.
 			}
 		}
 	}

@@ -411,10 +411,8 @@ function submit_ads_scripts() {
     global $template;
     $template_array = explode('/',$template);
     if ( end($template_array) == 'template-submit-ads.php' ) {
-        wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
-        wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );
+        wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true ); 
         wp_enqueue_script('validator-js', get_stylesheet_directory_uri() . '/js/validator.min.js', 'jQuery', '2.0', true );
-        wp_enqueue_style('selectize-css', get_stylesheet_directory_uri() . '/css/selectize.css' );
         wp_enqueue_style('croppic-css', get_stylesheet_directory_uri() . '/css/croppic.css' );
         wp_enqueue_script('croppic-js', get_stylesheet_directory_uri() . '/js/croppic.js', array( 'jquery' ), '', true );
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/submit-ads.js', 'jQuery', '', true );
@@ -457,6 +455,14 @@ function lightGallery_script() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'lightGallery_script' );
+
+function front_page_scripts() {
+    if( is_front_page() )
+    {
+        wp_enqueue_script( 'anime-js', get_stylesheet_directory_uri() . '/js/anime.min.js', 'jQuery', null, true );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'front_page_scripts' );
 
 // add_filter( 'wp_handle_upload', 'wpse_256351_upload', 10, 2 );
 function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){ 

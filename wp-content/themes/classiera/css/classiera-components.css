@@ -1397,7 +1397,7 @@ a {
   }
 
 .btn {
-  padding: 0;
+  /*padding: 0;*/
   border: 0 none;
   text-transform: uppercase;
   color: #232323; }

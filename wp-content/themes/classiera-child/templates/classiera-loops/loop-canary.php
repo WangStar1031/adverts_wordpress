@@ -58,11 +58,17 @@
 	$post_price = get_post_meta($post->ID, 'post_price', true);
 	$post_phone = get_post_meta($post->ID, 'post_phone', true);
 	$fifteen_min_euro = get_post_meta($post->ID, 'fifteen_min_euro', true);
+	$fifteen_min_pound = get_post_meta($post->ID, 'fifteen_min_pound', true);
 	$thirty_min_euro = get_post_meta($post->ID, 'thirty_min_euro', true);
+	$thirty_min_pound = get_post_meta($post->ID, 'thirty_min_pound', true);
 	$fourty_five_min_euro = get_post_meta($post->ID, 'fourty_five_min_euro', true);
+	$fourty_five_min_pound = get_post_meta($post->ID, 'fourty_five_min_pound', true);
 	$one_hour_euro = get_post_meta($post->ID, 'one_hour_euro', true);
+	$one_hour_pound = get_post_meta($post->ID, 'one_hour_pound', true);
 	$full_day_euro = get_post_meta($post->ID, 'full_day_euro', true);
+	$full_day_pound = get_post_meta($post->ID, 'full_day_pound', true);
 	$business_date_euro = get_post_meta($post->ID, 'business_date_euro', true);
+	$business_date_pound = get_post_meta($post->ID, 'business_date_pound', true);
 	$theTitle = get_the_title();
 	$partner_name =  get_post_meta($post->ID, 'partner_name', true);
 	$postCatgory = get_the_category( $post->ID );
@@ -95,19 +101,6 @@
 					?>
 
 					<div class="premium-img-inner">
-						<?php
-							$discount_per = get_post_meta($post->ID,'discount_percentage',true);
-							if(!empty($discount_per) && $discount_per>0)
-							{
-								?>
-								<div class="discount_per_parent">
-									<span class="discount_per">
-										<?php esc_html_e('-'.$discount_per.'%','classiera');?>
-									</span>
-								</div>
-								<?php
-							}
-						?>
 					<!-- Get the image -->	
 					<?php
 						// $imageurl = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $image_size);
@@ -144,92 +137,141 @@
 										</h4>
 									</div>
 									<div class="col-lg-12">
-
 										<?php
-										$_isNoPrice = true;
+											$_isNoPrice = true;
 										?>
-										<!-- Start 15 Minutes Price -->
-										<?php if (!empty($fifteen_min_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('15 Min', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($fifteen_min_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End 15 Minutes Price -->
-										
-										<!-- Start 30 Minutes Price -->
-										<?php if (!empty($thirty_min_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('30 Min', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($thirty_min_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End 30 Minutes Price -->
 
-										<!-- Start 45 Minutes Price -->
-										<?php if (!empty($fourty_five_min_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('45 Min', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($fourty_five_min_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End 45 Minutes price -->
+										<!-- <div class="table-responsive">
+											<table style="width: 100%">
+												<?php if (!empty($fifteen_min_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('15 Min', 'classiera'); ?></td>
+														<td><?php echo esc_html($fifteen_min_euro); ?> &euro;</td>
+														<td><?php echo esc_html($fifteen_min_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if (!empty($thirty_min_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('30 Min', 'classiera'); ?></td>
+														<td><?php echo esc_html($thirty_min_euro); ?> &euro;</td>
+														<td><?php echo esc_html($thirty_min_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if (!empty($fourty_five_min_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('45 Min', 'classiera'); ?></td>
+														<td><?php echo esc_html($fourty_five_min_euro); ?> &euro;</td>
+														<td><?php echo esc_html($fourty_five_min_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('1 Hour', 'classiera'); ?></td>
+														<td><?php echo esc_html($one_hour_euro); ?> &euro;</td>
+														<td><?php echo esc_html($one_hour_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if (!empty($full_day_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('Full Day', 'classiera'); ?></td>
+														<td><?php echo esc_html($full_day_euro); ?> &euro;</td>
+														<td><?php echo esc_html($full_day_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if (!empty($business_date_euro)) { $_isNoPrice = false; ?>
+													<tr>
+														<td><?php esc_html_e('Business Date', 'classiera'); ?></td>
+														<td><?php echo esc_html($business_date_euro); ?> &euro;</td>
+														<td><?php echo esc_html($business_date_pound); ?> &pound;</td>
+													</tr>
+												<?php } ?>
+												<?php if( $_isNoPrice == true){?>
+													<div class="col-lg-12">
+														<span><?php esc_html_e('No prices provided', 'classiera'); ?></span>
+													</div>
+												<?php }?>
+											</table>
+										</div> -->
 
-										<!-- Start One Hour Price -->
-										<?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('1 Hour', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($one_hour_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End One hour price -->
-
-										<!-- Start Full Day Price -->
-										<?php if (!empty($full_day_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('Full Day', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($full_day_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End Full Day Price -->
-										<!-- Start Business Date -->
-										<?php if (!empty($business_date_euro)) { $_isNoPrice = false; ?>
-											<div class="col-lg-6">
-												<span class="pull-right"><?php esc_html_e('Date', 'classiera'); ?></span>
-											</div>
-											<div class="col-lg-6">
-												<span class="pull-left"><?php echo esc_html($business_date_euro); ?> &euro;</span>
-											</div>
-										<?php } ?>
-										<!-- End Business Date Price -->
-										<?php if( $_isNoPrice == true){?>
-											<div class="col-lg-12">
-												<span><?php esc_html_e('No prices provided', 'classiera'); ?></span>
-											</div>
-										<?php }?>
 									</div>
 								</div>
 							</span>
 						</a>
 						<!-- / Hover Content -->
-						<div class="category">
-							<a href="<?php echo esc_url($categoryLink); ?>"><?php echo esc_html($postCatgory[0]->name); ?></a>
-							<!-- <a href="tel:<?php echo esc_html($post_phone); ?>"><?php echo esc_html($post_phone); ?></a> -->
+						<div class="category clearfix">
+							<a href="<?php echo esc_url($categoryLink); ?>"><?php echo esc_html($postCatgory[0]->name); ?></a>							
+							<!-- <a class="pull-right" style="margin-right: 10px;" href="tel:<?php echo esc_html($post_phone); ?>"><?php echo esc_html($post_phone); ?></a> -->
 						</div><!--category-->
 					</div><!--premium-img-inner-->
 
+					<?php
+						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
+						if(!empty($discount_per) && $discount_per > 0)
+						{ ?>
+							<div class="discount_per_parent">
+								<span class="discount_per">
+									<span class="discount-inner" style="transform: rotate(45deg) !important;"><?php esc_html_e('-' . $discount_per .'%', 'classiera' );?></span>
+								</span>
+							</div>
+							
+						<?php }
+					?>
 				</div><!--premium-img-->
 			</figure>
 		</div><!--row-->
 	</div>
 <?php } ?><!--item item-grid item-masonry-->
+
+<script>
+	var discountDiv = $(".premium-img .discount_per_parent");
+	for( var i = 0; i < discountDiv.length; i++){
+		var imgDiv = discountDiv.eq(i).parent().find(".premium-img-inner").eq(0);
+		discountDiv.css("left", imgDiv.width() - 16);
+		discountDiv.css("top", "1px");
+	}
+	$(document).ready(function(){
+		
+		anime({
+		  targets: '.discount-inner',
+		  easing: 'linear',
+		  duration: 500,
+		  translateX: [
+		    {
+		      value: 3,
+		    },
+		    {
+		      value: -3,
+		    },
+		    {
+		      value: 3,
+		    },
+		    {
+		      value: -3,
+		    },
+		  ],
+		  rotate: [
+		    {
+		      value: 50,
+		    },
+		    {
+		      value: 40,
+		    },
+		    {
+		      value: 50,
+		    },
+		    {
+		      value: 40,
+		    },
+		  ],
+		  duration: 400,
+		  scale: {
+		  	value: 12,
+		  	easing: 'easeInOutQuart',
+		  },
+		  loop: true,
+		  direction: 'alternate',
+		  delay: 1000,
+		});
+	});
+
+</script>
