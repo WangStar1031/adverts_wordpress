@@ -602,6 +602,8 @@ if(isset($_POST['postTitle'])){
 				update_post_meta($post_id, 'images_verified', $_POST['images_verified'], $allowed);
 				//Age Verified
 				update_post_meta($post_id, 'age_verified', $_POST['age_verified'], $allowed);
+				//Age Verified
+				update_post_meta($post_id, 'age_verified_1', $_POST['age_verified_1'], $allowed);
 
 				// update_post_meta($post_id, 'classiera_ads_type', $_POST['classiera_ads_type'], $allowed);
 				update_post_meta($post_id, 'classiera_ads_status', $_POST['classiera_ads_status'], $allowed);

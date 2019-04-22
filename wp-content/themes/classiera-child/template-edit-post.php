@@ -495,7 +495,11 @@ if(isset($_POST['postTitle'])){
 				//Images Verified
 				update_post_meta($post_id, 'images_verified', $_POST['images_verified'], $allowed);
 				//Age Verified
+				// update_post_meta($post_id, 'age_verified', $_POST['age_verified'], $allowed);
+				//Age Verified
 				update_post_meta($post_id, 'age_verified', $_POST['age_verified'], $allowed);
+				//Age Verified
+				update_post_meta($post_id, 'age_verified_1', $_POST['age_verified_1'], $allowed);
 
 				// update_post_meta($post_id, 'classiera_ads_type', $_POST['classiera_ads_type'], $allowed);
 				update_post_meta($post_id, 'classiera_ads_status', $_POST['classiera_ads_status'], $allowed);
@@ -807,7 +811,7 @@ get_header(); ?>
 													<!-- Age -->
 													<span class="form-field-label"><?php esc_html_e('Age', 'classiera'); ?></span>
 													<input id="age" name="user_age" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Age', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'user_age', true);?>">
-													<!-- <input type="hidden" name="age_verified" id="age_verified" value="0"> -->
+													<input type="hidden" name="age_verified" id="age_verified" value="0">
 													<!-- / Age -->
 
 													<!--Category-->
@@ -1142,7 +1146,7 @@ get_header(); ?>
 														<?php
 															$gender_1 = get_post_meta($cur_post_id, 'gender_1', true);
 															foreach ($arrGender as $value) { ?>
-																<option value="<?=$value?>" <?php if($gender == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+																<option value="<?=$value?>" <?php if($gender_1 == $value) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
 														<?php } ?>
 													</select>
 													<!-- End Gender -->
@@ -1150,6 +1154,7 @@ get_header(); ?>
 													<!-- Age -->
 													<span class="form-field-label"><?php esc_html_e('Age', 'classiera'); ?></span>
 													<input id="age_1" name="user_age_1" type="text" class="form-control form-control-md" placeholder="<?php esc_html_e('Enter Your Age', 'classiera') ?>" required value="<?= get_post_meta($cur_post_id, 'user_age_1', true);?>">
+													<input type="hidden" name="age_verified_1" id="age_verified_1" value="0">
 													<!-- End Age -->
 
 													<?php $nationality_1 = get_post_meta($cur_post_id, 'nationality_1', true); ?>

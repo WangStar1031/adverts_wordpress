@@ -729,12 +729,6 @@ get_header(); ?>
     }
 </style>
 
-<style type="text/css">
-	.emptyRequire{
-		border: 1px solid red !important;
-	}
-</style>
-
 <div class="closeBump"></div>
 <section class="user-pages">
     <div class="container">
@@ -1164,7 +1158,7 @@ get_header(); ?>
                                                         <?php
                                                             $gender_1 = get_post_meta($cur_post_id, 'gender_1', true);
                                                             foreach ($arrGender as $value) { ?>
-                                                                <option value="<?=$value?>" <?php if($value == $gender) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
+                                                                <option value="<?=$value?>" <?php if($value == $gender_1) echo "selected";?>><?php esc_html_e($value, 'classiera'); ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <!-- End Gender -->
@@ -2554,4 +2548,9 @@ get_header(); ?>
     genderVerify();
 </script>
 
+<style type="text/css">
+    #smartwizard .emptyRequire{
+        border: 2px solid red !important;
+    }
+</style>
 <?php get_footer(); ?>

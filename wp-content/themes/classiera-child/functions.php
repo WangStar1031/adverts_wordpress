@@ -558,6 +558,7 @@ function classiera_filter_posts_columns( $columns ) {
       'ID' => __('ID'),
       'images_verified' => __( 'Images Verified', 'classiera' ),
       'age_verified' => __( 'Age Verified', 'classiera' ),
+      'age_verified_1' => __('Partner Age Verified', 'classiera'),
     );
   return $columns;
 }
@@ -587,6 +588,16 @@ function classiera_adverts_column( $column, $post_id ) {
 	    echo "<button class='btn btn-primary' style='padding: 5px 10px; background: green; color: white; border-radius: 4px; min-width: 98px'>Verified</button>";
 	  }
 	}
+    if ( 'age_verified_1' === $column ) {
+      $age_verified_1 = get_post_meta( $post_id, 'age_verified_1', true );
+      if (isset($age_verified_1)) {
+        if ( $age_verified_1 === '0' ) {
+            echo "<button class='btn btn-primary' style='padding: 5px 10px; background: red; color: white; border-radius: 4px; min-width: 98px'>Not Verified</button>";  
+          } elseif (isset($age_verified_1) && ($age_verified_1 == '1')) {
+              echo "<button class='btn btn-primary' style='padding: 5px 10px; background: green; color: white; border-radius: 4px; min-width: 98px'>Verified</button>";
+          }
+      }
+    }
  }
 
  remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );

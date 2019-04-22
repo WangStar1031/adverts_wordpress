@@ -110,6 +110,7 @@ get_header();
 									$postDate = get_the_date($dateFormat, $post->ID);
 									$postStatus = get_post_status($post->ID);
 									$productID = get_post_meta($post->ID, 'pay_per_post_product_id', true);
+									$partner_name = get_post_meta($post->ID, 'partner_name', true);
 									$days_to_expire = get_post_meta($post->ID, 'days_to_expire', true);
 									$classiera_ads_type = get_post_meta($post->ID, 'classiera_ads_type', true);
 									$classiera_ads_status = get_post_meta($post->ID, 'classiera_ads_status', true);
@@ -128,6 +129,9 @@ get_header();
 												<h5 class="panel-title text-uppercase">
 													<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>">
 														<?php echo esc_attr( $title ); ?>
+														<?php if (in_category(array('couple', 'duo'))) { ?>
+															 &amp; <?php echo $partner_name ?>
+														<?php } ?>
 													</a>
 												</h5>
 											</div>

@@ -2129,10 +2129,19 @@ keyframes
   margin-right: 10px;
 }
 
-.hover-posts span {
-  color: white !important;
-  font-size: 16px;
+.hover-posts td {
+  color: white;
+  font-size: 13px;
 }
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    color: white;
+    font-size: 10px !important;
+    border: none !important;
+  }
+}
+
 
 #comments-modal .modal-footer {
   margin-right: -15px;
