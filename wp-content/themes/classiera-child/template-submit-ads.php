@@ -934,7 +934,7 @@ get_header(); ?>
 											  <div class="caption">
 												<h3><?php esc_html_e($redux_demo['standard-sec-title'], 'classiera'); ?></h3>
 												<p><?php esc_html_e($redux_demo['standard-sec-desc'], 'classiera'); ?></p>
-												<p><a href="javascript:void(0)" id="standard" class="btn btn-primary btn-block post_adverts" role="button">Post Advert</a></p>
+												<p><a href="javascript:void(0)" id="standard" class="btn btn-primary btn-block post_adverts" role="button"><?php esc_html_e('Post Advert', 'classiera'); ?></a></p>
 											  </div>
 											</div>
 										</div>
@@ -944,7 +944,7 @@ get_header(); ?>
 											  <div class="caption">
 												<h3><?php esc_html_e($redux_demo['standard-top-sec-title'], 'classiera'); ?></h3>
 												<p><?php esc_html_e($redux_demo['standard-top-sec-desc'], 'classiera'); ?></p>
-												<p><a href="javascript:void(0)" id="standard_top" class="btn btn-primary btn-block post_adverts" role="button">Post Advert</a></p>
+												<p><a href="javascript:void(0)" id="standard_top" class="btn btn-primary btn-block post_adverts" role="button"><?php esc_html_e('Post Advert', 'classiera'); ?></a></p>
 											  </div>
 											</div>
 										</div>
@@ -954,7 +954,7 @@ get_header(); ?>
 											  <div class="caption">
 												<h3><?php esc_html_e($redux_demo['double-sec-title'], 'classiera'); ?></h3>
 												<p><?php esc_html_e($redux_demo['double-sec-desc'], 'classiera'); ?></p>
-												<p><a href="javascript:void(0)" id="double_sec" class="btn btn-primary btn-block post_adverts" role="button">Post Advert</a></p>
+												<p><a href="javascript:void(0)" id="double_sec" class="btn btn-primary btn-block post_adverts" role="button"><?php esc_html_e('Post Advert', 'classiera'); ?></a></p>
 											  </div>
 											</div>
 										</div>
@@ -964,7 +964,7 @@ get_header(); ?>
 											  <div class="caption">
 												<h3><?php esc_html_e($redux_demo['doublesize-sec-title'], 'classiera'); ?></h3>
 												<p><?php esc_html_e($redux_demo['doublesize-sec-desc'], 'classiera'); ?></p>
-												<p><a href="javascript:void(0)" id="double_top" class="btn btn-primary btn-block post_adverts" role="button">Post Advert</a></p>
+												<p><a href="javascript:void(0)" id="double_top" class="btn btn-primary btn-block post_adverts" role="button"><?php esc_html_e('Post Advert', 'classiera'); ?></a></p>
 											  </div>
 											</div>
 										</div>

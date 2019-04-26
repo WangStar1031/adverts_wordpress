@@ -248,6 +248,8 @@ get_header();
 
 												<span class="pull-right hidden-xs" style="margin-right: 10px"><?php esc_html_e('Display Time Left', 'classiera') ?>:</span>
 
+												<?php else : ?>
+													<span class="pull-right"><?php esc_html_e('Advert Expired', 'classiera') ?></span>													
 												<?php endif; ?>
 											</div>
 										</div>

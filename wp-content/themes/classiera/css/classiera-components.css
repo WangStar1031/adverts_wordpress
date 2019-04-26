@@ -1130,7 +1130,7 @@ a {
     padding-bottom: 10px; }
 
   .collapse.in {
-    display: block !important; } }
+    display: block; } }
 /*DropDownMenu Colors*/
 .classiera-navbar.classiera-navbar-v2 ul.nav li.dropdown .dropdown-menu > li.active > a, .classiera-navbar.classiera-navbar-v3 ul.navbar-nav li.dropdown ul.dropdown-menu > li.active > a, .classiera-navbar.classiera-navbar-v6 ul.nav li.dropdown ul.dropdown-menu > li.active > a{
 	color:#fff !important;

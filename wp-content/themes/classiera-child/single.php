@@ -776,8 +776,8 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
             <h3 class="panel-heading text-center"><?php esc_html_e('Appearance', 'classiera'); ?></h3>
 
             <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#<?php the_title(); ?>" aria-controls="<?php the_title(); ?>" role="tab" data-toggle="tab"><?php the_title(); ?></a></li>
-              <li role="presentation"><a href="#<?php echo $partner_name ?>" aria-controls="<?php echo $partner_name ?>" role="tab" data-toggle="tab"><?php echo $partner_name ?></a></li>
+              <li role="presentation" class="active"><a class="user-tab" href="#<?php the_title(); ?>" aria-controls="<?php the_title(); ?>" role="tab" data-toggle="tab"><?php the_title(); ?></a></li>
+              <li role="presentation"><a class="user-tab" href="#<?php echo $partner_name ?>" aria-controls="<?php echo $partner_name ?>" role="tab" data-toggle="tab"><?php echo $partner_name ?></a></li>
             </ul>
 
             <!-- Tab panes -->

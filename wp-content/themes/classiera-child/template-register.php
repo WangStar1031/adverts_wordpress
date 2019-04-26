@@ -369,7 +369,7 @@ get_header(); ?>
                                         <div class="col-lg-9 col-sm-9">
                                             <div class="inner-addon left-addon">
                                                 <i class="left-addon form-icon fa fa-lock"></i>
-                                                <input id="email" type="email" name="email" class="form-control form-control-md sharp-edge" placeholder="<?php esc_html_e('example@example.com', 'classiera') ?>" data-error="<?php esc_html_e('Email required', 'classiera') ?>" required>
+                                                <input id="email" type="email" name="email" class="form-control form-control-md sharp-edge" placeholder="<?php esc_html_e('yourmail@host.com', 'classiera') ?>" data-error="<?php esc_html_e('Email required', 'classiera') ?>" required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -419,8 +419,8 @@ get_header(); ?>
                                             	<i class="left-addon form-icon fa fa-lock"></i>
                                                 <select class="form-control form-control-md sharp-edge user-role-select" name="user_role" style="line-height: 35px;" required>
                                                 	<option value="" disabled selected><?php esc_html_e('Please Choose Your Role', 'classiera') ?></option>
-                                                	<option value="buyer"><?php esc_html_e('Buyer', 'classiera') ?></option>
-                                                	<option value="seller"><?php esc_html_e('Seller', 'classiera') ?></option>
+                                                	<option value="user"><?php esc_html_e('User', 'classiera') ?></option>
+                                                	<option value="escort"><?php esc_html_e('Escort', 'classiera') ?></option>
                                                 </select>
                                             </div>
                                         </div>

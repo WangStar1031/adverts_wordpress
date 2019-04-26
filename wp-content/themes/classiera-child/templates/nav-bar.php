@@ -32,90 +32,22 @@
 		$classieraStickyClass = 'navbar-fixed-top';
 		$affixClass = 'classieraNavAffix';
 	}
-	if($classieraNavStyle == 1){
-		$container = 'container';
-		$classieraSecClass = 'classiera-navbar-v1';
-		$classieraNavClass = 'classiera-custom-navbar-v1';
-	}elseif($classieraNavStyle == 2){
-		$container = 'container';
-		$classieraSecClass = 'classiera-navbar-v2';
-	}elseif($classieraNavStyle == 3){
+	if($classieraNavStyle == 3){
 		$container = '';
 		$classieraSecClass = 'classiera-navbar-v3';
 		$classieraNavClass = 'classiera-custom-navbar-v1';
 		$container = 'container-fluid';
-	}elseif($classieraNavStyle == 4){
-		$container = 'container';
-		$classieraSecClass = 'classiera-navbar-v4';
-		$classieraNavClass = '';
-	}elseif($classieraNavStyle == 5){
-		$container = '';
-		$classieraSecClass = 'classiera-navbar-v5 '.$classieraStickyClass;
-		$offcanvasDark = 'offcanvas-dark';
-		$classieraNavClass = '';
-	}elseif($classieraNavStyle == 6){
-		$container = '';
-		$classieraSecClass = 'classiera-navbar-v6 '.$classieraStickyClass;
-	}elseif($classieraNavStyle == 7){
-		$container = '';
-		$classieraSecClass = 'classiera-navbar-v6 classiera-navbar-v7 '.$classieraStickyClass;
 	}
 ?>
 <!-- NavBar -->
 <section class="classiera-navbar  <?php echo esc_attr($affixClass);?> <?php echo esc_attr($classieraSecClass); ?>">
-	<!-- <?php if($classieraNavStyle == 4 || $classieraNavStyle == 6 || $classieraNavStyle == 7){?>
-		
-		<nav id="myNavmenu" class="navmenu navmenu-default offcanvas offcanvas-light <?php if(is_rtl()){echo "navmenu-fixed-right";}else{ echo "navmenu-fixed-left"; } ?>" role="navigation">
-			<div class="navmenu-brand clearfix">
-				<a href="<?php echo home_url(); ?>">
-					<?php if(empty($classieraLogo)){?>
-						<img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
-					<?php }else{ ?>
-						<img src="<?php echo esc_url($classieraLogo); ?>" alt="<?php bloginfo( 'name' ); ?>">
-					<?php } ?>
-				</a>
-				<button type="button" class="offcanvas-button" data-toggle="offcanvas" data-target="#myNavmenu">
-					<i class="fa fa-times"></i>
-				</button>
-			</div>
-			<div class="log-reg-btn text-center">
-				<?php if(is_user_logged_in()){?>
-					<a href="<?php echo esc_url($classieraProfileURL); ?>" class="offcanvas-log-reg-btn">
-						<?php esc_html_e( 'My Account', 'classiera' ); ?>
-					</a>
-					<a href="<?php echo wp_logout_url(get_option('siteurl')); ?>" class="offcanvas-log-reg-btn">
-						<?php esc_html_e( 'Log out', 'classiera' ); ?>
-					</a>
-				<?php }else{ ?>
-					<a href="<?php echo esc_url($classieraLoginURL); ?>" class="offcanvas-log-reg-btn">
-						<?php esc_html_e( 'Login', 'classiera' ); ?>
-					</a>
-					<a href="<?php echo esc_url($classieraRegisterURL); ?>" class="offcanvas-log-reg-btn">
-						<?php esc_html_e( 'Get Registered', 'classiera' ); ?>
-					</a>
-				<?php } ?>
-			</div>
-			<?php 
-				
-				classieraMobileNav();
-			?>
-			<div class="submit-post">
-				<a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-block btn-primary">
-					<?php esc_html_e( 'Submit Ad', 'classiera' ); ?>
-				</a>
-			</div>
-
-		</nav>
-		
-	<?php } ?> -->
-
 	<div class="<?php echo esc_attr($container); ?>">
 		<?php if($classieraNavStyle == 4){?>
 		<div class="row">
 		<div class="col-lg-12">
 		<?php } ?>
 		<!-- mobile off canvas nav -->
-		<?php if($classieraNavStyle == 1 || $classieraNavStyle == 2 || $classieraNavStyle == 3 || $classieraNavStyle == 5){?>
+		<?php if($classieraNavStyle == 3){?>
 		<nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas offcanvas-light <?php if(is_rtl()){echo "navmenu-fixed-right";}else{ echo "navmenu-fixed-left"; } ?> <?php echo esc_attr($offcanvasDark); ?>" role="navigation">
 			<div class="navmenu-brand clearfix">
 				<a href="<?php echo home_url(); ?>">
@@ -162,7 +94,7 @@
 		<!-- mobile off canvas nav -->
 		<!--Primary Nav-->
 		<nav class="navbar navbar-default <?php echo esc_attr($classieraNavClass); ?>">
-		<?php if($classieraNavStyle == 1 || $classieraNavStyle == 3 || $classieraNavStyle == 4 || $classieraNavStyle == 5 || $classieraNavStyle == 6 || $classieraNavStyle == 7){?>
+		<?php if($classieraNavStyle == 3){?>
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
 					<span class="icon-bar"></span>
@@ -241,17 +173,13 @@
 			</div>
 		<?php } ?>
 			<div class="collapse navbar-collapse visible-lg" id="navbarCollapse">
-			<?php if($classieraNavStyle == 1){?>
-				<div class="nav navbar-nav navbar-right betube-search flip">
-					<a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary sharp outline btn-sm">
-						<i class="icon-left fa fa-plus-circle"></i>
-						<?php esc_html_e( 'Submit Ad', 'classiera' ); ?>
-					</a>
-				</div><!--nav navbar-nav navbar-right betube-search flip-->
-			<?php }elseif($classieraNavStyle == 3){ ?>	
+			<?php if($classieraNavStyle == 3){ ?>	
 				<div class="nav navbar-nav navbar-right nav-v3-follow flip">
 					<p>
-						<?php esc_html_e( 'Follow us', 'classiera' ); ?>:
+						<!-- <?php if (!empty($classieraFacebook || $classieraTwitter || $classieraGoogle || $classieraInstagram || $classieraInstagram)) { ?>
+							<?php esc_html_e( 'Follow us', 'classiera' ); ?>:
+						<?php } ?> -->
+
 						<?php if(!empty($classieraFacebook)){?>
 						<a href="<?php echo esc_url($classieraFacebook); ?>" target="_blank">
 							<i class="fab fa-facebook-f"></i>
@@ -282,68 +210,14 @@
 				<div class="nav navbar-nav navbar-right betube-search flip">
 					<a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary radius btn-md btn-style-three active"><?php esc_html_e( 'Submit Ad', 'classiera' ); ?></a>
 				</div>
-			<?php }elseif($classieraNavStyle == 4){ ?>
-				<div class="nav navbar-nav navbar-right betube-search flip">
-					<a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary radius btn-md btn-style-four active"><?php esc_html_e( 'Submit Ad', 'classiera' ); ?></a>
-				</div>
-			<?php }elseif($classieraNavStyle == 5){ ?>
-				<div class="custom-menu-v5">
-					<a href="#" class="pull-left flip menu-btn">
-                        <i class="fa fa-bars"></i>
-                    </a>
-			<?php }elseif($classieraNavStyle == 6){ ?>
-				<div class="navbar-right login-reg flip">
-					<?php if(is_user_logged_in()){?>
-                    <a href="<?php echo esc_url($classieraProfileURL); ?>"><?php esc_html_e( 'My Account', 'classiera' ); ?> <i class="zmdi zmdi-account"></i></a>
-					<?php }else{ ?>
-					<a href="<?php echo esc_url($classieraLoginURL); ?>"><?php esc_html_e( 'Login', 'classiera' ); ?> <i class="zmdi zmdi-account"></i></a>
-					<?php } ?>
-                    <a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary outline round"><?php esc_html_e( 'Submit Ad', 'classiera' ); ?></a>
-                </div>
-			<?php }elseif($classieraNavStyle == 7){ ?>
-				<div class="navbar-right login-reg flip">
-					<?php if(is_user_logged_in()){?>
-					<a href="<?php echo esc_url($classieraProfileURL); ?>"><?php esc_html_e( 'My Account', 'classiera' ); ?> <i class="zmdi zmdi-account"></i></a>
-					<?php }else{ ?>
-					<a href="<?php echo esc_url($classieraLoginURL); ?>"><?php esc_html_e( 'Login', 'classiera' ); ?> <i class="zmdi zmdi-account"></i></a>
-					<?php } ?>
-					<a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary outline radius"><?php esc_html_e( 'Submit Ad', 'classiera' ); ?></a>
-				</div>
-			<?php } ?>
-				<?php 
-					//Primary Menu.
-					classieraPrimaryNav();
-				?>
-				<?php if($classieraNavStyle == 5){?>
-					<div class="navbar-right login-reg flip">
-						<?php if(is_user_logged_in()){?>
-							<a href="<?php echo esc_url($classieraProfileURL); ?>" class="lr-with-icon">
-								<i class="zmdi zmdi-lock"></i><?php esc_html_e( 'My Account', 'classiera' ); ?>
-							</a>
-							<a href="<?php echo wp_logout_url(get_option('siteurl')); ?>" class="lr-with-icon">
-								<i class="zmdi zmdi-border-color"></i><?php esc_html_e( 'Log out', 'classiera' ); ?>
-							</a>							
-						<?php }else{ ?>
-                        <a href="<?php echo esc_url($classieraLoginURL); ?>" class="lr-with-icon">
-							<i class="zmdi zmdi-lock"></i><?php esc_html_e( 'Login', 'classiera' ); ?>
-						</a>
-                        <a href="<?php echo esc_url($classieraRegisterURL); ?>" class="lr-with-icon">
-							<i class="zmdi zmdi-border-color"></i><?php esc_html_e( 'Get Registered', 'classiera' ); ?>
-						</a>
-						<?php } ?>
-                        <a href="<?php echo esc_url($classieraSubmitPost); ?>" class="btn btn-primary btn-submit active">
-							<?php esc_html_e( 'Submit Ad', 'classiera' ); ?>
-						</a>
-                    </div>
-				</div><!--custom-menu-v5-->
-				<?php } ?>
+			<?php } 
+
+				classieraPrimaryNav();
+
+			?>
+				
 			</div><!--collapse navbar-collapse visible-lg-->
 		</nav>
 		<!--Primary Nav-->
-	<?php if($classieraNavStyle == 4){?>
-		</div><!--col-lg-12-->
-		</div><!--row-->
-	<?php } ?>
-	</div><!--container-->
 </section>
 <!-- NavBar -->

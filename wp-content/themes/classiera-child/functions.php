@@ -355,8 +355,8 @@ function child_classiera_get_comment_ajax(){
     }
     die();
 }
-add_role( 'buyer', 'Buyer', array( 'read' => true, 'edit_posts' => true ) );
-add_role( 'seller', 'Seller', array( 'read' => true, 'edit_posts' => true ) );
+add_role( 'user', 'User', array( 'read' => true, 'edit_posts' => true ) );
+add_role( 'escort', 'Escort', array( 'read' => true, 'edit_posts' => true ) );
 function getTplPageURL($TEMPLATE_NAME){ 
     $pages = query_posts(array( 'post_type' =>'page', 'meta_key' =>'_wp_page_template', 'meta_value'=> $TEMPLATE_NAME )); 
     $url = null; 

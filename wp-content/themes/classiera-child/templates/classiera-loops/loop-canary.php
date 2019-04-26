@@ -78,27 +78,13 @@
 	$classiera_ads_type = get_post_meta($post->ID, 'classiera_ads_type', true);
 	$post_currency_tag = get_post_meta($post->ID, 'post_currency_tag', true);
 	$classiera_ads_statustime = get_post_meta($post->ID, 'classiera_ads_statustime', true);
-	$current_time = date("Y-m-d H:i:s");		
+	$current_time = date("Y-m-d H:i:s");
 	if($current_time >= $classiera_ads_statustime){ ?>
 
 	<div class="<?php echo $largeAds;?>">
 		<div class="classiera-box-div classiera-box-div-v4">
 			<figure class="clearfix">
 				<div class="premium-img">
-				<?php 
-					$classieraFeaturedPost = get_post_meta($post->ID, 'featured_post', true);
-					if($classieraFeaturedPost == 1){
-						?>
-						<!-- <div class="featured-tag">
-							<span class="left-corner"></span>
-							<span class="right-corner"></span>
-							<div class="featured">
-								<p><?php esc_html_e( 'Featured', 'classiera' ); ?></p>
-							</div>
-						</div> -->
-						<?php
-					}
-					?>
 
 					<div class="premium-img-inner">
 					<!-- Get the image -->	
@@ -127,22 +113,34 @@
 						<a href="<?php the_permalink(); ?>">
 							<span class="hover-posts">
 								<div class="row">
+
 									<div class="col-lg-12">
-										<h4 style="color: white">
+										<h4 style="color: white; max-width: 70%; margin: 10px auto;">
+											<!-- Display advert name -->
 											<?php if(in_category(array('couple', 'duo'))) { ?>
 												<?php echo esc_html($theTitle); ?> &amp; <?php echo esc_html($partner_name); ?>
 											<?php } else { ?>
 												<?php echo esc_html($theTitle); ?>
-											<?php } ?>		
+											<?php } ?>
 										</h4>
 									</div>
+
 									<div class="col-lg-12">
 										<?php
 											$_isNoPrice = true;
 										?>
 
-										<!-- <div class="table-responsive">
+										<!-- <span style="color: white"><?php echo esc_html_e($current_time); ?></span> -->
+
+										<div class="table-responsive">
 											<table style="width: 100%">
+												<?php if (!empty($fifteen_min_euro || $fifteen_min_pound || $thirty_min_euro || $thirty_min_pound || $fourty_five_min_euro || $fourty_five_min_pound)) { ?>
+													<tr>
+														<td>Time</td>
+														<td>Price in &euro;</td>
+														<td>Price in &pound;</td>
+													</tr>
+												<?php } ?>
 												<?php if (!empty($fifteen_min_euro)) { $_isNoPrice = false; ?>
 													<tr>
 														<td><?php esc_html_e('15 Min', 'classiera'); ?></td>
@@ -164,7 +162,7 @@
 														<td><?php echo esc_html($fourty_five_min_pound); ?> &pound;</td>
 													</tr>
 												<?php } ?>
-												<?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>
+												<!-- <?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>
 													<tr>
 														<td><?php esc_html_e('1 Hour', 'classiera'); ?></td>
 														<td><?php echo esc_html($one_hour_euro); ?> &euro;</td>
@@ -184,14 +182,14 @@
 														<td><?php echo esc_html($business_date_euro); ?> &euro;</td>
 														<td><?php echo esc_html($business_date_pound); ?> &pound;</td>
 													</tr>
-												<?php } ?>
+												<?php } ?> -->
 												<?php if( $_isNoPrice == true){?>
 													<div class="col-lg-12">
 														<span><?php esc_html_e('No prices provided', 'classiera'); ?></span>
 													</div>
 												<?php }?>
 											</table>
-										</div> -->
+										</div>
 
 									</div>
 								</div>
@@ -234,7 +232,7 @@
 		
 		anime({
 		  targets: '.discount-inner',
-		  easing: 'linear',
+		  easing: 'easeInOutSine',
 		  duration: 500,
 		  translateX: [
 		    {
@@ -252,26 +250,26 @@
 		  ],
 		  rotate: [
 		    {
-		      value: 50,
+		      value: 70,
 		    },
 		    {
-		      value: 40,
+		      value: 20,
 		    },
 		    {
-		      value: 50,
+		      value: 70,
 		    },
 		    {
-		      value: 40,
+		      value: 20,
 		    },
 		  ],
 		  duration: 400,
 		  scale: {
-		  	value: 12,
+		  	value: 4,
 		  	easing: 'easeInOutQuart',
 		  },
 		  loop: true,
 		  direction: 'alternate',
-		  delay: 1000,
+		  delay: 2000, 
 		});
 	});
 

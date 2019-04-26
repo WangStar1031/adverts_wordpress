@@ -105,7 +105,7 @@
 	//////////
 ?>
 <aside id="sideBarAffix" class="affix-top">
-	<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	<?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	<div class="panel panel-default hidden-xs">
 	  <div class="panel-heading text-center">
 	    <h3 class="panel-title"><?php esc_html_e('My Ballance', 'classiera'); ?></h3>
@@ -153,117 +153,7 @@
 		
 	</div><!--author-info-->
 
-	<!-- Experimental Nav -->
-	<nav class="cd-stretchy-nav hidden-sm hidden-lg hidden-md">
-
-		<a class="cd-nav-trigger" href="#0">
-			<span aria-hidden="true"></span>
-		</a>
-
-		<ul>
-			<li>
-				<a class="<?php if(is_page_template( 'template-profile.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraProfile ); ?>">
-					<span class="item-heading"><?php esc_html_e("About Me", 'classiera') ?></span>
-				</a>
-			</li><!--About-->
-
-			<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
-			<li>
-				<a class="<?php if(is_page_template( 'template-user-all-ads.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraAllAds ); ?>">
-					<span class="item-heading"><?php esc_html_e("Adverts", 'classiera') ?></span>
-					<span class="in-count pull-right flip badge"><?php echo count_user_posts($user_ID);?></span>
-				</a>
-			</li>
-			<?php endif;?>
-
-			<li>
-				<a class="<?php if(is_page_template( 'template-favorite.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraUserFavourite ); ?>">
-					<span class="item-heading"><?php esc_html_e("Favourites", 'classiera') ?></span>
-					<span class="in-count pull-right flip badge">
-						<?php 
-							global $current_user;
-							wp_get_current_user();
-							$user_id = $current_user->ID;
-							$myarray = classiera_authors_all_favorite($user_id);
-							if(!empty($myarray)){
-								$args = array(
-								   'post_type' => 'post',
-								   'post__in'      => $myarray
-								);
-							$wp_query = new WP_Query( $args );
-							$current = -1;
-							$current2 = 0;
-							while ($wp_query->have_posts()) : $wp_query->the_post(); $current++; $current2++; 													
-							endwhile;						
-							echo esc_attr( $current2 );
-							wp_reset_query();
-							}else{
-								echo "0";
-							}
-						?>
-					</span>
-				</a>
-			</li><!--Watch later Ads-->
-
-			<?php if($classiera_bid_system == true){ ?>
-			<li>
-				<a class="<?php if(is_page_template( 'template-message.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraInbox ); ?>">
-					<span class="item-heading"><?php esc_html_e("Messages", 'classiera') ?></span>
-					<span class="in-count pull-right flip badge"><?php echo count_user_message($user_ID);?></span>
-				</a>
-			</li><!--Message-->
-			<?php } ?>
-			
-				<?php if($classieraUserPlansPage){?>
-					<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
-				<li>
-					<a class="<?php if(is_page_template( 'template-user-plans.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraUserPlansPage ); ?>">
-						<span class="item-heading"><?php esc_html_e("Packages", 'classiera') ?></span>
-					</a>
-				</li><!--Packages-->
-					<?php endif; ?>
-				<?php } ?>
-
-				<!-- <?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
-				<li>
-					<a class="<?php if(is_page_template( 'template-follow.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraFollowerPage ); ?>">
-						<span class="item-heading"><?php esc_html_e("Follow", 'classiera') ?></span>
-					</a>
-				</li>
-				<?php endif;?> -->
-
-				<?php if(!in_array( 'buyer', (array) $current_user->roles ) && $is_Exist): ?>
-				<li>
-					<a class="<?php if(is_page_template( 'template-confirm-images.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraConfirmImages ); ?>">
-						<span class="item-heading"><?php esc_html_e("Confirm Images", 'classiera') ?></span>
-					</a>
-				</li><!--Confirm Images-->
-				<?php endif;?>
-
-				<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
-				<li>
-					<a class="<?php if(is_page_template( 'template-get-credits.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraGetCredits ); ?>">
-						<span class="item-heading"><?php esc_html_e("Credits", 'classiera') ?></span>
-					</a>
-				</li><!-- Get Credits -->
-				<?php endif;?>
-
-				<li>
-					<a class="<?php if(is_page_template( 'template-edit-profile.php' )){echo "active";}?>" href="<?php echo esc_url( $classieraEditProfile ); ?>">
-						<span class="item-heading"><?php esc_html_e("Settings", 'classiera') ?></span>
-					</a>
-				</li><!--Profile Setting-->
-
-			</ul><!--user-page-list-->
-			
-		</ul>
-
-		<span aria-hidden="true" class="stretchy-nav-bg"></span>
-
-	</nav>
-	<!-- / Experimental Nav -->
-
-	<div class="panel panel-default hidden-xs">
+	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
 	    <h3 class="panel-title"><?php esc_html_e("Menu Options", 'classiera') ?></h3>
 	  </div>
@@ -281,7 +171,7 @@
 	    		</a>
 	    	</li><!--About-->
 
-	    	<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	    	<?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-user-all-ads.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraAllAds ); ?>">
 	    			<span>
@@ -337,7 +227,7 @@
 	    	<?php } ?>
 
 	    	<?php if($classieraUserPlansPage){?>
-	    		<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	    		<?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-user-plans.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraUserPlansPage ); ?>">
 	    			<span>
@@ -349,7 +239,7 @@
 	    		<?php endif; ?>
 	    	<?php } ?>
 
-	    	<!-- <?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	    	<!-- <?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-follow.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraFollowerPage ); ?>">
 	    			<span>
@@ -359,7 +249,7 @@
 	    	</li>
 	    	<?php endif;?> -->
 
-	    	<?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	    	<?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-get-credits.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraGetCredits ); ?>">
 	    			<span>
@@ -370,7 +260,7 @@
 	    	</li><!-- Get Credits -->
 	    	<?php endif;?>
 
-	    	<?php if(!in_array( 'buyer', (array) $current_user->roles ) && $is_Exist): ?>
+	    	<?php if(!in_array( 'user', (array) $current_user->roles ) && $is_Exist): ?>
 	    	<li class="list-group-item userabout-list-group-item no-padding <?php if(is_page_template( 'template-confirm-images.php' )){echo "active";}?>">
 	    		<a href="<?php echo esc_url( $classieraConfirmImages ); ?>">
 	    			<span>
@@ -398,7 +288,7 @@
 	    		</a>
 	    	</li><!--Logout-->
 	    </ul><!--user-page-list-->
-	    <?php if(!in_array( 'buyer', (array) $current_user->roles )): ?>
+	    <?php if(!in_array( 'user', (array) $current_user->roles )): ?>
 	    <div class=""><!-- user-submit-ad -->
 	    	<a href="<?php echo esc_url( $classieraPostAds ); ?>" class="btn btn-primary btn-block extra-padding">
 	    		<!-- <i class="icon-left fa fa-plus-circle"></i> -->
@@ -409,25 +299,3 @@
 	  </div>
 	</div>
 </aside><!--sideBarAffix-->
-
-<script>
-	jQuery(document).ready(function(){
-		if( $('.cd-stretchy-nav').length > 0 ) {
-			var stretchyNavs = $('.cd-stretchy-nav');
-			
-			stretchyNavs.each(function(){
-				var stretchyNav = $(this),
-					stretchyNavTrigger = stretchyNav.find('.cd-nav-trigger');
-				
-				stretchyNavTrigger.on('click', function(event){
-					event.preventDefault();
-					stretchyNav.toggleClass('nav-is-visible');
-				});
-			});
-
-			$(document).on('click', function(event){
-				( !$(event.target).is('.cd-nav-trigger') && !$(event.target).is('.cd-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
-			});
-		}
-	});
-</script>

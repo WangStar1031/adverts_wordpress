@@ -5,7 +5,7 @@
  * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version: 4.7.1
+ * Version: 4.7.2
  * Author: Iulia Cazan
  * Author URI: https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -38,7 +38,7 @@ if ( ! file_exists( $dest_path ) ) {
 define( 'SIRSC_PLUGIN_FOLDER', dirname( __FILE__ ) );
 define( 'SIRSC_PLACEHOLDER_FOLDER', realpath( $dest_path ) );
 define( 'SIRSC_PLACEHOLDER_URL', esc_url( $dest_url ) );
-define( 'SIRSC_ASSETS_VER', '20190422.0800' );
+define( 'SIRSC_ASSETS_VER', '20190425.1500' );
 
 /**
  * Class for Image Regenerate & Select Crop.
@@ -193,6 +193,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		add_action( 'update_option_sirsc_override_large_size', array( $called, 'on_update_sirsc_override_size' ) );
 		add_action( 'update_option_sirsc_use_custom_image_sizes', array( $called, 'on_update_sirsc_override_size' ) );
 		add_action( 'after_setup_theme', array( $called, 'maybe_register_custom_image_sizes' ) );
+		add_filter( 'image_size_names_choose', array( $called, 'custom_image_size_names_choose' ), 60 );
 	}
 
 	/**
@@ -3096,6 +3097,22 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				echo self::append_image_generate_button( '', '', $post->ID ); // WPCS: XSS OK.
 			}
 		}
+	}
+
+	/**
+	 * Custom image size names list in the media screen.
+	 *
+	 * @param  array $list Initial list of sizes.
+	 * @return array
+	 */
+	public static function custom_image_size_names_choose( $list ) {
+		$all_ims = get_intermediate_image_sizes();
+		foreach ( $all_ims as $value ) {
+			if ( empty( $list[ $value ] ) && ! in_array( $value, self::$settings['complete_global_ignore'] ) ) {
+				$list[ $value ] = ucwords( str_replace( '-', ' ', str_replace( '_', ' ', $value ) ) );
+			}
+		}
+		return $list;
 	}
 
 	/**

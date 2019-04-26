@@ -172,7 +172,7 @@ h5.redux_heading {
 }
 
 .btn-primary, .classiera_bump_cart {
-    padding: 5px 10px !important;
+    /*padding: 5px 10px !important;*/
     -webkit-font-smoothing: antialiased;
 }
 
@@ -335,10 +335,10 @@ span.discount_per {
 
 span.discount_per:before {
     position: absolute;
-    /* margin: 0 auto; */
+     margin: 0 auto; 
     width: 80px;
-    /* top: 0px; */
-    /* left: 0; */
+    top: 0px; 
+    left: -69px; 
     right: 0;
     border-style: solid;
     border-width: 0px 50px 50px 50px;
@@ -356,7 +356,8 @@ span.discount_per:before {
 .discount-inner {
   display: inline-block;
   padding-top: 4px;
-  transform: rotate(45deg);
+  /*transform: rotate(45deg);*/
+  position: absolute;
 }
 
 /*End My New Single Styles*/
@@ -375,6 +376,10 @@ span.discount_per:before {
 #single-column .list-group-item:first-child {
   margin-right: 0;
   border-radius: 0;
+}
+
+#single-column .user-tab {
+  font-size: 18px;
 }
 
 #single-column .nav-tabs li a {

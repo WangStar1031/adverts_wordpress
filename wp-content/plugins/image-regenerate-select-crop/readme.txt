@@ -3,7 +3,7 @@ Contributors: Iulia Cazan
 Tags: image crop, image regenerate, image sizes details, image quality, default crop, wp-cli, media, image, image sizes, missing images, image placeholder, image debug, command line
 Requires at least: not tested
 Tested up to: 5.1.1
-Stable tag: 4.7.1
+Stable tag: 4.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -37,6 +37,13 @@ image_regenerate_select_crop_button, sirsc_custom_upload_rule
 None
 
 == Changelog ==
+
+=4.7.2 =
+* Added custom image sizes in the Attachment Display Settings > Size dropdown available in the native WordPress media screen (only the image sizes that are not marked for global ignore in the settings, and these for which the image was generated will become available).
+
+= 4.7.1 =
+* Added missing changes for scale quality.
+
 =4.7 =
 * Added custom column in media listing with the options to see details and regenerate.
 * Added the option to set custom quality for images directly when regenerating from the details lightbox.
@@ -118,6 +125,8 @@ None
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 == Version history ==
+4.7.2 - Added custom image sizes in the Attachment Display Settings > Size dropdown available in the native WordPress media screen.
+4.7.1 - Added missing changes for scale quality.
 4.7 - New custom column in media listing with the options to see details and regenerate, new option to set custom quality for images directly when regenerating from the details lightbox.
 4.6.1 - Expose the native medium large hidden size, add delete option for generated images that are smaller than the expected size.
 4.6 - Translation fix, added targeted delete option in the lightbox for each image size generated for an image, link the media settings in the plugin settings page.
