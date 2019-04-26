@@ -35,16 +35,22 @@ if (!$user_ID) {
 		===========================*/
 		$message =  esc_html__( 'Registration successful.', 'classiera' );
 
-		$username = $wpdb->escape($_POST['username']);
+		// $username = $wpdb->escape($_POST['username']);
+		$username = esc_sql($_POST['username']);
 
-		$email = $wpdb->escape($_POST['email']);
+		// $email = $wpdb->escape($_POST['email']);
+		$email = esc_sql($_POST['email']);
 
-		$password = $wpdb->escape($_POST['pwd']);
+		// $password = $wpdb->escape($_POST['pwd']);
+		$password = esc_sql($_POST['pwd']);
 
-		$confirm_password = $wpdb->escape($_POST['confirm']);
+		// $confirm_password = $wpdb->escape($_POST['confirm']);
+		$confirm_password = esc_sql($_POST['confirm']);
 		
-		$remember = $wpdb->escape($_POST['remember']);
-		$user_role= $wpdb->escape($_POST['user_role']);
+		// $remember = $wpdb->escape($_POST['remember']);
+		$remember = esc_sql($_POST['remember']);
+		// $user_role= $wpdb->escape($_POST['user_role']);
+		$user_role = esc_sql($_POST['user_role']);
 		$registerSuccess = 1;
 		/*==========================
 		 Google (reCAPTCHA) plugin
