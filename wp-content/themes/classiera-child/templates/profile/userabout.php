@@ -61,9 +61,9 @@
 		
 		$classieraProfile = classiera_get_template_url($templateProfile);
 		//Get credits
-		$classieraGetCredits = calassiera_get_tremplate_url($templateGetCredits);
+		$classieraGetCredits = classiera_get_template_url($templateGetCredits);
 		//Confirm Images
-		$classieraConfirmImages = calassiera_get_tremplate_url($templateConfirmImages);
+		$classieraConfirmImages = classiera_get_template_url($templateConfirmImages);
 		$classieraAllAds = classiera_get_template_url($templateAllAds);
 		$classieraEditProfile = classiera_get_template_url($templateEditProfile);
 		$classieraPostAds = classiera_get_template_url($templateSubmitAd);
@@ -152,7 +152,10 @@
 		</div>
 		
 	</div><!--author-info-->
-
+	<?php
+	$classieraNavStyle = $redux_demo['nav-style'];
+	if( $classieraNavStyle != 3){
+	?>
 	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
 	    <h3 class="panel-title"><?php esc_html_e("Menu Options", 'classiera') ?></h3>
@@ -298,4 +301,7 @@
 	    <?php endif; ?>
 	  </div>
 	</div>
+	<?php
+	}
+	?>
 </aside><!--sideBarAffix-->
