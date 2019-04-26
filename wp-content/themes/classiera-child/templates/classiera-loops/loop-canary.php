@@ -24,6 +24,14 @@
 	$catIcon = "";
 	$category = get_the_category();
 	$catID = $category[0]->cat_ID;
+	$isNew = false;
+	$diff = date_diff( date_create(date("Y/m/d", strtotime("-3 day"))), date_create(get_the_date("Y/m/d")));
+	$diffDate = $diff->format("%R%a");
+	if( $diffDate < 0){
+		$isNew = false;
+	} else{
+		$isNew = true;
+	}
 	if ($category[0]->category_parent == 0) {
 		$tag = $category[0]->cat_ID;
 		$tag_extra_fields = get_option(MY_CATEGORY_FIELDS);
@@ -204,7 +212,7 @@
 
 					<?php
 						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
-						if(!empty($discount_per) && $discount_per > 0)
+						if(!empty($discount_per) && $discount_per > 0 && $isNew)
 						{ ?>
 							<div class="discount_per_parent" style="display: none;">
 								<span class="discount_per">
