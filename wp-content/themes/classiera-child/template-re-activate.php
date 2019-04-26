@@ -2190,6 +2190,7 @@ get_header(); ?>
         });
     });
     function customValidate(_this){
+        if( _this.css('display') == 'none') return true;
         if( _this.is("select")){
             if( $(_this).find("option:selected").length == 0)
                 return false;
