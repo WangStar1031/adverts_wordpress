@@ -314,7 +314,7 @@ get_header();
 														<!-- The Modal -->
 														<input type="hidden" name="uw_balance" value="<?php echo get_user_meta($current_user->ID,'_uw_balance', true)?>" id="uw_balance">
 
-														<div id="myModalBump" class="modal" tabindex="-1" role="dialog">
+														<div id="myModalBump" class="modal fade" tabindex="-1" role="dialog">
 														  <div class="modal-dialog" role="document">
 														    <div class="modal-content">
 														      <div class="modal-header">

@@ -255,13 +255,11 @@ function bump_ads(ajaxUrl,postID)
 			jQuery('#bumpOkBtn').prop('disabled', true);
 		}
 	}
-	modal.style.display = "inline-block";
-
-
+	jQuery("#myModalBump").modal();
 }
 jQuery('#cancelBtn').click(function(){
-	  modal.style.display = "none";
-	});
+	jQuery("#myModalBump").modal('hide');
+});
 // span.onclick = function() {
 //     modal.style.display = "none";
 // }
