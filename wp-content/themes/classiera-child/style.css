@@ -9,7 +9,8 @@
  License:      Commercial
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
  Tags:         one-column, two-columns, left-sidebar, right-sidebar,fluid-layout,fixed-layout,responsive-layout, custom-menu, full-width-template, rtl-language-support, theme-options, translation-ready
- Text Domain:  classiera-child-theme
+ Text Domain:  classiera-child
+ Domain Path: /languages
 */
 
 /* write custom css */
@@ -26,6 +27,15 @@ body {
 
 #flex-box {
   flex: 1;
+}
+
+.language-switcher {
+  width: 60px;
+  background-color: #444444;
+  color: white;
+  border: 1px solid #626262;
+  text-transform: uppercase;
+  outline: none;
 }
 
 h4.edit-profile-heading {
@@ -245,6 +255,20 @@ textarea.offer_comment {
     color: #ffffff;
 }*/
 
+.newSection {
+  position: absolute;
+  color: white;
+  z-index: 1;
+  margin-left: 2px;
+  /*margin-top: 3px;*/
+  /*width: 55px;*/
+}
+
+.new-arrival {
+  padding: 0 2px;
+  border-radius: 4px;
+}
+
 
 /*My New Single Styles*/
 .main-wrapper {
@@ -326,38 +350,36 @@ h3.panel-heading {
   -webkit-font-smoothing: antialiased !important;
 }
 
-span.discount_per {
+.discount_per {
     position: relative;
     color: #fff;
-    right: 0;
-    z-index: 1;
 }
 
-span.discount_per:before {
-    position: absolute;
-     margin: 0 auto; 
-    width: 80px;
-    top: 0px; 
-    left: -69px; 
-    right: 0;
-    border-style: solid;
-    border-width: 0px 50px 50px 50px;
-    border-color: transparent #c60303 transparent transparent;
-    content: "";
-    z-index: -1;
-}
-
-.discount_per_parent{
-    position: absolute;
+.discount_per:before {
+    /*position: absolute;*/
+    /*margin: 0 auto;*/ 
+    /*width: 80px;*/
+    /*top: 0px;*/ 
+    /*left: -69px;*/ 
     /*right: 0;*/
-    z-index: 2;
+    /*border-style: solid;*/
+    /*border-width: 0px 50px 50px 50px;*/
+    /*border-color: transparent #c60303 transparent transparent;*/
+    /*content: "";*/
+    /*z-index: -1;*/
+}
+
+.discount_per_parent {
+  position: absolute;
+  right: 0;
+  top: 0; 
 }
 
 .discount-inner {
-  display: inline-block;
-  padding-top: 4px;
+  /*display: inline-block;*/
+  /*padding-top: 4px;*/
   /*transform: rotate(45deg);*/
-  position: absolute;
+  /*position: absolute;*/
 }
 
 /*End My New Single Styles*/
@@ -1363,7 +1385,44 @@ keyframes
     width: 58px;
     min-width: 58px;
   }
+  .navbar-toggle {
+    margin-top: 40px !important;
+  }
+
+  .language-switcher {
+    height: 34px;
+    width: 47px;
+    margin-top: 40px;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .classiera-navbar.classiera-navbar-v3 .nav > li {
+    padding: 0 !important;
+  }
 }
+
+.offcanvas {
+  background: #232323 !important;
+}
+
+.offcanvas li {
+  list-style-type: none;
+}
+
+.offcanvas-button {
+  float: right;
+  padding: 3px 10px;
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.offcanvas-button i {
+  color: #fff;
+}
+
 #frame #sidepanel #profile {
   width: 80%;
   margin: 25px auto;

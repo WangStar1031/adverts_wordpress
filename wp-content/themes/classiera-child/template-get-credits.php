@@ -106,7 +106,7 @@ if(WC()->cart->cart_contents_count == 0)
                                   <div class="caption">
                                     <h3><?php the_title();?></h3>
                                     <p><?php the_excerpt();?></p>
-                                    <p><a href="javascript:void(0)" id="<?php echo get_the_id();?>" class="btn btn-primary add_to_cart_ajax get-credits-button" role="button">BUY NOW</a></p>
+                                    <p><a href="javascript:void(0)" id="<?php echo get_the_id();?>" class="btn btn-primary add_to_cart_ajax get-credits-button" role="button"><?php _e('Buy Now', 'classiera'); ?></a></p>
                                   </div>
                                 </div>
                             </div>

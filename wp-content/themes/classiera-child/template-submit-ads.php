@@ -1935,7 +1935,7 @@ get_header(); ?>
 												<div class="col-sm-12 col-lg-6"><!-- Form Container -->
 													<div class="price-fields"><!-- Form Group Container -->
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">
@@ -1946,7 +1946,7 @@ get_header(); ?>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('Full Day', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('Full Day', 'classiera'); ?>:</span>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">
@@ -1957,7 +1957,7 @@ get_header(); ?>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('Business Date', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('Business Date', 'classiera'); ?>:</span>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">

@@ -80,13 +80,12 @@ if(isset($_GET['un_sold_id'])){
 			<div class="col-lg-9 col-md-8 user-content-height">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Panel title</h3>
+						<h3 class="panel-title text-uppercase"><?php esc_html_e("About Me", 'classiera') ?></h3>
 					</div>
 					<div class="panel-body">
 						<div class="user-detail-section">
 							<!-- about me -->
 							<div class="about-me">
-								<h4 class="user-detail-section-heading text-uppercase"><?php esc_html_e("About Me", 'classiera') ?></h4>
 								<p>
 									<?php 
 									$user_id = $current_user->ID; 

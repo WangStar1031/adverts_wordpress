@@ -1,0 +1,332 @@
+# Translation of Themes - Twenty Seventeen in Latvian
+# This file is distributed under the same license as the Themes - Twenty Seventeen package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-06-15 13:14:38+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: lv\n"
+"Project-Id-Version: Themes - Twenty Seventeen\n"
+
+#. Description of the plugin/theme
+msgid "Twenty Seventeen brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device."
+msgstr "Twenty Seventeen - 2017 atdzīvinās jūsu vietni ar galvenes video un iespaidīgiem izceltajiem attēliem. Tēma īpaši piemērota uzņēmējdarbības vietnēm, tās sākuma lapā ir vairākas sadaļas, kā arī logdaļas, navigācijas un sociālās izvēlnes, vietnes logo un vēl un vēl. Personalizējiet tās asimetrisko režģi ar pielāgotu krāsu paleti un parādiet multivides saturu, izmantojot ziņu formātus. Mūsu 2017. gada noklusējuma tēma lieliski darbosies daudzās valodās, visās jomās un jebkurās ierīcēs."
+
+#. Theme Name of the plugin/theme
+msgid "Twenty Seventeen"
+msgstr "Twenty Seventeen"
+
+#: functions.php:326
+msgid "Add widgets here to appear in your sidebar on blog posts and archive pages."
+msgstr "Šeit pievienojiet logrīkus, kas parādīsies jūsu emuāra ziņu un arhivēšanas lapu sānjoslā."
+
+#: functions.php:324 sidebar.php:18
+msgid "Blog Sidebar"
+msgstr "Emuāra sānjosla"
+
+#: template-parts/header/site-branding.php:34
+#: template-parts/navigation/navigation-top.php:31
+msgid "Scroll down to content"
+msgstr "Ritiniet lejā uz saturu"
+
+#: functions.php:167
+msgctxt "Theme starter content"
+msgid "Coffee"
+msgstr "Kafija"
+
+#: functions.php:163
+msgctxt "Theme starter content"
+msgid "Sandwich"
+msgstr "Sviestmaize"
+
+#: functions.php:159
+msgctxt "Theme starter content"
+msgid "Espresso"
+msgstr "Espresso"
+
+#: inc/custom-header.php:126
+msgid "Pause background video"
+msgstr "Apturēt fona video"
+
+#: inc/custom-header.php:125
+msgid "Play background video"
+msgstr "Atskaņot fona video"
+
+#: inc/template-tags.php:151
+msgid "Front Page Section %1$s Placeholder"
+msgstr "Sākuma lapas sadaļas %1$s vietturis"
+
+#: inc/customizer.php:99
+msgid "When the two-column layout is assigned, the page title is in one column and content is in the other."
+msgstr "Kad piešķirts divu sleju izkārtojums, lapas virsraksts ir vienā slejā un saturs otrā."
+
+#: single.php:34
+msgid "Next Post"
+msgstr "Nākamā ziņa"
+
+#: index.php:27
+msgid "Posts"
+msgstr "Ziņas"
+
+#: inc/template-tags.php:89
+msgid "Tags"
+msgstr "Birkas"
+
+#: inc/template-tags.php:85
+msgid "Categories"
+msgstr "Kategorijas"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:66
+msgid ", "
+msgstr ","
+
+#. translators: %s: post date
+#: inc/template-tags.php:52
+msgid "<span class=\"screen-reader-text\">Posted on</span> %s"
+msgstr "<span class=\"screen-reader-text\">Publicēts</span> %s"
+
+#. translators: %s: post author
+#: inc/template-tags.php:21
+msgid "by %s"
+msgstr "autors %s"
+
+#: inc/icon-functions.php:44
+msgid "Please define an SVG icon filename."
+msgstr "Lūdzu, norādiet SVG ikonas faila nosaukumu."
+
+#: inc/icon-functions.php:39
+msgid "Please define default parameters in the form of an array."
+msgstr "Lūdzu, norādiet noklusējuma parametrus masīva formā."
+
+#: inc/customizer.php:131
+msgid "Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed."
+msgstr "Izvēlieties lapas izmantošanai katrā apgabalā no nolaižamā saraksta. Pievienojiet attēlu sadaļai, izvēloties piedāvāto attēlu lapas redaktorā. Tukšās sadaļas netiks rādītas."
+
+#. translators: %d is the front page section number
+#: inc/customizer.php:130
+msgid "Front Page Section %d Content"
+msgstr "Sākuma lapas sadaļas %d saturs"
+
+#: inc/customizer.php:102 inc/customizer.php:158
+msgid "Two Column"
+msgstr "Divas slejas"
+
+#: inc/customizer.php:101 inc/customizer.php:157
+msgid "One Column"
+msgstr "Viena sleja"
+
+#: inc/customizer.php:96
+msgid "Page Layout"
+msgstr "Lapas izkārtojums"
+
+#: inc/customizer.php:81
+msgid "Theme Options"
+msgstr "Tēmas opcijas"
+
+#: inc/customizer.php:59
+msgid "Custom"
+msgstr "Pielāgots"
+
+#: inc/customizer.php:57
+msgid "Light"
+msgstr "Gaiša"
+
+#: inc/customizer.php:55
+msgid "Color Scheme"
+msgstr "Krāsu palete"
+
+#: inc/custom-header.php:54
+msgid "Default Header Image"
+msgstr "Noklusējuma galvenes attēls"
+
+#: functions.php:348
+msgid "Footer 2"
+msgstr "Kājene 2"
+
+#: functions.php:338 functions.php:350
+msgid "Add widgets here to appear in your footer."
+msgstr "Šeit pievienot logrīkus, kuri būs redzami kājenē."
+
+#: functions.php:336
+msgid "Footer 1"
+msgstr "Kājene 1"
+
+#. Translators: If there are characters in your language that are not supported
+#. by Libre Franklin, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:277
+msgctxt "Libre Franklin font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:64 functions.php:191
+#: template-parts/navigation/navigation-top.php:12
+msgid "Top Menu"
+msgstr "Izvēlne augšā"
+
+#: comments.php:62
+msgid "Reply"
+msgstr "Atbildēt"
+
+#: template-parts/post/content-none.php:28
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Izskatās, ka neizdodas atrast to, ko meklējat. Iespējams varētu palīdzēt meklēšana."
+
+#: search.php:54
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Atvainojiet, bet nekas netika atrasts. Mēģiniet vēlreiz izmantojot citus atslēgvārdus."
+
+#: template-parts/post/content-none.php:24
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Esat gatavs savai pirmajai publikācijai? <a href=\"%1$s\">Sāciet šeit</a>."
+
+#: search.php:21 template-parts/post/content-none.php:17
+msgid "Nothing Found"
+msgstr "Nekas nav atrasts"
+
+#: single.php:33
+msgid "Previous Post"
+msgstr "Iepriekšējā ziņa:"
+
+#: comments.php:71 single.php:33
+msgid "Previous"
+msgstr "Iepriekšējais"
+
+#: comments.php:72 single.php:34
+msgid "Next"
+msgstr "Nākamais"
+
+#: searchform.php:20
+msgctxt "submit button"
+msgid "Search"
+msgstr "Meklēt"
+
+#: searchform.php:19
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Meklēt &hellip;"
+
+#: searchform.php:17
+msgctxt "label"
+msgid "Search for:"
+msgstr "Meklēt:"
+
+#: search.php:19
+msgid "Search Results for: %s"
+msgstr "Meklēšanas rezultāti: %s"
+
+#. translators: %s: Name of current post
+#: functions.php:378 template-parts/page/content-front-page-panels.php:45
+#: template-parts/page/content-front-page.php:42
+#: template-parts/post/content-audio.php:84
+#: template-parts/post/content-gallery.php:71
+#: template-parts/post/content-image.php:61
+#: template-parts/post/content-video.php:83 template-parts/post/content.php:57
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Turpināt lasīt<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: inc/customizer.php:58
+msgid "Dark"
+msgstr "Tumša"
+
+#: inc/back-compat.php:39 inc/back-compat.php:52 inc/back-compat.php:68
+msgid "Twenty Seventeen requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
+msgstr "2017. gada tēmai nepieciešama vismaz WordPress 4.7 versija. Jūs izmantojat %s versiju. Lūdzu, jauniniet to un tad mēģiniet vēlreiz."
+
+#. translators: %s: Name of current post
+#: inc/template-tags.php:117
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Labot<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: template-parts/page/content-page.php:26
+#: template-parts/post/content-audio.php:91
+#: template-parts/post/content-gallery.php:78
+#: template-parts/post/content-image.php:68
+#: template-parts/post/content-video.php:90 template-parts/post/content.php:64
+msgid "Pages:"
+msgstr "Lapas:"
+
+#: template-parts/navigation/navigation-top.php:17
+msgid "Menu"
+msgstr "Izvēlne"
+
+#: header.php:27
+msgid "Skip to content"
+msgstr "Doties uz saturu"
+
+#: functions.php:467
+msgid "Collapse child menu"
+msgstr "Sakļaut apakšizvēlni"
+
+#: functions.php:466
+msgid "Expand child menu"
+msgstr "Izvērst apakšizvēlni"
+
+#: functions.php:65 functions.php:202
+msgid "Social Links Menu"
+msgstr "Sociālo saišu izvēlne"
+
+#: template-parts/footer/site-info.php:19
+msgid "Proudly powered by %s"
+msgstr "Ar lepnumu izmanto %s"
+
+#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.7)  #-#-#-#-#
+#. Author URI of the plugin/theme
+#: template-parts/footer/site-info.php:18
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#: footer.php:26
+msgid "Footer Social Links Menu"
+msgstr "Kājenes sociālo saišu izvēlne"
+
+#: comments.php:82
+msgid "Comments are closed."
+msgstr "Komentāri ir slēgti."
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Replies to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s atbilde &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s atbildes &ldquo;%2$s&rdquo;"
+msgstr[2] "%1$s atbilžu &ldquo;%2$s&rdquo;"
+
+#. translators: %s: post title
+#: comments.php:37
+msgctxt "comments title"
+msgid "One Reply to &ldquo;%s&rdquo;"
+msgstr "Viena atbilde &ldquo;%s&rdquo;"
+
+#: archive.php:50 index.php:54 search.php:47
+msgid "Page"
+msgstr "Lapa"
+
+#: 404.php:21
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Hmm... Tāda lapa nav atrodama."
+
+#: 404.php:24
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Izskatās, ka nekas netika atrasts. Varbūt izmēģiniet meklēšanu?"
+
+#: archive.php:48 index.php:52 search.php:45
+msgid "Previous page"
+msgstr "Iepriekšējā lapa"
+
+#: archive.php:49 index.php:53 search.php:46
+msgid "Next page"
+msgstr "Nākamā lapa"
+
+#. Author of the plugin/theme
+msgid "the WordPress team"
+msgstr "WordPress komanda"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/twentyseventeen/"
+msgstr "https://wordpress.org/themes/twentyseventeen/"

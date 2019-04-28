@@ -165,13 +165,17 @@ if(is_user_logged_in()){
 				<div class="col-lg-12" style="padding: 0 10%;">
 					<p class="text-center text-uppercase" style="margin-bottom: 30px;"><?php esc_html_e('"HOT-ESCORTS-IRELAND.COM" contains nudity and ADULT CONTENT. BY ENTERING THIS SITE YOU CONSENT THAT YOU HAVE REACHED Full 18 years of age at this point.', 'classiera'); ?></p>
 				</div>
-				<div class="col-lg-12 clearfix">
-					<button type="button" class="consent-button btn btn-primary text-uppercase pull-right btn-lg" onclick="Enter()" style="margin-right: 20%;"><?php esc_html_e('Enter', 'classiera'); ?></button>
-					<a class="consent-button btn btn-primary btn-lg" href="https://www.google.ie" style="margin-left: 20%"><?php esc_html_e('Leave', 'classiera'); ?></a>
+				<div class="col-lg-12">
+					<div class="col-xs-6">
+						<a class="consent-button btn btn-primary pull-right" href="https://www.google.ie"><?php esc_html_e('Leave', 'classiera'); ?></a>	
+					</div>
+					<div class="col-xs-6 clearfix">
+						<button type="button" class="consent-button btn btn-primary text-uppercase pull-left" onclick="Enter()"><?php esc_html_e('Enter', 'classiera'); ?></button>	
+					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<div class="col-lg-12 pull-left">
+				<div class="col-xs-12">
 					<p class="text-center text-uppercase"><?php esc_html_e('YOU CAN ACCESS OUR PRIVACY POLICY', 'classiera'); ?> <a class="text-uppercase" href="#"><?php esc_html_e('Here', 'classiera'); ?></a></p>
 				</div>
 			</div>

@@ -1207,7 +1207,7 @@ a {
 		z-index: -1 !important;
 	}
    .offcanvas{
-		width: 100%;
+		width: 80%;
 		height: 100%;
 		position: fixed;
 		overflow-x: hidden;

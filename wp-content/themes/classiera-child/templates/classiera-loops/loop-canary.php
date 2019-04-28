@@ -92,8 +92,16 @@
 	<div class="<?php echo $largeAds;?>">
 		<div class="classiera-box-div classiera-box-div-v4">
 			<figure class="clearfix">
+				<?php
+						if($isNew){
+					?>
+						<div class="newSection">
+							<!-- <img src="<?php echo get_stylesheet_directory_uri();?>/img/new-arrival.svg" alt=""> -->
+							<span class="new-arrival text-uppercase"><?php _e('New', 'classiera'); ?></span>
+						</div>
+					<?php } ?>
 				<div class="premium-img">
-
+					
 					<div class="premium-img-inner">
 					<!-- Get the image -->	
 					<?php
@@ -116,6 +124,35 @@
 						<?php
 						}
 					?>
+
+					<?php
+						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
+						if(!empty($discount_per) && $discount_per > 0)
+						{ ?>
+							<div class="discount_per_parent">
+								<span class="discount_per">
+									<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="width: 45px;">
+									  <defs>
+									    <style>
+									      .cls-1 {
+									        fill: #c60303;
+									      }
+
+									      .cls-2 {
+									        font-size: 32.27797px;
+									        fill: #fff;
+									        font-family: MyriadPro-Regular, Myriad Pro;
+									      }
+									    </style>
+									  </defs>
+									  <title>corner</title>
+									  <polygon class="cls-1" points="0 0 100 100 100 0 0 0"/>
+									  <text class="cls-2 discount-inner" transform="translate(32.05145 19.44904) rotate(45)"><?php esc_html_e('-' . $discount_per .'%', 'classiera' );?></text>
+									</svg>
+								</span>
+							</div>
+							
+					<?php } ?>
 					<!-- / Get the Image -->
 						<!-- Hover content -->
 						<a href="<?php the_permalink(); ?>">
@@ -198,7 +235,6 @@
 												<?php }?>
 											</table>
 										</div>
-
 									</div>
 								</div>
 							</span>
@@ -209,31 +245,6 @@
 							<!-- <a class="pull-right" style="margin-right: 10px;" href="tel:<?php echo esc_html($post_phone); ?>"><?php echo esc_html($post_phone); ?></a> -->
 						</div><!--category-->
 					</div><!--premium-img-inner-->
-
-					<?php
-						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
-						if(!empty($discount_per) && $discount_per > 0)
-						{ ?>
-							<div class="discount_per_parent" style="display: none;">
-								<span class="discount_per">
-									<span class="discount-inner" style="transform: rotate(45deg) !important;"><?php esc_html_e('-' . $discount_per .'%', 'classiera' );?></span>
-								</span>
-							</div>
-							
-						<?php }
-					?>
-					<?php
-					if( $isNew){
-					?>
-					<div class="newSection">
-						<span>
-							This is New section.
-						</span>
-					</div>
-					<?php
-					}
-					?>
-
 				</div><!--premium-img-->
 			</figure>
 		</div><!--row-->
@@ -244,53 +255,64 @@
 	var discountDiv = $(".premium-img .discount_per_parent");
 	for( var i = 0; i < discountDiv.length; i++){
 		var imgDiv = discountDiv.eq(i).parent().find(".premium-img-inner").eq(0);
-		discountDiv.eq(i).css("left", imgDiv.width() - 16);
-		discountDiv.eq(i).css("top", "1px");
+		discountDiv.eq(i).css("left", imgDiv.width());
+		// discountDiv.eq(i).css("top", "1px");
 		discountDiv.eq(i).show();
 	}
 	$(document).ready(function(){
 		
-		anime({
-		  targets: '.discount-inner',
-		  easing: 'easeInOutSine',
-		  duration: 500,
-		  translateX: [
-		    {
-		      value: 3,
-		    },
-		    {
-		      value: -3,
-		    },
-		    {
-		      value: 3,
-		    },
-		    {
-		      value: -3,
-		    },
-		  ],
-		  rotate: [
-		    {
-		      value: 70,
-		    },
-		    {
-		      value: 20,
-		    },
-		    {
-		      value: 70,
-		    },
-		    {
-		      value: 20,
-		    },
-		  ],
-		  duration: 400,
-		  scale: {
-		  	value: 4,
-		  	easing: 'easeInOutQuart',
-		  },
-		  loop: true,
-		  direction: 'alternate',
-		  delay: 2000, 
-		});
+		// anime({
+		//   targets: '.discount-inner',
+		//   easing: 'easeInOutSine',
+		//   duration: 500,
+		//   translateX: [
+		//     {
+		//       value: 3,
+		//     },
+		//     {
+		//       value: -3,
+		//     },
+		//     {
+		//       value: 3,
+		//     },
+		//     {
+		//       value: -3,
+		//     },
+		//   ],
+		//   rotate: [
+		//     {
+		//       value: 70,
+		//     },
+		//     {
+		//       value: 20,
+		//     },
+		//     {
+		//       value: 70,
+		//     },
+		//     {
+		//       value: 20,
+		//     },
+		//   ],
+		//   duration: 400,
+		//   scale: {
+		//   	value: 4,
+		//   	easing: 'easeInOutQuart',
+		//   },
+		//   loop: true,
+		//   direction: 'alternate',
+		//   delay: 2000, 
+		// });
+
+		// anime({
+		//   targets: '.dashed-line',
+		//   rotate: {
+		//     value: 360,
+		//     duration: 1800,
+		//     // easing: 'easeInOutSine'
+		//   },
+		//   loop: true,
+		//   direction: 'alternate',
+		// });
 	});
 
 </script>

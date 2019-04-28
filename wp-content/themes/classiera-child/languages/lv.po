@@ -1,0 +1,2515 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Classiera Child\n"
+"POT-Creation-Date: 2019-04-27 00:12+0100\n"
+"PO-Revision-Date: 2019-04-27 00:38+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==0 || (n%100>=11 && n%100<=19) ? 0 : n"
+"%10==1 && n%100!=11 ? 1 : 2);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: author.php:147 template-follow.php:104 template-follow.php:162
+#: templates/profile/userabout-bak.php:108 templates/profile/userabout.php:142
+msgid "Member Since"
+msgstr ""
+
+#: author.php:151 templates/profile/userabout-bak.php:111
+#: templates/profile/userabout.php:145
+msgid "Offline"
+msgstr ""
+
+#: author.php:153 templates/profile/userabout-bak.php:113
+#: templates/profile/userabout.php:147
+msgid "Online"
+msgstr ""
+
+#: author.php:162
+msgid "Social profile Links"
+msgstr ""
+
+#: author.php:242 template-edit-profile.php:299 template-profile.php:102
+msgid "Contact Details"
+msgstr ""
+
+#: author.php:309 author.php:374
+msgid "Total ads"
+msgstr ""
+
+#: author.php:312 author.php:377
+msgid "Ads Posted"
+msgstr ""
+
+#: author.php:319 author.php:384
+msgid "View As"
+msgstr ""
+
+#: comments.php:20 comments.wang.php:20
+msgid "Please do not load this page directly. Thanks!"
+msgstr ""
+
+#: comments.php:24 comments.wang.php:24
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:61
+msgid "Leave New Comment"
+msgstr "Pievienot jaunu komentāru"
+
+#: comments.php:69 comments.wang.php:73
+msgid "Leave a Comment"
+msgstr "Pievienot Komentāru"
+
+#: comments.php:78 comments.wang.php:74
+msgid "Your email address will not be published. required fields are marked"
+msgstr ""
+"Jūsu e-pasta adrese netiks publicēta. Nepieciešamie lauciņi ir atzīmēti"
+
+#: comments.php:80 comments.wang.php:76
+#: inc/class-wp-bootstrap-comment-walker.php:86
+msgid "Success! Thanks for your comment. We appreciate your response."
+msgstr ""
+
+#: comments.php:83 comments.wang.php:79
+#: inc/class-wp-bootstrap-comment-walker.php:89
+msgid "You might have left one of the fields blank, or be posting too quickly"
+msgstr ""
+
+#: comments.php:93 comments.wang.php:89
+#: inc/class-wp-bootstrap-comment-walker.php:96
+msgid "Logged in as"
+msgstr ""
+
+#: comments.php:97 comments.wang.php:93
+#: inc/class-wp-bootstrap-comment-walker.php:100
+msgid "Log out of this account"
+msgstr "Atslēgties"
+
+#: comments.php:97 comments.wang.php:93
+#: inc/class-wp-bootstrap-comment-walker.php:100
+msgid "Log out &raquo;"
+msgstr "Atslēgties &raquo;"
+
+#: comments.php:101 comments.wang.php:97
+#: inc/class-wp-bootstrap-comment-walker.php:104
+msgid "Name"
+msgstr "Vārds"
+
+#: comments.php:103 comments.wang.php:99
+#: inc/class-wp-bootstrap-comment-walker.php:106
+msgid "Enter name"
+msgstr "Ievadiet vārdu"
+
+#: comments.php:103 comments.wang.php:99
+#: inc/class-wp-bootstrap-comment-walker.php:106
+msgid "name required"
+msgstr "Vārds ir nepieciešams"
+
+#: comments.php:108 comments.wang.php:104
+#: inc/class-wp-bootstrap-comment-walker.php:111
+msgid "Email"
+msgstr "E-pasts"
+
+#: comments.php:110 comments.wang.php:106
+#: inc/class-wp-bootstrap-comment-walker.php:113
+msgid "Enter email"
+msgstr "Ievadiet e-pasta adresi"
+
+#: comments.php:110 comments.wang.php:106
+#: inc/class-wp-bootstrap-comment-walker.php:113
+msgid "email required"
+msgstr "e-pasts nepieciešams"
+
+#: comments.php:116 comments.wang.php:118
+#: inc/class-wp-bootstrap-comment-walker.php:119 single.php:461
+#: templates/nav-bar.php:202 templates/profile/userabout-bak.php:291
+#: templates/profile/userabout.php:230
+msgid "Message"
+msgstr "Ziņojums"
+
+#: comments.php:118 comments.wang.php:120
+#: inc/class-wp-bootstrap-comment-walker.php:121
+msgid "Type your comment here"
+msgstr "Ierakstiet savu komentāru šeit"
+
+#: comments.php:118 comments.wang.php:120
+#: inc/class-wp-bootstrap-comment-walker.php:121
+msgid "Type your comment here..."
+msgstr "Ierakstiet savu komentāru šeit..."
+
+#: comments.php:128 comments.wang.php:127
+#: inc/class-wp-bootstrap-comment-walker.php:130 single.php:497
+msgid "Send"
+msgstr "Nosūtīt"
+
+#: comments.php:128 comments.wang.php:127
+#: inc/class-wp-bootstrap-comment-walker.php:130
+msgid "Post Comment"
+msgstr "Publicēt komentāru"
+
+#: comments.wang.php:111
+msgid "Website"
+msgstr "Mājas lapa"
+
+#: comments.wang.php:113
+msgid "enter website url"
+msgstr "ievadiet mājas lapas URL"
+
+#: footer.php:75
+msgid "Follow Us"
+msgstr "Sekojiet mums"
+
+#: footer.php:143
+msgid "Back to top"
+msgstr "Atpakaļ uz sākumu"
+
+#: footer.php:166
+msgid ""
+"\"HOT-ESCORTS-IRELAND.COM\" contains nudity and ADULT CONTENT. BY ENTERING "
+"THIS SITE YOU CONSENT THAT YOU HAVE REACHED Full 18 years of age at this "
+"point."
+msgstr ""
+
+#: footer.php:169
+msgid "Enter"
+msgstr "Ienākt"
+
+#: footer.php:170
+msgid "Leave"
+msgstr "Atstāt"
+
+#: footer.php:175
+msgid "YOU CAN ACCESS OUR PRIVACY POLICY"
+msgstr ""
+
+#: footer.php:175
+msgid "Here"
+msgstr "šeit"
+
+#: functions.php:57
+msgid "Checkout"
+msgstr "Norēķināšanās"
+
+#: functions.php:266 template-message-bak.php:163 template-message-bak.php:355
+#: template-message.php:170 template-message.php:367
+msgid "Ad Title"
+msgstr ""
+
+#: functions.php:266 template-message-bak.php:247 template-message-temp.php:267
+#: template-message.php:256
+msgid "Type your message.."
+msgstr ""
+
+#: functions.php:266 template-message-bak.php:249 template-message-temp.php:269
+#: template-message.php:258
+msgid "SEND"
+msgstr ""
+
+#: functions.php:277
+msgid "You must need to type some comment..!"
+msgstr ""
+
+#: functions.php:561
+msgid "Advert Title"
+msgstr ""
+
+#: functions.php:562
+msgid "Publisher"
+msgstr ""
+
+#: functions.php:563
+msgid "Display Time"
+msgstr ""
+
+#: functions.php:564 template-user-all-ads.php:290
+msgid "ID"
+msgstr ""
+
+#: functions.php:565 single.php:407
+msgid "Images Verified"
+msgstr ""
+
+#: functions.php:566
+msgid "Age Verified"
+msgstr ""
+
+#: functions.php:567
+msgid "Partner Age Verified"
+msgstr ""
+
+#: header.php:97 templates/nav-bar.php:118
+msgid "Log out"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#. Template Name of the plugin/theme
+#. Template Name of the plugin/theme
+#: header.php:103 header.php:122 templates/nav-bar.php:286
+#: templates/nav-bar.php:409
+msgid "Submit Ad"
+msgstr ""
+
+#: header.php:109 templates/nav-bar.php:115
+msgid "My Account"
+msgstr "Mans konts"
+
+#: header.php:116 template-login.php:91 templates/nav-bar.php:122
+msgid "Login"
+msgstr ""
+
+#: header.php:128 templates/nav-bar.php:125
+msgid "Get Registered"
+msgstr ""
+
+#: inc/class-wp-bootstrap-comment-walker.php:59
+msgid "Said"
+msgstr ""
+
+#: inc/class-wp-bootstrap-comment-walker.php:60
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/class-wp-bootstrap-comment-walker.php:64
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/class-wp-bootstrap-comment-walker.php:72
+msgid "Reply to comment"
+msgstr ""
+
+#: inc/class-wp-bootstrap-comment-walker.php:80
+msgid "close reply"
+msgstr ""
+
+#: inc/woo.php:32
+msgid "Feature this ad only in "
+msgstr ""
+
+#: inc/woo.php:194 inc/woo.php:230
+msgid "Your post ID"
+msgstr ""
+
+#: inc/woo.php:198 inc/woo.php:234
+msgid "Post Title"
+msgstr ""
+
+#: inc/woo.php:202
+msgid "You are going to Bump this Ad."
+msgstr ""
+
+#: inc/woo.php:203 inc/woo.php:239 template-user-plans.php:102
+#: template-user-plans.php:234
+msgid "Days"
+msgstr ""
+
+#: inc/woo.php:208 template-user-plans.php:275
+msgid "Plan Name"
+msgstr ""
+
+#: inc/woo.php:212 template-user-plans.php:64
+msgid "Featured Ads"
+msgstr ""
+
+#: inc/woo.php:216 template-user-plans.php:65 template-user-plans.php:279
+msgid "Regular Ads"
+msgstr ""
+
+#: inc/woo.php:220
+msgid "Ads will be live for"
+msgstr ""
+
+#: inc/woo.php:221
+msgid "Only In"
+msgstr ""
+
+#: inc/woo.php:223
+msgid "Please dont update Quantity from here."
+msgstr ""
+
+#: inc/woo.php:238
+msgid "Your Post will be featured"
+msgstr ""
+
+#: pagination.php:10
+msgid "Previous"
+msgstr ""
+
+#: pagination.php:11
+msgid "Next"
+msgstr ""
+
+#: pagination.php:57
+msgid "previous"
+msgstr ""
+
+#: pagination.php:72
+msgid "next"
+msgstr ""
+
+#: single.php:100
+msgid "Not Human"
+msgstr ""
+
+#: single.php:340
+msgid "'s Age"
+msgstr ""
+
+#: single.php:342
+msgid "Age "
+msgstr ""
+
+#: single.php:359
+msgid "'s Age "
+msgstr ""
+
+#: single.php:374
+msgid "Type:"
+msgstr ""
+
+#: single.php:378 template-edit-post.php:862 template-edit-profile.php:308
+#: template-re-activate.php:905 template-submit-ads.php:1068
+msgid "Phone Number"
+msgstr ""
+
+#: single.php:388
+msgid "Alternative Number"
+msgstr ""
+
+#: single.php:398
+msgid "Location "
+msgstr ""
+
+#: single.php:412
+msgid "Images Not Verified"
+msgstr ""
+
+#: single.php:428
+msgid "Send PM"
+msgstr ""
+
+#: single.php:430
+msgid "Views"
+msgstr ""
+
+#: single.php:432
+msgid "Login to Send PM"
+msgstr ""
+
+#: single.php:453
+msgid "Private Message to"
+msgstr ""
+
+#: single.php:457
+msgid "Subject"
+msgstr ""
+
+#: single.php:461
+msgid "You need to enter some information"
+msgstr ""
+
+#: single.php:482
+msgid "Please input the result of "
+msgstr ""
+
+#: single.php:488
+msgid "Your answer"
+msgstr ""
+
+#: single.php:500
+msgid "Close"
+msgstr ""
+
+#: single.php:584 template-edit-post.php:775 template-edit-profile.php:283
+#: template-profile.php:89 template-re-activate.php:811
+#: template-submit-ads.php:978 templates/nav-bar.php:149
+#: templates/profile/userabout-bak.php:132
+#: templates/profile/userabout-bak.php:237 templates/profile/userabout.php:177
+msgid "About Me"
+msgstr ""
+
+#: single.php:596
+msgid "Services Provided"
+msgstr ""
+
+#: single.php:615 template-edit-post.php:783 template-re-activate.php:819
+#: template-submit-ads.php:986
+msgid "Prices"
+msgstr ""
+
+#: single.php:623 template-edit-post.php:1875 template-re-activate.php:1869
+#: template-submit-ads.php:1897
+msgid "15 Minutes"
+msgstr ""
+
+#: single.php:637 template-edit-post.php:1890 template-re-activate.php:1884
+#: template-submit-ads.php:1909
+msgid "30 Minutes"
+msgstr ""
+
+#: single.php:651 template-edit-post.php:1906 template-re-activate.php:1900
+#: template-submit-ads.php:1921
+msgid "45 Minutes"
+msgstr ""
+
+#: single.php:665 templates/classiera-loops/loop-canary.php:232
+msgid "1 Hour"
+msgstr ""
+
+#: single.php:679 template-edit-post.php:1956 template-re-activate.php:1950
+#: template-submit-ads.php:1960 templates/classiera-loops/loop-canary.php:246
+msgid "Business Date"
+msgstr ""
+
+#: single.php:693 template-edit-post.php:1940 template-re-activate.php:1934
+#: template-submit-ads.php:1949 templates/classiera-loops/loop-canary.php:239
+msgid "Full Day"
+msgstr ""
+
+#: single.php:708 templates/classiera-loops/loop-canary.php:253
+msgid "No prices provided"
+msgstr ""
+
+#: single.php:717
+msgid "Spoken Languages"
+msgstr ""
+
+#: single.php:724 single.php:736
+msgid "'s Nationality"
+msgstr ""
+
+#: single.php:726 template-edit-post.php:869 template-edit-post.php:1161
+#: template-re-activate.php:912 template-re-activate.php:1172
+#: template-submit-ads.php:1072 template-submit-ads.php:1329
+#: templates/searchbar/searchstyle2.php:377
+msgid "Nationality"
+msgstr ""
+
+#: single.php:745
+msgid "Languages"
+msgstr ""
+
+#: single.php:746
+msgid "Native"
+msgstr ""
+
+#: single.php:776 template-edit-post.php:776 template-re-activate.php:812
+#: template-submit-ads.php:979
+msgid "Appearance"
+msgstr ""
+
+#: single.php:791 single.php:932 single.php:1078 template-edit-post.php:801
+#: template-edit-post.php:1144 template-re-activate.php:840
+#: template-re-activate.php:1156 template-submit-ads.php:1015
+#: template-submit-ads.php:1316 templates/searchbar/searchstyle2.php:396
+msgid "Gender"
+msgstr ""
+
+#: single.php:798 single.php:940 single.php:1085 template-edit-post.php:812
+#: template-edit-post.php:1155 template-re-activate.php:855
+#: template-re-activate.php:1167 template-submit-ads.php:1025
+#: template-submit-ads.php:1325 template-submit-ads.php:1326
+msgid "Age"
+msgstr ""
+
+#: single.php:799 single.php:941 single.php:1086
+msgid "years"
+msgstr ""
+
+#: single.php:807 single.php:949 single.php:1094
+msgid "Hair Colour"
+msgstr ""
+
+#: single.php:815 single.php:957 single.php:1102
+msgid "Eyes Colour"
+msgstr ""
+
+#: single.php:823 single.php:965 single.php:1110 template-edit-post.php:946
+#: template-edit-post.php:1192 template-re-activate.php:981
+#: template-re-activate.php:1201 template-submit-ads.php:1141
+#: template-submit-ads.php:1365 templates/searchbar/searchstyle2.php:451
+#: templates/searchbar/searchstyle2.php:455
+msgid "Ethnicity"
+msgstr ""
+
+#: single.php:831 single.php:973 single.php:1118 template-edit-post.php:959
+#: template-edit-post.php:1204 template-re-activate.php:993
+#: template-re-activate.php:1213 template-submit-ads.php:1153
+#: template-submit-ads.php:1377
+msgid "Height"
+msgstr ""
+
+#: single.php:833 single.php:975 single.php:1120 template-edit-post.php:968
+#: template-edit-post.php:994 template-edit-post.php:1213
+#: template-edit-post.php:1242 template-re-activate.php:1000
+#: template-re-activate.php:1024 template-re-activate.php:1220
+#: template-re-activate.php:1246 template-submit-ads.php:1161
+#: template-submit-ads.php:1187 template-submit-ads.php:1385
+#: template-submit-ads.php:1414
+msgid " cm"
+msgstr ""
+
+#: single.php:840 single.php:982 single.php:1127 template-edit-post.php:974
+#: template-edit-post.php:1222 template-re-activate.php:1004
+#: template-re-activate.php:1226 template-submit-ads.php:1167
+#: template-submit-ads.php:1394
+msgid "Weight"
+msgstr ""
+
+#: single.php:844 single.php:986 single.php:1131
+msgid "kg"
+msgstr ""
+
+#: single.php:844 single.php:986 single.php:1131 template-edit-post.php:981
+#: template-edit-post.php:1229 template-re-activate.php:1011
+#: template-re-activate.php:1233 template-submit-ads.php:1174
+#: template-submit-ads.php:1401
+msgid "lbs"
+msgstr ""
+
+#: single.php:855 single.php:997 single.php:1142 template-edit-post.php:987
+#: template-edit-post.php:1235 template-re-activate.php:1017
+#: template-re-activate.php:1239 template-submit-ads.php:1180
+#: template-submit-ads.php:1407
+msgid "Penis Size"
+msgstr ""
+
+#: single.php:856 single.php:876 single.php:887 single.php:998 single.php:1018
+#: single.php:1029 single.php:1143 single.php:1163 single.php:1174
+#: template-edit-post.php:1054 template-edit-post.php:1067
+#: template-edit-post.php:1298 template-edit-post.php:1311
+#: template-re-activate.php:1074 template-re-activate.php:1085
+#: template-re-activate.php:1295 template-re-activate.php:1308
+#: template-submit-ads.php:1237 template-submit-ads.php:1248
+#: template-submit-ads.php:1461 template-submit-ads.php:1474
+msgid "cm"
+msgstr ""
+
+#: single.php:863 single.php:1004 single.php:1150 template-edit-post.php:1001
+#: template-edit-post.php:1249 template-re-activate.php:1031
+#: template-submit-ads.php:1194 template-submit-ads.php:1421
+msgid "Breast Size"
+msgstr ""
+
+#: single.php:872 single.php:1014 single.php:1159 template-edit-post.php:1047
+#: template-edit-post.php:1291 template-re-activate.php:1067
+#: template-re-activate.php:1288 template-submit-ads.php:1230
+#: template-submit-ads.php:1454
+msgid "Waist Size"
+msgstr ""
+
+#: single.php:883 single.php:1025 single.php:1170 template-edit-post.php:1060
+#: template-edit-post.php:1304 template-re-activate.php:1078
+#: template-re-activate.php:1301 template-submit-ads.php:1241
+#: template-submit-ads.php:1467
+msgid "Hips Size"
+msgstr ""
+
+#: single.php:895 single.php:1037 single.php:1182 template-edit-post.php:1073
+#: template-edit-post.php:1317 template-re-activate.php:1091
+#: template-re-activate.php:1312 template-submit-ads.php:1254
+#: template-submit-ads.php:1480 templates/searchbar/searchstyle2.php:523
+#: templates/searchbar/searchstyle2.php:527
+msgid "Dress Size"
+msgstr ""
+
+#: single.php:902 single.php:1044 single.php:1189
+#: templates/searchbar/searchstyle2.php:542
+#: templates/searchbar/searchstyle2.php:546
+msgid "Shoe Size"
+msgstr ""
+
+#: single.php:903 single.php:1045 single.php:1190
+msgid "UK Size"
+msgstr ""
+
+#: single.php:911 single.php:1053 single.php:1198 template-edit-post.php:1099
+#: template-edit-post.php:1341 template-re-activate.php:1115
+#: template-re-activate.php:1330 template-submit-ads.php:1278
+#: template-submit-ads.php:1504 templates/searchbar/searchstyle2.php:561
+#: templates/searchbar/searchstyle2.php:565
+msgid "Pubic Area"
+msgstr ""
+
+#: single.php:919 single.php:1061 single.php:1206
+#: templates/searchbar/searchstyle2.php:580
+msgid "Smoker"
+msgstr ""
+
+#: single.php:1018
+msgid "Inch"
+msgstr ""
+
+#: single.php:1073 template-edit-post.php:918 template-re-activate.php:954
+#: template-submit-ads.php:1115
+msgid "Physical Appearance"
+msgstr "Izskats"
+
+#: single.php:1219 template-edit-post.php:778 template-re-activate.php:814
+#: template-submit-ads.php:981
+msgid "Communication"
+msgstr ""
+
+#: single.php:1225
+msgid "Private Numbers"
+msgstr "Privātie numuri"
+
+#: single.php:1233
+msgid "SMS Messages"
+msgstr "Īsziņas"
+
+#: single.php:1241
+msgid "Private Messages"
+msgstr ""
+
+#: single.php:1254 template-edit-post.php:779 template-re-activate.php:815
+#: template-submit-ads.php:982
+msgid "Facilities"
+msgstr ""
+
+#: single.php:1260 template-edit-post.php:1488 template-re-activate.php:1477
+#: template-submit-ads.php:1642 templates/searchbar/searchstyle2.php:594
+#: templates/searchbar/searchstyle2.php:598
+msgid "Disabled Friendly"
+msgstr ""
+
+#: single.php:1268 template-edit-post.php:1497 template-re-activate.php:1486
+#: template-submit-ads.php:1649 templates/searchbar/searchstyle2.php:608
+#: templates/searchbar/searchstyle2.php:612
+msgid "Drinks Supplied"
+msgstr ""
+
+#: single.php:1276 template-edit-post.php:1507 template-re-activate.php:1496
+#: template-submit-ads.php:1658
+msgid "Showers Available"
+msgstr "Duša pieejama"
+
+#: single.php:1284 templates/searchbar/searchstyle2.php:636
+#: templates/searchbar/searchstyle2.php:640
+msgid "Available to Travel"
+msgstr ""
+
+#: single.php:1297
+msgid "Comments"
+msgstr "Komentāri"
+
+#. Template Name of the plugin/theme
+#: template-confirm-images.php:99 templates/nav-bar.php:248
+#: templates/profile/userabout.php:276
+msgid "Confirm Images"
+msgstr "Apstiprināt attēlus"
+
+#: template-confirm-images.php:103
+msgid ""
+"In order to confirm your images, please upload image with yourself holding "
+"paper in front of you with the current date and \"Our Website Name\""
+msgstr ""
+
+#: template-confirm-images.php:104
+msgid ""
+"You have to be clearly visible in the picture, no blur filter is allowed"
+msgstr ""
+
+#: template-confirm-images.php:138
+msgid "Select Image"
+msgstr ""
+
+#: template-confirm-images.php:144
+msgid "Submit"
+msgstr "Nosūtīt"
+
+#: template-edit-post.php:664 template-re-activate.php:705
+#: template-submit-ads.php:107 template-submit-ads.php:831
+msgid "Please enter a title."
+msgstr ""
+
+#: template-edit-post.php:668 template-re-activate.php:709
+#: template-submit-ads.php:835
+msgid "Please select a category."
+msgstr ""
+
+#: template-edit-post.php:706
+msgid "Edit Advert"
+msgstr ""
+
+#: template-edit-post.php:763 template-re-activate.php:799
+#: template-submit-ads.php:918
+msgid "Hello."
+msgstr ""
+
+#: template-edit-post.php:763 template-re-activate.php:799
+#: template-submit-ads.php:918
+msgid ""
+"You Ads Posts limit are exceeded, Please Purchase a Plan for posting More "
+"Ads."
+msgstr ""
+
+#: template-edit-post.php:763 template-re-activate.php:799
+#: template-submit-ads.php:918
+msgid "Purchase Plan"
+msgstr ""
+
+#: template-edit-post.php:777 template-re-activate.php:813
+#: template-submit-ads.php:980
+msgid "Partner"
+msgstr "Partneris"
+
+#: template-edit-post.php:780 template-edit-post.php:1537
+#: template-re-activate.php:816 template-re-activate.php:1526
+#: template-submit-ads.php:983 template-submit-ads.php:1684
+#: templates/classiera-adv-search.php:171
+msgid "Location"
+msgstr "Atrašanās vieta"
+
+#: template-edit-post.php:781 template-re-activate.php:817
+#: template-submit-ads.php:984
+msgid "Image"
+msgstr "Attēls"
+
+#: template-edit-post.php:782 template-re-activate.php:818
+#: template-submit-ads.php:985
+msgid "Gallery"
+msgstr "Galerija"
+
+#: template-edit-post.php:784 template-re-activate.php:820
+#: template-submit-ads.php:987
+msgid "Publish"
+msgstr "Publicēt"
+
+#: template-edit-post.php:792 template-re-activate.php:828
+#: template-submit-ads.php:1001
+msgid "Personal Information"
+msgstr "Personiskā informācija"
+
+#: template-edit-post.php:797 template-edit-post.php:1138
+#: template-re-activate.php:835 template-re-activate.php:1150
+#: template-submit-ads.php:1007 template-submit-ads.php:1312
+#: template-submit-ads.php:1313
+msgid "Nickname"
+msgstr "Segvārds"
+
+#: template-edit-post.php:798 template-re-activate.php:836
+msgid "Your Nickname"
+msgstr "Jūsu segvārds"
+
+#: template-edit-post.php:813 template-edit-post.php:1156
+#: template-re-activate.php:856 template-re-activate.php:1168
+#: template-submit-ads.php:1026
+msgid "Enter Your Age"
+msgstr "Ievadiet savu vecumu"
+
+#: template-edit-post.php:818 template-re-activate.php:861
+#: template-submit-ads.php:1031
+msgid "Category"
+msgstr "Kategorija"
+
+#: template-edit-post.php:863 template-re-activate.php:906
+#: template-submit-ads.php:1069
+msgid "Enter your Mobile Number"
+msgstr "Ievadiet savu mobilā tālruņa numuru"
+
+#: template-edit-post.php:864 template-re-activate.php:907
+#: template-submit-ads.php:1070
+msgid "Alternative Phone Number"
+msgstr "Alternatīvais tālruņa numurs"
+
+#: template-edit-post.php:865 template-re-activate.php:908
+#: template-submit-ads.php:1071
+msgid "Enter your Second Mobile Number"
+msgstr "Ievadiet otro mobilā tālruņa numuru"
+
+#: template-edit-post.php:887 template-re-activate.php:932
+#: template-submit-ads.php:1088
+msgid "About Myself"
+msgstr "Par sevi"
+
+#: template-edit-post.php:888 template-re-activate.php:933
+#: template-submit-ads.php:1089
+msgid "Write description"
+msgstr "Uzrakstiet Aprakstu"
+
+#: template-edit-post.php:890 template-re-activate.php:935
+#: template-submit-ads.php:1091
+msgid "enter keywords for better search..!"
+msgstr "ievadīt atslēgvārdus, lai labākai meklēšanai..!"
+
+#: template-edit-post.php:895 template-re-activate.php:940
+#: template-submit-ads.php:1096
+msgid "Select services you provide"
+msgstr "Atlasiet pakalpojumus, ko sniedzat"
+
+#: template-edit-post.php:922 template-edit-post.php:1168
+#: template-re-activate.php:957 template-re-activate.php:1179
+#: template-submit-ads.php:1118 template-submit-ads.php:1341
+msgid "Hair Color"
+msgstr "Matu krāsa"
+
+#: template-edit-post.php:934 template-edit-post.php:1180
+#: template-re-activate.php:969 template-re-activate.php:1190
+#: template-submit-ads.php:1129 template-submit-ads.php:1353
+msgid "Eyes Color"
+msgstr "Acu krāsa"
+
+#: template-edit-post.php:981 template-edit-post.php:1229
+#: template-re-activate.php:1011 template-re-activate.php:1233
+#: template-submit-ads.php:1174 template-submit-ads.php:1401
+msgid " kg"
+msgstr "Kg"
+
+#: template-edit-post.php:1006 template-edit-post.php:1254
+#: template-re-activate.php:1255 template-submit-ads.php:1196
+#: template-submit-ads.php:1423
+msgid "Type"
+msgstr "Tips"
+
+#: template-edit-post.php:1017 template-edit-post.php:1267
+#: template-re-activate.php:1266 template-submit-ads.php:1206
+#: template-submit-ads.php:1433
+msgid "Cup"
+msgstr ""
+
+#: template-edit-post.php:1034 template-edit-post.php:1280
+#: template-re-activate.php:1277 template-submit-ads.php:1216
+#: template-submit-ads.php:1443
+msgid "Size"
+msgstr "Izmērs"
+
+#: template-edit-post.php:1087 template-edit-post.php:1329
+#: template-re-activate.php:1103 template-re-activate.php:1321
+#: template-submit-ads.php:1266 template-submit-ads.php:1492
+msgid "Shoe Size (UK Size)"
+msgstr "Apavu izmērs (Anglijas Izmērs)"
+
+#: template-edit-post.php:1113 template-edit-post.php:1351
+#: template-re-activate.php:1127 template-re-activate.php:1339
+msgid "Are you a smoker?"
+msgstr "Vai esat smēķētājs?"
+
+#: template-edit-post.php:1134 template-re-activate.php:1146
+#: template-submit-ads.php:1309
+msgid "Partner's Appearance"
+msgstr "Partnera izskats"
+
+#: template-edit-post.php:1140 template-re-activate.php:1152
+#: template-submit-ads.php:1008
+msgid "Enter Your Nickname"
+msgstr ""
+
+#: template-edit-post.php:1368 template-re-activate.php:1355
+#: template-submit-ads.php:1534
+msgid "Language and Communication"
+msgstr ""
+
+#: template-edit-post.php:1371 template-re-activate.php:1358
+#: template-re-activate.php:1364 template-submit-ads.php:1538
+#: templates/searchbar/searchstyle2.php:358
+msgid "Native Language"
+msgstr ""
+
+#: template-edit-post.php:1387 template-edit-post.php:1419
+#: template-re-activate.php:1376 template-re-activate.php:1408
+#: template-submit-ads.php:1553 template-submit-ads.php:1581
+msgid "Additional Language"
+msgstr ""
+
+#: template-edit-post.php:1403 template-edit-post.php:1434
+#: template-re-activate.php:1392 template-re-activate.php:1423
+#: template-submit-ads.php:1567 template-submit-ads.php:1595
+msgid "Language Level"
+msgstr ""
+
+#: template-edit-post.php:1451 template-re-activate.php:1440
+#: template-submit-ads.php:1612
+msgid "Answer Private Numbers"
+msgstr ""
+
+#: template-edit-post.php:1456 template-edit-post.php:1465
+#: template-edit-post.php:1474 template-edit-post.php:1493
+#: template-edit-post.php:1502 template-edit-post.php:1512
+#: template-re-activate.php:1445 template-re-activate.php:1454
+#: template-re-activate.php:1463 template-re-activate.php:1482
+#: template-re-activate.php:1491 template-re-activate.php:1501
+#: template-submit-ads.php:1615 template-submit-ads.php:1622
+#: template-submit-ads.php:1628 template-submit-ads.php:1645
+#: template-submit-ads.php:1652 template-submit-ads.php:1661
+#: templates/searchbar/searchstyle2.php:585
+#: templates/searchbar/searchstyle2.php:599
+#: templates/searchbar/searchstyle2.php:613
+#: templates/searchbar/searchstyle2.php:627
+#: templates/searchbar/searchstyle2.php:641
+msgid "Yes"
+msgstr ""
+
+#: template-edit-post.php:1457 template-edit-post.php:1466
+#: template-edit-post.php:1475 template-edit-post.php:1494
+#: template-edit-post.php:1503 template-edit-post.php:1513
+#: template-re-activate.php:1446 template-re-activate.php:1455
+#: template-re-activate.php:1464 template-re-activate.php:1483
+#: template-re-activate.php:1492 template-re-activate.php:1502
+#: template-submit-ads.php:1616 template-submit-ads.php:1623
+#: template-submit-ads.php:1629 template-submit-ads.php:1646
+#: template-submit-ads.php:1653 template-submit-ads.php:1662
+#: templates/searchbar/searchstyle2.php:586
+#: templates/searchbar/searchstyle2.php:600
+#: templates/searchbar/searchstyle2.php:614
+#: templates/searchbar/searchstyle2.php:628
+#: templates/searchbar/searchstyle2.php:642
+msgid "No"
+msgstr ""
+
+#: template-edit-post.php:1460 template-re-activate.php:1449
+#: template-submit-ads.php:1619
+msgid "Reply to SMS"
+msgstr ""
+
+#: template-edit-post.php:1473 template-re-activate.php:1462
+#: template-submit-ads.php:1627
+msgid "Respond to Private Messages"
+msgstr ""
+
+#: template-edit-post.php:1485 template-re-activate.php:1474
+#: template-submit-ads.php:1639
+msgid "Facilities Available"
+msgstr ""
+
+#: template-edit-post.php:1516 template-re-activate.php:1505
+#: template-submit-ads.php:1665
+msgid "Able to Travel"
+msgstr ""
+
+#: template-edit-post.php:1557 template-re-activate.php:1546
+#: template-submit-ads.php:1704
+msgid "Country"
+msgstr ""
+
+#: template-edit-post.php:1595 template-re-activate.php:1584
+#: template-submit-ads.php:1718
+msgid "County"
+msgstr ""
+
+#: template-edit-post.php:1632 template-re-activate.php:1621
+#: template-submit-ads.php:1729
+msgid "City"
+msgstr ""
+
+#: template-edit-post.php:1649 template-re-activate.php:1638
+#: template-submit-ads.php:1738
+msgid "Address"
+msgstr ""
+
+#: template-edit-post.php:1651 template-re-activate.php:1640
+#: template-submit-ads.php:1740
+msgid "Address or City"
+msgstr ""
+
+#: template-edit-post.php:1665 template-re-activate.php:1654
+#: template-submit-ads.php:1754
+msgid "Advert Image"
+msgstr ""
+
+#: template-edit-post.php:1714 template-edit-post.php:1735
+#: template-re-activate.php:1703 template-re-activate.php:1724
+#: template-submit-ads.php:1796
+msgid "Standard Size"
+msgstr ""
+
+#: template-edit-post.php:1751 template-re-activate.php:1740
+#: template-submit-ads.php:1806
+msgid "Double Size"
+msgstr ""
+
+#: template-edit-post.php:1773 template-re-activate.php:1762
+#: template-submit-ads.php:1824
+msgid "Gallery Images"
+msgstr ""
+
+#: template-edit-post.php:1779 template-re-activate.php:1770
+#: template-submit-ads.php:1830
+msgid "Select files to Upload"
+msgstr ""
+
+#: template-edit-post.php:1780 template-re-activate.php:1771
+#: template-submit-ads.php:1831
+msgid "You can add multiple images. Ads With photo get 50% more Responses"
+msgstr ""
+
+#: template-edit-post.php:1781 template-re-activate.php:1772
+#: template-submit-ads.php:1832
+msgid "You can upload maximum of"
+msgstr ""
+
+#: template-edit-post.php:1781 template-re-activate.php:1772
+#: template-submit-ads.php:1832
+msgid "Images."
+msgstr ""
+
+#: template-edit-post.php:1843 template-edit-post.php:1848
+#: template-re-activate.php:1834 template-re-activate.php:1839
+#: template-submit-ads.php:1863 template-submit-ads.php:1865
+msgid "Put here iframe or video url."
+msgstr ""
+
+#: template-edit-post.php:1861 template-re-activate.php:1855
+#: template-submit-ads.php:1880
+msgid "Pricing Information"
+msgstr ""
+
+#: template-edit-post.php:1868 template-re-activate.php:1862
+#: template-submit-ads.php:1887 template-submit-ads.php:1890
+msgid "I do not wish to disclose price information!"
+msgstr "Es nevēlos "
+
+#: template-edit-post.php:1926 template-re-activate.php:1920
+#: template-submit-ads.php:1938
+msgid "1st Hour"
+msgstr ""
+
+#: template-edit-post.php:1979 template-submit-ads.php:1981
+msgid "Finalize Advert"
+msgstr ""
+
+#: template-edit-post.php:1982
+msgid "Update Advert"
+msgstr ""
+
+#: template-edit-profile.php:32 template-edit-profile.php:119
+msgid "Your profile updated successfully."
+msgstr ""
+
+#: template-edit-profile.php:106
+msgid "Password must be 5 to 25 characters in length."
+msgstr ""
+
+#: template-edit-profile.php:114 template-register.php:102
+#: template-register.php:211
+msgid "Password Mismatch"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: template-edit-profile.php:203 templates/nav-bar.php:258
+#: templates/profile/userabout-bak.php:334 templates/profile/userabout.php:286
+msgid "Profile Settings"
+msgstr ""
+
+#: template-edit-profile.php:230
+msgid "Update Your Profile Picture"
+msgstr ""
+
+#: template-edit-profile.php:254 template-edit-profile.php:255
+msgid "Upload photo"
+msgstr ""
+
+#: template-edit-profile.php:263
+msgid "Verify your account"
+msgstr ""
+
+#: template-edit-profile.php:269
+msgid "First Name"
+msgstr ""
+
+#: template-edit-profile.php:271
+msgid "Update first Name.."
+msgstr ""
+
+#: template-edit-profile.php:276
+msgid "Last Name"
+msgstr ""
+
+#: template-edit-profile.php:278
+msgid "update last Name"
+msgstr ""
+
+#: template-edit-profile.php:285
+msgid "enter your short info."
+msgstr ""
+
+#: template-edit-profile.php:310
+msgid "Your Phone No"
+msgstr ""
+
+#: template-edit-profile.php:315
+msgid "Mobile Number"
+msgstr ""
+
+#: template-edit-profile.php:317
+msgid "update your mobile number"
+msgstr ""
+
+#: template-edit-profile.php:321
+msgid "Your Email"
+msgstr ""
+
+#: template-edit-profile.php:323
+msgid "enter your email address"
+msgstr ""
+
+#: template-edit-profile.php:328
+msgid "Your Country"
+msgstr ""
+
+#: template-edit-profile.php:330
+msgid "enter your country"
+msgstr ""
+
+#: template-edit-profile.php:334
+msgid "Your County"
+msgstr ""
+
+#: template-edit-profile.php:336
+msgid "enter your County"
+msgstr ""
+
+#: template-edit-profile.php:340
+msgid "Your City"
+msgstr ""
+
+#: template-edit-profile.php:342
+msgid "enter your City"
+msgstr ""
+
+#: template-edit-profile.php:354
+msgid "Update your Password"
+msgstr ""
+
+#: template-edit-profile.php:355
+msgid ""
+"If you would like to change your current password, please fill in all "
+"fields, otherwise leave blank."
+msgstr ""
+
+#: template-edit-profile.php:365
+msgid "Enter Current Password"
+msgstr ""
+
+#: template-edit-profile.php:368
+msgid "Enter your current password"
+msgstr ""
+
+#: template-edit-profile.php:373
+msgid "Enter New Password"
+msgstr ""
+
+#: template-edit-profile.php:376 template-login.php:161
+msgid "Enter Password"
+msgstr ""
+
+#: template-edit-profile.php:376 template-login.php:161
+msgid "Password required"
+msgstr ""
+
+#: template-edit-profile.php:378 template-register.php:396
+msgid "Minimum of 5 characters"
+msgstr ""
+
+#: template-edit-profile.php:384 template-edit-profile.php:387
+msgid "Re-enter New Password"
+msgstr ""
+
+#: template-edit-profile.php:387 template-register.php:409
+msgid "Whoops, these dont match"
+msgstr ""
+
+#: template-edit-profile.php:394
+msgid "Update Now"
+msgstr ""
+
+#: template-edit-profile.php:430
+msgid "Verify Your Account Now"
+msgstr ""
+
+#: template-edit-profile.php:433
+msgid "Following these Steps"
+msgstr ""
+
+#: template-edit-profile.php:440
+msgid "example@email.com"
+msgstr ""
+
+#: template-edit-profile.php:446
+msgid "Get verification Code"
+msgstr ""
+
+#: template-edit-profile.php:453
+msgid "Check your email inbox and paste code below"
+msgstr ""
+
+#: template-edit-profile.php:456
+msgid "Enter your verified code"
+msgstr ""
+
+#: template-edit-profile.php:462
+msgid "Verify Now"
+msgstr ""
+
+#: template-favorite.php:58
+msgid "Favorite Adverts"
+msgstr ""
+
+#: template-favorite.php:143 template-profile.php:218
+msgid "You do not have any favorite ad yet!"
+msgstr ""
+
+#: template-follow.php:63
+msgid "Following / Followers"
+msgstr ""
+
+#: template-follow.php:70
+msgid "Followers"
+msgstr ""
+
+#: template-follow.php:108
+msgid "View Profile"
+msgstr ""
+
+#: template-follow.php:119
+msgid "You Do Not Have Any Followers at The Moment..."
+msgstr ""
+
+#: template-follow.php:130
+msgid "Following"
+msgstr ""
+
+#: template-follow.php:178
+msgid "You Are Not Following Anyone at The Moment..."
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: template-get-credits.php:63 templates/nav-bar.php:237
+#: templates/profile/userabout-bak.php:325 templates/profile/userabout.php:265
+msgid "Get Credits"
+msgstr ""
+
+#: template-get-credits.php:89
+msgid "Enter amount of credits you wish to purchase"
+msgstr ""
+
+#: template-get-credits.php:90
+msgid "Purchase"
+msgstr ""
+
+#: template-get-credits.php:109
+msgid "Buy Now"
+msgstr ""
+
+#: template-login.php:45 template-login.php:59
+msgid "Invalid username or password. Please try again!"
+msgstr ""
+
+#: template-login.php:52 template-register.php:169
+msgid "Please complete reCAPTCHA."
+msgstr ""
+
+#: template-login.php:96
+msgid "Login or Signup With Social Media"
+msgstr ""
+
+#: template-login.php:101
+msgid "Login via Facebook"
+msgstr ""
+
+#: template-login.php:103
+msgid "Login via Twitter"
+msgstr ""
+
+#: template-login.php:105
+msgid "Login via Google"
+msgstr ""
+
+#: template-login.php:119 template-register.php:341
+msgid "OR"
+msgstr ""
+
+#: template-login.php:142
+msgid "UserName"
+msgstr ""
+
+#: template-login.php:147
+msgid "Your Username"
+msgstr ""
+
+#: template-login.php:147
+msgid "UserName is required"
+msgstr ""
+
+#: template-login.php:156 template-register.php:390
+msgid "Password"
+msgstr ""
+
+#: template-login.php:171
+msgid "Remember me"
+msgstr ""
+
+#: template-login.php:174
+msgid "Forget Password?"
+msgstr ""
+
+#: template-login.php:192
+msgid "LOGIN NOW"
+msgstr ""
+
+#: template-login.php:195
+msgid "If you don’t have account?"
+msgstr ""
+
+#: template-login.php:196
+msgid "Create an account."
+msgstr ""
+
+#: template-message-bak.php:52 template-message-temp.php:51
+#: template-message.php:51 templates/profile/userabout-bak.php:177
+msgid "Messages"
+msgstr ""
+
+#: template-message-bak.php:58 template-message-temp.php:56
+#: template-message.php:57
+msgid "Received"
+msgstr ""
+
+#: template-message-bak.php:63 template-message-temp.php:61
+#: template-message.php:62
+msgid "Sent"
+msgstr ""
+
+#: template-message-bak.php:262 template-message.php:271
+msgid "You have not sent any offer..!"
+msgstr ""
+
+#: template-message-bak.php:391 template-message.php:407
+msgid "You have not received any offer yet..!"
+msgstr ""
+
+#: template-message-temp.php:282
+msgid "You have No Messages yet...!"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: template-profile.php:143
+msgid "Favorite Ads"
+msgstr ""
+
+#: template-re-activate.php:742
+msgid "Re-activate Advert"
+msgstr ""
+
+#: template-re-activate.php:1253
+msgid "Breast Type"
+msgstr ""
+
+#: template-re-activate.php:1987
+msgid "Advert Length"
+msgstr ""
+
+#: template-re-activate.php:1989 template-submit-ads.php:2000
+msgid "1 Day"
+msgstr ""
+
+#: template-re-activate.php:1990 template-submit-ads.php:2001
+msgid "3 Days"
+msgstr ""
+
+#: template-re-activate.php:1991 template-submit-ads.php:2002
+msgid "7 Days"
+msgstr ""
+
+#: template-re-activate.php:1992 template-submit-ads.php:2003
+msgid "30 Days"
+msgstr ""
+
+#: template-re-activate.php:2078
+msgid "Re Activate Advert"
+msgstr ""
+
+#: template-re-activate.php:2087
+msgid "Confirm Re-activating Current Advert"
+msgstr ""
+
+#: template-re-activate.php:2090
+msgid "Re-activating current advert for "
+msgstr ""
+
+#: template-register.php:36
+msgid "Registration successful."
+msgstr ""
+
+#: template-register.php:72 template-register.php:181
+msgid "User name should not be empty."
+msgstr ""
+
+#: template-register.php:83 template-register.php:89 template-register.php:192
+#: template-register.php:198
+msgid "Please enter a valid email."
+msgstr ""
+
+#: template-register.php:97 template-register.php:206
+msgid "Password must be 5 to 15 characters in length."
+msgstr ""
+
+#: template-register.php:109 template-register.php:218
+msgid "Registration successful"
+msgstr ""
+
+#: template-register.php:126 template-register.php:234
+msgid "Username or E-mail already exists. Please try another one."
+msgstr ""
+
+#: template-register.php:159 template-register.php:262
+msgid "Check Your Inbox for User Name And Password"
+msgstr ""
+
+#: template-register.php:163 template-register.php:266
+msgid "You Must Need to Agree With Terms And Conditions."
+msgstr ""
+
+#: template-register.php:297
+msgid "Well done!"
+msgstr ""
+
+#: template-register.php:297
+msgid "You successfully registered, check your email inbox for password."
+msgstr ""
+
+#: template-register.php:297
+msgid "Click here"
+msgstr ""
+
+#: template-register.php:297
+msgid "for login"
+msgstr ""
+
+#: template-register.php:303
+msgid "Oh snap!"
+msgstr ""
+
+#: template-register.php:318
+msgid "Login or Signup With Social Account"
+msgstr ""
+
+#: template-register.php:322
+msgid "Login with Facebook"
+msgstr ""
+
+#: template-register.php:325
+msgid "Login with Twitter"
+msgstr ""
+
+#: template-register.php:328
+msgid "Login with Google"
+msgstr ""
+
+#: template-register.php:355
+msgid "Username"
+msgstr ""
+
+#: template-register.php:362
+msgid "Enter username"
+msgstr ""
+
+#: template-register.php:362
+msgid "username required"
+msgstr ""
+
+#: template-register.php:373
+msgid "Email Address"
+msgstr ""
+
+#: template-register.php:378
+msgid "yourmail@host.com"
+msgstr ""
+
+#: template-register.php:378
+msgid "Email required"
+msgstr ""
+
+#: template-register.php:395
+msgid "enter password"
+msgstr ""
+
+#: template-register.php:395
+msgid "password required"
+msgstr ""
+
+#: template-register.php:404
+msgid "Confirm"
+msgstr ""
+
+#: template-register.php:409
+msgid "re-enter password"
+msgstr ""
+
+#: template-register.php:421
+msgid "User Role"
+msgstr ""
+
+#: template-register.php:427
+msgid "Please Choose Your Role"
+msgstr ""
+
+#: template-register.php:428
+msgid "User"
+msgstr ""
+
+#: template-register.php:429
+msgid "Escort"
+msgstr ""
+
+#: template-register.php:441
+msgid "you must need to agree with our terms and condition"
+msgstr ""
+
+#: template-register.php:442
+msgid "Agree to"
+msgstr ""
+
+#: template-register.php:443
+msgid "terms & Conditions"
+msgstr ""
+
+#: template-register.php:463
+msgid "Register now"
+msgstr ""
+
+#: template-register.php:466
+msgid "Already have account?"
+msgstr ""
+
+#: template-register.php:466
+msgid "Login here"
+msgstr ""
+
+#: template-register.php:477
+msgid "Registration!"
+msgstr ""
+
+#: template-register.php:477
+msgid "Registration is currently disabled. Please try again later."
+msgstr ""
+
+#: template-submit-ads.php:113
+msgid "Please select a category"
+msgstr ""
+
+#: template-submit-ads.php:117
+msgid "Please enter description"
+msgstr ""
+
+#: template-submit-ads.php:121
+msgid "Please enter tag"
+msgstr ""
+
+#: template-submit-ads.php:129 template-submit-ads.php:134
+msgid "Please enter phone"
+msgstr ""
+
+#: template-submit-ads.php:138
+msgid "Please enter name"
+msgstr ""
+
+#: template-submit-ads.php:142
+msgid "Select Your Nationality"
+msgstr ""
+
+#: template-submit-ads.php:146
+msgid "Select Your Age"
+msgstr ""
+
+#: template-submit-ads.php:150
+msgid "Select Your Hair Color"
+msgstr ""
+
+#: template-submit-ads.php:154
+msgid "Select Your Eyes Color"
+msgstr ""
+
+#: template-submit-ads.php:158
+msgid "Select Your Ethnicity"
+msgstr ""
+
+#: template-submit-ads.php:162 template-submit-ads.php:166
+msgid "Select Your Height"
+msgstr ""
+
+#: template-submit-ads.php:170
+msgid "Select Your Weight"
+msgstr ""
+
+#: template-submit-ads.php:174
+msgid "Select Your Penis Size"
+msgstr ""
+
+#: template-submit-ads.php:178
+msgid "Select Your Breast Type"
+msgstr ""
+
+#: template-submit-ads.php:182
+msgid "Select Your Breast Size Cup"
+msgstr ""
+
+#: template-submit-ads.php:186
+msgid "Select Your Breast Size"
+msgstr ""
+
+#: template-submit-ads.php:190
+msgid "Select Your Waist Size"
+msgstr ""
+
+#: template-submit-ads.php:194
+msgid "Select Your Hips Size"
+msgstr ""
+
+#: template-submit-ads.php:198
+msgid "Select Your Dress Size"
+msgstr ""
+
+#: template-submit-ads.php:202
+msgid "Select Your Shoe Size"
+msgstr ""
+
+#: template-submit-ads.php:206
+msgid "Select Pubic Area"
+msgstr ""
+
+#: template-submit-ads.php:210
+msgid "Are You a Smoker"
+msgstr "Vai esat smēķētājs?"
+
+#: template-submit-ads.php:215
+msgid "Select Native Language"
+msgstr ""
+
+#: template-submit-ads.php:219
+msgid "Select Option for Private Numbers"
+msgstr ""
+
+#: template-submit-ads.php:223
+msgid "Select Option for SMS Messages"
+msgstr ""
+
+#: template-submit-ads.php:227
+msgid "Select Option for Private Messages"
+msgstr ""
+
+#: template-submit-ads.php:232
+msgid "Select Option for Disabled Friendly"
+msgstr ""
+
+#: template-submit-ads.php:236
+msgid "Select Option for Drinks Supplied"
+msgstr ""
+
+#: template-submit-ads.php:240
+msgid "Select Option for Showers Available"
+msgstr ""
+
+#: template-submit-ads.php:244
+msgid "Select Option for Available to Travel"
+msgstr ""
+
+#: template-submit-ads.php:250
+msgid "Please Select Image"
+msgstr ""
+
+#: template-submit-ads.php:259
+msgid "You selected Images Count is exceeded"
+msgstr ""
+
+#: template-submit-ads.php:861 templates/nav-bar.php:275
+#: templates/profile/userabout-bak.php:351 templates/profile/userabout.php:303
+msgid "Create New Advert"
+msgstr ""
+
+#: template-submit-ads.php:937 template-submit-ads.php:947
+#: template-submit-ads.php:957 template-submit-ads.php:967
+msgid "Post Advert"
+msgstr ""
+
+#: template-submit-ads.php:1017 template-submit-ads.php:1033
+#: template-submit-ads.php:1074 template-submit-ads.php:1120
+#: template-submit-ads.php:1131 template-submit-ads.php:1143
+#: template-submit-ads.php:1155 template-submit-ads.php:1169
+#: template-submit-ads.php:1182 template-submit-ads.php:1232
+#: template-submit-ads.php:1243 template-submit-ads.php:1256
+#: template-submit-ads.php:1268 template-submit-ads.php:1280
+#: template-submit-ads.php:1292 template-submit-ads.php:1318
+#: template-submit-ads.php:1331 template-submit-ads.php:1343
+#: template-submit-ads.php:1355 template-submit-ads.php:1367
+#: template-submit-ads.php:1379 template-submit-ads.php:1396
+#: template-submit-ads.php:1409 template-submit-ads.php:1456
+#: template-submit-ads.php:1469 template-submit-ads.php:1482
+#: template-submit-ads.php:1494 template-submit-ads.php:1506
+#: template-submit-ads.php:1517 template-submit-ads.php:1540
+#: template-submit-ads.php:1555 template-submit-ads.php:1569
+#: template-submit-ads.php:1583 template-submit-ads.php:1597
+#: template-submit-ads.php:1614 template-submit-ads.php:1621
+#: template-submit-ads.php:1644 template-submit-ads.php:1651
+#: template-submit-ads.php:1660 template-submit-ads.php:1667
+msgid "Select One"
+msgstr ""
+
+#: template-submit-ads.php:1089
+msgid "About myself..."
+msgstr ""
+
+#: template-submit-ads.php:1290 template-submit-ads.php:1515
+msgid "Do you smoke?"
+msgstr ""
+
+#: template-submit-ads.php:1706 templates/classiera-adv-search.php:190
+msgid "Select Country"
+msgstr ""
+
+#: template-submit-ads.php:1720 templates/classiera-adv-search.php:207
+msgid "Select State"
+msgstr ""
+
+#: template-submit-ads.php:1731 templates/classiera-adv-search.php:217
+msgid "Select City"
+msgstr ""
+
+#: template-submit-ads.php:2069
+msgid "Publish Advert"
+msgstr ""
+
+#: template-submit-ads.php:2070
+msgid "By clicking \"Publish Advert\", you agree to our"
+msgstr ""
+
+#: template-submit-ads.php:2071
+msgid "Terms of Use"
+msgstr ""
+
+#: template-submit-ads.php:2072
+msgid "and acknowledge that you are the rightful owner of this item"
+msgstr ""
+
+#: template-user-all-ads.php:80
+msgid "User Adverts"
+msgstr "Lietotāja Reklāmas"
+
+#: template-user-all-ads.php:249
+msgid "Display Time Left"
+msgstr ""
+
+#: template-user-all-ads.php:252
+msgid "Advert Expired"
+msgstr ""
+
+#: template-user-all-ads.php:296
+msgid "Your advert has been paused and will re-activate after: "
+msgstr ""
+
+#: template-user-all-ads.php:310
+msgid "Bump"
+msgstr ""
+
+#: template-user-all-ads.php:322
+msgid "Bump Advert"
+msgstr ""
+
+#: template-user-all-ads.php:373
+msgid "Re-activate"
+msgstr ""
+
+#: template-user-all-ads.php:378
+msgid "Edit"
+msgstr ""
+
+#: template-user-all-ads.php:382 template-user-all-ads.php:394
+msgid "Remove"
+msgstr ""
+
+#: template-user-all-ads.php:388
+msgid "Remove Advert"
+msgstr ""
+
+#: template-user-all-ads.php:391
+msgid ""
+"Are you sure you wish to remove this advert. This action can not be reverted?"
+msgstr ""
+
+#: template-user-all-ads.php:395 template-user-all-ads.php:419
+#: template-user-all-ads.php:462 templates/searchbar/searchstyle2.php:683
+msgid "Cancel"
+msgstr ""
+
+#: template-user-all-ads.php:404
+msgid "Pause"
+msgstr ""
+
+#: template-user-all-ads.php:412
+msgid "Pause Advert"
+msgstr ""
+
+#: template-user-all-ads.php:415
+msgid ""
+"Are you sure you wish to pause your advert for 24 hours? Your advert will "
+"automatically activate itself after 24 hours and you will not loose your "
+"advert display time."
+msgstr ""
+
+#: template-user-all-ads.php:418 template-user-all-ads.php:461
+msgid "OK"
+msgstr ""
+
+#: template-user-all-ads.php:432
+msgid "Discount"
+msgstr ""
+
+#: template-user-all-ads.php:440
+msgid "Choose Your Discount"
+msgstr ""
+
+#: template-user-all-ads.php:445
+msgid "No Discount"
+msgstr ""
+
+#: template-user-all-ads.php:449
+msgid "10% Discount"
+msgstr ""
+
+#: template-user-all-ads.php:453
+msgid "20% Discount"
+msgstr ""
+
+#: template-user-all-ads.php:457
+msgid "30% Discount"
+msgstr ""
+
+#: template-user-all-ads.php:483
+msgid "You have not created any adverts yet."
+msgstr ""
+
+#: template-user-plans.php:45
+msgid "Order History"
+msgstr ""
+
+#: template-user-plans.php:62
+msgid "Package Name"
+msgstr ""
+
+#: template-user-plans.php:63 template-user-plans.php:205
+msgid "Duration"
+msgstr ""
+
+#: template-user-plans.php:66 template-user-plans.php:141
+#: template-user-plans.php:206 template-user-plans.php:276
+msgid "Price"
+msgstr ""
+
+#: template-user-plans.php:67 template-user-plans.php:142
+#: template-user-plans.php:207
+msgid "Status"
+msgstr ""
+
+#: template-user-plans.php:68 template-user-plans.php:143
+#: template-user-plans.php:208
+msgid "Details"
+msgstr ""
+
+#: template-user-plans.php:69 template-user-plans.php:144
+#: template-user-plans.php:209
+msgid "Payment Method"
+msgstr ""
+
+#: template-user-plans.php:116 template-user-plans.php:183
+#: template-user-plans.php:249
+msgid "View order details"
+msgstr ""
+
+#: template-user-plans.php:133
+msgid "Order History for Bump Ads"
+msgstr ""
+
+#: template-user-plans.php:139 template-user-plans.php:203
+msgid "Post Name"
+msgstr ""
+
+#: template-user-plans.php:140 template-user-plans.php:204
+msgid "Post ID"
+msgstr ""
+
+#: template-user-plans.php:197
+msgid "Order History for Single Featured Posts"
+msgstr ""
+
+#: template-user-plans.php:262
+msgid "Currently you have no order details."
+msgstr ""
+
+#: template-user-plans.php:269
+msgid "Ads Plans Details"
+msgstr ""
+
+#: template-user-plans.php:277
+msgid "Feature Ads"
+msgstr ""
+
+#: template-user-plans.php:278
+msgid "Used Featured"
+msgstr ""
+
+#: template-user-plans.php:280
+msgid "Used Regular"
+msgstr ""
+
+#: template-user-plans.php:281
+msgid "Available Featured"
+msgstr ""
+
+#: template-user-plans.php:282
+msgid "Available Regular"
+msgstr ""
+
+#: template-user-plans.php:283
+msgid "Featured ads expiry in days"
+msgstr ""
+
+#: template-user-plans.php:284
+msgid "status"
+msgstr ""
+
+#: template-user-plans.php:341
+msgid "Get More Credits"
+msgstr ""
+
+#: templates/adv/advstyle4-bak.php:657
+msgid "View All Ads"
+msgstr ""
+
+#: templates/category/catstyle3.php:89
+msgid "items posted"
+msgstr ""
+
+#: templates/category/catstyle3.php:96
+msgid "VIEW ALL"
+msgstr ""
+
+#: templates/category/catstyle3.php:105
+msgid "View All Categories"
+msgstr ""
+
+#: templates/classiera-adv-search.php:35
+msgid "Advanced Search"
+msgstr ""
+
+#: templates/classiera-adv-search.php:57
+msgid "Price Range"
+msgstr ""
+
+#: templates/classiera-adv-search.php:136
+msgid "Price range"
+msgstr ""
+
+#: templates/classiera-adv-search.php:148
+msgid "Min price"
+msgstr ""
+
+#: templates/classiera-adv-search.php:151
+msgid "Max price"
+msgstr ""
+
+#: templates/classiera-adv-search.php:160
+msgid "Keywords"
+msgstr ""
+
+#: templates/classiera-adv-search.php:164
+msgid "Enter Keyword"
+msgstr ""
+
+#: templates/classiera-adv-search.php:228
+msgid "Categories"
+msgstr ""
+
+#: templates/classiera-adv-search.php:235
+msgid "Select category"
+msgstr ""
+
+#: templates/classiera-adv-search.php:355
+msgid "Type of Ad"
+msgstr ""
+
+#: templates/classiera-adv-search.php:358
+msgid "All"
+msgstr ""
+
+#: templates/classiera-adv-search.php:361
+msgid "For Sale"
+msgstr ""
+
+#: templates/classiera-adv-search.php:365
+msgid "Wanted"
+msgstr ""
+
+#: templates/classiera-adv-search.php:369
+msgid "For Rent"
+msgstr ""
+
+#: templates/classiera-adv-search.php:373
+msgid "For hire"
+msgstr ""
+
+#: templates/classiera-adv-search.php:377
+msgid "Lost & Found"
+msgstr ""
+
+#: templates/classiera-adv-search.php:381
+msgid "Free"
+msgstr ""
+
+#: templates/classiera-adv-search.php:385
+msgid "Event"
+msgstr ""
+
+#: templates/classiera-adv-search.php:389
+msgid "Professional service"
+msgstr ""
+
+#: templates/classiera-adv-search.php:396
+#: templates/searchbar/searchstyle2.php:223
+msgid "Search"
+msgstr ""
+
+#: templates/classiera-loops/loop-canary.php:211
+msgid "15 Min"
+msgstr ""
+
+#: templates/classiera-loops/loop-canary.php:218
+msgid "30 Min"
+msgstr ""
+
+#: templates/classiera-loops/loop-canary.php:225
+msgid "45 Min"
+msgstr ""
+
+#: templates/classiera-loops/loop-canary.php:276
+msgid "-"
+msgstr ""
+
+#: templates/email/email_functions.php:42
+#: templates/email/email_functions.php:47
+#: templates/email/email_functions.php:196
+msgid "Hi"
+msgstr ""
+
+#: templates/email/email_functions.php:42
+#: templates/email/email_functions.php:47
+msgid "Congratulations your item has been listed"
+msgstr ""
+
+#: templates/email/email_functions.php:48
+#: templates/email/email_functions.php:196
+msgid "on"
+msgstr ""
+
+#: templates/email/email_functions.php:51
+msgid "You have successfully listed your item on"
+msgstr ""
+
+#: templates/email/email_functions.php:51
+msgid "now sit back and let us do the hard work."
+msgstr ""
+
+#: templates/email/email_functions.php:54
+msgid "If you like to take a look"
+msgstr ""
+
+#: templates/email/email_functions.php:56
+msgid "Click Here"
+msgstr ""
+
+#: templates/email/email_functions.php:91
+#: templates/email/email_functions.php:96
+msgid "A very special welcome to you"
+msgstr ""
+
+#: templates/email/email_functions.php:96
+msgid "Thank you for joining"
+msgstr ""
+
+#: templates/email/email_functions.php:99
+msgid "Your username is"
+msgstr ""
+
+#: templates/email/email_functions.php:105
+msgid "Your password is"
+msgstr ""
+
+#: templates/email/email_functions.php:111
+msgid "We hope you enjoy your stay at"
+msgstr ""
+
+#: templates/email/email_functions.php:111
+msgid ""
+"If you have any problems, questions, opinions, praise, comments, "
+"suggestions, please feel free to contact us at"
+msgstr ""
+
+#: templates/email/email_functions.php:112
+msgid "any time!"
+msgstr ""
+
+#: templates/email/email_functions.php:144
+msgid "New User has been Registered !"
+msgstr ""
+
+#: templates/email/email_functions.php:147
+msgid "Hello Admin, New User Registred on"
+msgstr ""
+
+#: templates/email/email_functions.php:152
+msgid "Hello, New User has been Registred on"
+msgstr ""
+
+#: templates/email/email_functions.php:152
+msgid "By using this email"
+msgstr ""
+
+#: templates/email/email_functions.php:155
+msgid "His User name is:"
+msgstr ""
+
+#: templates/email/email_functions.php:191
+msgid "Hello Admin, New Ads Posted on"
+msgstr ""
+
+#: templates/email/email_functions.php:196
+msgid "Have Post New Ads"
+msgstr ""
+
+#: templates/email/email_functions.php:198
+msgid "Please Approve or Reject this Post from WordPress Dashboard."
+msgstr ""
+
+#: templates/email/email_functions.php:224
+msgid "Your Ad is Rejected..!"
+msgstr ""
+
+#: templates/email/email_functions.php:233
+msgid "Hello"
+msgstr ""
+
+#: templates/email/email_functions.php:238
+msgid "We want to inform you, your ad is rejected, which you have posts on"
+msgstr ""
+
+#: templates/email/email_functions.php:240
+msgid ""
+"Please visit your Dashboard to see post status, For more information contact "
+"with website admin at this email."
+msgstr ""
+
+#: templates/email/email_functions.php:276
+msgid "You have received email from"
+msgstr ""
+
+#: templates/email/email_functions.php:281
+msgid "Your have received this email from"
+msgstr ""
+
+#: templates/email/email_functions.php:285
+#: templates/email/email_functions.php:513
+msgid "Sender Name"
+msgstr ""
+
+#: templates/email/email_functions.php:290
+#: templates/email/email_functions.php:516
+msgid "Sender Email"
+msgstr ""
+
+#: templates/email/email_functions.php:295
+msgid "Your Post Title"
+msgstr ""
+
+#: templates/email/email_functions.php:300
+msgid "Your Post URL"
+msgstr ""
+
+#: templates/email/email_functions.php:327
+msgid "Password Reset"
+msgstr ""
+
+#: templates/email/email_functions.php:336
+msgid "Keep Your Password Always safe..!"
+msgstr ""
+
+#: templates/email/email_functions.php:341
+msgid "Your UserName Was"
+msgstr ""
+
+#: templates/email/email_functions.php:346
+msgid "Your New Password is"
+msgstr ""
+
+#: templates/email/email_functions.php:392
+msgid "New BID Offer Received..!"
+msgstr ""
+
+#: templates/email/email_functions.php:401
+msgid "Congratulations you have received new offer for your post"
+msgstr ""
+
+#: templates/email/email_functions.php:409
+msgid "Your Price was"
+msgstr ""
+
+#: templates/email/email_functions.php:414
+msgid "Offered Price"
+msgstr ""
+
+#: templates/email/email_functions.php:419
+msgid "Visit your profile inbox to reply to user."
+msgstr ""
+
+#: templates/email/email_functions.php:442
+msgid "Report Ad Notification!"
+msgstr ""
+
+#: templates/email/email_functions.php:451
+msgid "Hello Admin, DMCA/Copyright"
+msgstr ""
+
+#: templates/email/email_functions.php:456
+msgid "Hi Someone Report an Ad which is posted on your website."
+msgstr ""
+
+#: templates/email/email_functions.php:460
+msgid "Post Title Is"
+msgstr ""
+
+#: templates/email/email_functions.php:468
+msgid "Post Link"
+msgstr ""
+
+#: templates/email/email_functions.php:519
+msgid "Sender Phone"
+msgstr ""
+
+#: templates/nav-bar.php:138 templates/profile/userabout-bak.php:226
+#: templates/profile/userabout.php:166
+msgid "Menu Options"
+msgstr ""
+
+#: templates/nav-bar.php:159 templates/profile/userabout-bak.php:247
+#: templates/profile/userabout.php:187
+msgid "My Ads"
+msgstr ""
+
+#: templates/nav-bar.php:169 templates/profile/userabout-bak.php:258
+#: templates/profile/userabout.php:197
+msgid "Watch later Ads"
+msgstr ""
+
+#: templates/nav-bar.php:215 templates/profile/userabout-bak.php:187
+#: templates/profile/userabout-bak.php:304 templates/profile/userabout.php:243
+msgid "Packages"
+msgstr ""
+
+#: templates/nav-bar.php:226 templates/profile/userabout-bak.php:315
+#: templates/profile/userabout.php:254
+msgid "Follower"
+msgstr ""
+
+#: templates/nav-bar.php:266 templates/profile/userabout-bak.php:342
+#: templates/profile/userabout.php:294
+msgid "Logout"
+msgstr ""
+
+#: templates/nav-bar.php:320
+msgid "categories"
+msgstr ""
+
+#: templates/nav-bar.php:378
+msgid "Follow us"
+msgstr ""
+
+#: templates/profile/userabout-bak.php:139
+msgid "Adverts"
+msgstr ""
+
+#: templates/profile/userabout-bak.php:147
+msgid "Favourites"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: templates/profile/userabout-bak.php:196
+msgid "Follow"
+msgstr ""
+
+#: templates/profile/userabout-bak.php:204
+msgid "Credits"
+msgstr ""
+
+#: templates/profile/userabout-bak.php:211
+msgid "Settings"
+msgstr ""
+
+#: templates/profile/userabout.php:111
+msgid "My Ballance"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:162
+msgid "Select Category.."
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:163
+msgid "All Categories"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:195
+msgid "Enter keyword..."
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:195
+msgid "Please Type some words..!"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:209
+msgid "type your location"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:210
+msgid "Click here to get your own location"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:227
+#: templates/searchbar/searchstyle2.php:682
+msgid "Filter"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:240
+msgid "Advanced Filter"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:257
+msgid "Select Age Range"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:274
+msgid "Select Cost Range"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:291
+msgid "Tags"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:295
+msgid "Choose Tags"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:319
+msgid "Select Category"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:323
+msgid "Choose Category"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:362
+msgid "Choose Native Language"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:381
+msgid "Choose Nationality"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:400
+msgid "Choose Gender"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:415
+#: templates/searchbar/searchstyle2.php:419
+msgid "Hair color"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:433
+#: templates/searchbar/searchstyle2.php:437
+msgid "Eyes color"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:469
+msgid "Select Weight Range"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:487
+msgid "Select Waist Size Range"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:505
+msgid "Select Hips Size Range"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:584
+msgid "Are you Smoker?"
+msgstr ""
+
+#: templates/searchbar/searchstyle2.php:622
+#: templates/searchbar/searchstyle2.php:626
+msgid "Showers Aavailable"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Classiera Child"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid ""
+"http://themeforest.net/item/classiera-classified-ads-wordpress-"
+"theme/14138208?ref=joinwebs"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Classiera Child Theme"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "JoinWebs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://themeforest.net/user/joinwebs"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Profile Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "All Ads"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Landing Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Login Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Inbox"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Register Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Single User All Ads"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Single User All Plans"
+msgstr ""

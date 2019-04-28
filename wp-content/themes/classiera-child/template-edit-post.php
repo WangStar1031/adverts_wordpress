@@ -1923,7 +1923,7 @@ get_header(); ?>
 												<div class="col-sm-12 col-lg-6"><!-- Form Container -->
 													<div class="price-fields"><!-- Form Group Container -->
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('1st Hour', 'classiera'); ?>:</span>
 															<?php
 															$one_hour_pound = get_post_meta($cur_post_id, 'one_hour_pound', true);
 															$one_hour_euro = get_post_meta($cur_post_id, 'one_hour_euro', true);
@@ -1937,7 +1937,7 @@ get_header(); ?>
 														</div>
 															
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('Full Day', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('Full Day', 'classiera'); ?>:</span>
 															<?php
 															$full_day_pound = get_post_meta($cur_post_id, 'full_day_pound', true);
 															$full_day_euro = get_post_meta($cur_post_id, 'full_day_euro', true);
@@ -1953,7 +1953,7 @@ get_header(); ?>
 														</div>
 
 														<div class="col-lg-4 col-xs-4">
-															<span class="small-form-fields-heading"><?php esc_html_e('', 'classiera'); ?><?php esc_html_e('Business Date', 'classiera'); ?>:</span>
+															<span class="small-form-fields-heading"><?php esc_html_e('Business Date', 'classiera'); ?>:</span>
 															<?php
 															$business_date_pound = get_post_meta($cur_post_id, 'business_date_pound', true);
 															$business_date_euro = get_post_meta($cur_post_id, 'business_date_euro', true);
