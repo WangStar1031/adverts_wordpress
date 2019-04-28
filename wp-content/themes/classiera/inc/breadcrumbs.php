@@ -109,7 +109,12 @@ function classiera_breadcrumbs(){
 				$cats = str_replace('<a', $catLink . '<a' . $linkAttr, $cats);
 				$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
 				echo wp_kses_post($cats);
-				if ($showCurrent == 1) echo wp_kses_post($before) . get_the_title() . $after;
+				$partner_name = get_post_meta(get_the_ID(), 'partner_name', true);
+				$title = get_the_title();
+				if (in_category(array ('couple', 'duo'))){
+					$title .= ' & ' . $partner_name;
+				}
+				if ($showCurrent == 1) echo wp_kses_post($before) . $title . $after;
 			}
 
 		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
