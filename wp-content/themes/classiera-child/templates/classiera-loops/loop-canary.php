@@ -212,7 +212,7 @@
 
 					<?php
 						$discount_per = get_post_meta($post->ID, 'discount_percentage', true);
-						if(!empty($discount_per) && $discount_per > 0 && $isNew)
+						if(!empty($discount_per) && $discount_per > 0)
 						{ ?>
 							<div class="discount_per_parent" style="display: none;">
 								<span class="discount_per">
@@ -222,6 +222,18 @@
 							
 						<?php }
 					?>
+					<?php
+					if( $isNew){
+					?>
+					<div class="newSection">
+						<span>
+							This is New section.
+						</span>
+					</div>
+					<?php
+					}
+					?>
+
 				</div><!--premium-img-->
 			</figure>
 		</div><!--row-->

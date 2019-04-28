@@ -29,6 +29,14 @@ $current_user = wp_get_current_user();
 $user_info = get_userdata($user_ID);
 $user_id = $current_user->ID; 
 get_header();
+?>
+<section class="user-pages">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+            <?php get_template_part( 'templates/profile/userabout' );?>
+            </div><!--col-lg-3-->
+<?php
 
 //I added this code
 $args = array(
@@ -50,13 +58,7 @@ if(WC()->cart->cart_contents_count == 0)
 {
     $className=1;
 }
-?>
-<section class="user-pages">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4">
-            <?php get_template_part( 'templates/profile/userabout' );?>
-            </div><!--col-lg-3-->
+?>            
             <div class="col-lg-9 col-md-8 user-content-height">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -67,10 +69,11 @@ if(WC()->cart->cart_contents_count == 0)
                             <div class="getCreditRow">
                                 <!-- Get credits heading text -->
                                 <h4 class="text-center">
-                                    <?php                       
+                                    <?php
                                         if(isset($redux_demo['get-credits-heading']) && !empty($redux_demo['get-credits-heading'])){
                                         esc_html_e($redux_demo['get-credits-heading'],'classiera');
-                                    } ?>
+                                        } 
+                                    ?>
                                 </h4>
                                 <!-- /Get credits heading text -->
                                 <!-- Get credits body text -->
@@ -78,7 +81,8 @@ if(WC()->cart->cart_contents_count == 0)
                                     <?php 
                                     if(isset($redux_demo['get-credits-body-text']) && !empty($redux_demo['get-credits-body-text'])){
                                         esc_html_e($redux_demo['get-credits-body-text'],'classiera');
-                                    } ?>
+                                    } 
+                                    ?>
                                 </p>
                                 <!-- / Get credits body text -->
                             </div>
@@ -98,7 +102,7 @@ if(WC()->cart->cart_contents_count == 0)
                             ?>
                             <div class="col-sm-12 col-md-3">
                                 <div class="thumbnail">
-                                  <img src="<?php echo get_the_post_thumbnail_url($loop->post->ID); ?>" alt="">
+                                    <?php echo get_the_post_thumbnail(); ?>
                                   <div class="caption">
                                     <h3><?php the_title();?></h3>
                                     <p><?php the_excerpt();?></p>
