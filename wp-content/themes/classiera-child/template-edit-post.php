@@ -146,12 +146,20 @@ if(isset($_POST['postTitle'])){
 					if( isset($_POST['post_tags'])){
 						$tags_input = $_POST['post_tags'];
 					}
+
+					$partner_name = esc_attr(strip_tags( $_POST['partner_name']));
+					$categorySelect = $_POST['categorySelect'];
+					$_title = esc_attr(strip_tags($_POST['postTitle']));
+					if( in_array( $categorySelect, array('couple', 'duo'))){
+						$_title .= " & " . $partner_name;
+					}
+
 					$my_post = array(
 						'ID'           => $post_id,
-						'post_title' => $_POST['postTitle'],
+						'post_title' => $_title, //$_POST['postTitle'],
 						'post_content' => $_POST['postContent'],
 						'tags_input' => $tags_input,
-						'post_category' => array($classieraCategory)
+						// 'post_category' => array($classieraCategory)
 					);
 					wp_update_post($my_post);
 				}
@@ -819,11 +827,11 @@ get_header(); ?>
 													<select id="categorySelect" name="categorySelect" onchange="categoryChanged()" required>
 														<?php 
 															$categories = get_terms('category', array(
-															'hide_empty' => 0,
-															'parent' => 0,
-															'order'=> 'ASC'
-															) 
-														);
+																'hide_empty' => 0,
+																'parent' => 0,
+																'order'=> 'ASC'
+																) 
+															);
 															$curCatSel = get_the_category($cur_post_id);
 															$curCategory = $curCatSel[0]->term_id;
 															// print_r($curCatSel);
@@ -832,7 +840,7 @@ get_header(); ?>
 														// echo "<option>" . $curCategory . "</option>";
 														// echo($curCategory);
 														foreach ($categories as $category){
-															//print_r($category);
+															print_r($category);
 															$tag = $category->term_id;
 															$classieraCatFields = get_option(MY_CATEGORY_FIELDS);
 														if (isset($classieraCatFields[$tag])){

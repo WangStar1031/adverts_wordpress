@@ -292,8 +292,14 @@ if(isset($_POST['postTitle'])){
 				//print_r($classieraCategory);die;
 				//Check Category//
 				//Setup Post Data//
+				$partner_name = esc_attr(strip_tags( $_POST['partner_name']));
+				$categorySelect = $_POST['categorySelect'];
+				$_title = esc_attr(strip_tags($_POST['postTitle']));
+				if( in_array( $categorySelect, array('couple', 'duo'))){
+					$_title .= " & " . $partner_name;
+				}
 				$post_information = array(
-					'post_title' => esc_attr(strip_tags($_POST['postTitle'])),			
+					'post_title' => $_title, //esc_attr(strip_tags($_POST['postTitle'])),
 					'post_content' => strip_tags($_POST['postContent'], '<h1><h2><h3><strong><b><ul><ol><li><i><a><blockquote><center><embed><iframe><pre><table><tbody><tr><td><video><br>'),
 					'post-type' => 'post',
 					'post_category' => array($classieraMainCat/*, $classieraChildCat, $classieraThirdCat*/),
