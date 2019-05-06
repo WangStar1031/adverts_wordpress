@@ -582,11 +582,11 @@ $croppedImg_Path = get_post_meta($post->ID, 'croppedImg_Path', true);
           <!-- Default panel contents -->
           <!-- <div class="panel-heading">Panel heading</div> -->
           <h3 class="panel-heading text-center"><?php esc_html_e( 'About Me', 'classiera' ); ?>
-              <span class="glyphicon glyphicon-fire" style="position: absolute; left: 25px; top: 12px; color: red;"></span>
-              <span class="glyphicon glyphicon-fire" style="position: absolute; left: 50px; top: 12px; color: red;"></span>
-              <span class="glyphicon glyphicon-fire" style="position: absolute; left: 75px; top: 12px; color: red;"></span>
-              <span class="glyphicon glyphicon-fire" style="position: absolute; left: 100px; top: 12px; color: #858585"></span>
-              <span class="glyphicon glyphicon-fire" style="position: absolute; left: 125px; top: 12px; color: #858585"></span>
+              <span class="comment-rating active glyphicon glyphicon-fire" style="position: absolute; left: 25px; top: 12px;"></span>
+              <span class="comment-rating active glyphicon glyphicon-fire" style="position: absolute; left: 50px; top: 12px;"></span>
+              <span class="comment-rating active glyphicon glyphicon-fire" style="position: absolute; left: 75px; top: 12px;"></span>
+              <span class="comment-rating glyphicon glyphicon-fire" style="position: absolute; left: 100px; top: 12px;"></span>
+              <span class="comment-rating glyphicon glyphicon-fire" style="position: absolute; left: 125px; top: 12px;"></span>
           </h3>
             <div class="panel-body">
               <p class="text-justify"><?php echo the_content(); ?><!-- No P End Tag Here, error in template file. Template tag outputs only closing </p> tag -->

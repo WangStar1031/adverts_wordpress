@@ -193,10 +193,13 @@ if ( comments_open()) :
 	}
 	function drawCommentRatings(){
 		var arrCommentRatings = $(".commentRating");
+		var nRatingCount = 0, nAllRating = 0;
 		for( var i = 0; i < arrCommentRatings.length; i++){
 			var curCommentRating = arrCommentRatings.eq(i);
 			var nCurCommentRating = curCommentRating.attr("value");
 			if( !nCurCommentRating) continue;
+			nRatingCount++;
+			nAllRating += nCurCommentRating * 1;
 			var strHtml = '';
 			for( var j = 0; j < 5; j++){
 				if( j < nCurCommentRating)
@@ -205,6 +208,13 @@ if ( comments_open()) :
 					strHtml += '<span class="comment-rating glyphicon glyphicon-fire"></span>';
 			}
 			curCommentRating.append(strHtml);
+		}
+		if( nRatingCount != 0){
+			nAllRating /= nRatingCount;
+		}
+		$("h3.panel-heading span.comment-rating").removeClass("active");
+		for( var i = 0; i < nAllRating; i++){
+			$("h3.panel-heading span.comment-rating").eq(i).addClass("active");
 		}
 	}
 	drawCommentRatings();
