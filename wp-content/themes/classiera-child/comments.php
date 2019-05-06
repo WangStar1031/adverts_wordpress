@@ -41,7 +41,7 @@ if ( comments_open()) :
 	if ((is_page() || is_single()) && ( ! is_home() && ! is_front_page())):
 ?>
 	<div class="user-comments">
-		<?php if ( have_comments()){?>
+		<?php if ( have_comments()) { ?>
 		<ul class="media-list">
 		<?php
 			wp_list_comments(				
@@ -54,6 +54,8 @@ if ( comments_open()) :
 			);
 		?>
 		</ul>
+		<?php } else { ?>
+			<p><?php _e('There are no comments yet!', 'classiera'); ?></p>
 		<?php } ?>
  	</div>
 
@@ -113,11 +115,19 @@ if ( comments_open()) :
 							</div><!--eMAIL-->
 							<?php } ?>
 							<div class="form-group col-sm-12">
-								<label class="text-capitalize"><?php esc_html_e( 'Message','classiera' ); ?> : <span class="text-danger">*</span></label>
+								<label class="text-capitalize"><?php esc_html_e( 'Message','classiera' ); ?> : 
+									<span class="text-danger">*</span>
+									<span class="comment-rating glyphicon glyphicon-fire" onmouseleave="leaveRating(0)" onmouseenter="enterRating(0)" onclick="clickRating(0)"></span>
+									<span class="comment-rating glyphicon glyphicon-fire" onmouseleave="leaveRating(1)" onmouseenter="enterRating(1)" onclick="clickRating(1)"></span>
+									<span class="comment-rating glyphicon glyphicon-fire" onmouseleave="leaveRating(2)" onmouseenter="enterRating(2)" onclick="clickRating(2)"></span>
+									<span class="comment-rating glyphicon glyphicon-fire" onmouseleave="leaveRating(3)" onmouseenter="enterRating(3)" onclick="clickRating(3)"></span>
+									<span class="comment-rating glyphicon glyphicon-fire" onmouseleave="leaveRating(4)" onmouseenter="enterRating(4)" onclick="clickRating(4)"></span>
+								</label>
 								<div class="inner-addon">
 									<textarea data-error="<?php esc_html_e( 'Type your comment here', 'classiera') ?>" name="comment" placeholder="<?php esc_html_e( 'Type your comment here...', 'classiera') ?>" required></textarea>
 									<div class="help-block with-errors"></div>
 								</div>
+								<input type="hidden" name="commentRating">
 							</div><!--Message-->
 						</div>
 					</div><!--form-group-->
@@ -147,7 +157,41 @@ if ( comments_open()) :
 	</div>
 
 	<div class="hidden"><?php paginate_comments_links(); ?></div>
-
+<style type="text/css">
+	.comment-rating{
+		font-size: 24px;
+	}
+	.comment-rating.active{
+		color: red;
+	}
+</style>
+<script type="text/javascript">
+	var nCurRating = 0;
+	function setCommentRating(_nNumber){
+		var arrRatings = $(".comment-rating");
+		var nMax = _nNumber > arrRatings.length ? arrRatings.length : _nNumber;
+		for( var i = 0; i < arrRatings.length; i++){
+			if( i <= _nNumber){
+				arrRatings.eq(i).addClass("active");
+			} else{
+				arrRatings.eq(i).removeClass("active");
+			}
+		}
+	}
+	function clickRating(_nNumber){
+		// debugger;
+		var arrRatings = $(".comment-rating");
+		setCommentRating(_nNumber);
+		nCurRating = _nNumber;
+		$("input[name=commentRating]").val(nCurRating);
+	}
+	function enterRating(_nNumber){
+		setCommentRating(_nNumber);
+	}
+	function leaveRating(_nNumber){
+			setCommentRating(nCurRating);
+	}
+</script>
 <?php
 	endif;
 endif;

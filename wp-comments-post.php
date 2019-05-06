@@ -76,6 +76,6 @@ if ( 'unapproved' === wp_get_comment_status( $comment ) && ! empty( $comment->co
  * @param WP_Comment $comment  Comment object.
  */
 $location = apply_filters( 'comment_post_redirect', $location, $comment );
-
-wp_safe_redirect( $location );
+echo $location;
+// wp_safe_redirect( $location );
 exit;

@@ -259,10 +259,13 @@ jQuery(document).ready(function(jQuery){
 				jQuery('.classiera--loader').hide();
             },
 			success: function(data, textStatus){				
-                if(data == "success" || textStatus == "success"){                    
-					jQuery('.user-comments').append(data);					
+                if(data == "success" || textStatus == "success"){
+                    // debugger;
+					// jQuery('.user-comments').append(data);
 					jQuery('.comment-success').show();
 					jQuery('.classiera--loader').hide();										
+                    // window.location.href = data.trim();
+                    location.reload();
                 }else{
                     jQuery('.comment-error').show();
 					jQuery('.classiera--loader').hide();                    

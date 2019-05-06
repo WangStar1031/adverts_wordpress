@@ -14,6 +14,9 @@ function theme_enqueue_styles() {
     wp_enqueue_script('bootstrap.min', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', '', true);
     wp_enqueue_script('classiera-child', get_stylesheet_directory_uri() . '/classiera-child.js', 'jquery', '', true);
     wp_enqueue_script('classiera', get_stylesheet_directory_uri() . '/js/classiera.js', 'jquery', '', true);
+    wp_enqueue_script('intro-js', get_stylesheet_directory_uri() . '/js/intro.min.js', 'jquery', '', true);
+    wp_enqueue_style('intro-css', get_stylesheet_directory_uri() . '/css/introjs.min.css' );
+
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function experied_ads_checksum()
@@ -432,9 +435,9 @@ function edit_ads_scripts() {
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/submit-ads.js', 'jQuery', '', true );
     } else if( end($template_array) == 'template-re-activate.php' ){
         wp_enqueue_script('smart-wizard-js', get_stylesheet_directory_uri() . '/js/smartWizard.js', 'jQuery', '', true );
-        wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );
-        wp_enqueue_script('validator-js', get_stylesheet_directory_uri() . '/js/validator.min.js', 'jQuery', '2.0', true );
-        wp_enqueue_style('selectize-css', get_stylesheet_directory_uri() . '/css/selectize.css' );
+        // wp_enqueue_script('selectize-js', get_stylesheet_directory_uri() . '/js/selectize.js', 'jQuery', '2.0', true );
+        // wp_enqueue_script('validator-js', get_stylesheet_directory_uri() . '/js/validator.min.js', 'jQuery', '2.0', true );
+        // wp_enqueue_style('selectize-css', get_stylesheet_directory_uri() . '/css/selectize.css' );
         wp_enqueue_style('croppic-css', get_stylesheet_directory_uri() . '/css/croppic.css' );
         wp_enqueue_script('croppic-js', get_stylesheet_directory_uri() . '/js/croppic.js', array( 'jquery' ), '', true );
     }
@@ -552,6 +555,10 @@ function update_post_slug_on_change( $post_id ) {
         );
         
         $curCatSel = get_the_category($post_id);
+        if( !isset($curCategory)){
+            add_action( 'save_post', 'update_post_slug_on_change' );
+            return;
+        }
         $curCategory = $curCatSel[0]->term_id;
 
         // $curCategory = get_the_category($post_id)[0]->term_id;
@@ -563,16 +570,12 @@ function update_post_slug_on_change( $post_id ) {
                 }
             }
         }
-        // if (in_array( $category, array ('couple', 'duo'))){
-        //     $title .= ' & ' . $partner_name;
-        // }
 
         // update the post slug
         wp_update_post( array(
             'ID' => $post_id,
             'post_name' => $title //'' // do your thing here
         ));
-        // file_put_contents(__DIR__ . "filename.txt", $post_id . " - " . $title . " : " . $partner_name . " : " . $curCategory . " - " . json_encode($categories));
         // re-hook this function
         add_action( 'save_post', 'update_post_slug_on_change' );
     }
@@ -634,3 +637,8 @@ function classiera_adverts_column( $column, $post_id ) {
  }
 
  remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+
+ add_action('after_setup_theme', 'my_theme_setup');
+    function my_theme_setup(){
+        load_theme_textdomain('classiera-child-theme', get_template_directory() . '/languages');
+    }

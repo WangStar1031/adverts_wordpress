@@ -424,3 +424,21 @@ jQuery(document).on('click', ".remove-img", function () {
 	checkWelcomeCookie();
 
 	jQuery('.collapse').collapse();
+
+	jQuery(document).ready(function(){
+
+		setTimeout(function(){
+			// introJs().start();
+			// introJs().addHints();
+		}, 2000);
+
+		// if(jQuery().fn.introJs) {
+		// 	$('.crisp-1g35dz5').attr('data-intro', 'Some Intro').attr('data-step', '5');
+		// 	alert("loaded");
+		// }
+		
+	});
+
+	function intro_1() {
+		introJs().start();
+	};
