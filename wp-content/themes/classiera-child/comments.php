@@ -168,7 +168,7 @@ if ( comments_open()) :
 <script type="text/javascript">
 	var nCurRating = 0;
 	function setCommentRating(_nNumber){
-		var arrRatings = $(".comment-rating");
+		var arrRatings = $("label .comment-rating");
 		var nMax = _nNumber > arrRatings.length ? arrRatings.length : _nNumber;
 		for( var i = 0; i < arrRatings.length; i++){
 			if( i <= _nNumber){
@@ -180,7 +180,7 @@ if ( comments_open()) :
 	}
 	function clickRating(_nNumber){
 		// debugger;
-		var arrRatings = $(".comment-rating");
+		var arrRatings = $("label .comment-rating");
 		setCommentRating(_nNumber);
 		nCurRating = _nNumber;
 		$("input[name=commentRating]").val(nCurRating);
@@ -189,8 +189,25 @@ if ( comments_open()) :
 		setCommentRating(_nNumber);
 	}
 	function leaveRating(_nNumber){
-			setCommentRating(nCurRating);
+		setCommentRating(nCurRating);
 	}
+	function drawCommentRatings(){
+		var arrCommentRatings = $(".commentRating");
+		for( var i = 0; i < arrCommentRatings.length; i++){
+			var curCommentRating = arrCommentRatings.eq(i);
+			var nCurCommentRating = curCommentRating.attr("value");
+			if( !nCurCommentRating) continue;
+			var strHtml = '';
+			for( var j = 0; j < 5; j++){
+				if( j < nCurCommentRating)
+					strHtml += '<span class="comment-rating active glyphicon glyphicon-fire"></span>';
+				else
+					strHtml += '<span class="comment-rating glyphicon glyphicon-fire"></span>';
+			}
+			curCommentRating.append(strHtml);
+		}
+	}
+	drawCommentRatings();
 </script>
 <?php
 	endif;

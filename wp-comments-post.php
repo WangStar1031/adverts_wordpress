@@ -54,6 +54,13 @@ $cookies_consent = ( isset( $_POST['wp-comment-cookies-consent'] ) );
  */
 do_action( 'set_comment_cookies', $comment, $user, $cookies_consent );
 
+if( isset($_POST['commentRating'])){
+	add_comment_meta($comment->comment_ID, "commentRating", $_POST['commentRating'] * 1 + 1);
+	// file_put_contents(__DIR__ . "/filecomment.txt", json_encode($_POST['commentRating']));
+} else{
+	// file_put_contents(__DIR__ . "/filecomment.txt", json_encode($comment));
+}
+
 $location = empty( $_POST['redirect_to'] ) ? get_comment_link( $comment ) : $_POST['redirect_to'] . '#comment-' . $comment->comment_ID;
 
 // Add specific query arguments to display the awaiting moderation message.

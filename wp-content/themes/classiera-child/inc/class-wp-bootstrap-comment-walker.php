@@ -30,7 +30,11 @@ class Bootstrap_Comment_Walker extends Walker_Comment {
 			<?php if ( 0 != $args['avatar_size'] ): ?>
 			<div class="media-left">
 			<?php
-			$user_ID = $comment->user_id;			
+			// print_r($comment);
+			$comID = $comment->comment_ID;
+			$commentRating = get_comment_meta($comID, "commentRating", true);
+
+			$user_ID = $comment->user_id;
 			$author_avatar_url = get_user_meta($user_ID, "classify_author_avatar_url", true);
 			$author_avatar_url = classiera_get_profile_img($author_avatar_url);
 			if(empty($author_avatar_url)){
@@ -57,6 +61,7 @@ class Bootstrap_Comment_Walker extends Walker_Comment {
 			<div class="media-body" id="div-comment-<?php comment_ID(); ?>">
 				<h5 class="media-heading"><?php echo get_comment_author_link(); ?> &nbsp; 
 					<span class="normal"><?php esc_html_e( 'Said', 'classiera') ?> :</span>
+					<span class="commentRating" value="<?=$commentRating?>"></span>
 					<span class="time pull-right flip"><?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'classiera'), get_comment_date(), get_comment_time() ); ?></span>
 				</h5>
 				<?php if ( '0' == $comment->comment_approved ) : ?>
