@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.7.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-03-17 20:40:40+0000\n"
+"PO-Revision-Date: 2019-02-20 18:01:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,33 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: lv\n"
 "Project-Id-Version: WordPress - 4.7.x\n"
+
+#: wp-includes/class-wp.php:306 wp-includes/ms-deprecated.php:275
+#: wp-includes/ms-deprecated.php:294
+msgid "Sorry, you are not allowed to view this item."
+msgstr "Atvainojiet, jums nav ļauts apskatīt šo vienumu."
+
+#: wp-includes/class-wp.php:306 wp-includes/ms-deprecated.php:275
+#: wp-includes/ms-deprecated.php:294
+msgid "A variable mismatch has been detected."
+msgstr "Ir konstatēta mainīgo neatbilstība."
+
+#: wp-activate.php:30
+msgid "A key value mismatch has been detected. Please follow the link provided in your activation email."
+msgstr "Ir konstatēta atslēgas vērtības neatbilstība. Lūdzu, sekojiet aktivizēšanas e-pastā norādītajai saitei."
+
+#. translators: 1: number of placeholders, 2: number of arguments passed
+#: wp-includes/wp-db.php:1364
+msgid "The query does not contain the correct number of placeholders (%1$d) for the number of arguments passed (%2$d)."
+msgstr "Vaicājumā nav iekļauts iesniegto argumentu skaitam (%2$d) atbilstošs vietrāžu skaits (%1$d)."
+
+#: wp-includes/wp-db.php:1353
+msgid "The query only expected one placeholder, but an array of multiple placeholders was sent."
+msgstr "Vaicājumā tika gaidīts viens vietrādis, bet tika saņemti vairāk vietrāži."
+
+#: wp-includes/wp-db.php:1316
+msgid "Unsupported value type (%s)."
+msgstr "Neatbalstīta veida vērtība (%s)."
 
 #: wp-trackback.php:125
 msgid "We already have a ping from that URL for this post."
@@ -222,6 +249,7 @@ msgstr "Lapas valoda:"
 msgid "Site Title:"
 msgstr "Vietnes virsraksts:"
 
+#. translators: %s: site address
 #: wp-signup.php:127
 msgid "Must be at least 4 characters, letters and numbers only. It cannot be changed, so choose carefully!"
 msgstr "Jābūt vismaz 4 rakstzīmēm — tikai burtiem un cipariem. To nevarēs mainīt, tāpēc izvēlieties uzmanīgi!"
@@ -473,71 +501,71 @@ msgstr "Saites uz %s"
 
 #. translators: 1: WordPress version number, 2: Minimum required MySQL version
 #. number
-#: wp-includes/wp-db.php:3232
+#: wp-includes/wp-db.php:3345
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>KĻŪDA</strong>: WordPress %1$s nepieciešama MySQL %2$s vai jaunāka versija."
 
-#: wp-includes/wp-db.php:1811 wp-includes/wp-db.php:1817
+#: wp-includes/wp-db.php:1866 wp-includes/wp-db.php:1872
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "Nevar izgūt kļūdas ziņojumu no MySQL"
 
-#: wp-includes/wp-db.php:1709
+#: wp-includes/wp-db.php:1764
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "Vai esi drošs, ka datu bāzes serveris šobrīd nav īpaši noslogots?"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1703
+#: wp-includes/wp-db.php:1758
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "Tas nozīmē, ka esam zaudējuši kontaktu ar datu bāzes serveri %s. Tas varētu nozīmēt, ka jūsu resursdatora datu bāzes serveris nestrādā."
 
-#: wp-includes/wp-db.php:1699
+#: wp-includes/wp-db.php:1754
 msgid "Error reconnecting to the database"
 msgstr "Kļūda atkārtoti pieslēdzoties datubāzei"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1610 wp-includes/wp-db.php:1714
+#: wp-includes/wp-db.php:1665 wp-includes/wp-db.php:1769
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "Ja neesat drošs, par to, ko šie termini nozīmē, jums būtu jāsazinās ar servera turētāju. Ja nepieciešama papildus palīdzība apmeklējiet <a href=\"%s\">WordPress atbalsta forumus</a>."
 
-#: wp-includes/wp-db.php:1605 wp-includes/wp-db.php:1708
+#: wp-includes/wp-db.php:1660 wp-includes/wp-db.php:1763
 msgid "Are you sure that the database server is running?"
 msgstr "Vai esat pārliecināts, ka datu bāzes serveris darbojas?"
 
-#: wp-includes/wp-db.php:1604
+#: wp-includes/wp-db.php:1659
 msgid "Are you sure that you have typed the correct hostname?"
 msgstr "Vai esat pārliecināts, ka esat ievadījis pareizo resursdatora nosaukumu?"
 
-#: wp-includes/wp-db.php:1603
+#: wp-includes/wp-db.php:1658
 msgid "Are you sure you have the correct username and password?"
 msgstr "Vai esat pārliecināts, ka jums ir pareizais lietotājvārds un parole?"
 
 #. translators: 1: wp-config.php. 2: database host
-#: wp-includes/wp-db.php:1597
+#: wp-includes/wp-db.php:1652
 msgid "This either means that the username and password information in your %1$s file is incorrect or we can&#8217;t contact the database server at %2$s. This could mean your host&#8217;s database server is down."
 msgstr "Tas nozīmē, ka failā %1$s lietotājvārda un paroles informācija nav pareiza vai arī mēs nevaram izveidot savienojumu ar datu bāzes serveri %2$s. Tas varētu nozīmēt, ka jūsu resursdatora datu bāzes serveris nestrādā."
 
-#: wp-includes/wp-db.php:1395 wp-includes/wp-db.php:1412
+#: wp-includes/wp-db.php:1450 wp-includes/wp-db.php:1467
 msgid "WordPress database error:"
 msgstr "WordPress datubāzes kļūda:"
 
 #. translators: 1: Database error message, 2: SQL query
-#: wp-includes/wp-db.php:1382
+#: wp-includes/wp-db.php:1437
 msgid "WordPress database error %1$s for query %2$s"
 msgstr "WordPress datu bāzes kļūda %1$s vaicājumam %2$s"
 
 #. translators: 1: Database error message, 2: SQL query, 3: Name of the calling
 #. function
-#: wp-includes/wp-db.php:1379
+#: wp-includes/wp-db.php:1434
 msgid "WordPress database error %1$s for query %2$s made by %3$s"
 msgstr "WordPress datu bāzes kļūda %1$s vaicājumam %2$s, ko izdarījis %3$s"
 
-#: wp-includes/wp-db.php:1297
+#: wp-includes/wp-db.php:1300
 msgid "The query argument of %s must have a placeholder."
 msgstr "Pieprasījumu arguments %s jābūt vietturim."
 
 #. translators: %s: database access abstraction class, usually wpdb or a class
 #. extending wpdb
-#: wp-includes/wp-db.php:1180
+#: wp-includes/wp-db.php:1179
 msgid "%s must set a database connection for use with escaping."
 msgstr "%s ir jāiestata datu bāzes savienojums lietošanai ar bēgšanu."
 
@@ -789,8 +817,8 @@ msgstr "Saites vērtējums"
 msgid "Link title"
 msgstr "Saites nosaukums"
 
-#: wp-includes/widgets/class-wp-widget-links.php:142
 #: wp-includes/widgets/class-wp-widget-pages.php:135
+#: wp-includes/widgets/class-wp-widget-links.php:142
 msgid "Sort by:"
 msgstr "Kārtot pēc:"
 
@@ -831,13 +859,13 @@ msgstr "Kalendārs"
 msgid "A calendar of your site&#8217;s Posts."
 msgstr "Jūsu vietnes ziņu kalendārs."
 
-#: wp-includes/widgets/class-wp-widget-archives.php:161
 #: wp-includes/widgets/class-wp-widget-categories.php:167
+#: wp-includes/widgets/class-wp-widget-archives.php:161
 msgid "Show post counts"
 msgstr "Rādīt ziņu skaitu"
 
-#: wp-includes/widgets/class-wp-widget-archives.php:159
 #: wp-includes/widgets/class-wp-widget-categories.php:164
+#: wp-includes/widgets/class-wp-widget-archives.php:159
 msgid "Display as dropdown"
 msgstr "Rādīt kā izvēlni"
 
@@ -869,16 +897,16 @@ msgstr "Jūsu vietnes ziņu mēneša arhīvs"
 msgid "Select Menu:"
 msgstr "Atlasiet izvēlni:"
 
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:137
-#: wp-includes/widgets/class-wp-widget-archives.php:157
-#: wp-includes/widgets/class-wp-widget-calendar.php:104
-#: wp-includes/widgets/class-wp-widget-categories.php:160
-#: wp-includes/widgets/class-wp-widget-meta.php:111
 #: wp-includes/widgets/class-wp-widget-pages.php:131
-#: wp-includes/widgets/class-wp-widget-recent-comments.php:159
-#: wp-includes/widgets/class-wp-widget-recent-posts.php:132
+#: wp-includes/widgets/class-wp-widget-categories.php:160
+#: wp-includes/widgets/class-wp-widget-archives.php:157
+#: wp-includes/widgets/class-wp-nav-menu-widget.php:137
 #: wp-includes/widgets/class-wp-widget-search.php:71
+#: wp-includes/widgets/class-wp-widget-recent-comments.php:159
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:122
+#: wp-includes/widgets/class-wp-widget-meta.php:111
+#: wp-includes/widgets/class-wp-widget-recent-posts.php:132
+#: wp-includes/widgets/class-wp-widget-calendar.php:104
 #: wp-includes/widgets/class-wp-widget-text.php:109
 msgid "Title:"
 msgstr "Virsraksts:"
@@ -1070,8 +1098,8 @@ msgstr "<strong>KĻŪDA</strong>: Nav aizpildīts e-pasta lauks."
 msgid "<strong>ERROR</strong>: The password you entered for the username %s is incorrect."
 msgstr "<strong>KĻŪDA</strong>: Parole, kura tika ievadīta lietotājvārdam %s ir nepareiza."
 
-#: wp-includes/user.php:144 wp-includes/user.php:170 wp-includes/user.php:222
-#: wp-includes/user.php:242 wp-login.php:745 wp-login.php:939
+#: wp-login.php:745 wp-login.php:939 wp-includes/user.php:144
+#: wp-includes/user.php:170 wp-includes/user.php:222 wp-includes/user.php:242
 msgid "Lost your password?"
 msgstr "Aizmirsāt paroli?"
 
@@ -1326,9 +1354,9 @@ msgstr "Video tiek atskaņots."
 msgid "Video is paused."
 msgstr "Video ir apturēts."
 
-#: wp-includes/theme-compat/sidebar.php:103
 #: wp-includes/widgets/class-wp-widget-meta.php:33
 #: wp-includes/widgets/class-wp-widget-meta.php:48
+#: wp-includes/theme-compat/sidebar.php:103
 msgid "Meta"
 msgstr "Meta"
 
@@ -1406,18 +1434,18 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Šī ziņa ir aizsargāta ar paroli. Lai apskatītu komentārus, ievadiet paroli."
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments.php:16
-#: wp-includes/theme-compat/footer.php:15
-#: wp-includes/theme-compat/header.php:15
 #: wp-includes/theme-compat/sidebar.php:15
+#: wp-includes/theme-compat/header.php:15
+#: wp-includes/theme-compat/footer.php:15
+#: wp-includes/theme-compat/comments.php:16
 msgid "Please include a %s template in your theme."
 msgstr "Lūdzu, iekļaujiet %s veidni savā tēmā."
 
 #. translators: %s: template name
-#: wp-includes/theme-compat/comments.php:12
-#: wp-includes/theme-compat/footer.php:11
-#: wp-includes/theme-compat/header.php:11
 #: wp-includes/theme-compat/sidebar.php:11
+#: wp-includes/theme-compat/header.php:11
+#: wp-includes/theme-compat/footer.php:11
+#: wp-includes/theme-compat/comments.php:12
 msgid "Theme without %s"
 msgstr "Tēma bez %s"
 
@@ -1678,15 +1706,15 @@ msgid "Today"
 msgstr "Šodien"
 
 #. translators: To add an additional Open Sans character subset specific to
-#. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
-#. translate into your own language.
+#. your language, * translate this to 'greek', 'cyrillic' or 'vietnamese'. Do
+#. not translate into your own language.
 #: wp-includes/script-loader.php:806
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
 
 #. translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
+#. * by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
 #: wp-includes/script-loader.php:800
 msgctxt "Open Sans font: on or off"
@@ -1742,6 +1770,7 @@ msgstr "Palaist %s"
 msgid "Run Importer"
 msgstr "Palaist importētāju"
 
+#. translators: %s: Theme name
 #: wp-includes/script-loader.php:701
 msgctxt "theme"
 msgid "Activate %s"
@@ -1753,6 +1782,7 @@ msgctxt "theme"
 msgid "Network Activate %s"
 msgstr "Tīkla aktivizēšana %s"
 
+#. translators: %s: Plugin name
 #: wp-includes/script-loader.php:699
 msgctxt "plugin"
 msgid "Activate %s"
@@ -3057,8 +3087,8 @@ msgstr "Izraksts objektam, kāds tas eksistē datubāzē."
 msgid "The excerpt for the object."
 msgstr "Izraksts objektam."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1920
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:471
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1920
 msgid "The ID for the author of the object."
 msgstr "Objekta autora ID."
 
@@ -3090,18 +3120,18 @@ msgstr "Ziņas tips objektam."
 msgid "A named status for the object."
 msgstr "Nosauktais objekta statuss."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1775
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:515
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1775
 msgid "An alphanumeric identifier for the object unique to its type."
 msgstr "Objekta burtciparu identifikators, unikāls katram tipam."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1768
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:504
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1768
 msgid "The date the object was last modified, as GMT."
 msgstr "Objekta pēdējās modificēšanas datums, attēlots kā GTM."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1761
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:498
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1761
 msgid "The date the object was last modified, in the site's timezone."
 msgstr "Objekta pēdējās modificēšanas datums vietnes laika joslā."
 
@@ -3109,8 +3139,8 @@ msgstr "Objekta pēdējās modificēšanas datums vietnes laika joslā."
 msgid "GUID for the object, transformed for display."
 msgstr "GUID objektam, transformēts attēlošanai."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1734
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:488
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1734
 msgid "GUID for the object, as it exists in the database."
 msgstr "GUID objektam, kāds tas eksistē datubāzē."
 
@@ -3122,8 +3152,8 @@ msgstr "Vispārēji unikālais identifikators objektam."
 msgid "Invalid featured media ID."
 msgstr "Nederīgs piedāvātā mēdiji ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1064
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:134
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1064
 msgid "Invalid post parent ID."
 msgstr "Nederīgs ziņas pamatelementa ID."
 
@@ -3307,29 +3337,29 @@ msgstr "Kārtot kolekciju pēc objekta atribūta."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1378
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2113
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:937
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1337
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:937
 msgid "Order sort attribute ascending or descending."
 msgstr "Kārtot šķirošanas atribūtu augoši vai dilstoši."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1373
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2108
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:931
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1331
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:931
 msgid "Offset the result set by a specific number of items."
 msgstr "Rezultātu kopas nobīde par īpašu vienumu skaitu."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1364
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2092
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:921
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1322
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:921
 msgid "Limit result set to specific IDs."
 msgstr "Ierobežot rezultātu kopu ar specifiskiem ID."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1355
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2083
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:912
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1313
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:912
 msgid "Ensure result set excludes specific IDs."
 msgstr "Nodrošina, ka rezultātu kopa neiekļauj konkrētu ID."
 
@@ -3376,10 +3406,10 @@ msgid "The ID of the associated post object."
 msgstr "Saistītā ziņas objekta ID."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1250
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1806
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:76
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:92
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:510
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1806
 msgid "The ID for the parent of the object."
 msgstr "Pamatobjekta ID."
 
@@ -3389,14 +3419,14 @@ msgid "URL to the object."
 msgstr "URL uz objektu."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1237
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1722
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:482
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1722
 msgid "The date the object was published, as GMT."
 msgstr "Objekta publicēšanas datums, attēlots kā GTM."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1231
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1716
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:476
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1716
 msgid "The date the object was published, in the site's timezone."
 msgstr "Objekta publicēšanas datums vietnes laika joslā."
 
@@ -3555,10 +3585,10 @@ msgstr "Parole ziņai, ja tā ir aizsargāta ar paroli."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:68
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1161
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:93
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1748
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:96
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:493
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:93
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1748
 msgid "Unique identifier for the object."
 msgstr "Unikāls identifikators objektam."
 
@@ -3665,8 +3695,8 @@ msgstr "Norādītā nosaukumvieta nav atrodama."
 msgid "No route was found matching the URL and request method"
 msgstr "URL un pieprasījuma metodei atbilstošs maršruts nav atrasts"
 
-#: wp-includes/rest-api/class-wp-rest-server.php:902
 #: wp-includes/script-loader.php:132 wp-includes/script-loader.php:517
+#: wp-includes/rest-api/class-wp-rest-server.php:902
 msgid "Sorry, you are not allowed to do that."
 msgstr "Atvainojiet, jums nav atļauts to darīt."
 
@@ -3704,7 +3734,7 @@ msgstr "Nederīgs parametrs(i): %s"
 msgid "Invalid JSON body passed."
 msgstr "Nodots nederīgs JSON ķermenis."
 
-#: wp-includes/registration-functions.php:7 wp-includes/registration.php:7
+#: wp-includes/registration.php:7 wp-includes/registration-functions.php:7
 msgid "This file no longer needs to be included."
 msgstr "Šo failu vairs nav nepieciešams iekļaut."
 
@@ -3734,8 +3764,8 @@ msgstr "Ar %1$s, izmantojiet %2$s metodi, nevis %3$s funkciju. Skatīt %4$s."
 msgid "Conditional query tags do not work before the query is run. Before then, they always return false."
 msgstr "Nosacījuma vaicājuma birkas nedarbojas pirms vaicājums tiek uzdots. Tad atbilde vienmēr ir \"False\"."
 
-#: wp-includes/post.php:3876 wp-includes/script-loader.php:545
-#: wp-includes/script-loader.php:613
+#: wp-includes/script-loader.php:545 wp-includes/script-loader.php:613
+#: wp-includes/post.php:3876
 msgctxt "tag delimiter"
 msgid ","
 msgstr ","
@@ -3757,7 +3787,7 @@ msgstr "Neizdevās ievietot ziņu datu bāzē"
 msgid "Could not update post in the database"
 msgstr "Neizdevās atjaunot ziņu datubāzē."
 
-#: wp-includes/post.php:3131 wp-includes/rest-api.php:1069
+#: wp-includes/rest-api.php:1069 wp-includes/post.php:3131
 msgid "Invalid date."
 msgstr "Nederīgs datums."
 
@@ -3838,7 +3868,7 @@ msgstr "Filtrēt lapu sarakstu"
 msgid "Filter posts list"
 msgstr "Filtrēt ziņu sarakstu"
 
-#: wp-includes/post.php:1390 wp-includes/script-loader.php:741
+#: wp-includes/script-loader.php:741 wp-includes/post.php:1390
 msgid "Use as featured image"
 msgstr "Izmantot kā raksturojošo attēlu"
 
@@ -3996,13 +4026,13 @@ msgstr "Reģistrācijas noņemšana iebūvētiem ziņu tipiem nav atļauta"
 msgid "Post type names must be between 1 and 20 characters in length."
 msgstr "Ziņas tipa nosaukumam jābūt no 1 līdz 20 simboliem garam."
 
-#: wp-includes/post.php:691 wp-includes/post.php:711
-#: wp-includes/script-loader.php:573
+#: wp-includes/script-loader.php:573 wp-includes/post.php:691
+#: wp-includes/post.php:711
 msgid "Published"
 msgstr "Publicēts"
 
-#: wp-includes/post.php:690 wp-includes/post.php:710
-#: wp-includes/script-loader.php:568
+#: wp-includes/script-loader.php:568 wp-includes/post.php:690
+#: wp-includes/post.php:710
 msgid "Private"
 msgstr "Privāts"
 
@@ -4241,9 +4271,9 @@ msgstr "Šis saturs ir aizsargāts ar paroli. Lai to apskatītu, lūdzu, ievadie
 msgid "Home"
 msgstr "Sākumlapa"
 
-#: wp-includes/post-template.php:1175 wp-includes/theme-compat/sidebar.php:89
 #: wp-includes/widgets/class-wp-widget-pages.php:31
 #: wp-includes/widgets/class-wp-widget-pages.php:55
+#: wp-includes/post-template.php:1175 wp-includes/theme-compat/sidebar.php:89
 msgid "Pages"
 msgstr "Lapas"
 
@@ -4345,8 +4375,8 @@ msgstr "Lai uzstādītu paroli, apmeklējiet šo adresi:"
 msgid "[%s] New User Registration"
 msgstr "[%s] Jauna lietotāja reģistrācija"
 
-#: wp-includes/pluggable.php:1775 wp-includes/pluggable.php:1805
-#: wp-login.php:329
+#: wp-login.php:329 wp-includes/pluggable.php:1775
+#: wp-includes/pluggable.php:1805
 msgid "Username: %s"
 msgstr "Lietotājvārds: %s"
 
@@ -4901,11 +4931,11 @@ msgstr "Šī e-pasta adrese jau tiek lietota. Lūdzu, pārbaudiet aktivizācijas
 msgid "That username is currently reserved but may be available in a couple of days."
 msgstr "Šis lietotājvārds šobrīd ir rezervēts, bet varētu būt pieejamas pēc pāris dienām."
 
-#: wp-includes/ms-functions.php:475 wp-includes/user.php:1526
+#: wp-includes/user.php:1526 wp-includes/ms-functions.php:475
 msgid "Sorry, that email address is already used!"
 msgstr "Atvainojiet, tāds e-pasts jau tiek lietots!"
 
-#: wp-includes/ms-functions.php:471 wp-includes/user.php:1452
+#: wp-includes/user.php:1452 wp-includes/ms-functions.php:471
 msgid "Sorry, that username already exists!"
 msgstr "Atvainojiet, tāds lietotājvārds jau eksistē!"
 
@@ -4921,7 +4951,7 @@ msgstr "Ievadiet derīgu e-pasta adresi."
 msgid "Sorry, usernames must have letters too!"
 msgstr "Atvainojiet, lietotājvārdiem jāsatur arī burti!"
 
-#: wp-includes/ms-functions.php:451 wp-includes/user.php:1448
+#: wp-includes/user.php:1448 wp-includes/ms-functions.php:451
 msgid "Username may not be longer than 60 characters."
 msgstr "Lietotājvārds nedrīkst būt garāks par 60 rakstzīmēm."
 
@@ -4933,9 +4963,9 @@ msgstr "Lietotājvārdam jābūt vismaz 4 rakstzīmes garam."
 msgid "You cannot use that email address to signup. We are having problems with them blocking some of our email. Please use another email provider."
 msgstr "Jūs nevarat izmantot šo e-pasta adresi, lai piereģistrētos. Lūdzu, izmantojiet citu e-pasta pakalpojumu sniedzēju, jo šajā ir tikuši bloķēti daži mūsu e-pasti."
 
-#: wp-includes/ms-functions.php:434 wp-includes/ms-functions.php:441
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1099
-#: wp-includes/user.php:1465
+#: wp-includes/user.php:1465 wp-includes/ms-functions.php:434
+#: wp-includes/ms-functions.php:441
 msgid "Sorry, that username is not allowed."
 msgstr "Atvainojiet, šis lietotājvārds nav atļauts."
 
@@ -4955,11 +4985,11 @@ msgstr "Šis lietotājs neeksistē."
 msgid "The requested user does not exist."
 msgstr "Šāds lietotājs neeksistē."
 
-#: wp-includes/ms-deprecated.php:406
+#: wp-includes/ms-deprecated.php:411
 msgid "<strong>ERROR</strong>: problem creating site entry."
 msgstr "<strong>KĻŪDA</strong>: problēma veidojot vietnes ierakstu."
 
-#: wp-includes/ms-deprecated.php:399
+#: wp-includes/ms-deprecated.php:404
 msgid "<strong>ERROR</strong>: Site URL already taken."
 msgstr "<strong>KĻŪDA</strong>: vietnes URL jau aizņemts."
 
@@ -5190,7 +5220,7 @@ msgstr ""
 "Jūs gatavojaties noņemt šos vienumus.\n"
 " 'Atcelt' lai atceltu, 'Labi' lai dzēstu."
 
-#: wp-includes/media.php:3491 wp-includes/script-loader.php:80
+#: wp-includes/script-loader.php:80 wp-includes/media.php:3491
 msgid ""
 "You are about to permanently delete these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -5259,16 +5289,15 @@ msgstr "Augšupielādēt failus"
 msgid "Drag and drop to reorder media files."
 msgstr "Velciet un nometiet multivides failus lai pārkārtotu tos."
 
-#. translators: This is a would-be plural string used in the media manager.
-#. If there is not a word you can use in your language to avoid issues with
-#. the 		   lack of plural support here, turn it into "selected: %d" then
-#. translate it.
+#. translators: This is a would-be plural string used in the media manager. If
+#. there is not a word you can use in your language to avoid issues with the
+#. lack of plural support here, turn it into "selected: %d" then translate it.
 #: wp-includes/media.php:3469
 msgid "%d selected"
 msgstr "Atlasīti: %d"
 
-#: wp-includes/media.php:3461 wp-includes/script-loader.php:429
-#: wp-includes/script-loader.php:565 wp-includes/script-loader.php:641
+#: wp-includes/script-loader.php:429 wp-includes/script-loader.php:565
+#: wp-includes/script-loader.php:641 wp-includes/media.php:3461
 msgid "Update"
 msgstr "Atjaunināt"
 
@@ -5280,8 +5309,8 @@ msgstr "Atlasīt"
 msgid "Add Media"
 msgstr "Ievietot mediju"
 
-#: wp-includes/media.php:3115 wp-includes/script-loader.php:431
-#: wp-includes/script-loader.php:612
+#: wp-includes/script-loader.php:431 wp-includes/script-loader.php:612
+#: wp-includes/media.php:3115
 msgid "(no title)"
 msgstr "(nav nosaukuma)"
 
@@ -5531,7 +5560,7 @@ msgstr "Iegult vai ielikt saiti"
 msgid "Attachment Display Settings"
 msgstr "Pielikuma parādīšanas iestatījumi"
 
-#: wp-includes/media-template.php:598 wp-includes/script-loader.php:718
+#: wp-includes/script-loader.php:718 wp-includes/media-template.php:598
 msgid "Clear"
 msgstr "Notīrīt"
 
@@ -5836,51 +5865,51 @@ msgctxt "translations"
 msgid "Installed"
 msgstr "Uzstādītas"
 
-#: wp-includes/general-template.php:3472
+#: wp-includes/general-template.php:3492
 msgctxt "admin color scheme"
 msgid "Coffee"
 msgstr "Kafija"
 
-#: wp-includes/general-template.php:3466
+#: wp-includes/general-template.php:3486
 msgctxt "admin color scheme"
 msgid "Ocean"
 msgstr "Okeāns"
 
-#: wp-includes/general-template.php:3460
+#: wp-includes/general-template.php:3480
 msgctxt "admin color scheme"
 msgid "Ectoplasm"
 msgstr "Ektoplazma"
 
-#: wp-includes/general-template.php:3454
+#: wp-includes/general-template.php:3474
 msgctxt "admin color scheme"
 msgid "Sunrise"
 msgstr "Saullēkts"
 
-#: wp-includes/general-template.php:3448
+#: wp-includes/general-template.php:3468
 msgctxt "admin color scheme"
 msgid "Midnight"
 msgstr "Pusnakts"
 
-#: wp-includes/general-template.php:3442
+#: wp-includes/general-template.php:3462
 msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "Zils"
 
-#: wp-includes/general-template.php:3436
+#: wp-includes/general-template.php:3456
 msgctxt "admin color scheme"
 msgid "Light"
 msgstr "Gaišā"
 
-#: wp-includes/general-template.php:3425
+#: wp-includes/general-template.php:3445
 msgctxt "admin color scheme"
 msgid "Default"
 msgstr "Noklusējuma"
 
-#: wp-includes/general-template.php:3259
+#: wp-includes/general-template.php:3279
 msgid "Next &raquo;"
 msgstr "Nākamā lapa &raquo;"
 
-#: wp-includes/general-template.php:3258
+#: wp-includes/general-template.php:3278
 msgid "&laquo; Previous"
 msgstr "&laquo; Iepriekšējā lapa"
 
@@ -5948,14 +5977,14 @@ msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
 #. translators: 1: month name, 2: 4-digit year
-#: wp-includes/general-template.php:1743 wp-includes/media.php:3398
+#: wp-includes/media.php:3398 wp-includes/general-template.php:1743
 msgid "%1$s %2$d"
 msgstr "%1$s (%2$d)"
 
-#: wp-includes/general-template.php:1509
-#: wp-includes/theme-compat/sidebar.php:91
 #: wp-includes/widgets/class-wp-widget-archives.php:31
 #: wp-includes/widgets/class-wp-widget-archives.php:49
+#: wp-includes/general-template.php:1509
+#: wp-includes/theme-compat/sidebar.php:91
 msgid "Archives"
 msgstr "Arhīvi"
 
@@ -6015,6 +6044,7 @@ msgctxt "post format archive title"
 msgid "Asides"
 msgstr "Piezīmes"
 
+#. translators: Daily archive title. 1: Date
 #: wp-includes/general-template.php:1480 wp-includes/general-template.php:2060
 msgctxt "daily archives date format"
 msgid "F j, Y"
@@ -6059,11 +6089,13 @@ msgstr "Meklēšanas rezultāti %1$s %2$s"
 msgid "Page %s"
 msgstr "Lapa %s"
 
+#. translators: Monthly archive title. 1: Month name and year
 #: wp-includes/general-template.php:1008 wp-includes/general-template.php:1477
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "Y. \\g\\a\\d\\a F"
 
+#. translators: Yearly archive title. 1: Year
 #: wp-includes/general-template.php:1005 wp-includes/general-template.php:1474
 msgctxt "yearly archives date format"
 msgid "Y"
@@ -6084,9 +6116,9 @@ msgstr "Lapa netika atrasta."
 msgid "The %1$s option is deprecated for the family of %2$s functions. Use the %3$s function instead."
 msgstr "%1$s opcija ir novecojusi %2$s funkciju saimei. Tās vietā izmantojiet %3$s funkciju."
 
-#. translators: Translate this to the correct language tag for your locale, see
-#. https://www.w3.org/International/articles/language-tags/ for reference. Do
-#. not translate into your own language.
+#. translators: Translate this to the correct language tag for your locale, *
+#. see https://www.w3.org/International/articles/language-tags/ for reference.
+#. * Do not translate into your own language.
 #: wp-includes/general-template.php:716
 msgid "html_lang_attribute"
 msgstr "lv-LV"
@@ -6101,24 +6133,24 @@ msgstr "Funkciju saimes %2$s opcija %1$s ir novecojusi. Tās vietā, izmantojiet
 msgid "Site Admin"
 msgstr "Administrēt"
 
-#: wp-includes/general-template.php:539 wp-login.php:553 wp-login.php:666
-#: wp-login.php:740 wp-login.php:933
+#: wp-login.php:553 wp-login.php:666 wp-login.php:740 wp-login.php:933
+#: wp-includes/general-template.php:539
 msgid "Register"
 msgstr "Reģistrēties"
 
-#: wp-includes/general-template.php:411 wp-login.php:884 wp-login.php:916
+#: wp-login.php:884 wp-login.php:916 wp-includes/general-template.php:411
 msgid "Log In"
 msgstr "Pieteikties"
 
-#: wp-includes/general-template.php:410 wp-login.php:914
+#: wp-login.php:914 wp-includes/general-template.php:410
 msgid "Remember Me"
 msgstr "Atcerēties mani"
 
-#: wp-includes/general-template.php:409 wp-login.php:903
+#: wp-login.php:903 wp-includes/general-template.php:409
 msgid "Password"
 msgstr "Parole"
 
-#: wp-includes/general-template.php:408 wp-login.php:535 wp-login.php:899
+#: wp-login.php:535 wp-login.php:899 wp-includes/general-template.php:408
 msgid "Username or Email Address"
 msgstr "Lietotājvārds vai e-pasta adrese"
 
@@ -6126,8 +6158,8 @@ msgstr "Lietotājvārds vai e-pasta adrese"
 msgid "Log out"
 msgstr "Atslēgties"
 
-#: wp-includes/general-template.php:272 wp-login.php:550 wp-login.php:613
-#: wp-login.php:663 wp-login.php:744
+#: wp-login.php:550 wp-login.php:613 wp-login.php:663 wp-login.php:744
+#: wp-includes/general-template.php:272
 msgid "Log in"
 msgstr "Pieteikties"
 
@@ -6164,81 +6196,81 @@ msgstr "Nedodiet %1$s birkas %2$s."
 msgid "Scripts and styles should not be registered or enqueued until the %1$s, %2$s, or %3$s hooks."
 msgstr "Skriptus un stilus nevajadzētu reģistrēt un ierindot līdz %1$s, %2$s, vai %3$s āķiem."
 
-#: wp-includes/functions.php:5272
+#: wp-includes/functions.php:5321
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "Pieteikšanās lapa atvērsies jaunā logā. Pēc pieteikšanās varat to aizvērt un atgriezties šajā lapā."
 
-#: wp-includes/functions.php:5271 wp-includes/user.php:280
+#: wp-includes/user.php:280 wp-includes/functions.php:5320
 msgid "Please log in again."
 msgstr "Lūdzu, piesakieties vēlreiz."
 
-#: wp-includes/functions.php:5270 wp-includes/script-loader.php:470
+#: wp-includes/script-loader.php:470 wp-includes/functions.php:5319
 msgid "Session expired"
 msgstr "Sesija beigusies"
 
-#: wp-includes/functions.php:5259
+#: wp-includes/functions.php:5308
 msgid "Close dialog"
 msgstr "Aizvērt dialoglodziņu"
 
-#: wp-includes/functions.php:4673
+#: wp-includes/functions.php:4722
 msgid "Manual Offsets"
 msgstr "Manuālas nobīdes"
 
-#: wp-includes/functions.php:4665 wp-includes/functions.php:4669
+#: wp-includes/functions.php:4714 wp-includes/functions.php:4718
 msgid "UTC"
 msgstr "ULK"
 
-#: wp-includes/functions.php:4620
+#: wp-includes/functions.php:4669
 msgid "Select a city"
 msgstr "Atlasiet pilsētu"
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: Version information message
-#: wp-includes/functions.php:4138
+#: wp-includes/functions.php:4187
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "%1$s tika izsaukts <strong>nepareizi</strong>. %2$s %3$s"
 
-#: wp-includes/functions.php:4135
+#: wp-includes/functions.php:4184
 msgid "https://codex.wordpress.org/Debugging_in_WordPress"
 msgstr "https://codex.wordpress.org/Debugging_in_WordPress"
 
 #. translators: %s: Codex URL
-#: wp-includes/functions.php:4134
+#: wp-includes/functions.php:4183
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "Lūdzu, apskatiet <a href=\"%s\">WordPress atkļūdošanu</a> lai iegūtu vairāk informācijas."
 
 #. translators: %s: version number
-#: wp-includes/functions.php:4131
+#: wp-includes/functions.php:4180
 msgid "(This message was added in version %s.)"
 msgstr "(Šis ziņojums tika pievienots %s versijā.)"
 
 #. translators: 1: PHP function name, 2: version number
-#: wp-includes/functions.php:4025
+#: wp-includes/functions.php:4074
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s tika izsaukts ar argumentu kurš ir <strong>novecojis</strong> kopš versijas %2$s bez pieejamām alternatīvām."
 
 #. translators: 1: PHP function name, 2: version number, 3: optional message
 #. regarding the change
-#: wp-includes/functions.php:4022
+#: wp-includes/functions.php:4071
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s tika izsaukts ar argumentu kurš ir <strong>novecojis</strong> kopš versijas %2$s! %3$s"
 
 #. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3896
+#: wp-includes/functions.php:3945
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Izsauktā konstruktora metode %1$s ir <strong>novecojusi</strong> kopš versijas %2$s! Tā vietā izmantojiet %3$s."
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: version number,
 #. 4: __construct() method
-#: wp-includes/functions.php:3892
+#: wp-includes/functions.php:3941
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Izsauktā konstruktorā metode %1$s %2$s ir <strong>novecojusi</strong> kopš versijas %3$s! Izmantojiet %4$s tās vietā."
 
 #. translators: 1: PHP function name, 2: version number
 #. translators: 1: PHP file name, 2: version number
 #. translators: 1: WordPress hook name, 2: version number
-#: wp-includes/functions.php:3833 wp-includes/functions.php:3961
-#: wp-includes/functions.php:4084
+#: wp-includes/functions.php:3882 wp-includes/functions.php:4010
+#: wp-includes/functions.php:4133
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "Funkcija %1$s kopš versijas %2$s <strong>ir novecojusi</strong>! bez pieejamām alternatīvām."
 
@@ -6247,60 +6279,60 @@ msgstr "Funkcija %1$s kopš versijas %2$s <strong>ir novecojusi</strong>! bez pi
 #. translators: 1: PHP file name, 2: version number, 3: alternative file name
 #. translators: 1: WordPress hook name, 2: version number, 3: alternative hook
 #. name
-#: wp-includes/functions.php:3830 wp-includes/functions.php:3958
-#: wp-includes/functions.php:4081
+#: wp-includes/functions.php:3879 wp-includes/functions.php:4007
+#: wp-includes/functions.php:4130
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "%1$s ir <strong>novecojusi</strong> kopš %2$s versijas! Tā vietā lietojiet %3$s."
 
-#: wp-includes/functions.php:3769 wp-includes/ms-load.php:462
-#: wp-includes/wp-db.php:1593
+#: wp-includes/wp-db.php:1648 wp-includes/functions.php:3818
+#: wp-includes/ms-load.php:462
 msgid "Error establishing a database connection"
 msgstr "Kļūda veidojot datubāzes savienojumu"
 
-#: wp-includes/functions.php:3765
+#: wp-includes/functions.php:3814
 msgid "Database Error"
 msgstr "Datubāzes kļūda"
 
-#: wp-includes/functions.php:2738 wp-load.php:92
+#: wp-load.php:92 wp-includes/functions.php:2787
 msgid "WordPress &rsaquo; Error"
 msgstr "WordPress &rsaquo; kļūda"
 
-#: wp-includes/functions.php:2726
+#: wp-includes/functions.php:2775
 msgid "&laquo; Back"
 msgstr "&laquo; Atpakaļ"
 
-#: wp-includes/functions.php:2606
+#: wp-includes/functions.php:2655
 msgid "WordPress Failure Notice"
 msgstr "WordPress kļūdas paziņojums"
 
-#: wp-includes/functions.php:2601 wp-includes/ms-functions.php:1970
+#: wp-includes/functions.php:2650 wp-includes/ms-functions.php:1970
 msgid "Please try again."
 msgstr "Lūdzu, mēģiniet vēlreiz."
 
 #. translators: %s: logout URL
-#: wp-includes/functions.php:2592
+#: wp-includes/functions.php:2641
 msgid "Do you really want to <a href=\"%s\">log out</a>?"
 msgstr "Vai Jūs tiešām vēlaties <a href='%s'>atteikties</a>?"
 
 #. translators: %s: site name
-#: wp-includes/functions.php:2585
+#: wp-includes/functions.php:2634
 msgid "You are attempting to log out of %s"
 msgstr "Jūs mēģinājāt atteikties no %s"
 
-#: wp-includes/functions.php:2173
+#: wp-includes/functions.php:2186
 msgid "Could not write file %s"
 msgstr "Neizdevās saglabāt failu %s"
 
-#: wp-includes/functions.php:2131
+#: wp-includes/functions.php:2144
 msgid "Invalid file type"
 msgstr "Nederīgs faila tips"
 
-#: wp-includes/functions.php:2127
+#: wp-includes/functions.php:2140
 msgid "Empty filename"
 msgstr "Tukšs faila vārds."
 
 #. translators: %s: directory path
-#: wp-includes/functions.php:1897 wp-includes/functions.php:2165
+#: wp-includes/functions.php:1910 wp-includes/functions.php:2178
 msgid "Unable to create directory %s. Is its parent directory writable by the server?"
 msgstr "Nevar izveidot direktoriju %s. Vai mātes direktorija uz servera rakstāma?"
 
@@ -6313,7 +6345,7 @@ msgstr "Viena vai vairākas datubāzes tabulas nav pieejamas. Datubāzi nepiecie
 msgid "ERROR: This is not a valid feed template."
 msgstr "KĻŪDA: nederīga plūsmas veidne."
 
-#. translators: If months in your language require a genitive case, translate
+#. translators: If months in your language require a genitive case, * translate
 #. this to 'on'. Do not translate into your own language.
 #: wp-includes/functions.php:175
 msgctxt "decline months names: on or off"
@@ -6321,60 +6353,56 @@ msgid "off"
 msgstr "no"
 
 #. translators: used to join items in a list with only 2 items
-#: wp-includes/formatting.php:4486
+#: wp-includes/formatting.php:4488
 msgid "%s and %s"
 msgstr "%s un %s"
 
 #. translators: used to join last two items in a list with more than 2 times
-#: wp-includes/formatting.php:4484
+#: wp-includes/formatting.php:4486
 msgid "%s, and %s"
 msgstr "%s, un %s"
 
 #. translators: used to join items in a list with more than 2 items
-#: wp-includes/formatting.php:4482
+#: wp-includes/formatting.php:4484
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: wp-includes/formatting.php:4251
+#: wp-includes/formatting.php:4253
 msgid "https://codex.wordpress.org/Using_Permalinks#Choosing_your_permalink_structure"
 msgstr "https://codex.wordpress.org/Using_Permalinks#Choosing_your_permalink_structure"
 
 #. translators: %s: Codex URL
-#: wp-includes/formatting.php:4250
+#: wp-includes/formatting.php:4252
 msgid "A structure tag is required when using custom permalinks. <a href=\"%s\">Learn more</a>"
 msgstr "Lai lietotu pielāgotu pastāvīgo saiti nepieciešama struktūras birka. <a href=\"%s\"> Uzziniet vairāk</a>"
 
-#: wp-includes/formatting.php:4232
+#: wp-includes/formatting.php:4234
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
 msgstr "Ievadītā laika zona ir nederīga. Lūdzu, atlasiet derīgu laika zonu."
 
-#: wp-includes/formatting.php:4177
+#: wp-includes/formatting.php:4179
 msgid "The Site address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "Vietnes adresei, kuru ievadījāt, šķiet, nav derīgs vietrādis URL. Lūdzu, ievadiet derīgu URL."
 
-#: wp-includes/formatting.php:4164
+#: wp-includes/formatting.php:4166
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "WordPress adresei, kuru ievadījāt nav derīga URL. Lūdzu, ievadiet derīgu URL."
 
-#: wp-includes/formatting.php:4058
+#: wp-includes/formatting.php:4060
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "Ievadītā e-pasta adrese nav derīga. Lūdzu, ievadiet derīgu e-pasta adresi."
 
-#. translators: If your word count is based on single characters (e.g. East
-#. Asian characters), enter 'characters_excluding_spaces' or
-#. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
-#. into your own language.
-#: wp-includes/formatting.php:3355 wp-includes/script-loader.php:446
+#: wp-includes/script-loader.php:446 wp-includes/formatting.php:3357
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "vārdi"
 
-#: wp-includes/formatting.php:3344 wp-includes/general-template.php:3344
+#: wp-includes/general-template.php:3364 wp-includes/formatting.php:3346
 msgid "&hellip;"
 msgstr "&hellip;"
 
 #. translators: Time difference between two dates, in years. 1: Number of years
-#: wp-includes/formatting.php:3257
+#: wp-includes/formatting.php:3259
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s gads"
@@ -6383,7 +6411,7 @@ msgstr[2] "%s gadi"
 
 #. translators: Time difference between two dates, in months. 1: Number of
 #. months
-#: wp-includes/formatting.php:3251
+#: wp-includes/formatting.php:3253
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s mēnesis"
@@ -6391,7 +6419,7 @@ msgstr[1] "%s mēneši"
 msgstr[2] "%s mēneši"
 
 #. translators: Time difference between two dates, in weeks. 1: Number of weeks
-#: wp-includes/formatting.php:3245
+#: wp-includes/formatting.php:3247
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s nedēļa"
@@ -6399,7 +6427,7 @@ msgstr[1] "%s nedēļas"
 msgstr[2] "%s nedēļas"
 
 #. translators: Time difference between two dates, in days. 1: Number of days
-#: wp-includes/formatting.php:3239
+#: wp-includes/formatting.php:3241
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s dienas"
@@ -6407,7 +6435,7 @@ msgstr[1] "%s dienām"
 msgstr[2] "%s dienas"
 
 #. translators: Time difference between two dates, in hours. 1: Number of hours
-#: wp-includes/formatting.php:3233
+#: wp-includes/formatting.php:3235
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s stundas"
@@ -6416,7 +6444,7 @@ msgstr[2] "%s stundām"
 
 #. translators: Time difference between two dates, in minutes (min=minute). 1:
 #. Number of minutes
-#: wp-includes/formatting.php:3227
+#: wp-includes/formatting.php:3229
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s minūte"
@@ -6429,9 +6457,9 @@ msgid "&#8217;tain&#8217;t,&#8217;twere,&#8217;twas,&#8217;tis,&#8217;twill,&#82
 msgstr "&#8217;tain&#8217;t,&#8217;twere,&#8217;twas,&#8217;tis,&#8217;twill,&#8217;til,&#8217;bout,&#8217;nuff,&#8217;round,&#8217;cause,&#8217;em"
 
 #. translators: This is a comma-separated list of words that defy the syntax of
-#. quotations in normal use, for example...  'We do not have enough words yet'
-#. ... is a typical quoted phrase.  But when we write lines of code 'til we
-#. have enough of 'em, then we need to insert apostrophes instead of quotes.
+#. quotations in normal use, * for example...  'We do not have enough words
+#. yet' ... is a typical quoted phrase.  But when we write * lines of code 'til
+#. we have enough of 'em, then we need to insert apostrophes instead of quotes.
 #: wp-includes/formatting.php:122
 msgctxt "Comma-separated list of words to texturize in your language"
 msgid "'tain't,'twere,'twas,'tis,'twill,'til,'bout,'nuff,'round,'cause,'em"
@@ -6486,7 +6514,7 @@ msgid "&#8221;"
 msgstr "&#8221;"
 
 #. translators: opening curly double quote
-#: wp-includes/formatting.php:88 wp-includes/formatting.php:4791
+#: wp-includes/formatting.php:88 wp-includes/formatting.php:4793
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8220;"
@@ -6506,22 +6534,22 @@ msgid "Comments on: %s"
 msgstr "Komentāri par: %s"
 
 #. translators: Comment author title. 1: Comment author name
-#: wp-includes/feed-atom-comments.php:84 wp-includes/feed-rss2-comments.php:83
+#: wp-includes/feed-rss2-comments.php:83 wp-includes/feed-atom-comments.php:84
 msgid "By: %s"
 msgstr "No: %s"
 
 #. translators: Individual comment title. 1: Post title, 2: Comment author name
-#: wp-includes/feed-atom-comments.php:81 wp-includes/feed-rss2-comments.php:80
+#: wp-includes/feed-rss2-comments.php:80 wp-includes/feed-atom-comments.php:81
 msgid "Comment on %1$s by %2$s"
 msgstr "Komentēt %1$s no %2$s"
 
 #. translators: Comments feed title. 1: Site name
-#: wp-includes/feed-atom-comments.php:39 wp-includes/feed-rss2-comments.php:44
+#: wp-includes/feed-rss2-comments.php:44 wp-includes/feed-atom-comments.php:39
 msgid "Comments for %s"
 msgstr "Komentāri par %s"
 
 #. translators: Comments feed title. 1: Site name, 2: Search query
-#: wp-includes/feed-atom-comments.php:36 wp-includes/feed-rss2-comments.php:41
+#: wp-includes/feed-rss2-comments.php:41 wp-includes/feed-atom-comments.php:36
 msgid "Comments for %1$s searching on %2$s"
 msgstr "Komentāri par %1$s meklējot %2$s"
 
@@ -6589,7 +6617,7 @@ msgstr "GD attēlu apstrādes bibliotēka nav uzstādīta."
 msgid "File &#8220;%s&#8221; doesn&#8217;t exist?"
 msgstr "Fails &#8220;%s&#8221; neeksistē?"
 
-#: wp-includes/deprecated.php:3122 wp-includes/functions.php:2596
+#: wp-includes/functions.php:2645 wp-includes/deprecated.php:3122
 msgid "Are you sure you want to do this?"
 msgstr "Vai tiešām vēlaties to darīt?"
 
@@ -6601,7 +6629,7 @@ msgstr "Pēdējā ziņa"
 msgid "First Post"
 msgstr "Pirmā ziņa"
 
-#: wp-includes/deprecated.php:1840 wp-includes/post-template.php:1499
+#: wp-includes/post-template.php:1499 wp-includes/deprecated.php:1840
 msgid "Missing Attachment"
 msgstr "Trūkst pielikums"
 
@@ -6609,12 +6637,12 @@ msgstr "Trūkst pielikums"
 msgid "Last updated"
 msgstr "Pēdējo reizi atjaunināts"
 
-#: wp-includes/deprecated.php:688 wp-includes/media-template.php:626
+#: wp-includes/script-loader.php:360 wp-includes/media-template.php:626
 #: wp-includes/media-template.php:653 wp-includes/media-template.php:731
 #: wp-includes/media-template.php:857 wp-includes/media-template.php:872
 #: wp-includes/media-template.php:923 wp-includes/media-template.php:985
 #: wp-includes/media-template.php:1083 wp-includes/media-template.php:1172
-#: wp-includes/script-loader.php:360
+#: wp-includes/deprecated.php:688
 msgid "None"
 msgstr "Neviens"
 
@@ -6622,12 +6650,10 @@ msgstr "Neviens"
 msgid "new WordPress Loop"
 msgstr "jauna WordPress cilpa"
 
-#. translators: 1: month, 2: day of month
 #: wp-includes/date.php:457
 msgid "The following values do not describe a valid date: month %1$s, day %2$s."
 msgstr "Šis nav pareizs datums: mēnesis %1$s, diena %2$s."
 
-#. translators: 1: year, 2: month, 3: day of month
 #: wp-includes/date.php:440
 msgid "The following values do not describe a valid date: year %1$s, month %2$s, day %3$s."
 msgstr "Šīs vērtības neapraksta derīgu datumu: gads %1$s, mēnesis %2$s, diena %3$s."
@@ -6688,18 +6714,18 @@ msgctxt "theme author"
 msgid "By %s"
 msgstr "%s"
 
-#: wp-includes/customize/class-wp-customize-theme-control.php:87
 #: wp-includes/script-loader.php:695
+#: wp-includes/customize/class-wp-customize-theme-control.php:87
 msgid "Live Preview"
 msgstr "Priekšskatīt"
 
-#: wp-includes/customize/class-wp-customize-site-icon-control.php:74
 #: wp-includes/media-template.php:1257
+#: wp-includes/customize/class-wp-customize-site-icon-control.php:74
 msgid "Preview as an app icon"
 msgstr "Priekšskatīt kā programmu ikonu"
 
-#: wp-includes/customize/class-wp-customize-site-icon-control.php:70
 #: wp-includes/media-template.php:1250
+#: wp-includes/customize/class-wp-customize-site-icon-control.php:70
 msgid "Preview as a browser icon"
 msgstr "Priekšskatīt, kā pārlūkprogrammas ikona"
 
@@ -6737,8 +6763,8 @@ msgstr "Izveidot izvēlni"
 msgid "%1$s (%2$d)"
 msgstr "%1$s (%2$d)"
 
-#: wp-includes/customize/class-wp-customize-nav-menu-location-control.php:80
 #: wp-includes/widgets/class-wp-nav-menu-widget.php:153
+#: wp-includes/customize/class-wp-customize-nav-menu-location-control.php:80
 msgid "Edit Menu"
 msgstr "Labot izvēlni"
 
@@ -6843,8 +6869,8 @@ msgstr "Mainīt failu"
 msgid "Select File"
 msgstr "Atlasiet failu"
 
-#: wp-includes/customize/class-wp-customize-image-control.php:41
 #: wp-includes/media.php:3533
+#: wp-includes/customize/class-wp-customize-image-control.php:41
 msgid "Choose Image"
 msgstr "Izvēlēties attēlu"
 
@@ -7009,25 +7035,25 @@ msgstr "Reizi stundā"
 msgid "This argument has changed to an array to match the behavior of the other cron functions."
 msgstr "Šis arguments ir mainījies uz masīvu, lai atbilstu citu cron funkciju uzvedībai."
 
-#: wp-includes/comment.php:3097
+#: wp-includes/comment.php:3099
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>KĻŪDA</strong>: Komentāru nevar saglabāt. Lūdzu, vēlāk mēģiniet vēlreiz."
 
-#: wp-includes/comment.php:3072
+#: wp-includes/comment.php:3074
 msgid "<strong>ERROR</strong>: please type a comment."
 msgstr "<strong>KĻŪDA</strong>: lūdzu, ievadiet komentāru"
 
-#: wp-includes/comment.php:3067
+#: wp-includes/comment.php:3069
 msgid "<strong>ERROR</strong>: please enter a valid email address."
 msgstr "<strong>KĻŪDA</strong>: lūdzu, ievadiet derīgu e-pasta adresi."
 
-#: wp-includes/comment.php:3065
+#: wp-includes/comment.php:3067
 msgid "<strong>ERROR</strong>: please fill the required fields (name, email)."
 msgstr "<strong>KĻŪDA</strong>: lūdzu, aizpildiet nepieciešamos laukus (vārdu, e-pasta adresi)."
 
-#: wp-includes/comment.php:3057
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:403
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:420
+#: wp-includes/comment.php:3059
 msgid "Sorry, you must be logged in to comment."
 msgstr "Atvainojiet, lai komentētu, jums ir jāpieslēdzas."
 
@@ -7116,7 +7142,7 @@ msgstr "Obligātie lauki ir atzīmēti kā %s"
 msgid "Website"
 msgstr "Tīmekļa vietne"
 
-#: wp-includes/comment-template.php:2198 wp-login.php:726
+#: wp-login.php:726 wp-includes/comment-template.php:2198
 msgid "Email"
 msgstr "E-pasts"
 
@@ -7153,7 +7179,7 @@ msgstr "Piesakieties, lai atbildētu"
 msgid "Reply to %s"
 msgstr "Atbildēt uz %s"
 
-#: wp-includes/comment-template.php:1594 wp-includes/script-loader.php:526
+#: wp-includes/script-loader.php:526 wp-includes/comment-template.php:1594
 msgid "Reply"
 msgstr "Atbildēt"
 
@@ -7205,7 +7231,7 @@ msgstr "1 komentārs"
 msgid "No Comments"
 msgstr "Nav komentāru"
 
-#. translators: If comment number in your language requires declension,
+#. translators: If comment number in your language requires declension, *
 #. translate this to 'on'. Do not translate into your own language.
 #: wp-includes/comment-template.php:899
 msgctxt "Comment number declension: on or off"
@@ -7362,8 +7388,8 @@ msgstr "Atvainojiet, jums nav atļauts piekļūt informācijai par šo ziņu."
 msgid "Sorry, you are not allowed access to details about this site."
 msgstr "Atvainojiet, jums nav atļauts piekļūt informācijai par šo vietni."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3631
 #: wp-includes/script-loader.php:705
+#: wp-includes/class-wp-xmlrpc-server.php:3631
 msgid "An unknown error occurred"
 msgstr "Radās nezināma kļūda"
 
@@ -7379,8 +7405,9 @@ msgstr "Komentāra autoram nepieciešams norādīt savu vārdu un e-pasta adresi
 msgid "Comment is required."
 msgstr "Komentārs ir nepieciešams."
 
-#: wp-includes/class-wp-xmlrpc-server.php:3576 wp-includes/comment.php:2983
+#: wp-includes/class-wp-xmlrpc-server.php:3576
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:473
+#: wp-includes/comment.php:2983
 msgid "Sorry, comments are closed for this item."
 msgstr "Atvainojiet, komentāri šim vienumam ir slēgti."
 
@@ -7554,17 +7581,17 @@ msgstr "Atvainojiet, jums nav tiesību veidot terminus šajā taksonomijā."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1821
 #: wp-includes/class-wp-xmlrpc-server.php:4143
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:87
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:139
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:85
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:136
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:139
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:87
 msgid "Sorry, you are not allowed to edit posts in this post type."
 msgstr "Atvainojiet, jums nav atļauts labot ziņas šajā ziņu tipā."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1669
 #: wp-includes/class-wp-xmlrpc-server.php:4806
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:834
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:322
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:834
 msgid "The post cannot be deleted."
 msgstr " Ziņu nevar dzēst."
 
@@ -7686,11 +7713,11 @@ msgstr "Atvainojiet, jums nav atļauts rediģēt šo ziņu."
 #: wp-includes/class-wp-xmlrpc-server.php:5528
 #: wp-includes/class-wp-xmlrpc-server.php:6041
 #: wp-includes/class-wp-xmlrpc-server.php:6095
-#: wp-includes/class-wp-xmlrpc-server.php:6214 wp-includes/post.php:3012
-#: wp-includes/post.php:3546
+#: wp-includes/class-wp-xmlrpc-server.php:6214
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:331
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:693
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:370
+#: wp-includes/post.php:3012 wp-includes/post.php:3546
 #: wp-includes/revision.php:292
 msgid "Invalid post ID."
 msgstr "Nederīgs ziņas ID."
@@ -7702,8 +7729,9 @@ msgstr "Nederīgs ziņas ID."
 #: wp-includes/class-wp-xmlrpc-server.php:4902
 #: wp-includes/class-wp-xmlrpc-server.php:4960
 #: wp-includes/class-wp-xmlrpc-server.php:5238
-#: wp-includes/class-wp-xmlrpc-server.php:5302 wp-includes/post.php:1160
+#: wp-includes/class-wp-xmlrpc-server.php:5302
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:128
+#: wp-includes/post.php:1160
 msgid "Invalid post type."
 msgstr "Nederīgs ziņas tips."
 
@@ -7989,8 +8017,7 @@ msgstr "Termina ID tiek dalīts starp vairākām taksonomijām"
 msgid "Inexistent terms."
 msgstr "Neeksistējošs termins."
 
-#: wp-includes/class-wp-tax-query.php:565
-#: wp-includes/class-wp-tax-query.php:572 wp-includes/class-wp-term.php:179
+#: wp-includes/class-wp-term.php:179
 #: wp-includes/class-wp-xmlrpc-server.php:1899
 #: wp-includes/class-wp-xmlrpc-server.php:1987
 #: wp-includes/class-wp-xmlrpc-server.php:2084
@@ -7998,11 +8025,13 @@ msgstr "Neeksistējošs termins."
 #: wp-includes/class-wp-xmlrpc-server.php:2214
 #: wp-includes/class-wp-xmlrpc-server.php:2309
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:169
-#: wp-includes/taxonomy.php:419 wp-includes/taxonomy.php:639
-#: wp-includes/taxonomy.php:730 wp-includes/taxonomy.php:894
-#: wp-includes/taxonomy.php:1114 wp-includes/taxonomy.php:1867
-#: wp-includes/taxonomy.php:1981 wp-includes/taxonomy.php:2242
-#: wp-includes/taxonomy.php:2385 wp-includes/taxonomy.php:2586
+#: wp-includes/class-wp-tax-query.php:565
+#: wp-includes/class-wp-tax-query.php:572 wp-includes/taxonomy.php:419
+#: wp-includes/taxonomy.php:639 wp-includes/taxonomy.php:730
+#: wp-includes/taxonomy.php:894 wp-includes/taxonomy.php:1114
+#: wp-includes/taxonomy.php:1867 wp-includes/taxonomy.php:1981
+#: wp-includes/taxonomy.php:2242 wp-includes/taxonomy.php:2385
+#: wp-includes/taxonomy.php:2586
 msgid "Invalid taxonomy."
 msgstr "Nederīga taksonomija"
 
@@ -8011,8 +8040,8 @@ msgid "\"caller_get_posts\" is deprecated. Use \"ignore_sticky_posts\" instead."
 msgstr "\"caller_get_posts\" ir novecojusi. Tā vietā izmantojiet \"ignore_sticky_posts\"."
 
 #. translators: This is a comma-separated list of very common words that should
-#. be excluded from a search, like a, an, and the. These are usually called
-#. "stopwords". You should not simply translate these individual words into
+#. be excluded from a search, * like a, an, and the. These are usually called
+#. "stopwords". You should not simply translate these individual * words into
 #. your language. Instead, look for and provide commonly accepted stopwords in
 #. your language.
 #: wp-includes/class-wp-query.php:1419
@@ -8036,7 +8065,7 @@ msgid "g:i a"
 msgstr "H:i"
 
 #. translators: localized date format, see https://secure.php.net/date
-#: wp-includes/class-wp-locale.php:398 wp-includes/media.php:3088
+#: wp-includes/media.php:3088 wp-includes/class-wp-locale.php:398
 msgid "F j, Y"
 msgstr "j. F, Y"
 
@@ -8224,56 +8253,67 @@ msgid "January"
 msgstr "janvāra"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:169 wp-includes/class-wp-locale.php:197
 msgid "December"
 msgstr "decembris"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:168 wp-includes/class-wp-locale.php:196
 msgid "November"
 msgstr "novembris"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:167 wp-includes/class-wp-locale.php:195
 msgid "October"
 msgstr "oktobris"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:166 wp-includes/class-wp-locale.php:194
 msgid "September"
 msgstr "septembris"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:165 wp-includes/class-wp-locale.php:193
 msgid "August"
 msgstr "augusts"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:164 wp-includes/class-wp-locale.php:192
 msgid "July"
 msgstr "jūlijs"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:163 wp-includes/class-wp-locale.php:191
 msgid "June"
 msgstr "jūnijs"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:162 wp-includes/class-wp-locale.php:190
 msgid "May"
 msgstr "maijs"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:161 wp-includes/class-wp-locale.php:189
 msgid "April"
 msgstr "aprīlis"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:160 wp-includes/class-wp-locale.php:188
 msgid "March"
 msgstr "marts"
 
 #. translators: month name
+#. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:159 wp-includes/class-wp-locale.php:187
 msgid "February"
 msgstr "februāris"
@@ -8361,36 +8401,48 @@ msgid "S"
 msgstr "Sv"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:137 wp-includes/class-wp-locale.php:146
 #: wp-includes/class-wp-locale.php:155
 msgid "Saturday"
 msgstr "sestdien"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:136 wp-includes/class-wp-locale.php:145
 #: wp-includes/class-wp-locale.php:154
 msgid "Friday"
 msgstr "piektdien"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:135 wp-includes/class-wp-locale.php:144
 #: wp-includes/class-wp-locale.php:153
 msgid "Thursday"
 msgstr "ceturtdien"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:134 wp-includes/class-wp-locale.php:143
 #: wp-includes/class-wp-locale.php:152
 msgid "Wednesday"
 msgstr "trešdien"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:133 wp-includes/class-wp-locale.php:142
 #: wp-includes/class-wp-locale.php:151
 msgid "Tuesday"
 msgstr "otrdien"
 
 #. translators: weekday
+#. translators: one-letter abbreviation of the weekday
+#. translators: three-letter abbreviation of the weekday
 #: wp-includes/class-wp-locale.php:132 wp-includes/class-wp-locale.php:141
 #: wp-includes/class-wp-locale.php:150
 msgid "Monday"
@@ -8431,8 +8483,8 @@ msgstr "Neizdevās pagriezt attēlu."
 msgid "Image crop failed."
 msgstr "Attēla apgriešana neizdevās."
 
-#: wp-includes/class-wp-image-editor-gd.php:185
 #: wp-includes/class-wp-image-editor-imagick.php:266
+#: wp-includes/class-wp-image-editor-gd.php:185
 msgid "Could not calculate resized image dimensions"
 msgstr "Nav iespējams aprēķināt izmainītā attēla izmērus"
 
@@ -8441,18 +8493,18 @@ msgstr "Nav iespējams aprēķināt izmainītā attēla izmērus"
 msgid "Image resize failed."
 msgstr "Attēla samazināšana neizdevās."
 
-#: wp-includes/class-wp-image-editor-gd.php:109
 #: wp-includes/class-wp-image-editor-imagick.php:232
+#: wp-includes/class-wp-image-editor-gd.php:109
 msgid "Could not read image size."
 msgstr "Neizdevās nolasīt attēla izmēru."
 
-#: wp-includes/class-wp-image-editor-gd.php:105
 #: wp-includes/class-wp-image-editor-imagick.php:161
+#: wp-includes/class-wp-image-editor-gd.php:105
 msgid "File is not an image."
 msgstr "Fails nav attēls."
 
-#: wp-includes/class-wp-image-editor-gd.php:97
 #: wp-includes/class-wp-image-editor-imagick.php:139
+#: wp-includes/class-wp-image-editor-gd.php:97
 msgid "File doesn&#8217;t exist?"
 msgstr "Fails neeksistē?"
 
@@ -8461,17 +8513,17 @@ msgstr "Fails neeksistē?"
 msgid "The SSL certificate for the host could not be verified."
 msgstr " Resursdatora SSL sertifikātu nevarēja pārbaudīt."
 
-#: wp-includes/class-wp-http-curl.php:257
 #: wp-includes/class-wp-http-streams.php:256
+#: wp-includes/class-wp-http-curl.php:257
 msgid "Failed to write request to temporary file."
 msgstr "Pieprasījumu neizdevās ierakstīt pagaidu failā."
 
-#: wp-includes/class-wp-http-curl.php:189
 #: wp-includes/class-wp-http-streams.php:228
+#: wp-includes/class-wp-http-curl.php:189
 msgid "Could not open handle for fopen() to %s"
 msgstr "Neizdevās atvērt deskriptoru priekš fopen() pie %s"
 
-#: wp-includes/class-wp-editor.php:1494 wp-includes/script-loader.php:430
+#: wp-includes/script-loader.php:430 wp-includes/class-wp-editor.php:1494
 msgid "Add Link"
 msgstr "Pievienot saiti"
 
@@ -8487,9 +8539,9 @@ msgstr "Nav norādīts meklējamais termins. Rāda nesenos vienumus."
 msgid "Or link to existing content"
 msgstr "Vai saiti uz esošu saturu"
 
-#: wp-includes/class-wp-editor.php:1459
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
 #: wp-includes/media-template.php:1005
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
+#: wp-includes/class-wp-editor.php:1459
 msgid "Open link in a new tab"
 msgstr "Atvērt saiti jaunā cilnē"
 
@@ -8589,7 +8641,7 @@ msgstr "Iekopē adresi vai raksti, lai meklētu"
 msgid "No alignment"
 msgstr "Nav izlīdzinājuma"
 
-#: wp-includes/class-wp-editor.php:1052 wp-includes/script-loader.php:99
+#: wp-includes/script-loader.php:99 wp-includes/class-wp-editor.php:1052
 msgid "Distraction-free writing mode"
 msgstr "Netraucētās rakstīšanas režīms"
 
@@ -8601,7 +8653,7 @@ msgstr "Lasīt tālāk..."
 msgid "Insert Page Break tag"
 msgstr "Ievietot lapas sadalītāja birku"
 
-#: wp-includes/class-wp-editor.php:1049 wp-includes/script-loader.php:120
+#: wp-includes/script-loader.php:120 wp-includes/class-wp-editor.php:1049
 msgid "Insert Read More tag"
 msgstr "Zīme Lasīt vairāk "
 
@@ -8648,9 +8700,9 @@ msgstr "Ievietot"
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
 msgstr "Jūsu pārlūks neatbalsta tiešo pieeju starpliktuvei. Lūdzu, tā vietā lietojiet klaviatūras īsceļus vai pārlūka rediģēšanas izvēlni."
 
-#: wp-includes/class-wp-editor.php:1035 wp-includes/script-loader.php:463
-#: wp-includes/script-loader.php:574 wp-includes/script-loader.php:583
-#: wp-includes/script-loader.php:752 wp-includes/theme.php:2969
+#: wp-includes/script-loader.php:463 wp-includes/script-loader.php:574
+#: wp-includes/script-loader.php:583 wp-includes/script-loader.php:752
+#: wp-includes/theme.php:2969 wp-includes/class-wp-editor.php:1035
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Ja pametīsiet šo lapu, jūsu veiktās izmaiņas netiks saglabātas."
 
@@ -8731,8 +8783,8 @@ msgstr "Sleju grupa"
 msgid "Row group"
 msgstr "Rindas grupa"
 
-#: wp-includes/class-wp-editor.php:1012
 #: wp-includes/customize/class-wp-customize-background-position-control.php:56
+#: wp-includes/class-wp-editor.php:1012
 msgid "Bottom"
 msgstr "Lejā"
 
@@ -8740,8 +8792,8 @@ msgstr "Lejā"
 msgid "Middle"
 msgstr "Pa vidu"
 
-#: wp-includes/class-wp-editor.php:1010
 #: wp-includes/customize/class-wp-customize-background-position-control.php:46
+#: wp-includes/class-wp-editor.php:1010
 msgid "Top"
 msgstr "Augšā"
 
@@ -8755,24 +8807,24 @@ msgctxt "table cell alignment attribute"
 msgid "None"
 msgstr "Neviens"
 
-#: wp-includes/class-wp-editor.php:1007
-#: wp-includes/customize/class-wp-customize-background-position-control.php:52
 #: wp-includes/media-template.php:623 wp-includes/media-template.php:854
 #: wp-includes/media-template.php:920
+#: wp-includes/customize/class-wp-customize-background-position-control.php:52
+#: wp-includes/class-wp-editor.php:1007
 msgid "Right"
 msgstr "Pa labi"
 
-#: wp-includes/class-wp-editor.php:1006
-#: wp-includes/customize/class-wp-customize-background-position-control.php:51
 #: wp-includes/media-template.php:620 wp-includes/media-template.php:851
 #: wp-includes/media-template.php:917
+#: wp-includes/customize/class-wp-customize-background-position-control.php:51
+#: wp-includes/class-wp-editor.php:1006
 msgid "Center"
 msgstr "Centrēts"
 
-#: wp-includes/class-wp-editor.php:1005
-#: wp-includes/customize/class-wp-customize-background-position-control.php:50
 #: wp-includes/media-template.php:617 wp-includes/media-template.php:848
 #: wp-includes/media-template.php:914
+#: wp-includes/customize/class-wp-customize-background-position-control.php:50
+#: wp-includes/class-wp-editor.php:1005
 msgid "Left"
 msgstr "Pa kreisi"
 
@@ -8781,21 +8833,21 @@ msgctxt "horizontal table cell alignment"
 msgid "H Align"
 msgstr "H izlīdzināt"
 
-#: wp-includes/class-wp-editor.php:1003 wp-includes/media-template.php:609
+#: wp-includes/media-template.php:609 wp-includes/class-wp-editor.php:1003
 msgid "Alignment"
 msgstr "Līdzināšana"
 
-#: wp-includes/class-wp-editor.php:1002 wp-includes/media-template.php:395
-#: wp-includes/media-template.php:576 wp-includes/media-template.php:834
-#: wp-includes/media-template.php:899
+#: wp-includes/media-template.php:395 wp-includes/media-template.php:576
+#: wp-includes/media-template.php:834 wp-includes/media-template.php:899
+#: wp-includes/class-wp-editor.php:1002
 msgid "Caption"
 msgstr "Paraksts"
 
-#: wp-includes/class-wp-editor.php:1001 wp-includes/media-template.php:962
+#: wp-includes/media-template.php:962 wp-includes/class-wp-editor.php:1001
 msgid "Width"
 msgstr "Platums"
 
-#: wp-includes/class-wp-editor.php:1000 wp-includes/media-template.php:962
+#: wp-includes/media-template.php:962 wp-includes/class-wp-editor.php:1000
 msgid "Height"
 msgstr "Augstums"
 
@@ -9005,8 +9057,8 @@ msgstr "Krāsa"
 msgid "Remove link"
 msgstr "Dzēst saiti"
 
-#: wp-includes/class-wp-editor.php:943 wp-includes/class-wp-editor.php:1444
-#: wp-includes/script-loader.php:428
+#: wp-includes/script-loader.php:428 wp-includes/class-wp-editor.php:943
+#: wp-includes/class-wp-editor.php:1444
 msgid "Insert/edit link"
 msgstr "Ievietot/labot saiti"
 
@@ -9022,7 +9074,7 @@ msgstr "Horizontālā atstarpe"
 msgid "Horizontal line"
 msgstr "Horizontāla līnija"
 
-#: wp-includes/class-wp-editor.php:939 wp-includes/script-loader.php:352
+#: wp-includes/script-loader.php:352 wp-includes/class-wp-editor.php:939
 msgid "Fullscreen"
 msgstr "Pilnekrāna"
 
@@ -9034,7 +9086,7 @@ msgstr "Saglabāt"
 msgid "Print"
 msgstr "Drukāt"
 
-#: wp-includes/class-wp-editor.php:936 wp-includes/media-template.php:1244
+#: wp-includes/media-template.php:1244 wp-includes/class-wp-editor.php:936
 msgid "Preview"
 msgstr "Priekšskatīt"
 
@@ -9096,7 +9148,7 @@ msgstr "Ievietot/labot video"
 msgid "Insert date/time"
 msgstr "Ievietot datumu/laiku"
 
-#: wp-includes/class-wp-editor.php:919 wp-includes/script-loader.php:111
+#: wp-includes/script-loader.php:111 wp-includes/class-wp-editor.php:919
 msgid "Insert image"
 msgstr "Ievietot attēlu"
 
@@ -9144,9 +9196,9 @@ msgstr "Ievietot/labot attēlu"
 msgid "Author"
 msgstr "Autors"
 
-#: wp-includes/class-wp-editor.php:905
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:128
 #: wp-includes/media-template.php:405 wp-includes/media-template.php:586
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:128
+#: wp-includes/class-wp-editor.php:905
 msgid "Description"
 msgstr "Apraksts"
 
@@ -9158,9 +9210,9 @@ msgstr "Kodējums"
 msgid "Keywords"
 msgstr "Atslēgas vārdi"
 
-#: wp-includes/class-wp-editor.php:902 wp-includes/media-template.php:379
+#: wp-includes/script-loader.php:581 wp-includes/media-template.php:379
 #: wp-includes/media-template.php:560 wp-includes/revision.php:34
-#: wp-includes/script-loader.php:581
+#: wp-includes/class-wp-editor.php:902
 msgid "Title"
 msgstr "Virsraksts"
 
@@ -9232,11 +9284,11 @@ msgctxt "list style"
 msgid "Square"
 msgstr "Kvadrāts"
 
-#: wp-includes/class-wp-editor.php:883 wp-includes/script-loader.php:114
+#: wp-includes/script-loader.php:114 wp-includes/class-wp-editor.php:883
 msgid "Numbered list"
 msgstr "Numurēts saraksts"
 
-#: wp-includes/class-wp-editor.php:882 wp-includes/script-loader.php:112
+#: wp-includes/script-loader.php:112 wp-includes/class-wp-editor.php:882
 msgid "Bulleted list"
 msgstr "Saraksts ar atzīmēm"
 
@@ -9244,19 +9296,19 @@ msgstr "Saraksts ar atzīmēm"
 msgid "Visual aids"
 msgstr "Vizuālie palīglīdzekļi"
 
-#: wp-includes/class-wp-editor.php:879 wp-includes/class-wp-editor.php:1445
 #: wp-includes/script-loader.php:269 wp-includes/script-loader.php:351
 #: wp-includes/script-loader.php:466 wp-includes/script-loader.php:979
+#: wp-includes/class-wp-editor.php:879 wp-includes/class-wp-editor.php:1445
 msgid "Close"
 msgstr "Aizvērt"
 
+#: wp-includes/script-loader.php:415 wp-includes/script-loader.php:465
+#: wp-includes/script-loader.php:555 wp-includes/media.php:3460
 #: wp-includes/class-wp-editor.php:878 wp-includes/class-wp-editor.php:1491
-#: wp-includes/media.php:3460 wp-includes/script-loader.php:415
-#: wp-includes/script-loader.php:465 wp-includes/script-loader.php:555
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: wp-includes/class-wp-editor.php:877 wp-includes/script-loader.php:554
+#: wp-includes/script-loader.php:554 wp-includes/class-wp-editor.php:877
 msgid "OK"
 msgstr "Labi"
 
@@ -9320,15 +9372,15 @@ msgstr "Fontu Saime"
 msgid "Source code"
 msgstr "Pirmkods"
 
-#: wp-includes/class-wp-editor.php:858 wp-includes/script-loader.php:118
+#: wp-includes/script-loader.php:118 wp-includes/class-wp-editor.php:858
 msgid "Code"
 msgstr "Kods"
 
-#: wp-includes/class-wp-editor.php:857 wp-includes/script-loader.php:102
+#: wp-includes/script-loader.php:102 wp-includes/class-wp-editor.php:857
 msgid "Italic"
 msgstr "Slīpraksts"
 
-#: wp-includes/class-wp-editor.php:856 wp-includes/script-loader.php:100
+#: wp-includes/script-loader.php:100 wp-includes/class-wp-editor.php:856
 msgid "Bold"
 msgstr "Treknraksts"
 
@@ -9377,7 +9429,7 @@ msgctxt "HTML tag"
 msgid "Div"
 msgstr "Div"
 
-#: wp-includes/class-wp-editor.php:844 wp-includes/script-loader.php:105
+#: wp-includes/script-loader.php:105 wp-includes/class-wp-editor.php:844
 msgid "Blockquote"
 msgstr "Citāta bloks"
 
@@ -9481,8 +9533,8 @@ msgstr "Logrīks pavirzīts zemāk"
 msgid "Widget moved up"
 msgstr "Logrīks pavirzīts augstāk"
 
-#: wp-includes/class-wp-customize-widgets.php:733
 #: wp-includes/script-loader.php:707 wp-includes/script-loader.php:731
+#: wp-includes/class-wp-customize-widgets.php:733
 msgid "An error has occurred. Please reload the page and try again."
 msgstr "Ir radusies kļūda. Lūdzu, ielādējiet lapu un mēģiniet vēlreiz."
 
@@ -9494,8 +9546,8 @@ msgstr "Noņemiet logdaļu pārvietojot to uz neaktīvo logdaļu sānjoslu."
 msgid "Save and preview changes before publishing them."
 msgstr "Saglabāt un priekšskatīt izmaiņas pirms to publicēšanas."
 
-#: wp-includes/class-wp-customize-widgets.php:729
-#: wp-includes/class-wp-editor.php:1057 wp-includes/media.php:3499
+#: wp-includes/class-wp-customize-widgets.php:729 wp-includes/media.php:3499
+#: wp-includes/class-wp-editor.php:1057
 msgid "Apply"
 msgstr "Pielietot"
 
@@ -9525,8 +9577,8 @@ msgstr "Spiediet taustiņu Atsolis vai Enter, lai atvērtu šo sadaļu"
 msgid "Customizing"
 msgstr "Pielāgošana"
 
-#: wp-includes/class-wp-customize-panel.php:385
 #: wp-includes/class-wp-customize-section.php:377
+#: wp-includes/class-wp-customize-panel.php:385
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:85
 msgid "Help"
 msgstr "Palīdzība"
@@ -9545,16 +9597,16 @@ msgstr "Spiediet Backspace vai Enter lai atvērtu šo paneli"
 msgid "Add to Menu"
 msgstr "Pievienot izvēlnei"
 
+#: wp-includes/media-template.php:817 wp-includes/class-wp-editor.php:1454
 #: wp-includes/class-wp-customize-nav-menus.php:1067
-#: wp-includes/class-wp-editor.php:1454 wp-includes/media-template.php:817
 msgid "Link Text"
 msgstr "Saites teksts"
 
-#: wp-includes/class-wp-customize-nav-menus.php:1063
-#: wp-includes/class-wp-editor.php:1450
-#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:91
 #: wp-includes/media-template.php:373 wp-includes/media-template.php:554
 #: wp-includes/media.php:3456
+#: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:91
+#: wp-includes/class-wp-editor.php:1450
+#: wp-includes/class-wp-customize-nav-menus.php:1063
 msgid "URL"
 msgstr "URL"
 
@@ -9575,13 +9627,13 @@ msgstr "Pārslēgt sadaļu: %s"
 msgid "No items"
 msgstr "Nav vienumu"
 
-#: wp-includes/class-wp-customize-nav-menus.php:972
 #: wp-includes/class-wp-customize-widgets.php:787
+#: wp-includes/class-wp-customize-nav-menus.php:972
 msgid "Clear Results"
 msgstr "Notīrīt rezultātus"
 
-#: wp-includes/class-wp-customize-nav-menus.php:968
 #: wp-includes/class-wp-customize-widgets.php:788
+#: wp-includes/class-wp-customize-nav-menus.php:968
 msgid "The search results will be updated as you type."
 msgstr "Meklēšanas rezultāti rakstīšanas laikā tiks atjaunoti."
 
@@ -9597,12 +9649,11 @@ msgstr "Meklēt izvēlnes vienumos"
 msgid "Add Menu Items"
 msgstr "Pievienot izvēlnes vienumus"
 
-#: wp-includes/class-wp-customize-nav-menus.php:952
-#: wp-includes/class-wp-customize-panel.php:378
 #: wp-includes/class-wp-customize-section.php:368
-#: wp-includes/class-wp-customize-widgets.php:773
+#: wp-includes/class-wp-customize-widgets.php:773 wp-includes/media.php:3464
+#: wp-includes/class-wp-customize-panel.php:378
 #: wp-includes/customize/class-wp-customize-nav-menus-panel.php:75
-#: wp-includes/media.php:3464
+#: wp-includes/class-wp-customize-nav-menus.php:952
 msgid "Back"
 msgstr "Atpakaļ"
 
@@ -9614,13 +9665,13 @@ msgstr "Pārvietot vienu līmeni zemāk"
 msgid "Move one level up"
 msgstr "Pārvietot vienu līmeni augstāk"
 
-#: wp-includes/class-wp-customize-nav-menus.php:931
 #: wp-includes/class-wp-customize-widgets.php:701
+#: wp-includes/class-wp-customize-nav-menus.php:931
 msgid "Move down"
 msgstr "Virzīt lejup"
 
-#: wp-includes/class-wp-customize-nav-menus.php:930
 #: wp-includes/class-wp-customize-widgets.php:702
+#: wp-includes/class-wp-customize-nav-menus.php:930
 msgid "Move up"
 msgstr "Virzīt augšup"
 
@@ -9738,18 +9789,18 @@ msgstr "Pārvietot par vienu uz augšu"
 msgid "Close reorder mode"
 msgstr "Aizvērt pārkārtošanas režīmu"
 
-#: wp-includes/class-wp-customize-nav-menus.php:438
 #: wp-includes/customize/class-wp-customize-nav-menu-control.php:54
+#: wp-includes/class-wp-customize-nav-menus.php:438
 msgid "Reorder menu items"
 msgstr "Pārkārtot izvēlnes vienumus"
 
-#: wp-includes/class-wp-customize-nav-menus.php:437
 #: wp-includes/class-wp-customize-widgets.php:738
+#: wp-includes/class-wp-customize-nav-menus.php:437
 msgid "Reorder mode closed"
 msgstr "Pārkārtošanas režīms ir aizvērts"
 
-#: wp-includes/class-wp-customize-nav-menus.php:436
 #: wp-includes/class-wp-customize-widgets.php:737
+#: wp-includes/class-wp-customize-nav-menus.php:436
 msgid "Reorder mode enabled"
 msgstr "Pārkārtot režīms aktivizēts"
 
@@ -9777,10 +9828,10 @@ msgstr "%s (Nederīgs)"
 
 #. translators: &#9656; is the unicode right-pointing triangle, and %s is the
 #. section title in the Customizer
-#: wp-includes/class-wp-customize-nav-menus.php:428
-#: wp-includes/class-wp-customize-nav-menus.php:958
 #: wp-includes/class-wp-customize-section.php:246
 #: wp-includes/class-wp-customize-widgets.php:778
+#: wp-includes/class-wp-customize-nav-menus.php:428
+#: wp-includes/class-wp-customize-nav-menus.php:958
 msgid "Customizing &#9656; %s"
 msgstr "Pielāgot &#9656; %s"
 
@@ -9826,33 +9877,33 @@ msgctxt "menu"
 msgid "(Currently set to: %s)"
 msgstr "(Šobrīd uzstādīts: %s)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:413
 #: wp-includes/customize/class-wp-customize-nav-menu-setting.php:447
+#: wp-includes/class-wp-customize-nav-menus.php:413
 msgctxt "Missing menu name."
 msgid "(unnamed)"
 msgstr "(nenosaukts)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:412
 #: wp-includes/script-loader.php:753
+#: wp-includes/class-wp-customize-nav-menus.php:412
 msgctxt "missing menu item navigation label"
 msgid "(no label)"
 msgstr "(bez apzīmējuma)"
 
-#: wp-includes/class-wp-customize-nav-menus.php:283
 #: wp-includes/script-loader.php:234 wp-includes/script-loader.php:432
 #: wp-includes/script-loader.php:750
+#: wp-includes/class-wp-customize-nav-menus.php:283
 msgid "No results found."
 msgstr "Nekas netika atrasts."
 
-#: wp-includes/class-wp-customize-nav-menus.php:171
 #: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:335
+#: wp-includes/class-wp-customize-nav-menus.php:171
 #: wp-includes/nav-menu.php:746
 msgid "Post Type Archive"
 msgstr "Ziņu tipu arhīvs"
 
+#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
 #: wp-includes/class-wp-customize-nav-menus.php:161
 #: wp-includes/class-wp-customize-nav-menus.php:414
-#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:337
 #: wp-includes/nav-menu.php:768
 msgid "Custom Link"
 msgstr "Pielāgota saite"
@@ -9974,8 +10025,8 @@ msgstr "Oriģināls"
 msgid "Image Size"
 msgstr "Attēla izmērs"
 
-#: wp-includes/class-wp-customize-manager.php:4043
 #: wp-includes/customize/class-wp-customize-background-position-control.php:69
+#: wp-includes/class-wp-customize-manager.php:4043
 msgid "Image Position"
 msgstr "Attēla novietojums"
 
@@ -10009,8 +10060,8 @@ msgctxt "Background Preset"
 msgid "Preset"
 msgstr "Iestatījumi"
 
-#: wp-includes/class-wp-customize-manager.php:3993
 #: wp-includes/customize/class-wp-customize-background-image-control.php:30
+#: wp-includes/class-wp-customize-manager.php:3993
 msgid "Background Image"
 msgstr "Fona attēls"
 
@@ -10039,8 +10090,8 @@ msgstr "Atlasiet video"
 msgid "Header Video"
 msgstr "Galvenes video"
 
-#: wp-includes/class-wp-customize-manager.php:3911
 #: wp-includes/customize/class-wp-customize-header-image-control.php:31
+#: wp-includes/class-wp-customize-manager.php:3911
 msgid "Header Image"
 msgstr "Galvenes attēls"
 
@@ -10091,21 +10142,21 @@ msgstr "Izvēlēties logotipu"
 msgid "No logo selected"
 msgstr "Logotips nav atlasīts"
 
-#: wp-includes/class-wp-customize-manager.php:3817
-#: wp-includes/customize/class-wp-customize-color-control.php:54
-#: wp-includes/customize/class-wp-customize-image-control.php:38
-#: wp-includes/customize/class-wp-customize-media-control.php:62
 #: wp-includes/script-loader.php:719
+#: wp-includes/customize/class-wp-customize-image-control.php:38
+#: wp-includes/customize/class-wp-customize-color-control.php:54
+#: wp-includes/customize/class-wp-customize-media-control.php:62
+#: wp-includes/class-wp-customize-manager.php:3817
 msgid "Default"
 msgstr "Noklusējuma"
 
-#: wp-includes/class-wp-customize-manager.php:3816
-#: wp-includes/class-wp-customize-widgets.php:731
-#: wp-includes/class-wp-editor.php:1054
+#: wp-includes/media-template.php:471
+#: wp-includes/class-wp-customize-widgets.php:731 wp-includes/media.php:3463
 #: wp-includes/customize/class-wp-customize-image-control.php:37
-#: wp-includes/customize/class-wp-customize-media-control.php:63
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:144
-#: wp-includes/media-template.php:471 wp-includes/media.php:3463
+#: wp-includes/customize/class-wp-customize-media-control.php:63
+#: wp-includes/class-wp-customize-manager.php:3816
+#: wp-includes/class-wp-editor.php:1054
 msgid "Remove"
 msgstr "Noņemt"
 
@@ -10140,8 +10191,8 @@ msgstr "Rādīt vietnes virsrakstu un anotācijas rindiņu"
 msgid "Tagline"
 msgstr "Devīze"
 
-#: wp-includes/class-wp-customize-manager.php:3749
 #: wp-includes/class-wp-xmlrpc-server.php:484
+#: wp-includes/class-wp-customize-manager.php:3749
 msgid "Site Title"
 msgstr "Vietnes virsraksts"
 
@@ -10184,8 +10235,8 @@ msgstr[0] "Nav derīgs %s iestatījums."
 msgstr[1] "Nav derīgu %s iestatījumu."
 msgstr[2] "Nav derīgu %s iestatījumu."
 
-#: wp-includes/class-wp-customize-manager.php:2045
 #: wp-includes/class-wp-customize-setting.php:549
+#: wp-includes/class-wp-customize-manager.php:2045
 msgid "Invalid value."
 msgstr "Nederīga vērtība."
 
@@ -10205,8 +10256,8 @@ msgstr "Šī forma nav tieši priekšskatāma."
 msgid "This link is not live-previewable."
 msgstr "Šī saite nav tieši priekšskatāma."
 
-#: wp-includes/class-wp-customize-manager.php:1808
 #: wp-includes/customize/class-wp-customize-selective-refresh.php:184
+#: wp-includes/class-wp-customize-manager.php:1808
 msgid "Shift-click to edit this element."
 msgstr "Shift+klikšķis, lai labotu šo elementu."
 
@@ -10230,14 +10281,14 @@ msgstr "Neesošs izmaiņu kopas UUID."
 msgid "Invalid changeset UUID"
 msgstr "Nederīgs izmaiņu kopas UUID"
 
-#: wp-includes/class-wp-customize-manager.php:476
 #: wp-includes/script-loader.php:468
+#: wp-includes/class-wp-customize-manager.php:476
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Atvainojiet, jums nav atļauts pielāgot šo vietni."
 
+#: wp-includes/script-loader.php:467
 #: wp-includes/class-wp-customize-manager.php:412
 #: wp-includes/class-wp-customize-manager.php:475
-#: wp-includes/script-loader.php:467
 msgid "Cheatin&#8217; uh?"
 msgstr "Šmaucamies, ko?"
 
@@ -10259,9 +10310,9 @@ msgstr "Jauns lapas nosaukums "
 msgid "+ %s"
 msgstr "+ %s"
 
+#: wp-includes/widgets/class-wp-nav-menu-widget.php:143
 #: wp-includes/class-wp-customize-control.php:551
 #: wp-includes/class-wp-customize-nav-menus.php:595
-#: wp-includes/widgets/class-wp-nav-menu-widget.php:143
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; Atlasiet &mdash;"
 
@@ -10280,13 +10331,14 @@ msgstr "Izvēlnes ID nevar būt tukšs."
 #. translators: %d: ID of a post
 #: wp-includes/class-walker-page-dropdown.php:74
 #: wp-includes/class-walker-page.php:157
+#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:292
 #: wp-includes/class-wp-customize-nav-menus.php:200
 #: wp-includes/class-wp-customize-nav-menus.php:345
-#: wp-includes/customize/class-wp-customize-nav-menu-item-setting.php:292
 #: wp-includes/nav-menu.php:731 wp-includes/nav-menu.php:809
 msgid "#%d (no title)"
 msgstr "#%d (nav nosaukuma)"
 
+#. translators: 1: comment date, 2: comment time
 #: wp-includes/class-walker-comment.php:291
 msgid "(Edit)"
 msgstr "(Labot)"
@@ -10308,9 +10360,9 @@ msgstr "Jūsu komentārs gaida apstiprinājumu."
 msgid "%s <span class=\"says\">says:</span>"
 msgstr "%s <span class=\"says\">saka:</span>"
 
+#: wp-includes/class-wp-editor.php:1055
 #: wp-includes/class-walker-comment.php:244
 #: wp-includes/class-walker-comment.php:350
-#: wp-includes/class-wp-editor.php:1055
 msgid "Edit"
 msgstr "Rediģēt"
 
@@ -10339,8 +10391,8 @@ msgstr "Mērķa direktorija failu straumēšanai neeksistē vai nav rakstāma."
 msgid "User has blocked requests through HTTP."
 msgstr "Lietotājs ir bloķējis HTTP pieprasījumus."
 
-#: wp-includes/class-http.php:264 wp-includes/class-http.php:484
-#: wp-includes/class-wp-xmlrpc-server.php:6269
+#: wp-includes/class-wp-xmlrpc-server.php:6269 wp-includes/class-http.php:264
+#: wp-includes/class-http.php:484
 msgid "A valid URL was not provided."
 msgstr "Netika dots derīgs URL."
 
@@ -10355,10 +10407,10 @@ msgstr[0] "%s temats"
 msgstr[1] "%s temati"
 msgstr[2] "%s tematu"
 
-#: wp-includes/category-template.php:527
-#: wp-includes/theme-compat/sidebar.php:97
 #: wp-includes/widgets/class-wp-widget-categories.php:31
 #: wp-includes/widgets/class-wp-widget-categories.php:48
+#: wp-includes/category-template.php:527
+#: wp-includes/theme-compat/sidebar.php:97
 msgid "Categories"
 msgstr "Kategorijas"
 
@@ -10366,8 +10418,7 @@ msgstr "Kategorijas"
 msgid "No categories"
 msgstr "Nav kategorijas"
 
-#. translators: 1: "type => link", 2: "taxonomy => link_category" alternative
-#: wp-includes/category-template.php:352 wp-includes/category.php:46
+#: wp-includes/category.php:46 wp-includes/category-template.php:352
 msgid "%1$s is deprecated. Use %2$s instead."
 msgstr "%1$s ir novecojis. Tā vietā lietojiet šo: %2$s."
 
@@ -10399,9 +10450,9 @@ msgstr "%s publikācijas"
 msgid "Visit %s&#8217;s website"
 msgstr "Apmeklēt %s mājas lapu"
 
-#. translators: %s: get_the_author()
 #. translators: %s: get_trackback_url()
-#: wp-includes/author-template.php:66 wp-includes/comment-template.php:1137
+#. translators: %s: get_the_author()
+#: wp-includes/comment-template.php:1137 wp-includes/author-template.php:66
 msgid "Use %s instead if you do not want the value echoed."
 msgstr "Izmantojat %s vietā, ja jūs nevēlaties vērtības atbalsojumu."
 
@@ -10411,7 +10462,7 @@ msgid "XML Error: %1$s at line %2$s"
 msgstr "XML kļūda: %1$s rindiņā nr. %2$s"
 
 #: wp-includes/admin-bar.php:857 wp-includes/admin-bar.php:858
-#: wp-includes/class-wp-editor.php:1466 wp-includes/media.php:3458
+#: wp-includes/media.php:3458 wp-includes/class-wp-editor.php:1466
 msgid "Search"
 msgstr "Meklēt"
 
@@ -10429,7 +10480,7 @@ msgid "Menus"
 msgstr "Izvēlnes"
 
 #: wp-includes/admin-bar.php:783 wp-includes/class-wp-customize-widgets.php:421
-#: wp-includes/functions.php:3706
+#: wp-includes/functions.php:3755
 msgid "Widgets"
 msgstr "Logdaļas"
 
@@ -10552,10 +10603,10 @@ msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 msgid "Feedback"
 msgstr "Atgriezeniskā saite"
 
-#: wp-includes/admin-bar.php:164 wp-includes/update.php:127
-#: wp-includes/update.php:317 wp-includes/update.php:497
-#: wp-includes/wp-db.php:1129 wp-includes/wp-db.php:1611
-#: wp-includes/wp-db.php:1715 wp-login.php:793
+#: wp-login.php:793 wp-includes/admin-bar.php:164 wp-includes/wp-db.php:1129
+#: wp-includes/wp-db.php:1666 wp-includes/wp-db.php:1770
+#: wp-includes/update.php:127 wp-includes/update.php:317
+#: wp-includes/update.php:497
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -10571,8 +10622,8 @@ msgstr "https://codex.wordpress.org/"
 msgid "Documentation"
 msgstr "Dokumentācija"
 
-#: wp-includes/admin-bar.php:148
-#: wp-includes/widgets/class-wp-widget-meta.php:69 wp-login.php:103
+#: wp-login.php:103 wp-includes/admin-bar.php:148
+#: wp-includes/widgets/class-wp-widget-meta.php:69
 msgid "https://wordpress.org/"
 msgstr "https://wordpress.org/"
 
@@ -10584,8 +10635,8 @@ msgstr "WordPress.org"
 msgid "About WordPress"
 msgstr "Par WordPress"
 
-#: wp-includes/IXR/class-IXR-message.php:48 wp-includes/atomlib.php:125
-#: wp-includes/feed.php:542
+#: wp-includes/atomlib.php:125 wp-includes/feed.php:542
+#: wp-includes/IXR/class-IXR-message.php:48
 msgid "PHP's XML extension is not available. Please contact your hosting provider to enable PHP's XML extension."
 msgstr "PHP XML paplašinājums nav pieejams. Lūdzu, sazinieties ar jūsu hostinga pakalpojuma sniedzēju, lai iespējotu PHP XML paplašinājumu."
 
@@ -10594,51 +10645,51 @@ msgid "Comment Submission Failure"
 msgstr "Komentāra pievienošanas kļūda"
 
 #. translators: 1: login URL, 2: network home URL
-#: wp-activate.php:150
+#: wp-activate.php:192
 msgid "Your account is now activated. <a href=\"%1$s\">Log in</a> or go back to the <a href=\"%2$s\">homepage</a>."
 msgstr "Jūsu konts ir aktivizēts. <a href=\"%1$s\">Autorizējies</a> vai dodies uz <a href=\"%2$s\">sākuma lapu</a>."
 
 #. translators: 1: site URL, 2: login URL
-#: wp-activate.php:145
+#: wp-activate.php:187
 msgid "Your account is now activated. <a href=\"%1$s\">View your site</a> or <a href=\"%2$s\">Log in</a>"
 msgstr "Jūsu konts ir aktivizēts. <a href=\"%1$s\">Apskati savu mājas lapu</a> vai <a href=\"%2$s\">Ienāc</a>"
 
-#: wp-activate.php:135 wp-includes/post-template.php:1602
+#: wp-activate.php:177 wp-includes/post-template.php:1602
 msgid "Password:"
 msgstr "Parole:"
 
-#: wp-activate.php:134 wp-signup.php:228
+#: wp-activate.php:176 wp-signup.php:228
 msgid "Username:"
 msgstr "Lietotājvārds:"
 
-#: wp-activate.php:123
+#: wp-activate.php:30 wp-activate.php:164
 msgid "An error occurred during the activation"
 msgstr "Aktivizējot radās kļūda"
 
 #. translators: 1: site URL, 2: site domain, 3: username, 4: user email, 5:
 #. lost password URL
-#: wp-activate.php:112
+#: wp-activate.php:153
 msgid "Your site at <a href=\"%1$s\">%2$s</a> is active. You may now log in to your site using your chosen username of &#8220;%3$s&#8221;. Please check your email inbox at %4$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href=\"%5$s\">reset your password</a>."
 msgstr "Jūsu vietne <a href=\"%1$s\">%2$s</a> ir aktīva. Tagad jūs varat pieteikties savā vietnē, izmantojot savu izvēlēto lietotājvārdu &#8220;%3$s&#8221;. Lūdzu, apskatiet savu e-pasta iesūtni %4$s jūsu paroles un pieteikšanās instrukcijām. Ja neredzat e-pastu, lūdzu, ieskatieties mēstuļu vai nevēlamā e-pasta mapēs. Ja stundas laikā e-pasts nepienāk, <a href=\"%5$s\">jūs varat atiestatīt savu paroli</a>."
 
 #. translators: 1: login URL, 2: username, 3: user email, 4: lost password URL
-#: wp-activate.php:103
+#: wp-activate.php:144
 msgid "Your account has been activated. You may now <a href=\"%1$s\">log in</a> to the site using your chosen username of &#8220;%2$s&#8221;. Please check your email inbox at %3$s for your password and login instructions. If you do not receive an email, please check your junk or spam folder. If you still do not receive an email within an hour, you can <a href=\"%4$s\">reset your password</a>."
 msgstr "Jūsu konts ir aktivizēts. Varat <a href=\"%1$s\">ienākt</a> vietnē izmantojot savu izvēlēto lietotājvārdu &#8220;%2$s&#8221;. Lūdzu, pārbaudiet savu e-pastu %3$s kur būs parole un pieteikšanās instrukcijas. Ja neredzat e-pastu, lūdzu, ieskatieties mēstuļu vai nevēlamā e-pasta mapēs. Ja stundas laikā e-pasts tomēr nepienāk, jūs varat<a href=\"%4$s\">atiestatīt savu paroli</a>."
 
-#: wp-activate.php:97 wp-activate.php:131
+#: wp-activate.php:138 wp-activate.php:173
 msgid "Your account is now active!"
 msgstr "Jūsu konts ir aktīvs!"
 
-#: wp-activate.php:85 wp-includes/script-loader.php:696
+#: wp-activate.php:130 wp-includes/script-loader.php:696
 #: wp-includes/script-loader.php:697
 msgid "Activate"
 msgstr "Aktivizēt"
 
-#: wp-activate.php:81
+#: wp-activate.php:126
 msgid "Activation Key:"
 msgstr "Aktivizācijas atslēga:"
 
-#: wp-activate.php:78
+#: wp-activate.php:123
 msgid "Activation Key Required"
 msgstr "Nepieciešams aktivizācijas kods"

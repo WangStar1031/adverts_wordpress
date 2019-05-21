@@ -182,29 +182,29 @@
 												<?php if (!empty($fifteen_min_euro || $fifteen_min_pound || $thirty_min_euro || $thirty_min_pound || $fourty_five_min_euro || $fourty_five_min_pound)) { ?>
 													<tr>
 														<td>Time</td>
-														<td>Price in &euro;</td>
-														<td>Price in &pound;</td>
+														<td>Price</td>
+														<!-- <td>&pound;</td> -->
 													</tr>
 												<?php } ?>
 												<?php if (!empty($fifteen_min_euro)) { $_isNoPrice = false; ?>
 													<tr>
 														<td><?php esc_html_e('15 Min', 'classiera'); ?></td>
 														<td><?php echo esc_html($fifteen_min_euro); ?> &euro;</td>
-														<td><?php echo esc_html($fifteen_min_pound); ?> &pound;</td>
+														<!-- <td><?php echo esc_html($fifteen_min_pound); ?> &pound;</td> -->
 													</tr>
 												<?php } ?>
 												<?php if (!empty($thirty_min_euro)) { $_isNoPrice = false; ?>
 													<tr>
 														<td><?php esc_html_e('30 Min', 'classiera'); ?></td>
 														<td><?php echo esc_html($thirty_min_euro); ?> &euro;</td>
-														<td><?php echo esc_html($thirty_min_pound); ?> &pound;</td>
+														<!-- <td><?php echo esc_html($thirty_min_pound); ?> &pound;</td> -->
 													</tr>
 												<?php } ?>
 												<?php if (!empty($fourty_five_min_euro)) { $_isNoPrice = false; ?>
 													<tr>
 														<td><?php esc_html_e('45 Min', 'classiera'); ?></td>
 														<td><?php echo esc_html($fourty_five_min_euro); ?> &euro;</td>
-														<td><?php echo esc_html($fourty_five_min_pound); ?> &pound;</td>
+														<!-- <td><?php echo esc_html($fourty_five_min_pound); ?> &pound;</td> -->
 													</tr>
 												<?php } ?>
 												<!-- <?php if (!empty($one_hour_euro)) { $_isNoPrice = false; ?>

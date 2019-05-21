@@ -172,7 +172,7 @@ add_filter('woocommerce_cart_item_price','classiera_insert_data_into_cart',1,3);
 if(!function_exists('classiera_insert_data_into_cart')){
  function classiera_insert_data_into_cart($product_name, $values, $cart_item_key ){		
         /*code to add custom data on Cart & checkout Page*/ 		
-        if(count($values['wdm_user_custom_data_value']) > 0){
+        if(count($values['wdm_user_custom_data_value']) > 0){			
 			$newval = $values['wdm_user_custom_data_value'];
 			//print_r($newval);
 			if(isset($newval['days_to_expire'])){

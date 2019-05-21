@@ -106,7 +106,7 @@
 ?>
 <aside id="sideBarAffix" class="affix-top">
 	<?php if(!in_array( 'user', (array) $current_user->roles )): ?>
-	<div class="panel panel-default hidden-xs">
+	<div class="panel panel-default hidden-xs" data-intro="<?php esc_html_e('This is Your Wallet! Whenever you purchase or spend credits, your ballance will always be visible here.', 'classiera'); ?>" data-step="1">
 	  <div class="panel-heading text-center">
 	    <h3 class="panel-title"><?php esc_html_e('My Ballance', 'classiera'); ?></h3>
 	  </div>
@@ -125,7 +125,8 @@
 	  </div>
 	</div>
 	<?php endif;?>
-	<div class="author-info hidden-xs">
+
+	<div class="author-info hidden-xs" data-intro="<?php esc_html_e('This is your Avatar, as well as your account registration date.', 'classiera'); ?>" data-step="2">
 		<div class="panel panel-default">
 		  <div class="panel-heading text-center">
 		    <h3 class="panel-title">
@@ -161,7 +162,7 @@
 
 	if( !$isMobile){
 	?>
-	<div class="panel panel-default">
+	<div class="panel panel-default" data-intro="These are your menu options!" data-step="3">
 	  <div class="panel-heading text-center">
 	    <h3 class="panel-title"><?php esc_html_e("Menu Options", 'classiera') ?></h3>
 	  </div>

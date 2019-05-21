@@ -140,6 +140,7 @@ function ads_redirect_page( $order_id ){
 }
 add_action( 'woocommerce_order_status_completed', 'mysite_completed');
 function mysite_completed($order_id) {
+    return;
     $order = new WC_Order( $order_id );
     $order_total = $order->get_total();
     $user_id=get_current_user_id();

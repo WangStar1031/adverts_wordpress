@@ -38,6 +38,10 @@ body {
   outline: none;
 }
 
+.navmenu-nav li {
+  /*border-bottom: 1px solid #d1d1d1;*/
+}
+
 h4.edit-profile-heading {
   margin: 10px 0px 20px 0px !important;
 }
@@ -1423,16 +1427,21 @@ keyframes
 }
 
 .offcanvas-button {
-  float: right;
-  padding: 3px 10px;
-  border: 1px solid #fff;
+  border: none;
   background: transparent;
-  border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 5px;
+  position: absolute;
+  right: 10px;
 }
 
 .offcanvas-button i {
-  color: #fff;
+  font-size: 30px;
+  outline: none !important;
+}
+
+.mobile-logo {
+  width: 25%;
+  margin: 10px auto;
 }
 
 #frame #sidepanel #profile {

@@ -77,7 +77,9 @@ get_header();
 			<div class="col-lg-9 col-md-8 user-content-height">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title text-uppercase"><?php esc_html_e("User Adverts", 'classiera') ?></h3>
+						<h3 class="panel-title text-uppercase"><?php esc_html_e("User Adverts", 'classiera') ?>
+							<button id="intro_all_ads" class="btn btn-primary pull-right intro-button" onclick="intro_all_ads()"><?php _e('Intro', 'classiera'); ?></button>
+						</h3>
 					</div>
 					<div class="panel-body">
 						<div class="user-detail-section">
@@ -290,6 +292,19 @@ get_header();
 														<!-- <?php esc_html_e( 'ID', 'classiera' ); ?> : --> 
 														<?php echo esc_attr( $post->ID ); ?>
 				                                    </p>
+				                                    <?php
+				                                    $discount_per = get_post_meta($post->ID, 'discount_percentage', true);
+				                                    if(!empty($discount_per) && $discount_per > 0){
+			                                    	?>
+													<p>
+														<i class="fa fa-hashtag" style="margin-right: 10px"></i>
+														<!-- <?php esc_html_e( 'ID', 'classiera' ); ?> : --> 
+														<?php echo esc_html_e( $discount_per . '%'); ?>
+				                                    </p>
+
+			                                    	<?php
+				                                    }
+				                                    ?>
 													
 													
 													<?php if($classiera_ads_status == 0){ ?>

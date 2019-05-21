@@ -72,7 +72,7 @@ $classieraNavStyle = $redux_demo['nav-style'];
 	?>
 	<?php get_template_part('templates/nav-bar'); ?>
 	<!-- Mobile App button -->
-	<div class="mobile-submit affix">
+	<!-- <div class="mobile-submit affix">
         <ul class="list-unstyled list-inline mobile-app-button">
 		<?php 
 		$classieraProfileURL = $redux_demo['profile'];
@@ -89,7 +89,7 @@ $classieraNavStyle = $redux_demo['nav-style'];
 			$classieraRegisterURL = classiera_get_template_url($templateRegister);
 			$classieraSubmitPost = classiera_get_template_url($templateSubmitAd);
 		}
-			if(is_user_logged_in()){
+			if(is_user_logged_in()) {
 		?>
 			<li>
                 <a href="<?php echo wp_logout_url(get_option('siteurl')); ?>">
@@ -116,12 +116,12 @@ $classieraNavStyle = $redux_demo['nav-style'];
                     <span><?php esc_html_e( 'Login', 'classiera' ); ?></span>
                 </a>
             </li>
-            <!-- <li>
+            <li>
                 <a href="<?php echo esc_url($classieraSubmitPost); ?>">
                     <i class="fa fa-edit"></i>
                     <span><?php esc_html_e( 'Submit Ad', 'classiera' ); ?></span>
                 </a>
-            </li> -->
+            </li>
             <li>
                 <a href="<?php echo esc_url($classieraRegisterURL); ?>">
                     <i class="fa fa-user"></i>
@@ -130,6 +130,6 @@ $classieraNavStyle = $redux_demo['nav-style'];
             </li>
 		 <?php } ?>
         </ul>
-    </div>
+    </div> -->
 	<!-- Mobile App button -->
 	</header>

@@ -79,8 +79,10 @@ if(isset($_GET['un_sold_id'])){
 			</div><!--col-lg-3-->
 			<div class="col-lg-9 col-md-8 user-content-height">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title text-uppercase"><?php esc_html_e("About Me", 'classiera') ?></h3>
+					<div class="panel-heading clearfix">
+						<h3 class="panel-title text-uppercase"><?php esc_html_e("About Me", 'classiera') ?>
+							<button id="intro_1" class="btn btn-primary pull-right intro-button" data-intro="<?php esc_html_e('If you require help at any stage, you can press this button to guide you through the page workflow.', 'classiera'); ?>" data-step="4" onclick="intro_1()"><?php _e('Intro', 'classiera'); ?></button>
+						</h3>
 					</div>
 					<div class="panel-body">
 						<div class="user-detail-section">
