@@ -37,6 +37,12 @@ define('DB_CHARSET', 'utf8mb4');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+// ** Disabling Auto Save Draft in WordPress
+// Changed by Wang
+define('WP_POST_REVISIONS', false);
+define('EMPTY_TRASH_DAYS', 0);
+// Change end
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
