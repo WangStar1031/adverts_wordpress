@@ -563,9 +563,9 @@ function update_post_slug_on_change( $post_id ) {
         $curCategory = $curCatSel[0]->term_id;
 
         // $curCategory = get_the_category($post_id)[0]->term_id;
+        file_put_contents(__DIR__ . "/temp.txt", json_encode($category));
         foreach ($categories as $category) {
             if( $curCategory == $category->term_id){
-                    // file_put_contents(__DIR__ . "temp.txt", json_encode($category));
                 if( in_array($category->slug, array('couple', 'duo'))){
                     $title .= ' & ' . $partner_name;
                 }
@@ -637,9 +637,27 @@ function classiera_adverts_column( $column, $post_id ) {
     }
  }
 
- remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
 
- add_action('after_setup_theme', 'my_theme_setup');
-    function my_theme_setup(){
-        load_theme_textdomain('classiera-child-theme', get_template_directory() . '/languages');
-    }
+add_action('after_setup_theme', 'my_theme_setup');
+function my_theme_setup(){
+    load_theme_textdomain('classiera-child-theme', get_template_directory() . '/languages');
+}
+
+
+/// *** Disable Auto Draft
+
+/* Disable AutoSave */
+function disableAutoSave() {
+    wp_deregister_script('autosave');
+}
+add_action( 'wp_print_scripts', 'disableAutoSave' );
+/* Disable AutoSave, hacky-style */
+function hacky_autosave_disabler( $src, $handle ) {
+    if( 'autosave' != $handle )
+        return $src;
+    return '';
+}
+add_filter( 'script_loader_src', 'hacky_autosave_disabler', 10, 2 );
+
+remove_action( 'wp_scheduled_auto_draft_delete', 'wp_delete_auto_drafts' );

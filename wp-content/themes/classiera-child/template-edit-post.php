@@ -840,19 +840,19 @@ get_header(); ?>
 														// echo "<option>" . $curCategory . "</option>";
 														// echo($curCategory);
 														foreach ($categories as $category){
-															print_r($category);
+															// print_r($category);
 															$tag = $category->term_id;
 															$classieraCatFields = get_option(MY_CATEGORY_FIELDS);
-														if (isset($classieraCatFields[$tag])){
-															$classieraCatIconCode = $classieraCatFields[$tag]['category_icon_code'];
-															$classieraCatIcoIMG = $classieraCatFields[$tag]['your_image_url'];
-															$classieraCatIconClr = $classieraCatFields[$tag]['category_icon_color'];
-														}
-														if (empty($classieraCatIconClr)){
-															$iconColor = $primaryColor;
-														} else {
-															$iconColor = $classieraCatIconClr;
-														}
+															if (isset($classieraCatFields[$tag])){
+																$classieraCatIconCode = $classieraCatFields[$tag]['category_icon_code'];
+																$classieraCatIcoIMG = $classieraCatFields[$tag]['your_image_url'];
+																$classieraCatIconClr = $classieraCatFields[$tag]['category_icon_color'];
+															}
+															if (empty($classieraCatIconClr)){
+																$iconColor = $primaryColor;
+															} else {
+																$iconColor = $classieraCatIconClr;
+															}
 															$category_icon = stripslashes($classieraCatIconCode);
 														?>
 														<option value="<?php echo esc_attr( $tag ); ?>" <?php if($curCategory == esc_attr($tag)) echo "selected";?>><?php echo esc_html(get_cat_name( $tag )); ?></option>
