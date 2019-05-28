@@ -1,9 +1,9 @@
 <?php 
 	$_age = "";
-	if( isset( $_GET['age'])) $_age = $_GET['age'];
+	// if( isset( $_GET['age'])) $_age = $_GET['age'];
 	// echo "string";
 	$_search= "";
-	if( isset( $_GET['Search'])) $_search = $_GET['Search'];
+	// if( isset( $_GET['Search'])) $_search = $_GET['Search'];
 	// print_r($_sKeyword);
 if( $_age != ""){
 	// $_age = "";
@@ -51,16 +51,30 @@ if( $_age != ""){
 	$_metaQuery = array();
 	if( $_age != ""){
 		$arrAge = explode(",", $_age);
-		$cri_Age = array('relation' => 'AND',
-			array(
-				'key'		=> 'user_age',
-				'value'		=> $arrAge[0],
-				'compare'	=> '>=',
+		$cri_Age = array('relation' => 'OR',
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'user_age',
+					'value'		=> $arrAge[0],
+					'compare'	=> '>=',
+				),
+				array(
+					'key'   => 'user_age',
+					'value'=> $arrAge[1],
+					'compare' => '<=',
+				)
 			),
-			array(
-				'key'   => 'user_age',
-				'value'=> $arrAge[1],
-				'compare' => '<=',
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'user_age_1',
+					'value'		=> $arrAge[0],
+					'compare'	=> '>=',
+				),
+				array(
+					'key'   => 'user_age_1',
+					'value'=> $arrAge[1],
+					'compare' => '<=',
+				)
 			)
 		);
 		$_metaQuery[] = $cri_Age;
@@ -106,90 +120,167 @@ if( $_age != ""){
 		$_metaQuery[] = $cri_nat_lang;
 	}
 	if( $_hair != ""){
-		$cri_hair = array(
-			'key'		=> 'hair_color',
-			'value'		=> $_hair,
-			'compare'	=> '='
+		$cri_hair = array('relation' => 'OR',
+			array(
+				'key'		=> 'hair_color',
+				'value'		=> $_hair,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'hair_color_1',
+				'value'		=> $_hair,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_hair;
 	}
 	if( $_eyes != ""){
-		$cri_eyes = array(
-			'key'		=> 'eyes_color',
-			'value'		=> $_eyes,
-			'compare'	=> '='
+		$cri_eyes = array('relation' => 'OR',
+			array(
+				'key'		=> 'eyes_color',
+				'value'		=> $_eyes,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'eyes_color_1',
+				'value'		=> $_eyes,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_eyes;
 	}
 	if( $_ethnicity != ""){
-		$cri_ethnicity = array(
-			'key'		=> 'ethnicity',
-			'value'		=> $_ethnicity,
-			'compare'	=> '='
+		$cri_ethnicity = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'ethnicity',
+				'value'		=> $_ethnicity,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'ethnicity_1',
+				'value'		=> $_ethnicity,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_ethnicity;
 	}
 	if( $_weight != ""){
 		$arrWeight = explode(",", $_weight);
-		$cri_weight = array('relation' => 'AND',
-			array(
-				'key'		=> 'weight',
-				'value'		=> $arrWeight[0],
-				'compare'	=> '>='
+		$cri_weight = array('relation' => 'OR',
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'weight',
+					'value'		=> $arrWeight[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'weight',
+					'value'		=> $arrWeight[1],
+					'compare'	=> '<='
+				)
 			),
-			array(
-				'key'		=> 'weight',
-				'value'		=> $arrWeight[1],
-				'compare'	=> '<='
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'weight_1',
+					'value'		=> $arrWeight[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'weight_1',
+					'value'		=> $arrWeight[1],
+					'compare'	=> '<='
+				)
 			)
 		);
 		$_metaQuery[] = $cri_weight;
 	}
 	if( $_waist != ""){
 		$arrWaist = explode(",", $_waist);
-		$cri_waist = array('relation' => 'AND',
-			array(
-				'key'		=> 'waist_size',
-				'value'		=> $arrWaist[0],
-				'compare'	=> '>='
+		$cri_waist = array( 'relation' => 'OR',
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'waist_size',
+					'value'		=> $arrWaist[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'waist_size',
+					'value'		=> $arrWaist[1],
+					'compare'	=> '<='
+				)
 			),
-			array(
-				'key'		=> 'waist_size',
-				'value'		=> $arrWaist[1],
-				'compare'	=> '<='
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'waist_size_1',
+					'value'		=> $arrWaist[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'waist_size_1',
+					'value'		=> $arrWaist[1],
+					'compare'	=> '<='
+				)
 			)
 		);
 		$_metaQuery[] = $cri_waist;
 	}
 	if( $_hips != ""){
 		$arrHips = explode(",", $_hips);
-		$cri_hips = array('relation' => 'AND',
-			array(
-				'key'		=> 'hips_size',
-				'value'		=> $arrHips[0],
-				'compare'	=> '>='
+		$cri_hips = array( 'relation' => 'OR',
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'hips_size',
+					'value'		=> $arrHips[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'hips_size',
+					'value'		=> $arrHips[1],
+					'compare'	=> '<='
+				)
 			),
-			array(
-				'key'		=> 'hips_size',
-				'value'		=> $arrHips[1],
-				'compare'	=> '<='
+			array('relation' => 'AND',
+				array(
+					'key'		=> 'hips_size_1',
+					'value'		=> $arrHips[0],
+					'compare'	=> '>='
+				),
+				array(
+					'key'		=> 'hips_size_1',
+					'value'		=> $arrHips[1],
+					'compare'	=> '<='
+				)
 			)
 		);
 		$_metaQuery[] = $cri_hips;
 	}
 	if( $_dress != ""){
-		$cri_dress = array(
-			'key'		=> 'dress_size',
-			'value'		=> $_dress,
-			'compare'	=> '='
+		$cri_dress = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'dress_size',
+				'value'		=> $_dress,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'dress_size_1',
+				'value'		=> $_dress,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_dress;
 	}
 	if( $_shoe != ""){
-		$cri_shoe = array(
-			'key'		=> 'shoe_size',
-			'value'		=> $_dress,
-			'compare'	=> '='
+		$cri_shoe = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'shoe_size',
+				'value'		=> $_shoe,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'shoe_size_1',
+				'value'		=> $_shoe,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_shoe;
 	}
@@ -202,10 +293,17 @@ if( $_age != ""){
 		$_metaQuery[] = $cri_pubic;
 	}
 	if( $_smoker != ""){
-		$cri_smoker = array(
-			'key'		=> 'smoker',
-			'value'		=> $_smoker,
-			'compare'	=> '='
+		$cri_smoker = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'smoker',
+				'value'		=> $_smoker,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'smoker_1',
+				'value'		=> $_smoker,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_smoker;
 	}
@@ -242,61 +340,73 @@ if( $_age != ""){
 		$_metaQuery[] = $cri_travel;
 	}
 	if( $_gender != ""){
-		$cri_gender = array(
-			'key'		=> 'gender',
-			'value'		=> $_gender,
-			'compare'	=> '='
+		$cri_gender = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'gender',
+				'value'		=> $_gender,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'gender_1',
+				'value'		=> $_gender,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_gender;
 	}
 	if( $_nationality != ""){
-		$cri_nationality = array(
-			'key'		=> 'nationality',
-			'value'		=> $_nationality,
-			'compare'	=> '='
+		$cri_nationality = array( 'relation' => 'OR',
+			array(
+				'key'		=> 'nationality',
+				'value'		=> $_nationality,
+				'compare'	=> '='
+			),
+			array(
+				'key'		=> 'nationality_1',
+				'value'		=> $_nationality,
+				'compare'	=> '='
+			)
 		);
 		$_metaQuery[] = $cri_nationality;
 	}
-	// print_r($_metaQuery);
+	print_r($_metaQuery);
 	$arags = array(
 		'post_type' => 'post',
 		'meta_query' => $_metaQuery,
 	);
-
 	$wsp_query = new WP_Query($arags);
-?>
-
-<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
-	<div class="tab-divs">
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active">
-				<div class="container">
-					<div class="row standard_type_size">
-						<div class="col-lg-12">
-							<div class="grid">
-<?php
-	while ($wsp_query->have_posts()) : $wsp_query->the_post();
-		if($_category != ""){
-            $curCatSel = get_the_category($post->ID);
-            $curCategory = $curCatSel[0]->term_id;
-            if($curCategory != $_category)
-            	continue;
-		}
-		$featuredPosts[] = $post->ID;
-		// print_r($post);
-		get_template_part( 'templates/classiera-loops/loop-canary');
-	endwhile;
-	wp_reset_postdata();
-?>
+	?>
+	<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
+		<div class="tab-divs">
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane fade in active">
+					<div class="container">
+						<div class="row standard_type_size">
+							<div class="col-lg-12">
+								<div class="grid">
+	<?php
+		while ($wsp_query->have_posts()) : $wsp_query->the_post();
+			if($_category != ""){
+	            $curCatSel = get_the_category($post->ID);
+	            $curCategory = $curCatSel[0]->term_id;
+	            if($curCategory != $_category)
+	            	continue;
+			}
+			$featuredPosts[] = $post->ID;
+			// print_r($post);
+			get_template_part( 'templates/classiera-loops/loop-canary');
+		endwhile;
+		wp_reset_postdata();
+	?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<?php
+	</section>
+	<?php
 } else if( $_search != ""){
 
 	global $redux_demo;
@@ -325,16 +435,16 @@ if( $_age != ""){
 
 	$wsp_query = new WP_Query($arags);
 	// print_r($wsp_query);
-?>
-<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
-	<div class="tab-divs">
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active">
-				<div class="container">
-					<div class="row standard_type_size">
-						<div class="col-lg-12">
-							<div class="grid">
-<?php
+	?>
+	<section class="classiera-advertisement advertisement-v4 section-pad-top-100">
+		<div class="tab-divs">
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane fade in active">
+					<div class="container">
+						<div class="row standard_type_size">
+							<div class="col-lg-12">
+								<div class="grid">
+	<?php
 	// echo("Search functions.<br>\n");
 	while( $wsp_query->have_posts()) : $wsp_query->the_post();
 		if( $_catName != 1 && $_catName != ""){
@@ -351,16 +461,16 @@ if( $_age != ""){
 		get_template_part( 'templates/classiera-loops/loop-canary');
 	endwhile;
 		wp_reset_postdata();
-?>
+	?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<?php
+	</section>
+	<?php
 } else{
 	global $redux_demo;	
 

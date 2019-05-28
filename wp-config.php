@@ -39,8 +39,8 @@ define('DB_COLLATE', '');
 
 // ** Disabling Auto Save Draft in WordPress
 // Changed by Wang
-define( 'AUTOSAVE_INTERVAL', 3600 );
-define('WP_POST_REVISIONS', false);
+define('AUTOSAVE_INTERVAL', 3600 );
+// define('WP_POST_REVISIONS', false);
 define('EMPTY_TRASH_DAYS', 0);
 
 // Change end
