@@ -548,6 +548,7 @@ function update_post_slug_on_change( $post_id ) {
         
         $partner_name = get_post_meta( $post_id, 'partner_name', true);
         $title = get_the_title($post_id);
+        $slug = '';
         $categories = get_terms('category', array(
             'hide_empty' => 0,
             'parent' => 0,
@@ -556,27 +557,29 @@ function update_post_slug_on_change( $post_id ) {
         );
         
         $curCatSel = get_the_category($post_id);
+        $curCategory = $curCatSel[0]->term_id;
         if( !isset($curCategory)){
             add_action( 'save_post', 'update_post_slug_on_change' );
             return;
         }
-        $curCategory = $curCatSel[0]->term_id;
 
         // $curCategory = get_the_category($post_id)[0]->term_id;
-        file_put_contents(__DIR__ . "/temp.txt", json_encode($category));
+        // file_put_contents(__DIR__ . "/temp.txt", json_encode($categories) . "------" . $curCategory);
         foreach ($categories as $category) {
             if( $curCategory == $category->term_id){
                 if( in_array($category->slug, array('couple', 'duo'))){
-                    $title .= ' & ' . $partner_name;
+                    $slug .= $title . '-' . $partner_name;
                 }
             }
         }
 
         // update the post slug
-        wp_update_post( array(
-            'ID' => $post_id,
-            'post_name' => $title //'' // do your thing here
-        ));
+        if( $slug != ''){
+            wp_update_post( array(
+                'ID' => $post_id,
+                'post_name' => $slug //'' // do your thing here
+            ));
+        }
         // re-hook this function
         add_action( 'save_post', 'update_post_slug_on_change' );
     }
